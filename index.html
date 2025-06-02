@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Casino - 深淺切換配色預覽</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --main-gold: #C7802D;
+      --main-gold-dark: #b76b15;
+      --main-beige: #FFF9E3;
+      --main-white: #FFF;
+      --main-blue: #3BB2F3;
+      --main-red: #F1584D;
+      --main-green: #67CB6C;
+      --shadow: 0 4px 16px 0 rgba(199,128,45,0.09);
+
+      /* 深色主題色 */
+      --dark-bg: #1C130A;
+      --dark-card: #322112;
+      --dark-gold: #e4a53a;
+      --dark-text: #f9e3b7;
+      --dark-muted: #7c6145;
+      --dark-btn: #59442b;
+      --dark-btn-hover: #c7802d;
+      --dark-shadow: 0 4px 16px 0 rgba(50,33,18,0.15);
+    }
+    html, body {
+      background: var(--main-beige);
+      color: #77430d;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    .container {
+      width: 95vw;
+      max-width: 1800px;
+      margin: 2vw auto;
+      padding: 0;
+    }
+    header {
+      background: var(--main-gold);
+      padding: 32px 0 22px 0;
+      text-align: center;
+      color: var(--main-white);
+      letter-spacing: 2px;
+      font-size: 2.8rem;
+      font-weight: bold;
+      box-shadow: var(--shadow);
+      transition: background 0.3s;
+    }
+    body.dark header {
+      background: var(--dark-gold);
+      color: #2a1906;
+      box-shadow: var(--dark-shadow);
+    }
+    nav {
+      margin: 0 auto;
+      text-align: center;
+      background: var(--main-white);
+      padding: 18px 0;
+      border-bottom: 3px solid var(--main-gold);
+      font-size: 1.15rem;
+      font-weight: 600;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    nav a {
+      text-decoration: none;
+      color: var(--main-gold-dark);
+      margin: 0 2vw;
+      transition: color 0.18s;
+    }
+    nav a:hover {
+      color: var(--main-blue);
+    }
+    body.dark nav {
+      background: var(--dark-card);
+      border-bottom: 3px solid var(--dark-gold);
+    }
+    body.dark nav a {
+      color: var(--dark-gold);
+    }
+    .theme-toggle {
+      position: absolute;
+      right: 3vw;
+      top: 2.4vw;
+      background: var(--main-gold);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.6em 1.4em;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      z-index: 20;
+    }
+    body.dark .theme-toggle {
+      background: var(--dark-btn);
+      color: var(--dark-gold);
+    }
+    .hero {
+      background: linear-gradient(90deg, #FFD185 0%, #FFF9E3 90%);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      margin: 2vw 0 0 0;
+      padding: 3vw 0 2vw 0;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      color: var(--main-gold-dark);
+      margin: 0 0 0.4em 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      transition: color 0.3s;
+    }
+    .hero p {
+      color: #4c2d00;
+      font-size: 1.45rem;
+      margin-bottom: 2vw;
+      transition: color 0.3s;
+    }
+    .hero .cta-btn {
+      background: linear-gradient(90deg, #F7941D 0%, #FFBF5C 100%);
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 32px;
+      padding: 0.85em 2.4em;
+      margin: 10px;
+      box-shadow: 0 2px 12px 0 #f2d2a1cc;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .hero .cta-btn:hover {
+      background: var(--main-gold-dark);
+      color: #fff;
+    }
+    body.dark .hero {
+      background: linear-gradient(90deg, #60451c 0%, #322112 100%);
+      box-shadow: var(--dark-shadow);
+    }
+    body.dark .hero h1 {
+      color: var(--dark-gold);
+    }
+    body.dark .hero p {
+      color: var(--dark-muted);
+    }
+    .main-section {
+      margin: 3vw 0 0 0;
+      display: flex;
+      gap: 2vw;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .left-col, .right-col {
+      flex: 1;
+      min-width: 340px;
+    }
+    .features {
+      display: flex;
+      gap: 1vw;
+      margin: 1vw 0 0 0;
+      justify-content: center;
+    }
+    .feature-card {
+      background: var(--main-white);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 1.4em 1.5em 1.2em 1.5em;
+      text-align: center;
+      min-width: 140px;
+      flex: 1;
+      transition: background 0.3s, color 0.3s;
+    }
+    .feature-card .icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.6em;
+      display: block;
+    }
+    .feature-card.games   { color: var(--main-blue);}
+    .feature-card.promo   { color: var(--main-red);}
+    .feature-card.jackpot { color: var(--main-gold-dark);}
+    .feature-card.support { color: var(--main-green);}
+    body.dark .feature-card {
+      background: var(--dark-card);
+      color: var(--dark-gold);
+      box-shadow: var(--dark-shadow);
+    }
+    .game-list {
+      margin: 2vw 0 0 0;
+      display: flex;
+      gap: 1vw;
+      justify-content: center;
+    }
+    .game-card {
+      background: var(--main-gold);
+      color: #fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 1.5em 1.3em 1.2em 1.3em;
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .game-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.4em;
+      display: block;
+    }
+    body.dark .game-card {
+      background: var(--dark-btn);
+      color: var(--dark-gold);
+      box-shadow: var(--dark-shadow);
+    }
+    .bonus-box {
+      background: #FFF9E3;
+      color: var(--main-gold-dark);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      padding: 2.5em 2em 2.2em 2em;
+      margin-bottom: 2vw;
+      transition: background 0.3s, color 0.3s;
+    }
+    .bonus-box h2 {
+      color: var(--main-gold-dark);
+      font-size: 2.2rem;
+      margin-bottom: 0.7em;
+      letter-spacing: 1px;
+    }
+    .bonus-box .big {
+      font-size: 2.6rem;
+      color: var(--main-green);
+      font-weight: bold;
+    }
+    .bonus-box .bonus-btn {
+      margin-top: 1.6em;
+      background: var(--main-green);
+      color: #fff;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 22px;
+      padding: 0.7em 2em;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px 0
