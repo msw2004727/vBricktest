@@ -1,557 +1,639 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>Online Casino - 全新版面</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      /* 預設淺色主題 (Default Light Theme) */
-      --main-gold: #C7802D;
-      --main-gold-dark: #b76b15;
-      --main-beige: #FFF9E3; 
-      --main-white: #FFF;   
-      --main-text: #77430d; 
-      --header-bg: var(--main-gold); /* 舊 header, 可能不再直接使用 */
-      --header-text: var(--main-white);
-      --nav-bg: var(--main-white); /* 舊 nav, 可能不再直接使用 */
-      --nav-text: var(--main-gold-dark);
-      --nav-border: var(--main-gold);
-      
-      /* 新版面可能會用到的顏色，部分會被主題覆蓋 */
-      --top-bar-bg: rgba(0, 0, 0, 0.3); /* 頂部工具列背景 */
-      --top-bar-text: #FFF;
-      --top-bar-icon-bg: rgba(255, 255, 255, 0.1);
-      --top-bar-icon-hover-bg: rgba(255, 255, 255, 0.2);
-      --balance-text: #FFD700; /* 金額文字顏色 */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>揪chill - 博弈入口網站</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自訂字體，如果需要可以替換為其他字體 */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* 防止橫向滾動 */
+            /* 這些顏色變數將由 JavaScript 動態設定 */
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
 
-      --content-bg-transparent: rgba(255, 249, 227, 0.6); /* 主要內容區塊的透明背景 */
-      --card-bg-transparent: rgba(255, 255, 255, 0.75); /* 卡片類元素的透明背景 */
-      --dark-content-bg-transparent: rgba(28, 19, 10, 0.6);
-      --dark-card-bg-transparent: rgba(50, 33, 18, 0.75);
+        /* 確保內容在橫向模式下良好顯示 */
+        .container-wrapper {
+            width: 100vw; /* 視窗寬度 */
+            height: 100vh; /* 視窗高度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* 防止內容溢出 */
+        }
 
-      --filter-btn-bg: rgba(255,255,255,0.2);
-      --filter-btn-text: var(--main-text);
-      --filter-btn-active-bg: var(--main-gold);
-      --filter-btn-active-text: var(--main-white);
-      --dark-filter-btn-text: var(--dark-text);
-      --dark-filter-btn-active-bg: var(--dark-gold);
+        .game-container {
+            width: 100%;
+            max-width: 1600px; /* 根據16:9比例調整最大寬度，例如1600x900 */
+            height: 100%;
+            max-height: 900px; /* 根據16:9比例調整最大高度 */
+            aspect-ratio: 16 / 9; /* 維持16:9比例 */
+            display: flex;
+            flex-direction: column;
+            background-color: var(--card-background); /* 卡片背景色 */
+            border-radius: 1.5rem; /* 大圓角 */
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* 陰影效果 */
+        }
 
+        /* 響應式調整 */
+        @media (max-aspect-ratio: 16/9) {
+            .game-container {
+                width: 100vw;
+                height: calc(100vw / 16 * 9);
+            }
+        }
 
-      /* 通用顏色變數 */
-      --accent-blue: #3BB2F3;
-      --accent-blue-dark: #2a8fcc;
-      --accent-red: #F1584D;
-      --accent-red-dark: #d94236;
-      --accent-green: #67CB6C;
-      --accent-green-dark: #52a556;
-      --accent-purple: #8A2BE2;
-      --accent-purple-dark: #7324bf;
-      --accent-teal: #008080;
-      --accent-teal-dark: #006666;
-      --accent-pink: #FF69B4;
-      --accent-pink-dark: #f750a3;
+        @media (min-aspect-ratio: 16/9) {
+            .game-container {
+                height: 100vh;
+                width: calc(100vh / 9 * 16);
+            }
+        }
 
-      --shadow-color: rgba(0,0,0,0.1); /* 通用陰影顏色 */
-      --shadow: 0 4px 12px 0 var(--shadow-color);
-      --light-shadow: 0 2px 6px 0 var(--shadow-color);
+        /* 滾動條樣式美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--card-background); /* 滾動條軌道背景 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color); /* 滾動條滑塊背景 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
 
-
-      /* 深色主題色 */
-      --dark-bg: #1C130A; 
-      --dark-card-bg: #322112; /* 深色模式下卡片背景 */
-      --dark-text: #f9e3b7;
-      --dark-top-bar-bg: rgba(0,0,0,0.5);
-      --dark-top-bar-text: #DDD;
-
-
-      /* 背景圖片 URL */
-      --background-image-url: url('https://raw.githubusercontent.com/msw2004727/vBricktest/refs/heads/main/363d054db6bba31563b13a40599589a1_800_1108.jpg');
-    }
-
-    html, body {
-      background-color: var(--main-beige); 
-      background-image: var(--background-image-url); 
-      background-size: cover; 
-      background-position: center center; 
-      background-repeat: no-repeat; 
-      background-attachment: fixed; 
-      color: var(--main-text);
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100vh; 
-      display: flex; 
-      flex-direction: column;
-      transition: background-color 0.3s, color 0.3s; 
-    }
-    body.dark {
-      background-color: var(--dark-bg); 
-      color: var(--dark-text);
-    }
-    
-    .page-wrapper { 
-        padding: 0; /* page-wrapper 不再需要上下 padding，由內部控制 */
-        width: 100%; 
-        margin: 0; 
-        box-sizing: border-box;
-        flex-grow: 1; /* 讓 page-wrapper 填滿剩餘空間 */
-        display: flex;
-        flex-direction: column;
-    }
-
-    .top-bar {
-        background-color: var(--top-bar-bg);
-        color: var(--top-bar-text);
-        padding: 8px 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        position: fixed; /* 固定頂部 */
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        height: 60px; /* 固定高度 */
-    }
-    body.dark .top-bar {
-        background-color: var(--dark-top-bar-bg);
-        color: var(--dark-top-bar-text);
-    }
-
-    .top-bar .logo-area { display: flex; align-items: center; }
-    .top-bar .logo-area img { height: 40px; margin-right: 10px; border-radius: 50%; }
-    .top-bar .logo-area .site-name { font-size: 1.4rem; font-weight: bold; }
-
-    .top-bar .user-info { display: flex; align-items: center; }
-    .top-bar .user-info .username { margin-right: 8px; font-size: 0.9rem; }
-    .top-bar .user-info .vip-level { 
-        background-color: var(--main-gold); color: var(--main-white); 
-        padding: 3px 8px; border-radius: 10px; font-size: 0.8rem; margin-right: 15px;
-    }
-    body.dark .top-bar .user-info .vip-level { background-color: var(--dark-gold); color: var(--dark-header-text); }
-    .top-bar .user-info .balance { font-size: 1rem; font-weight: bold; color: var(--balance-text); margin-right: 20px;}
-    body.dark .top-bar .user-info .balance { color: var(--dark-gold); }
-
-
-    .top-bar .actions { display: flex; align-items: center; gap: 10px; }
-    .top-bar .actions .icon-btn {
-        background-color: var(--top-bar-icon-bg);
-        color: var(--top-bar-text);
-        border: none;
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background-color 0.2s;
-        font-size: 1.1rem; /* 圖示大小 */
-    }
-    .top-bar .actions .icon-btn:hover { background-color: var(--top-bar-icon-hover-bg); }
-    body.dark .top-bar .actions .icon-btn { color: var(--dark-top-bar-text); }
-
-
-    .top-bar .event-icon img { height: 45px; cursor: pointer; }
-
-
-    .main-content-area {
-        margin-top: 60px; /* 為固定的 top-bar 留出空間 */
-        padding: 20px;
-        flex-grow: 1; /* 填滿剩餘垂直空間 */
-        overflow-y: auto; /* 如果內容過多則允許滾動 */
-    }
-    
-    .container { /* .container 現在只包裹主要遊戲內容區 */
-      width: 100%; 
-      max-width: 1600px; /* 調整以更接近16:9的寬螢幕感覺 */
-      margin: 0 auto; 
-      padding: 0; 
-      background-color: transparent; 
-    }
-
-    .top-banner-section {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 20px;
-        align-items: flex-start; /* 確保高度不一時頂部對齊 */
-    }
-    .main-banner {
-        flex: 3; /* 主 Banner 佔較大比例 */
-        background-color: var(--card-bg-transparent);
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-    }
-    body.dark .main-banner { background-color: var(--dark-card-bg-transparent); }
-    .main-banner img { width: 100%; display: block; aspect-ratio: 16/7; object-fit: cover;} /* 調整圖片比例 */
-
-    .side-info {
-        flex: 1; /* 側邊資訊佔較小比例 */
-        background-color: var(--card-bg-transparent);
-        border-radius: 15px;
-        padding: 15px;
-        box-shadow: var(--shadow);
-        min-width: 280px; /* 最小寬度 */
-    }
-    body.dark .side-info { background-color: var(--dark-card-bg-transparent); }
-    .side-info h3 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        font-size: 1.2rem;
-        color: var(--main-gold);
-        border-bottom: 1px solid var(--main-gold-dark);
-        padding-bottom: 5px;
-    }
-    body.dark .side-info h3 { color: var(--dark-gold); border-bottom-color: var(--dark-nav-text); }
-    .side-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
-    .side-info li { padding: 5px 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
-    .side-info li:last-child { border-bottom: none; }
-    body.dark .side-info li { border-bottom-color: rgba(255,255,255,0.1); }
-
-
-    .marquee-section {
-        background-color: rgba(0,0,0,0.4);
-        color: white;
-        padding: 8px 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        font-size: 0.9rem;
-        overflow: hidden; /* 簡單實現，無滾動效果 */
-        white-space: nowrap;
-        box-shadow: var(--light-shadow);
-    }
-
-    .game-filters {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        align-items: center;
-        flex-wrap: wrap; /* 允許換行 */
-    }
-    .filter-btn {
-        background-color: var(--filter-btn-bg);
-        color: var(--filter-btn-text);
-        border: 1px solid var(--main-gold-dark);
-        padding: 8px 15px;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: background-color 0.2s, color 0.2s;
-        font-size: 0.9rem;
-    }
-    .filter-btn.active, .filter-btn:hover {
-        background-color: var(--filter-btn-active-bg);
-        color: var(--filter-btn-active-text);
-        border-color: var(--filter-btn-active-bg);
-    }
-    body.dark .filter-btn {
-        background-color: rgba(255,255,255,0.1);
-        color: var(--dark-filter-btn-text);
-        border-color: var(--dark-gold);
-    }
-    body.dark .filter-btn.active, body.dark .filter-btn:hover {
-        background-color: var(--dark-filter-btn-active-bg);
-        color: var(--dark-btn-generic-hover-text);
-        border-color: var(--dark-filter-btn-active-bg);
-    }
-    .search-icon-btn {
-        background-color: var(--filter-btn-bg);
-        color: var(--filter-btn-text);
-        border: 1px solid var(--main-gold-dark);
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        margin-left: auto; /* 推到最右邊 */
-    }
-    body.dark .search-icon-btn {
-        background-color: rgba(255,255,255,0.1);
-        color: var(--dark-filter-btn-text);
-        border-color: var(--dark-gold);
-    }
-
-
-    .game-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 響應式網格 */
-        gap: 15px;
-    }
-    .game-item {
-        background-color: var(--card-bg-transparent);
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: var(--light-shadow);
-        transition: transform 0.2s, box-shadow 0.2s;
-        cursor: pointer;
-    }
-    .game-item:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow);
-    }
-    body.dark .game-item { background-color: var(--dark-card-bg-transparent); }
-    .game-item img {
-        width: 100%;
-        aspect-ratio: 1/1; /* 方形圖片 */
-        object-fit: cover;
-        display: block;
-    }
-    .game-item .game-title {
-        padding: 8px;
-        font-size: 0.9rem;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .floating-chat-btn {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        background-color: var(--main-gold);
-        color: var(--main-white);
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        box-shadow: var(--shadow);
-        cursor: pointer;
-        z-index: 999;
-    }
-    body.dark .floating-chat-btn { background-color: var(--dark-gold); color: var(--dark-header-text); }
-
-    /* 移除舊的 .hero, .main-section, .left-col, .right-col, .features, .game-list, .bonus-box 等樣式 */
-    /* 這些區塊已被新的佈局取代 */
-    .hero, .main-section, .left-col, .right-col, .features, .game-list, .bonus-box, .btn-hero-secondary, .hero-actions-secondary {
-        display: none !important; /* 強制隱藏舊元素 */
-    }
-    
-    /* 主題切換按鈕保持原樣，但可能需要調整位置以避免與新頂部工具列重疊 */
-    .theme-controls {
-      position: fixed; 
-      right: 20px; 
-      top: 75px; /* 移到頂部工具列下方 */
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 6px;
-      z-index: 990; /* 比頂部工具列低，比聊天按鈕高 */
-      background-color: rgba(0, 0, 0, 0.3); 
-      padding: 8px;
-      border-radius: 6px;
-    }
-
-
-    @media (max-width: 992px) { /* 平板斷點 */
-        .top-banner-section { flex-direction: column; }
-        .main-banner, .side-info { flex: none; width: 100%; }
-        .side-info { min-width: unset; }
-        .game-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-    }
-
-    @media (max-width: 768px) { 
-        .top-bar .user-info .username, .top-bar .user-info .vip-level { display: none; } /* 手機上隱藏部分用戶資訊 */
-        .top-bar .logo-area .site-name { font-size: 1.2rem; }
-        .top-bar .actions .icon-btn { width: 32px; height: 32px; font-size: 1rem;}
-        .top-bar .event-icon img { height: 40px; }
-        .main-content-area { padding: 15px; }
-        .game-filters { gap: 8px; }
-        .filter-btn { padding: 6px 12px; font-size: 0.8rem; }
-        .search-icon-btn { width: 32px; height: 32px; }
-        .game-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px;}
-        .theme-controls { top: 70px; right: 10px; gap: 4px; padding: 6px;}
-        .theme-palette-btn, .theme-toggle-btn { min-width: 90px; font-size: 0.75rem; padding: 0.3em 0.6em;}
-        .floating-chat-btn { width: 45px; height: 45px; font-size: 1.3rem; bottom: 15px; right: 15px;}
-    }
-    @media (max-width: 480px) { 
-        .top-bar { padding: 5px 10px; height: 50px;}
-        .top-bar .logo-area img { height: 30px;}
-        .top-bar .logo-area .site-name { display: none; } /* 極小螢幕隱藏網站名稱 */
-        .top-bar .actions { gap: 5px; }
-        .top-bar .event-icon img { height: 35px; }
-        .main-content-area { margin-top: 50px; padding: 10px;}
-        .marquee-section { font-size: 0.8rem; padding: 6px 10px; }
-        .game-grid { grid-template-columns: repeat(2, 1fr); } /* 手機上固定兩欄 */
-        .game-item .game-title { font-size: 0.8rem; padding: 6px;}
-    }
-  </style>
+        /* 通用類別，使用動態變數 */
+        .header-footer-gradient {
+            background-image: linear-gradient(to right, var(--header-footer-gradient-from), var(--header-footer-gradient-to));
+        }
+        .bg-primary-color {
+            background-color: var(--primary-color);
+        }
+        .text-primary-color {
+            color: var(--primary-color);
+        }
+        .bg-secondary-color {
+            background-color: var(--secondary-color);
+        }
+        .text-secondary-color {
+            color: var(--secondary-color);
+        }
+        .app-button-bg {
+            background-color: var(--button-background);
+        }
+        .app-button-text {
+            color: var(--button-text-color);
+        }
+        .app-card-bg {
+            background-color: var(--card-background);
+        }
+        .app-text-color {
+            color: var(--text-color);
+        }
+        .app-border-color {
+            border-color: var(--border-color);
+        }
+        .header-footer-text {
+            color: var(--header-footer-text-color);
+        }
+        .header-button-bg {
+            background-color: var(--header-button-background);
+        }
+        .header-button-text {
+            color: var(--header-button-text-color);
+        }
+        .nav-bg {
+            background-color: var(--nav-background);
+        }
+        .nav-button-text {
+            color: var(--nav-button-text-default);
+        }
+        .nav-button-text:hover {
+            color: var(--nav-button-text-hover);
+        }
+        .banner-bg {
+            background-color: var(--banner-background);
+        }
+        .banner-text {
+            color: var(--banner-text-color);
+        }
+    </style>
 </head>
-<body>
-  <div class="theme-controls">
-    <button class="theme-palette-btn" onclick="applyTheme('default')">預設淺色</button>
-    <button class="theme-palette-btn" onclick="applyTheme('ocean')">海洋藍</button>
-    <button class="theme-palette-btn" onclick="applyTheme('forest')">森林綠</button>
-    <button class="theme-palette-btn" onclick="applyTheme('royal')">皇家紫</button>
-    <button class="theme-palette-btn" onclick="applyTheme('sunset')">夕陽橙</button>
-    <button class="theme-palette-btn" onclick="applyTheme('graphite')">石墨灰</button>
-    <button class="theme-toggle-btn" onclick="toggleDarkTheme()">切換深色</button>
-  </div>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="container-wrapper">
+        <div class="game-container">
+            <!-- 頂部導航欄 -->
+            <header class="flex items-center justify-between p-4 header-footer-gradient rounded-t-2xl shadow-lg">
+                <!-- Logo 區域 -->
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary-color rounded-full flex items-center justify-center text-xl font-bold text-gray-900">
+                        <!-- 模擬 Logo 圖示 -->
+                        <svg class="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <span class="header-footer-text text-2xl font-bold">揪chill</span>
+                </div>
 
-<div class="page-wrapper"> 
-  <div class="top-bar">
-    <div class="logo-area">
-      <img src="https://placehold.co/60x60/C7802D/FFF?text=LOGO" alt="網站Logo">
-      <span class="site-name">拉拉城娛樂</span>
-    </div>
-    <div class="user-info">
-      <span class="username">我的帳號</span>
-      <span class="vip-level">VIP 1</span>
-      <span class="balance">¥ 1,000.00</span>
-    </div>
-    <div class="actions">
-      <button class="icon-btn" title="禮物">🎁</button>
-      <button class="icon-btn" title="排行">👑</button>
-      <button class="icon-btn" title="訊息">💬</button>
-      <button class="icon-btn" title="設定">⚙️</button>
-    </div>
-    <div class="event-icon">
-      <img src="https://placehold.co/80x80/ffcc00/000?text=活動" alt="活動圖示">
-    </div>
-  </div>
+                <!-- 用戶資訊/餘額/設定 -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2 header-button-bg px-3 py-1 rounded-full shadow-md">
+                        <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.433 7.417c1.1-1.1 2.9-.833 3.732.667.424.763.535 1.705.152 2.544l-.794 1.747c-.075.165-.213.296-.376.368a.999.999 0 01-1.282-.368l-2.001-3.464c-.163-.283-.163-.635 0-.918l2.001-3.464c.163-.283.424-.45.732-.45zM10 18a8 8 0 100-16 8 8 0 000 16z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                        </svg>
+                        <span class="header-button-text text-lg font-semibold">1,000.00</span>
+                    </div>
+                    <!-- 深淺模式切換按鈕 -->
+                    <button id="themeToggle" class="p-2 header-button-bg rounded-full shadow-md hover:opacity-80 transition-opacity">
+                        <!-- 月亮圖示 (深色模式) / 太陽圖示 (淺色模式) -->
+                        <svg id="moonIcon" class="w-6 h-6 header-button-text" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="sunIcon" class="w-6 h-6 header-button-text hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.356 2.644a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zm-2.828 8.486a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM10 15a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.356-2.644a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414l-.707.707zM4 10a1 1 0 01-1 1H2a1 1 0 110-2h1a1 1 0 011 1zm13 0a1 1 0 100-2h-1a1 1 0 100 2h1zm-6.071-5.929a1 1 0 00-1.414 0l-.707.707a1 1 0 001.414 1.414l.707-.707a1 1 0 000-1.414zM10 4a1 1 0 011 1v1a1 1 0 11-2 0V5a1 1 0 011-1z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <button class="p-2 header-button-bg rounded-full shadow-md hover:opacity-80 transition-opacity">
+                        <svg class="w-6 h-6 header-button-text" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            </header>
 
-  <div class="main-content-area">
-    <div class="container">
-      <section class="top-banner-section">
-        <div class="main-banner">
-          <img src="https://placehold.co/800x350/555/FFF?text=主宣傳圖+(抓漏宗師)" alt="主宣傳圖">
+            <!-- 主內容區域 -->
+            <main class="flex-grow flex flex-col p-4 overflow-hidden">
+                <!-- 橫幅廣告/推薦遊戲區 -->
+                <section class="w-full h-40 banner-bg rounded-xl mb-4 flex items-center justify-center shadow-inner">
+                    <span class="banner-text text-2xl">橫幅廣告/推薦遊戲區</span>
+                </section>
+
+                <!-- 選擇配色按鈕區域 -->
+                <section class="w-full p-3 app-card-bg rounded-xl mb-4 shadow-md flex flex-wrap justify-center items-center gap-2">
+                    <span class="app-text-color text-sm mr-2">選擇配色:</span>
+                    <button class="w-8 h-8 rounded-full shadow-md hover:scale-110 transition-transform duration-200 palette-button" style="background-color: #876633;" data-palette="palette1"></button>
+                    <button class="w-8 h-8 rounded-full shadow-md hover:scale-110 transition-transform duration-200 palette-button" style="background-color: #81c7d4;" data-palette="palette2"></button>
+                    <button class="w-8 h-8 rounded-full shadow-md hover:scale-110 transition-transform duration-200 palette-button" style="background-color: #ffc408;" data-palette="palette3"></button>
+                    <button class="w-8 h-8 rounded-full shadow-md hover:scale-110 transition-transform duration-200 palette-button" style="background-color: #8b81c3;" data-palette="palette4"></button>
+                    <button class="w-8 h-8 rounded-full shadow-md hover:scale-110 transition-transform duration-200 palette-button" style="background-color: #e83015;" data-palette="palette5"></button>
+                    <button class="w-8 h-8 rounded-full shadow-md hover:scale-110 transition-transform duration-200 palette-button" style="background-color: #77428d;" data-palette="palette6"></button>
+                </section>
+
+                <!-- 遊戲分類導航 -->
+                <nav class="flex justify-around items-center nav-bg p-2 rounded-full mb-4 shadow-md overflow-x-auto">
+                    <button class="px-4 py-2 app-button-text app-button-bg rounded-full shadow-md hover:opacity-80 transition-opacity whitespace-nowrap mx-1">全部</button>
+                    <button class="px-4 py-2 nav-button-text hover:text-nav-button-hover transition-colors whitespace-nowrap mx-1">最愛</button>
+                    <button class="px-4 py-2 nav-button-text hover:text-nav-button-hover transition-colors whitespace-nowrap mx-1">電動</button>
+                    <button class="px-4 py-2 nav-button-text hover:text-nav-button-hover transition-colors whitespace-nowrap mx-1">街機</button>
+                    <button class="px-4 py-2 nav-button-text hover:text-nav-button-hover transition-colors whitespace-nowrap mx-1">棋牌</button>
+                    <button class="px-4 py-2 nav-button-text hover:text-nav-button-hover transition-colors whitespace-nowrap mx-1">獎池</button>
+                    <button class="p-2 nav-button-text hover:text-nav-button-hover transition-colors mx-1">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </nav>
+
+                <!-- 遊戲列表區 -->
+                <section class="flex-grow grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4 overflow-y-auto pb-4">
+                    <!-- 遊戲卡片範例 (重複此區塊以填充佈局) -->
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                    <div class="app-card-bg rounded-xl overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 border app-border-color">
+                        <div class="w-full aspect-w-16 aspect-h-24 bg-primary-color flex items-center justify-center">
+                            <span class="app-text-color">遊戲圖示</span>
+                        </div>
+                        <div class="p-2 text-center">
+                            <span class="app-text-color text-sm font-semibold">遊戲名稱</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- 底部導航欄 -->
+            <footer class="flex items-center justify-around p-3 header-footer-gradient rounded-b-2xl shadow-lg">
+                <button class="flex flex-col items-center header-footer-text hover:text-yellow-300 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                    </svg>
+                    <span class="text-xs mt-1">首頁</span>
+                </button>
+                <button class="flex flex-col items-center header-footer-text hover:text-yellow-300 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM11 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2h-2zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2h-2z"></path>
+                    </svg>
+                    <span class="text-xs mt-1">遊戲</span>
+                </button>
+                <button class="flex flex-col items-center header-footer-text hover:text-yellow-300 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-xs mt-1">我的</span>
+                </button>
+                <button class="flex flex-col items-center header-footer-text hover:text-yellow-300 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zm-2 2a1 1 0 100 2h2a1 1 0 100-2H9z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span class="text-xs mt-1">客服</span>
+                </button>
+                <button class="flex flex-col items-center header-footer-text hover:text-yellow-300 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm3 8a1 1 0 000 2h6a1 1 0 100-2H7z"></path>
+                    </svg>
+                    <span class="text-xs mt-1">更多</span>
+                </button>
+            </footer>
         </div>
-        <aside class="side-info">
-          <h3>近期爆獎</h3>
-          <ul>
-            <li>玩家***123 贏得 ¥15,787,130</li>
-            <li>幸運**星 在 金管會轟炸 贏得 ¥3,728,162</li>
-            <li>高手***007 在 路路發 贏得 ¥6,803</li>
-            <li>玩家***888 在 武聖 贏得 ¥6,428</li>
-            <li>神秘**客 在 幸運幣大學 贏得 ¥1,000</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section class="marquee-section">
-        <span>跑馬燈訊息：◆ 全體會員注意！05/22 系統例行維護 ◆ 針對近期釣魚郵件提醒，請勿點擊不明連結...</span>
-      </section>
-
-      <section class="game-section">
-        <div class="game-filters">
-          <button class="filter-btn active">全部</button>
-          <button class="filter-btn">最愛</button>
-          <button class="filter-btn">電動</button>
-          <button class="filter-btn">街機</button>
-          <button class="filter-btn">棋牌</button>
-          <button class="filter-btn">獎池</button>
-          <button class="search-icon-btn" title="搜尋遊戲">🔍</button>
-        </div>
-        <div class="game-grid">
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/777/FFF?text=遊戲1+(金管會轟炸)" alt="遊戲1">
-            <div class="game-title">金管會轟炸</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/888/FFF?text=遊戲2+(幸運幣大學)" alt="遊戲2">
-            <div class="game-title">幸運幣大學</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/999/FFF?text=遊戲3+(路路發)" alt="遊戲3">
-            <div class="game-title">路路發</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/aaa/FFF?text=遊戲4+(武聖)" alt="遊戲4">
-            <div class="game-title">武聖</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/bbb/FFF?text=遊戲5" alt="遊戲5">
-            <div class="game-title">魔幻森林</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/ccc/333?text=遊戲6" alt="遊戲6">
-            <div class="game-title">糖果派對</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/ddd/333?text=遊戲7" alt="遊戲7">
-            <div class="game-title">捕魚達人</div>
-          </div>
-          <div class="game-item">
-            <img src="https://placehold.co/300x300/eee/333?text=遊戲8" alt="遊戲8">
-            <div class="game-title">百家樂</div>
-          </div>
-        </div>
-      </section>
     </div>
-  </div>
-  <button class="floating-chat-btn" title="線上客服">💬</button>
-</div>
-  <script>
-    const colorPalettes = {
-      default: {
-        '--main-gold': '#C7802D', '--main-gold-dark': '#b76b15', '--main-beige': '#FFF9E3',
-        '--main-white': '#FFF', '--main-text': '#77430d', '--header-bg': '#C7802D',
-        '--header-text': '#FFF', '--nav-bg': '#FFF', '--nav-text': '#b76b15',
-        '--nav-border': '#C7802D', '--hero-bg-gradient-start': '#FFD185', '--hero-bg-gradient-end': '#FFF9E3',
-        '--hero-h1-text': '#b76b15', '--hero-p-text': '#4c2d00', '--cta-btn-bg-gradient-start': '#F7941D',
-        '--cta-btn-bg-gradient-end': '#FFBF5C', '--cta-btn-text': '#FFF', '--cta-btn-hover-bg': '#b76b15',
-        '--cta-btn-hover-text': '#FFF', '--feature-card-bg': '#FFF', '--game-card-bg': '#C7802D',
-        '--game-card-text': '#FFF', '--bonus-box-bg': '#FFF9E3', '--bonus-box-h2-text': '#b76b15',
-        '--bonus-box-text': '#b76b15', '--bonus-btn-bg': '#67CB6C', '--bonus-btn-text': '#FFF',
-        '--bonus-btn-hover-bg': '#249b49', '--accent-blue': '#3BB2F3', '--accent-blue-dark': '#2a8fcc',
-        '--accent-red': '#F1584D', '--accent-red-dark': '#d94236', '--accent-green': '#67CB6C',
-        '--accent-green-dark': '#52a556', '--accent-purple': '#8A2BE2', '--accent-purple-dark': '#7324bf',
-        '--accent-teal': '#008080', '--accent-teal-dark': '#006666', '--accent-pink': '#FF69B4',
-        '--accent-pink-dark': '#f750a3', '--shadow-color': 'rgba(0,0,0,0.1)',
-        '--top-bar-bg': 'rgba(0,0,0,0.3)', '--top-bar-text': '#FFF', '--balance-text': '#FFD700',
-        '--content-bg-transparent': 'rgba(255, 249, 227, 0.6)', '--card-bg-transparent': 'rgba(255,255,255,0.75)',
-        '--filter-btn-bg':'rgba(255,255,255,0.2)', '--filter-btn-text': '#77430d', '--filter-btn-active-bg': '#C7802D', '--filter-btn-active-text': '#FFF'
-      },
-      ocean: {
-        '--main-gold': '#1572A1', '--main-gold-dark': '#0F527A', '--main-beige': '#E6F4F1',
-        '--main-white': '#F0FFFF', '--main-text': '#10364F', '--header-bg': '#1572A1',
-        '--header-text': '#E6F4F1', '--nav-bg': '#F0FFFF', '--nav-text': '#0F527A',
-        '--nav-border': '#1572A1', '--hero-bg-gradient-start': '#9AD0EC', '--hero-bg-gradient-end': '#E6F4F1',
-        '--hero-h1-text': '#0F527A', '--hero-p-text': '#10364F', '--cta-btn-bg-gradient-start': '#1572A1',
-        '--cta-btn-bg-gradient-end': '#50A6C2', '--cta-btn-text': '#E6F4F1', '--cta-btn-hover-bg': '#0F527A',
-        '--cta-btn-hover-text': '#E6F4F1', '--feature-card-bg': '#F0FFFF', '--game-card-bg': '#1572A1',
-        '--game-card-text': '#E6F4F1', '--bonus-box-bg': '#E0F7FA', '--bonus-box-h2-text': '#0F527A',
-        '--bonus-box-text': '#10364F', '--bonus-btn-bg': '#92A9BD', '--bonus-btn-text': '#E6F4F1',
-        '--bonus-btn-hover-bg': '#607D8B', '--accent-blue': '#3BB2F3', '--accent-blue-dark': '#2a8fcc',
-        '--accent-red': '#EF6262', '--accent-red-dark': '#D34141', '--accent-green': '#A1C9A0',
-        '--accent-green-dark': '#82B081', '--accent-purple': '#B1A2CA', '--accent-purple-dark': '#8E7DA8',
-        '--accent-teal': '#4DB6AC', '--accent-teal-dark': '#00897B', '--accent-pink': '#EC9AD0',
-        '--accent-pink-dark': '#D47FB8', '--shadow-color': 'rgba(21, 114, 161, 0.1)',
-        '--top-bar-bg': 'rgba(15, 82, 122, 0.4)', '--top-bar-text': '#E6F4F1', '--balance-text': '#9AD0EC',
-        '--content-bg-transparent': 'rgba(230, 244, 241, 0.6)', '--card-bg-transparent': 'rgba(240, 255, 255, 0.75)',
-        '--filter-btn-bg':'rgba(240,255,255,0.2)', '--filter-btn-text': '#10364F', '--filter-btn-active-bg': '#1572A1', '--filter-btn-active-text': '#E6F4F1'
-      },
-      forest: {
-        '--main-gold': '#4A7C59', '--main-gold-dark': '#386641', '--main-beige': '#F0F4EF',
-        '--main-white': '#FCFFF5', '--main-text': '#283618', '--header-bg': '#4A7C59',
-        '--header-text': '#FCFFF5', '--nav-bg': '#FCFFF5', '--nav-text': '#386641',
-        '--nav-border': '#4A7C59', '--hero-bg-gradient-start': '#A3B18A', '--hero-bg-gradient-end': '#F0F4EF',
-        '--hero-h1-text': '#386641', '--hero-p-text': '#283618', '--cta-btn-bg-gradient-start': '#4A7C59',
-        '--cta-btn-bg-gradient-end': '#6A994E', '--cta-btn-text': '#FCFFF5', '--cta-btn-hover-bg': '#386641',
-        '--cta-btn-hover-text': '#FCFFF5', '--feature-card-bg': '#FCFFF5', '--game-card-bg': '#4A7C59',
-        '--game-card-text': '#FCFFF5', '--bonus-box-bg': '#DADED4', '--bonus-box-h2-text': '#386641',
-        '--bonus-box-text': '#283618', '--bonus-btn-bg': '#A3B18A', '--bonus-btn-text': '#283618',
-        '--bonus-btn-hover-bg': '#8A9A5B', '--accent-blue': '#A8DADC', '--accent-blue-dark': '#82C0C0',
-        '--accent-red': '#BC4749', '--accent-red-dark': '#A43B3D', '--accent-green': '#6A994E',
-        '--accent-green-dark': '#527A3E', '--accent-purple': '#9B7F9E', '--accent-purple-dark': '#7E6080',
-        '--accent-teal': '#52A48C', '--accent-teal-dark': '#3E7E6C', '--accent-pink': '#D4A3B1',
-        '--accent-pink-dark': '#BE8A9A', '--shadow-color': 'rgba(74, 124, 89, 0.1)',
-        '--top-bar-bg': 'rgba(56, 102, 65, 0.4)', '--top-bar-text': '#FCFFF5', '--balance-text': '#A3B18A',
-        '--content-bg-transparent': 'rgba(240, 244, 239, 0.6)', '--card-bg-transparent': 'rgba(252, 255, 245, 0.75)',
-        '--filter-btn-bg':'rgba(252,255,245,0.2)', '--filter-btn-text': '#283618', '--filter-btn-active-bg': '#4A7C59', '--filter-btn-active-text': '#FCFFF5'
-      },
-      royal: {
-        '--main-gold': '#6A0DAD', '--main-gold-dark': '#4B0082', '--main-beige': '#EAE0F3',
-        '--main-white': '#FFF5EE', '--main-text': '#301934', '--header-bg': '#6A0DAD',
-        '--header-text': '#FFF5EE', '--nav-bg': '#FFF5EE', '--nav-text': '#4B0082',
-        '--nav-border': '#6A0DAD', '--hero-bg-gradient-start': '#D4AF37', '--hero-bg-gradient-end': '#EAE0F3',
-        '--hero-h1-text': '#4
+
+    <script>
+        // 定義所有配色方案及其顏色
+        const palettes = {
+            palette1: { // 棕/金 (Brown/Gold)
+                primary: '#876633',
+                secondary: '#f5f5dc',
+                dark: {
+                    backgroundColor: '#332819',
+                    textColor: '#e0e0e0',
+                    cardBackground: '#4a3a24',
+                    headerFooterGradientFrom: '#a68a5c',
+                    headerFooterGradientTo: '#c2a26d',
+                    headerFooterTextColor: '#332819',
+                    headerButtonBackground: '#876633',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#a68a5c', // 調整為與主題更協調的顏色
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#6b573a',
+                    navBackground: '#876633',
+                    navButtonTextDefault: '#332819',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#4a3a24',
+                    bannerTextColor: '#e0e0e0'
+                },
+                light: {
+                    backgroundColor: '#fcf8f0',
+                    textColor: '#332819',
+                    cardBackground: '#ffffff',
+                    headerFooterGradientFrom: '#fcf8f0',
+                    headerFooterGradientTo: '#f5f5dc',
+                    headerFooterTextColor: '#332819',
+                    headerButtonBackground: '#876633',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#a68a5c', // 調整為與主題更協調的顏色
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#d4c9b1',
+                    navBackground: '#876633',
+                    navButtonTextDefault: '#332819',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#fcf8f0',
+                    bannerTextColor: '#332819'
+                }
+            },
+            palette2: { // 淺藍/青色 (Light Blue/Teal) - 預設
+                primary: '#81c7d4',
+                secondary: '#f5f5dc',
+                dark: {
+                    backgroundColor: '#1a202c',
+                    textColor: '#e2e8f0',
+                    cardBackground: '#2d3748',
+                    headerFooterGradientFrom: '#e0e0e0',
+                    headerFooterGradientTo: '#f0f0f0',
+                    headerFooterTextColor: '#2d3748',
+                    headerButtonBackground: '#81c7d4',
+                    headerButtonTextColor: '#2d3748',
+                    buttonBackground: '#3182ce',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#4a5568',
+                    navBackground: '#81c7d4',
+                    navButtonTextDefault: '#2d3748',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#2d3748',
+                    bannerTextColor: '#e2e8f0'
+                },
+                light: {
+                    backgroundColor: '#f0f0f0',
+                    textColor: '#2d3748',
+                    cardBackground: '#ffffff',
+                    headerFooterGradientFrom: '#ffffff',
+                    headerFooterGradientTo: '#ffffff',
+                    headerFooterTextColor: '#2d3748',
+                    headerButtonBackground: '#81c7d4',
+                    headerButtonTextColor: '#2d3748',
+                    buttonBackground: '#4299e1',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#cbd5e0',
+                    navBackground: '#81c7d4',
+                    navButtonTextDefault: '#2d3748',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#cbd5e0',
+                    bannerTextColor: '#2d3748'
+                }
+            },
+            palette3: { // 黃/橙 (Yellow/Orange)
+                primary: '#ffc408',
+                secondary: '#f5f5dc',
+                dark: {
+                    backgroundColor: '#332801',
+                    textColor: '#e0e0e0',
+                    cardBackground: '#4a3a02',
+                    headerFooterGradientFrom: '#e6b800',
+                    headerFooterGradientTo: '#ffcc33',
+                    headerFooterTextColor: '#332801',
+                    headerButtonBackground: '#ffc408',
+                    headerButtonTextColor: '#332801',
+                    buttonBackground: '#e6b800',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#6b5702',
+                    navBackground: '#ffc408',
+                    navButtonTextDefault: '#332801',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#4a3a02',
+                    bannerTextColor: '#e0e0e0'
+                },
+                light: {
+                    backgroundColor: '#fffbe6',
+                    textColor: '#332801',
+                    cardBackground: '#ffffff',
+                    headerFooterGradientFrom: '#fffbe6',
+                    headerFooterGradientTo: '#fff8d6',
+                    headerFooterTextColor: '#332801',
+                    headerButtonBackground: '#ffc408',
+                    headerButtonTextColor: '#332801',
+                    buttonBackground: '#ffcc33',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#e0d8b3',
+                    navBackground: '#ffc408',
+                    navButtonTextDefault: '#332801',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#fffbe6',
+                    bannerTextColor: '#332801'
+                }
+            },
+            palette4: { // 薰衣草紫/藍紫 (Lavender/Purple-Blue)
+                primary: '#8b81c3',
+                secondary: '#f5f5dc',
+                dark: {
+                    backgroundColor: '#1f1d2e',
+                    textColor: '#e2e8f0',
+                    cardBackground: '#34314c',
+                    headerFooterGradientFrom: '#a78bfa',
+                    headerFooterGradientTo: '#63b3ed',
+                    headerFooterTextColor: '#1f1d2e',
+                    headerButtonBackground: '#8b81c3',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#a78bfa',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#5c578a',
+                    navBackground: '#8b81c3',
+                    navButtonTextDefault: '#1f1d2e',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#34314c',
+                    bannerTextColor: '#e2e8f0'
+                },
+                light: {
+                    backgroundColor: '#f5f3fa',
+                    textColor: '#1f1d2e',
+                    cardBackground: '#ffffff',
+                    headerFooterGradientFrom: '#f5f3fa',
+                    headerFooterGradientTo: '#ede9f6',
+                    headerFooterTextColor: '#1f1d2e',
+                    headerButtonBackground: '#8b81c3',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#63b3ed',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#d9d2e6',
+                    navBackground: '#8b81c3',
+                    navButtonTextDefault: '#1f1d2e',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#f5f3fa',
+                    bannerTextColor: '#1f1d2e'
+                }
+            },
+            palette5: { // 紅 (Red)
+                primary: '#e83015',
+                secondary: '#f5f5dc',
+                dark: {
+                    backgroundColor: '#2e0904',
+                    textColor: '#e2e8f0',
+                    cardBackground: '#4a180b',
+                    headerFooterGradientFrom: '#cc2200',
+                    headerFooterGradientTo: '#ff4422',
+                    headerFooterTextColor: '#2e0904',
+                    headerButtonBackground: '#e83015',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#cc2200',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#7a2211',
+                    navBackground: '#e83015',
+                    navButtonTextDefault: '#2e0904',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#4a180b',
+                    bannerTextColor: '#e2e8f0'
+                },
+                light: {
+                    backgroundColor: '#fff0ee',
+                    textColor: '#2e0904',
+                    cardBackground: '#ffffff',
+                    headerFooterGradientFrom: '#fff0ee',
+                    headerFooterGradientTo: '#ffe5e0',
+                    headerFooterTextColor: '#2e0904',
+                    headerButtonBackground: '#e83015',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#ff4422',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#e8c9c4',
+                    navBackground: '#e83015',
+                    navButtonTextDefault: '#2e0904',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#fff0ee',
+                    bannerTextColor: '#2e0904'
+                }
+            },
+            palette6: { // 紫 (Purple)
+                primary: '#77428d',
+                secondary: '#f5f5dc',
+                dark: {
+                    backgroundColor: '#1e1124',
+                    textColor: '#e2e8f0',
+                    cardBackground: '#331c3d',
+                    headerFooterGradientFrom: '#8a42a8',
+                    headerFooterGradientTo: '#a058c4',
+                    headerFooterTextColor: '#1e1124',
+                    headerButtonBackground: '#77428d',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#8a42a8',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#522a61',
+                    navBackground: '#77428d',
+                    navButtonTextDefault: '#1e1124',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#331c3d',
+                    bannerTextColor: '#e2e8f0'
+                },
+                light: {
+                    backgroundColor: '#f9f0fc',
+                    textColor: '#1e1124',
+                    cardBackground: '#ffffff',
+                    headerFooterGradientFrom: '#f9f0fc',
+                    headerFooterGradientTo: '#f2e0f8',
+                    headerFooterTextColor: '#1e1124',
+                    headerButtonBackground: '#77428d',
+                    headerButtonTextColor: '#ffffff',
+                    buttonBackground: '#a058c4',
+                    buttonTextColor: '#ffffff',
+                    borderColor: '#e6d3ed',
+                    navBackground: '#77428d',
+                    navButtonTextDefault: '#1e1124',
+                    navButtonTextHover: '#ffffff',
+                    bannerBackground: '#f9f0fc',
+                    bannerTextColor: '#1e1124'
+                }
+            }
+        };
+
+        let currentThemeMode = localStorage.getItem('theme') || 'dark'; // 'dark' or 'light'
+        let currentPaletteName = localStorage.getItem('palette') || 'palette2'; // 預設為 palette2
+
+        const applyColors = (paletteName, themeMode) => {
+            const palette = palettes[paletteName];
+            const themeColors = palette[themeMode];
+            const root = document.documentElement;
+
+            // 應用主要和次要顏色 (每個調色板固定，不隨主題變化)
+            root.style.setProperty('--primary-color', palette.primary);
+            root.style.setProperty('--secondary-color', palette.secondary);
+
+            // 應用主題特定顏色
+            root.style.setProperty('--background-color', themeColors.backgroundColor);
+            root.style.setProperty('--text-color', themeColors.textColor);
+            root.style.setProperty('--card-background', themeColors.cardBackground);
+            root.style.setProperty('--header-footer-gradient-from', themeColors.headerFooterGradientFrom);
+            root.style.setProperty('--header-footer-gradient-to', themeColors.headerFooterGradientTo);
+            root.style.setProperty('--header-footer-text-color', themeColors.headerFooterTextColor);
+            root.style.setProperty('--header-button-background', themeColors.headerButtonBackground);
+            root.style.setProperty('--header-button-text-color', themeColors.headerButtonTextColor);
+            root.style.setProperty('--button-background', themeColors.buttonBackground);
+            root.style.setProperty('--button-text-color', themeColors.buttonTextColor);
+            root.style.setProperty('--border-color', themeColors.borderColor);
+            root.style.setProperty('--nav-background', themeColors.navBackground);
+            root.style.setProperty('--nav-button-text-default', themeColors.navButtonTextDefault);
+            root.style.setProperty('--nav-button-text-hover', themeColors.navButtonTextHover);
+            root.style.setProperty('--banner-background', themeColors.bannerBackground);
+            root.style.setProperty('--banner-text-color', themeColors.bannerTextColor);
+
+            // 更新 body 的 data 屬性
+            document.body.setAttribute('data-theme', themeMode);
+            document.body.setAttribute('data-palette', paletteName);
+
+            // 更新 localStorage
+            localStorage.setItem('theme', themeMode);
+            localStorage.setItem('palette', paletteName);
+        };
+
+        // 初始應用顏色
+        applyColors(currentPaletteName, currentThemeMode);
+
+        // 主題切換邏輯
+        const themeToggle = document.getElementById('themeToggle');
+        const moonIcon = document.getElementById('moonIcon');
+        const sunIcon = document.getElementById('sunIcon');
+
+        // 根據初始主題模式設定圖示顯示
+        if (currentThemeMode === 'light') {
+            moonIcon.classList.add('hidden');
+            sunIcon.classList.remove('hidden');
+        } else {
+            moonIcon.classList.remove('hidden');
+            sunIcon.classList.add('hidden');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            currentThemeMode = currentThemeMode === 'dark' ? 'light' : 'dark';
+            applyColors(currentPaletteName, currentThemeMode);
+
+            if (currentThemeMode === 'light') {
+                moonIcon.classList.add('hidden');
+                sunIcon.classList.remove('hidden');
+            } else {
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            }
+        });
+
+        // 配色選擇按鈕邏輯
+        const paletteButtons = document.querySelectorAll('.palette-button');
+        paletteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const selectedPalette = event.target.dataset.palette;
+                currentPaletteName = selectedPalette;
+                applyColors(currentPaletteName, currentThemeMode);
+            });
+        });
+    </script>
+</body>
+</html>
