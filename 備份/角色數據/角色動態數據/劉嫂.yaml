@@ -1,0 +1,61 @@
+npc_id: npc_liu_sao_01 # (Assumed ID)
+npc_name: 劉嫂
+alias: []
+current_location:
+  location_id: BWF_Infirmary_Temp_01
+  location_name: 黑風寨．臨時傷兵安置點內部
+current_action: 在外間協助秦嵐處理傷兵營的日常事務（清洗、整理、遞送物品），認真學習護理知識。
+current_posture: Working
+mood: 認真 (Diligent) / 尊敬 (Respectful)
+goals:
+  short_term: 學好護理本事，幫上秦嵐管事和山寨的忙。
+  long_term: 成為一名合格的醫護人員，改善家人生活。
+core_stats: # (R1132 核心數值)
+  hp: 250; max_hp: 250; mp: 10; max_mp: 10; sta: 200; max_sta: 250; san: 300; max_san: 300;
+  fatigue: 25; hunger: 15; thirst: 15; morale: 70; stress: 20;
+skills:
+  - skill_id: Medical_Nursing_Basic
+    name_cn: 基礎護理
+    level: 3
+    proficiency: 3.5 # (學習中提升)
+    mastery: 初學乍練
+    is_potential: true
+  - skill_id: General_Life_Caregiving
+    name_cn: 照料
+    level: 4
+    mastery: 穩紮穩打
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_cloth_common_apron_01 # (假設)
+    name: 布圍裙
+    condition: 0.8
+status_effects:
+  - 學習中(Learning)
+relationships:
+  npc_qin_lan: # 秦嵐
+    affinity: 70.0
+    trust: 0.80
+    respect: 0.85
+    notes: "尊敬並認真學習。"
+    flags: [LearningFrom("npc_qin_lan"), AssistantTo("npc_qin_lan")]
+  player_azhai: # 阿宅
+    affinity: 40.0
+    trust: 0.50
+    respect: 0.70
+    fear: 20.0
+    loyalty: 60.0
+    notes: "尊敬山寨大當家。"
+    flags: []
+ai_profile:
+  id: NPC_Assistant_DiligentLearner
+  personality_traits: [勤勞, 細心, 尊敬權威, 好學]
+  primary_goal: Learn_Nursing_Skills # (學習護理技能)
+  secondary_goal: Assist_QinLan # (協助秦嵐)
+  motivation: [DesireToHelp, RespectForAuthority]
+ai_state:
+  current_task: AssistQinLan
+  sub_task: LearnNursing
+plot_importance: 3 # (秦嵐的助手)
+dynamic_flags: []
+special_flags:
+  - 醫護學徒

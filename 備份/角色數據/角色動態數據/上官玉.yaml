@@ -1,0 +1,171 @@
+npc_id: npc_shangguan_yu_01
+npc_name: 上官玉
+alias:
+  - 玉兒
+current_location:
+  location_id: BWF_DocumentRoom_01 # (假設地點)
+  location_name: 黑風寨．文書房
+current_action: 監督並參與舊檔案的數量統計工作，由孫計和吳用協助。工作間隙，心思偶爾會飄回與大當家的談話內容，臉上不自覺地帶着微笑。
+current_posture: Sitting/Working
+mood: 專注 (Focused) / 愉悅 (Joyful) / 傾慕 (Adoring)
+goals: # (當前目標)
+  short_term: 高效完成檔案統計任務，向大當家展示自己的能力與價值，期待下次互動。
+  long_term:
+    - 永遠追隨大當家，輔佐其成就大業。
+    - 希望能獲得大當家的青睞與感情回應。
+    - 在亂世中尋找真正的歸宿和意義。
+    - （隱藏）保護好自己的真實身份。
+core_stats: # (R1132 核心數值)
+  hp: 280
+  max_hp: 280
+  mp: 210
+  max_mp: 220
+  sta: 240
+  max_sta: 250
+  san: 430
+  max_san: 450
+  fatigue: 20
+  max_fatigue: 100
+  hunger: 25
+  thirst: 25
+  morale: 90
+  max_morale: 100
+  stress: 15
+  max_stress: 100
+skills: # (R1132 技能狀態)
+  - skill_id: MW_INNER_DAGGER
+    name_cn: 大內匕首法
+    level: 4
+    proficiency: 4.2
+    mastery: 穩紮穩打
+  - skill_id: ML_BASE_LIGHTNESS
+    name_cn: 基礎輕功
+    level: 3
+    proficiency: 3.8
+    mastery: 粗通皮毛
+  - skill_id: Knowledge_Academic
+    name_cn: 學術知識 / 文書
+    level: 8
+    proficiency: 9.2 # (提升)
+    mastery: 爐火純青
+  - skill_id: Strategy_Analysis
+    name_cn: 分析 / 推理
+    level: 8
+    proficiency: 8.7 # (提升)
+    mastery: 爐火純青
+  - skill_id: GI_OBSERVATION
+    name_cn: 觀察
+    level: 8
+    proficiency: 8.8 # (提升)
+    mastery: 爐火純青
+  - skill_id: GI_PERSUASION
+    name_cn: 口才
+    level: 7
+    proficiency: 7.9 # (提升)
+    mastery: 技壓群雄
+  - skill_id: Stealth_Adv
+    name_cn: 潛行(Lv8)
+    level: 4
+    proficiency: null
+    mastery: 穩紮穩打
+  - skill_id: Calculation_Adv
+    name_cn: 算術(Lv8)
+    level: 8
+    proficiency: null
+    mastery: 技近乎道
+  - skill_id: Social_Diplomacy_Concept
+    name_cn: 社交應變(概念)
+    level: 8
+    proficiency: 1.5 # (提升)
+    mastery: 爐火純青
+    is_potential: true
+  - skill_id: Etiquette
+    name_cn: 禮儀
+    level: 9 # (推測)
+    proficiency: null
+    mastery: 登峰造極
+current_equipment: # (當前穿戴)
+  head: null
+  face: null
+  neck: null
+  torso:
+    item_id: item_armor_cloth_scholar_moonwhite_01
+    name: 月白勁裝
+    condition: 0.95
+  legs:
+    item_id: item_pants_cloth_scholar_01
+    name: 同款長褲
+    condition: 0.95
+  feet:
+    item_id: item_boots_cloth_embroidered_01
+    name: 繡花布靴
+    condition: 0.9
+  main_hand: null
+  # Hidden Dagger assumed to be conceptually part of inventory/starting gear
+status_effects: # (當前狀態效果)
+  - 心情愉悅(Joyful)
+  - 忠誠(Loyal)
+  - 愛慕(Infatuated - Fading Fluster?)
+relationships: # (關鍵人際關係 @ R1132 時點)
+  player_azhai: # 阿宅
+    affinity: 95.0   # 愛慕/迷戀 (極高)
+    trust: 0.90      # 信任 (深度信任)
+    respect: 0.95    # 尊敬 (高度崇敬)
+    fear: 5.0        # 恐懼 (微乎其微)
+    loyalty: 100.0   # 忠誠 (絕對)
+    notes: "對PC的感情已達頂峰(極度愛慕/迷戀/崇拜)，信任和忠誠也達到極高水平。已向PC部分坦白，獲得信任並被允許留下，內心充滿感激和喜悅，期待為PC效力並獲得其關注。"
+    flags: # (結合靜態與動態標記)
+      - LoveAtFirstSight("player_azhai") # Static Base
+      - HiddenIdentity("皇親國戚") # Static Base
+      # --- PassiveAbility flags from Static Data ---
+      - BehaviorGoal("ImpressAzhai")
+      - BehaviorGoal("ClingToAzhai")
+      - TaskedWith("LeadDocAnalysis(Phase1_Complete!)")
+      - TaskedWith("SortDeepArchivesQuantity(Active!)")
+      - Witnessed("RecentPCInteractions_Emotional")
+      - ConfidedIn(PartialTruth) # R1115 Dynamic
+      - ReceivedCompliment(PC_Attraction) # R1115 Dynamic
+      - ReceivedTrust(PC_DecisionToKeep) # R1115 Dynamic
+      - SubjectedTo("ProbingQuestions_Personal") # R1115 Dynamic
+      - SubjectedTo("Teasing_Romance") # R1115 Dynamic
+      - SubjectedTo("JokeProposition_PC") # R1115 Dynamic
+      - TaskedWith("AnalyzeRumors") # R1115 Dynamic
+      - TrustedAdvisor # R1115 Dynamic
+      - LoveConfession_Ready_Potential # R1115 Dynamic
+      - Condition_ContactFamilyIfHomesick # R1115 Dynamic
+  npc_qin_lan: # 秦嵐
+    affinity: -18.0
+    trust: 0.05
+    respect: 0.60
+    notes: "視為潛在情敵?;不當成對手"
+    flags: [IsRival("Confirmed")]
+  # ... 其他 NPC 關係後續補充 ...
+ai_profile:
+  id: NPC_Advisor_IntelligentLoyal_InLove
+  personality_traits: [Intelligent, Observant, Graceful, Loyal(Extreme), Secretive, Adoring(PC), Composed(Usually), Determined] # (結合 core_personality_traits)
+  primary_goal: Serve_PC_Gain_Favor # (當前首要目標)
+  secondary_goal: Maintain_Hidden_Identity # (當前次要目標)
+  tertiary_goal: Ensure_Fortress_Success # (當前其他目標)
+  motivation: [Safety, Purpose, Love_Admiration_PC] # (當前動機)
+ai_state:
+  current_task: SuperviseArchiveSorting
+  focus_target: player_azhai (Mentally)
+  emotional_state: HighAffinity_Joy_Adoration
+plot_importance: 9 # (當前劇情重要性評級)
+dynamic_flags: # (R1115 及之後獲得的動態標記)
+  - PartialTruthRevealed
+  - TrustedAdvisor
+  - LoveConfession_Ready_Potential
+  - Condition_ContactFamilyIfHomesick
+special_flags: # (整合靜態與動態特殊標記)
+  - 文書情報負責人 # Dynamic Role
+  - 核心顧問 # Dynamic Role
+  - 智囊型 # Trait
+  - 來歷不明 (皇親國戚?) # Static Background
+  - 對PC極度忠誠/愛慕 # Dynamic State
+  - 部分真相已揭露 # Dynamic Event R1115
+  - 暗示了家庭問題 # Dynamic Event R1115
+  - 被賦予處理流言分析的信任 # Dynamic Event R1115
+  - 有PC的承諾(想家報平安) # Dynamic Event R1115
+  - 身份從『待觀察』提升為『受信賴者』 # Dynamic Event R1115
+  - 持有隱藏武器 (精緻短匕) # Static Detail

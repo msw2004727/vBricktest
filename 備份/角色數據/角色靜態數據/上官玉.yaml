@@ -1,0 +1,71 @@
+npc_id: npc_shangguan_yu_01
+npc_name: 上官玉
+alias:
+  - 玉兒
+is_key_character: true
+npc_type: 文書情報負責人 / 臨時核心顧問 # (基礎定義，動態會更新當前職能)
+basic_info:
+  occupation_identity: "文書情報負責人 / 臨時核心顧問 / 疑似高貴身份"
+  race: 中原人 # (假定)
+  faction_or_sect: black_wind_fortress # (僅標註來源文件中陣營，實際歸屬看動態)
+  estimated_age: "約十九"
+  core_personality_traits: # (核心不變性格)
+    - 聰慧
+    - 冷靜
+    - 觀察敏銳
+    - 自信
+    - 好學
+    - 忠誠(對PC) # (後天形成但已根深蒂固)
+    - 隱忍
+    - 有主見
+    - 有禮貌
+    - 行為得體
+  notes: "真實身份疑似皇親國戚，因未知原因（疑似為了好玩逃家體驗江湖生活），目前委身黑風寨輔佐PC。"
+  clan_id: null # 未知具體家族ID
+  kinship_links: null # 未知具體親屬關係細節
+base_appearance: "容貌絕世(SSS級)，氣質脫俗，即使身着略顯風塵的衣物也難掩其華貴與靈氣。"
+estimated_base_attributes: # (概念屬性)
+  value: { str: 3, agi: 7, int_: 9, cha: 10, lck: 5 } # (int_ 避免關鍵字衝突)
+  summary: "智力魅力頂尖，體質敏捷尚可，力量偏弱。"
+core_trait_tags: # (核心特質標籤)
+  - 天生聰慧
+  - 容貌絕世
+  - 氣質高貴
+  - 觀察入微
+  - 隱藏身份
+key_static_relationship_flags: # (靜態關係標記)
+  - 皇親國戚? # (基礎文件標記)
+  - 對PC一見鍾情 # (已確認的初始狀態)
+  - PassiveAbility("UniversalAffinity") # (基礎文件標記 - 被動能力)
+  - PassiveAbility("AffinityMultiplier") # (基礎文件標記 - 被動能力)
+  - IsVirgin? # (基礎文件標記)
+  - NoRomanticExperience_Prior # (基礎文件標記)
+key_abilities_potential: # (天賦潛力技能標題)
+  - 頂級謀士潛質
+  - 情報分析專長
+  - 皇家大內功夫
+alignment_bias: # (陣營立場傾向 - 基礎設定)
+  - 絕對忠於阿宅 # (已成核心)
+  - 維護黑風寨利益 # (延伸自對 PC 的忠誠)
+taboo_or_weaknesses: # (心理或生理弱點 - 推測)
+  - 對PC的安危極度敏感
+static_story_flags: # (特殊背景標記)
+  - 身分特殊
+  - 可能有大內高手暗中保護?
+cultural_traits: # (語言文化標籤)
+  - 貴族禮儀
+  - 精通詩書
+visual_identifiers: # (外觀特徵)
+  - 氣質出塵
+  - 皮膚白皙
+  - 身材姣好
+  - (尚無其他明確標記)
+origin_location_id: null # 未知具體來源地
+starting_equipment: # (初始或暗示的基礎裝備)
+  - item_hidden_dagger_exquisite_01
+  - item_armor_cloth_scholar_moonwhite_01
+backstory_summary: | # (GM 內部注記)
+  聲稱商隊遇襲的落難者，實則極可能為逃避家庭/政治糾紛（可能涉及婚嫁）而離家的高貴出身女子（基礎文件暗示皇親國戚）。
+  對PC一見鍾情，情感濃烈。憑藉超凡的智慧和能力迅速獲得PC信任，成為其核心顧問。
+  近期經過PC的試探與安撫，情感與忠誠達到頂峰，雖部分坦白但仍謹守着最終的身份秘密。
+  持有防身用的精緻短匕。未來可能因其背景引發新的事件，或在情感驅動下做出關鍵行動。

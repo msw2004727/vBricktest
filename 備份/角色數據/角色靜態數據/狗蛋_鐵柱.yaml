@@ -1,0 +1,44 @@
+# Note: 此為模板，適用於 狗蛋, 鐵柱，個體可能略有差異
+npc_id: npc_apprentice_goudan_01 # (或 Tie_Zhu_01)
+npc_name: 狗蛋 # (或 鐵柱)
+alias: []
+is_key_character: false # (學徒)
+npc_type: 鐵匠學徒 # (基礎定義)
+basic_info:
+  occupation_identity: "鐵匠學徒"
+  race: 中原人
+  faction_or_sect: black_wind_fortress
+  estimated_age: "十六七?"
+  core_personality_traits: ["勤快", "聽話", "崇拜強者", "可能有點憨厚"]
+  notes: "老鐵匠的學徒，近期因參與骨鋼刀鍛造而技能大幅提升，對PC極度崇拜。"
+  clan_id: null
+  kinship_links: # (師徒關係)
+    - { target_id: "npc_old_blacksmith_01", relation: "師父", intimacy: 80 }
+base_appearance: "年輕小伙，身材結實，因打鐵而顯得孔武有力，臉上可能有些煙灰。"
+estimated_base_attributes:
+  value: { str: 6, agi: 5, int_: 4, cha: 4, lck: 6 }
+  summary: "體力好，肯學肯幹。"
+core_trait_tags:
+  - 鐵匠學徒
+  - 吃苦耐勞
+  - 崇拜PC (狂熱)
+key_static_relationship_flags:
+  - 老鐵匠的徒弟
+key_abilities_potential:
+  - 合格鐵匠潛質
+alignment_bias:
+  - 絕對聽從師父和PC的命令
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers: null
+origin_location_id: black_wind_fortress?
+starting_equipment:
+  - item_cloth_coarse_01 # (粗布衣)
+  - item_tool_hammer_small_01 # (小錘?)
+backstory_summary: |
+  老鐵匠的學徒之一，勤勞肯幹但天賦可能一般。
+  在PC鍛造骨鋼刀的過程中，因'潛能共鳴'效果，基礎鍛造相關技能獲得了遠超正常的提升。
+  同時，因親眼見證PC的'神技'而產生了近乎狂熱的崇拜。
+  目前正充滿幹勁地協助師父恢復鋼鎬生產。
+# (鐵柱採用此模板)

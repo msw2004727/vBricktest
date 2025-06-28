@@ -1,0 +1,45 @@
+npc_id: npc_scarface_liu_01
+npc_name: 疤臉劉
+alias: []
+is_key_character: true
+npc_type: 衛隊統領 / PC親信 # (基礎定義)
+basic_info:
+  occupation_identity: "衛隊統領"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # 早期追隨者
+  estimated_age: "三十出頭"
+  core_personality_traits: ["忠誠", "勇猛", "嚴肅", "務實", "服從命令"]
+  notes: "原先表現已從嘍囉群中得到阿宅關注，在一次任務中挑選出來擔當臨時隊長，任務完成後提拔為取代王大槌的臨時統領，職責負責山寨的武裝力量和防務安全。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "身材高大，面容因一道長疤而顯得兇悍，眼神銳利，標準的軍伍或江湖打手形象。"
+estimated_base_attributes:
+  value: { str: 8, agi: 6, int_: 5, cha: 6, lck: 5 }
+  summary: "力量出眾，身手不錯，有一定統率力。"
+core_trait_tags:
+  - 忠誠可靠
+  - 戰鬥經驗豐富
+  - 嚴肅務實
+  - PC心腹
+key_static_relationship_flags:
+  - 山寨嘍囉 # (出身背景)
+key_abilities_potential:
+  - 合格的衛隊指揮官
+alignment_bias:
+  - 絕對忠於阿宅
+  - 維護黑風寨秩序
+taboo_or_weaknesses: null # 暫未發現
+static_story_flags:
+  - 見證黑風寨易主及發展
+cultural_traits: null
+visual_identifiers:
+  - 臉上有疤
+origin_location_id: black_wind_fortress? # 或早期加入的嘍囉?
+starting_equipment: # (之前可能也是嘍囉裝備)
+  - item_armor_leather_worn_01
+  - item_weapon_saber_standard_issue_01
+backstory_summary: |
+  原是黑風寨的普通嘍囉或小頭目隸屬於王大槌糜下，因在PC一個救援王大槌的任務中表現出忠誠和能力而被PC看中並提拔為臨時衛隊統領。
+  為人嚴肅、務實、忠誠可靠，是PC在武裝力量方面最主要的依仗。
+  目前負責山寨的日常防務、新兵訓練以及暗中調查內奸，但對衛隊普遍缺乏精良裝備感到憂心忡忡。
+  對王大槌崇拜，知道王大槌恢復正常後則要退位。

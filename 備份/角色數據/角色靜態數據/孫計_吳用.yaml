@@ -1,0 +1,44 @@
+# Note: 此為模板，適用於 孫計, 吳用，個體可能略有差異 (例如性格)
+npc_id: npc_sun_ji_01 # (或 Wu_Yong_01)
+npc_name: 孫計 # (或 吳用)
+alias: []
+is_key_character: false
+npc_type: 文書 / 記賬先生 # (基礎定義)
+basic_info:
+  occupation_identity: "文書 / 記賬"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # (被招募或原嘍囉轉崗?)
+  estimated_age: "三十左右?"
+  core_personality_traits: ["細心", "謹慎", "務實", "聽話"] # (孫計可能略有野心?)
+  notes: "負責協助上官玉處理山寨的文書和賬目工作。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "嘍囉普通打扮"
+estimated_base_attributes:
+  value: { str: 3, agi: 4, int_: 7, cha: 5, lck: 6 }
+  summary: "心思細密，不善體力。"
+core_trait_tags:
+  - 識字
+  - 會算賬
+  - 工作細緻
+  - 學藝不精
+key_static_relationship_flags: []
+key_abilities_potential: null
+alignment_bias:
+  - 服從上級安排
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers: null
+origin_location_id: null
+starting_equipment:
+  - item_cloth_scholar_simple_01 # (簡單文士服?)
+  - item_writing_brush_ink # (筆墨?)
+backstory_summary: |
+  具備讀寫和算術能力的寨中成員（因中期信任pc自願擔當文書一職）。
+  目前安排上官玉從中協助，負責繁重的舊檔案整理工作。
+  雖會文書但學藝不精能力不足，但在寨中仍算少有文人。
+  因能力不足遲遲得不到寨中地位感到自哀。
+  兩人都迷戀上官玉，能與上官玉共識倍感愉悅。
+  崇拜上官玉的才華。
+  劉二、馬六、孫計、吳用、朱屠戶、空空兒、周平都是從一次招募後自願奉獻自身專長加入pc團隊。

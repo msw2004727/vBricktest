@@ -1,0 +1,90 @@
+npc_id: npc_xiao_cui_01
+npc_name: 小翠
+alias: []
+current_location:
+  location_id: BWF_LeaderCourtyard_WingRoom_Maidens
+  location_name: 黑風寨．頭領院落．廂房（七少女居所）
+current_action: 與其他少女待在一起，在秦嵐或李春花等人安撫下進行簡單的日常活動（如學習縫紉或護理基礎），時刻留意周圍動靜，對與大當家相關的事物極度敏感和恐懼。
+current_posture: Sitting/Idle
+mood: 恐懼 (Fearful) / 依賴 (Dependent) / 脆弱 (Vulnerable)
+goals:
+  short_term: 待在安全的地方（秦嵐和夥伴身邊），避免接觸大當家。
+  long_term: （潛意識）希望噩夢結束。
+core_stats: # (R1132 核心數值)
+  hp: 150
+  max_hp: 150
+  mp: 20
+  max_mp: 20
+  sta: 120
+  max_sta: 150
+  san: 80 # (精神極度脆弱)
+  max_san: 200
+  fatigue: 20
+  max_fatigue: 100
+  hunger: 15
+  thirst: 15
+  morale: 30 # (低落)
+  max_morale: 100
+  stress: 70 # (高壓力/創傷)
+  max_stress: 100
+skills: # (R1132 技能狀態)
+  - skill_id: General_Life_Sewing
+    name_cn: 縫紉
+    level: 3
+    proficiency: null
+    mastery: 初學乍練
+  - skill_id: Medical_Nursing_Basic_Trainee
+    name_cn: 基礎護理(學徒)
+    level: 0
+    proficiency: 0.5 # (學習中，進度慢)
+    mastery: 尚未掌握
+    is_potential: true
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_cloth_common_girl_simple_01 # (假設)
+    name: 樸素布裙
+    condition: 0.9
+status_effects:
+  - 精神創傷(SevereTrauma)
+  - 恐懼(PC/Extreme)
+  - 依賴(秦嵐/少女們 High)
+relationships:
+  player_azhai: # 阿宅
+    affinity: -80.0
+    trust: 0.0
+    respect: 0.0
+    fear: 100.0 # (極度)
+    loyalty: 0.0
+    notes: "因未知創傷事件對PC懷有極度恐懼，是PC需要處理的內部問題之一。"
+    flags: [DeeplyTraumatizedBy("player_azhai"), ExtremeFearOf("player_azhai")]
+  npc_qin_lan: # 秦嵐
+    affinity: 80.0
+    trust: 0.90
+    respect: 0.70
+    fear: 0.0
+    loyalty: 0.0 # (非效忠關係)
+    notes: "視其為主要的保護者和依賴對象。"
+    flags: [DependentOn("npc_qin_lan"), SeesAsProtector("npc_qin_lan")]
+  Group_Maidens_Core: # 李春花等三人
+    affinity: 70.0
+    trust: 0.80
+    respect: 0.50
+    notes: "兒時玩伴，重要的情感支持。"
+    flags: [ChildhoodFriends, MutualSupport]
+ai_profile:
+  id: NPC_Maiden_TraumatizedFearful
+  personality_traits: [膽小, 脆弱, 依賴, 敏感]
+  primary_goal: Avoid_PC_Seek_Safety # (避開PC，尋求安全)
+  secondary_goal: Rely_On_QinLan_And_Friends # (依賴秦嵐和同伴)
+  motivation: [Fear, NeedForSecurity]
+ai_state:
+  current_task: Resting_LearningBasicSkills
+  emotional_state: HighFear_Dependent
+plot_importance: 4
+dynamic_flags:
+  - UnderQinLanCare
+  - PartOfSevenMaidensGroup
+special_flags:
+  - 精神創傷嚴重
+  - 極度恐懼PC # (隨著pc形象好轉?) -> 註解：文件原文如此，保留問號表示不確定性
+  - 下溪村人

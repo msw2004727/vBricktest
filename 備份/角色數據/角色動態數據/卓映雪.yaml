@@ -1,0 +1,149 @@
+npc_id: npc_zhuo_yingxue_01 [cite: 1]
+npc_name: 卓映雪 [cite: 1]
+alias: null # 無已知別名
+
+# --- 可能變化的角色分類 ---
+is_key_character: true # 仍然是關鍵劇情人物
+npc_type: 無名小鎮鎮長千金 / 交易對象 / 情報潛力
+faction_id: unnamed_town # (名義上，但關係疏離)
+
+# --- 即時狀態 (R1132 推測) ---
+current_location: # 當前位置
+  location_id: Unknown # 已離開黑風寨，具體位置未知
+  location_name: 未知 (推測在無名小鎮或周邊區域活動)
+  area_id: unnamed_town_region?
+  coordinates: null
+  description: "已離開黑風寨多日，行蹤不明。"
+
+current_action: 正在積極（或焦頭爛額地）想辦法籌集阿宅要求的【生鐵】和【布匹】，以換取再次探視王大槌的權利。可能正在與家族周旋、尋找黑市渠道或利用自身人脈。 # 推測行動
+current_posture: Unknown # 未知
+mood: 決心 (Determined) / 焦慮 (Anxious) / 可能有怨恨 (Resentful) # 推測情緒
+
+goals: # 當前目標
+  short_term: "**【最高優先】**想盡一切辦法弄到足夠的生鐵和布匹，完成與阿宅的交易。"
+  long_term: "再次見到並幫助王大槌；擺脫家族控制？；了解黑風寨的真相？"
+
+core_stats: # 核心數值 (離線狀態，假定健康，數值為基礎估計)
+  hp: 280.0 # 假定健康
+  max_hp: 280.0
+  base_max_hp: 280.0
+  mp: 220.0 # 假定正常
+  max_mp: 220.0
+  base_max_mp: 220.0
+  sta: 250.0 # 假定正常
+  max_sta: 250.0
+  base_max_sta: 250.0
+  san: 400.0 # 可能因壓力略降?
+  max_san: 450.0
+  base_max_san: 450.0
+  fatigue: 10.0 # 假定正常作息
+  max_fatigue: 100.0
+  hunger: 10.0 # 假定正常進食
+  thirst: 10.0 # 假定正常飲水
+  morale: 70.0 # 決心支撐
+  max_morale: 100.0
+  stress: 60.0 # 因任務和處境壓力較大
+  max_stress: 100.0
+
+attributes: # 詳細屬性 (基礎屬性，無變化)
+  str: 7
+  agi: 12
+  int_: 15
+  cha: 14
+  lck: 12
+
+skills: [] # 技能列表 (假定無變化，維持靜態數據中的Lv8文職/潛行)
+
+abilities: [] # 特殊能力列表 (無已知變化)
+
+inventory: # 物品欄列表 (推測，離開時應有)
+  - item_id: "currency_silver_notes"
+    name: "銀票/碎銀"
+    quantity: 1 # (數額未知，但應足夠支撐活動)
+  - item_id: "stealth_tools_basic_set?"
+    name: "基礎潛行工具?"
+    quantity: 1 # (基於其潛行技能推測)
+  - item_id: "item_hidden_dagger_simple?" # 防身武器?
+    name: "普通短匕?"
+    quantity: 1
+
+currency: # 貨幣 (未知)
+  gold: null
+  silver: null
+  copper: null
+
+equipment: # 裝備欄位 (推測已換回便裝)
+  head: null
+  face: null
+  neck: null
+  torso:
+    item_id: elegant_dress_02? # 或其他便裝
+    name: "便服衣裙"
+    condition: 0.9
+  legs: null
+  feet:
+    item_id: embroidered_shoes_02?
+    name: "繡花鞋"
+    condition: 0.8
+  # ... 其他欄位 null ...
+
+status_effects: # 當前狀態效果列表 (推測)
+  - 任務壓力(Tasked_ResourceGathering)
+  - 決心(Determined)
+
+relationships: # 人際關係列表 (R1132 時點，基於前次互動的延續)
+  player_azhai: # 阿宅
+    affinity: -10.0 # 好感度 (上次交易後略回升但總體負面)
+    enmity: 15.0 # 敵意度 (因被脅迫交易)
+    trust: 0.15 # 信任度 (低)
+    respect: 0.20 # 尊敬度 (低，可能因實力略有改觀)
+    fear: 30.0 # 恐懼度 (對其手段和實力)
+    loyalty: 0.0 # 無忠誠
+    notes: "關係核心是交易。為達目的（見王大槌）而被迫合作，對PC充滿警惕、不滿甚至怨恨，但又不得不執行其要求。"
+    flags: [RelationshipType("ForcedCooperation"), Flag("NeedsSomethingFromPC"), Flag("Resentful"), Flag("Wary")]
+  wang_dachui: # 王大槌
+    affinity: 95.0? # 好感度 (極高，擔憂)
+    enmity: 0.0
+    trust: 0.98? # 信任度 (高)
+    respect: 0.80? # 尊敬度 (高)
+    fear: 0.0
+    loyalty: 0.0 # 非效忠
+    notes: "核心牽掛對象，極度擔憂其安危，是其行動的主要動力。"
+    flags: [IsChildhoodSweetheart("Seeking"), WorriedSick]
+  npc_zhuo_bufan_01: # 卓不凡 (父親)
+    affinity: 10.0?
+    enmity: 30.0?
+    trust: 0.2?
+    respect: 0.1?
+    notes: "關係疏遠，可能因籌集物資問題再次發生衝突。"
+    flags: [Family("Father"), Conflict("Ongoing")]
+
+ai_profile: # AI 配置
+  id: NPC_NobleLady_Rebellious_Tasked
+  personality_traits: [聰明, 高傲, 好奇, 叛逆, 決心, 口才好, (對特定目標)執著]
+  primary_goal: Acquire_Iron_Cloth_For_Trade # 獲取生鐵布匹以完成交易
+  secondary_goal: Ensure_WangDachui_Safety # 確保王大槌安全
+  tertiary_goal: Gain_More_Information # 獲取更多情報(關於王/黑風寨)
+  motivation: [Love/Worry(WangDachui), Curiosity, DesireForFreedom]
+
+ai_state: # AI 當前內部狀態 (推測)
+  current_task: Planning_Resource_Acquisition # 規劃資源獲取
+  focus_target: WangDachui / Iron_Cloth
+  emotional_state: Anxious_Determined_Resentful
+
+plot_importance: 8 # 劇情重要性 (外部資源線索，王大槌線關聯者)
+
+dynamic_flags: # 動態獲得的標記
+  - DepartedFromBWF # 已離開黑風寨
+  - Aware("WangDachui_RecoveringWell") # 知曉王大槌恢復良好
+  - Aware("PC_Trade_Conditions_IronCloth") # 知曉交易條件
+  - TaskedWith("AcquireIronCloth") # 領受任務
+
+special_flags: # 整合的特殊標記 (包含動態)
+  - 無名小鎮鎮長千金
+  - 離家出走中
+  - 王大槌青梅竹馬
+  - **執行採購任務中 (生鐵/布匹)**
+  - 與黑風寨有交易聯繫
+
+# === End of Dynamic NPC Profile: 卓映雪 ===

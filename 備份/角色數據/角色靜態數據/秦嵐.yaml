@@ -1,0 +1,62 @@
+npc_id: npc_qin_lan_01
+npc_name: 秦嵐
+alias: # (其他稱呼)
+  - 秦嵐姐姐 (七少女常用)
+  - 秦總管 (部分下屬可能稱呼)
+is_key_character: true
+npc_type: 醫護總管 / 核心助手 # (基礎定義)
+basic_info: # (基本背景與身分)
+  occupation_identity: "醫護總管 / 前統領遺孀" # (身分職位)
+  race: 中原人 # (種族)
+  faction_or_sect: black_wind_fortress # (所屬陣營 - 原住民)
+  estimated_age: "三十歲上下" # (年齡描述 - 估計，比PC略大?)
+  core_personality_traits: # (核心不變性格)
+    - 沉穩
+    - 聰慧
+    - 堅韌
+    - 勇敢
+    - 好學 (醫護方面)
+    - 忠誠 (對PC)
+    - 有責任心
+  notes: "原為黑風寨舊統領周某的遺孀，後來因內心強大個性勇敢招聘為臨時侍女後又被PC提拔為醫護總管和核心助手。" # (關鍵背景註釋)
+  clan_id: null
+  kinship_links: null
+base_appearance: "容貌端莊，氣質素雅，眉宇間帶着一絲揮之不去的憂慮，但眼神專注而堅定。常穿素色醫袍。" # (基礎外貌描述)
+estimated_base_attributes: # (概念屬性 - 推測)
+  value: { str: 4, agi: 6, int_: 8, cha: 7, lck: 5 }
+  summary: "聰慧且有魅力，身手尚可，體力普通。"
+core_trait_tags: # (核心特質標籤)
+  - 醫者仁心?
+  - 聰明好學
+  - 處事穩重
+  - 忠誠可靠
+  - 表現堅強
+key_static_relationship_flags: # (靜態關係標記)
+  - 周統領遺孀
+key_abilities_potential: # (天賦潛力技能標題)
+  - 頂級醫護潛質
+  - 管理潛力
+alignment_bias: # (陣營立場傾向)
+  - 絕對忠於阿宅
+  - 維護黑風寨醫療體系與穩定
+taboo_or_weaknesses: # (心理或生理弱點 - 推測)
+  - 可能對舊日(周統領)之事敏感?
+  - 過度擔憂?
+static_story_flags: # (特殊背景標記)
+  - 見證黑風寨易主
+  - 丈夫亡故
+cultural_traits: # (語言文化標籤)
+  - 中原口音
+visual_identifiers: # (外觀識別特徵)
+  - 常穿醫袍
+  - 眼神中的一絲憂慮
+origin_location_id: black_wind_fortress # (推測為山寨原住民或隨夫上山)
+starting_equipment: # (初始裝備 - 推測)
+  - item_cloth_common_female_01 # 普通女性衣物
+backstory_summary: | # (GM 內部注記)
+  黑風寨舊統領周某的遺孀，在PC掌控山寨後，因其沉穩、聰慧、勇敢、不懼怕阿宅被選中並提拔，逐步成為醫護總管和PC的得力助手。
+  對PC極為忠誠，但也保留着醫者的良知和對穩定的擔憂。
+  近期負責照看重傷的王大槌和狀態異常的雀，並被PC委以引導內部輿論的任務。
+  與PC的關係複雜，包含着感激、信任、尊敬以及可能未言明的個人情感。
+  外表堅強但內心需要呵護，將情感投放在阿宅身上。
+  雖為黑風寨舊統領周某的遺孀但對當初成婚之事有不愉快的回憶。

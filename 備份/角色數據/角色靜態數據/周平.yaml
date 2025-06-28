@@ -1,0 +1,53 @@
+npc_id: npc_zhou_ping_01
+npc_name: 周平
+alias: [] # (其他稱呼)
+is_key_character: true # (負責關鍵資源生產)
+npc_type: 木炭生產負責人 / 木藝匠人 # (基礎定義)
+basic_info: # (基本背景與身分)
+  occupation_identity: "燒炭匠 / 木炭生產負責人" # (身分職位)
+  race: 中原人
+  faction_or_sect: black_wind_fortress # (山寨原匠人?)
+  estimated_age: "四十出頭?" # (年齡描述 - 估計)
+  core_personality_traits: # (核心不變性格)
+    - 務實
+    - 認真
+    - 感恩 (對PC傳授技術)
+    - 經驗豐富 (燒炭)
+    - 匠人手藝
+    - 木匠
+  notes: "原為山寨中有實務經驗的匠人，被PC選中傳授改良的精煉木炭技術，現負責山寨的木炭供應。" # (關鍵背景註釋)
+  clan_id: null
+  kinship_links: null
+base_appearance: "常年木匠工作，可能身材結實，皮膚略黑。" # (基礎外貌描述)
+estimated_base_attributes: # (概念屬性 - 推測)
+  value: { str: 6, agi: 5, int_: 6, cha: 4, lck: 5 }
+  summary: "體力尚可，經驗豐富，做事認真。"
+core_trait_tags: # (核心特質標籤)
+  - 燒炭專家 #後來專精
+  - 技術骨幹 (精炭) #後來專精
+  - 工作認真
+  - 木匠專家
+key_static_relationship_flags: [] # (靜態關係標記)
+key_abilities_potential: # (天賦潛力技能標題)
+  - 木炭品質控制
+  - 木匠職人潛力
+  - 精碳職人潛力
+alignment_bias: # (陣營立場傾向)
+  - 忠於黑風寨
+  - 專注生產
+taboo_or_weaknesses: null # (暫未發現)
+static_story_flags: [] # (特殊背景標記)
+cultural_traits: null # (語言文化標籤)
+visual_identifiers: # (外觀識別特徵)
+  - 身上可能有炭灰?
+  - 手上充滿傷疤
+origin_location_id: black_wind_fortress? # (或早期加入)
+starting_equipment: # (初始裝備)
+  - item_cloth_coarse_01 # (粗布工作服)
+  - item_tool_shovel_wood? # (木鍬?)
+backstory_summary: |
+  經過pc傳授後已是黑風寨中經驗豐富的燒炭職人。原本使用傳統方法燒炭，效率和質量有限。
+  被獨具慧眼的PC選中，傳授了改良的、能產出高熱量精炭的燒製方法，對此心懷感激。
+  目前是山寨精炭（煉鋼關鍵燃料）生產的負責人，工作兢兢業業，但開始擔憂伐木場的木材供應能否跟上消耗。
+  營寨木製品製造與修繕，房屋修繕的主要人之一。
+  劉二、馬六、孫計、吳用、朱屠戶、空空兒、周平都是從一次招募後自願奉獻自身專長加入pc團隊。

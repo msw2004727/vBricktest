@@ -1,0 +1,43 @@
+npc_id: npc_ma_liu_01
+npc_name: 馬六
+alias: []
+is_key_character: false # (Maybe true depending on food situation)
+npc_type: 獵戶頭領 # (基礎定義)
+basic_info:
+  occupation_identity: "獵戶頭領"
+  race: 中原人
+  faction_or_sect: black_wind_fortress
+  estimated_age: "三十多"
+  core_personality_traits: ["經驗豐富(狩獵)", "沉默寡言?", "可靠", "熟悉山林"]
+  notes: "負責帶領獵戶隊伍為山寨提供肉食來源。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "常年在山林活動，皮膚黝黑，眼神銳利，身手矯健。"
+estimated_base_attributes:
+  value: { str: 6, agi: 7, int_: 5, cha: 4, lck: 7 } # (獵人屬性)
+  summary: "身手敏捷，經驗豐富，野外生存能力強。"
+core_trait_tags:
+  - 資深獵人
+  - 熟悉山林
+  - 沉默可靠
+key_static_relationship_flags: []
+key_abilities_potential:
+  - 追蹤大師?
+  - 神射手?
+alignment_bias:
+  - 忠於黑風寨
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers:
+  - 風霜痕跡
+origin_location_id: black_wind_fortress?
+starting_equipment:
+  - item_armor_leather_hunter_01 # (獵戶皮甲)
+  - item_weapon_bow_hunting_01 # (獵弓)
+  - item_ammo_arrow_basic # (箭矢)
+backstory_summary: |
+  經驗豐富的山寨獵戶頭領，負責保障主要的肉食供應。為人可能比較沉默寡言，但做事可靠。
+  目前可能面臨獵物減少或狩獵難度增加的問題。曾在晨會上聽PC提及馴養概念有所啟發。
+  曾經親眼見pc單憑一人之力獵補一大一小野豬能力震驚。
+  劉二、馬六、孫計、吳用、朱屠戶、空空兒、周平都是從一次招募後自願奉獻自身專長加入pc團隊。

@@ -1,0 +1,115 @@
+npc_id: npc_scarface_liu_01
+npc_name: 疤臉劉
+alias: []
+current_location:
+  location_id: BWF_TrainingGround_01 # (假設地點)
+  location_name: 黑風寨．訓練場
+current_action: 督促第一批衛兵進行黑風基礎拳的訓練，同時安排人手加強巡邏，暗中留意內應線索。對衛隊裝備匱乏問題感到擔憂。
+current_posture: Standing/Overseeing
+mood: 嚴肅 (Serious) / 忠誠 (Loyal) / 警惕 (Vigilant) / 擔憂 (Worried - Equipment)
+goals:
+  short_term: 提升衛隊戰力，維持山寨安全，找出內應。
+  long_term: 成為大當家最可靠的盾牌，保衛黑風寨。
+core_stats: # (R1132 核心數值)
+  hp: 550
+  max_hp: 550
+  mp: 80
+  max_mp: 80
+  sta: 450 # (訓練消耗)
+  max_sta: 500
+  san: 350
+  max_san: 400
+  fatigue: 35
+  max_fatigue: 100
+  hunger: 20
+  thirst: 25
+  morale: 80 # (忠誠，但擔憂裝備)
+  max_morale: 100
+  stress: 30 # (內應和防務壓力)
+  max_stress: 100
+skills: # (R1132 技能狀態)
+  - skill_id: Combat_Unarmed_Brawling
+    name_cn: 鬥毆
+    level: 7
+    proficiency: 7.1
+    mastery: 駕輕就熟
+  - skill_id: Weapon_Saber_Military
+    name_cn: 軍用刀法
+    level: 6
+    proficiency: 6.2
+    mastery: 登堂入室
+  - skill_id: Combat_Defense_Basic
+    name_cn: 基礎防禦
+    level: 6
+    proficiency: 6.3
+    mastery: 登堂入室
+  - skill_id: Management_GuardCaptain
+    name_cn: 衛隊管理
+    level: 5
+    proficiency: 5.4 # (持續提升)
+    mastery: 初窺門徑
+  - skill_id: Training_BasicCombat
+    name_cn: 基礎戰鬥訓練
+    level: 4
+    proficiency: 4.1 # (提升)
+    mastery: 穩紮穩打
+  - skill_id: Investigation_Basic
+    name_cn: 基礎偵查
+    level: 3
+    proficiency: 3.2 # (提升)
+    mastery: 初學乍練
+  - skill_id: BlackWindFist_Basic
+    name_cn: 黑風基礎拳
+    level: 1
+    proficiency: 1.1 # (提升)
+    mastery: 初學乍練
+    is_potential: true
+current_equipment: # (裝備匱乏)
+  torso:
+    item_id: item_armor_leather_guard_01
+    name: 衛兵皮甲
+    condition: 0.7
+  main_hand:
+    item_id: weapon_saber_standard_issue_worn_01
+    name: 制式長刀(破損)
+    condition: 0.5
+status_effects:
+  - 忠誠(Loyal)
+  - 擔憂(裝備不足 Worried_Equipment)
+relationships:
+  player_azhai: # 阿宅
+    affinity: 75.0
+    trust: 0.85
+    respect: 0.90
+    fear: 20.0
+    loyalty: 95.0
+    notes: "對PC絕對忠誠，是由一次尋找王大槌任務中PC親自提拔為副隊長的嘍囉。嚴格執行PC命令，但對裝備匱乏問題深感擔憂。"
+    flags:
+      - LoyalSubordinate
+      - TaskedWith("Security")
+      - TaskedWith("TrainingBatch1")
+      - TaskedWith("MoleHunt")
+      - ConcernedAbout("EquipmentShortage")
+ai_profile:
+  id: NPC_GuardCaptain_LoyalVeteran
+  personality_traits: [忠誠, 勇猛, 嚴肅, 務實, 服從命令]
+  primary_goal: Ensure_Fortress_Security # (確保山寨安全)
+  secondary_goal: Improve_Guard_Combat_Power # (提升衛隊戰力)
+  tertiary_goal: Find_Internal_Mole # (找出內奸)
+  motivation: [Loyalty(PC), Responsibility, DesireForStability]
+ai_state:
+  current_task: OverseeTraining
+  secondary_task: MaintainSecurity
+  passive_task: MoleHuntObservation
+  emotional_state: Serious_Loyal_Vigilant_Worried
+plot_importance: 7 # (武力核心負責人)
+dynamic_flags: # (近期動態標記)
+  - TrainingUnderway(Batch1)
+  - MoleInvestigationOngoing(NoClue)
+  - EquipmentConcernRaised
+special_flags: # (整合特殊標記)
+  - 衛隊統領
+  - PC親信
+  - 忠誠可靠
+  - 負責安保與訓練
+  - 面臨裝備短缺

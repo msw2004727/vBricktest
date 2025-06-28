@@ -1,0 +1,107 @@
+npc_id: npc_old_blacksmith_01
+npc_name: 老鐵匠
+alias: []
+current_location:
+  location_id: BWF_Crafting_Blacksmith_01
+  location_name: 黑風寨．後山鐵匠鋪
+current_action: 遵照大當家命令，組織學徒恢復鋼鎬的生產工作，同時小心保管著那把新煉成的骨鋼サーベル。內心仍對之前的鍛造過程感到震撼。
+current_posture: Standing/Working
+mood: 敬畏 (Awestruck) / 專注 (Focused) / 欣慰 (Relieved - Production resumed)
+goals:
+  short_term: 盡快完成剩餘的鋼鎬任務。
+  long_term: 繼續鑽研鍛造技藝，希望能從大當家那裡學到更多'神技'，提升山寨的裝備水平。
+core_stats: # (R1132 核心數值)
+  hp: 450
+  max_hp: 450
+  mp: 50 # (無內力?)
+  max_mp: 50
+  sta: 350 # (恢復中)
+  max_sta: 450
+  san: 300 # (壓力解除)
+  max_san: 350
+  fatigue: 40
+  max_fatigue: 100
+  hunger: 30
+  thirst: 35
+  morale: 90 # (高漲)
+  max_morale: 100
+  stress: 10 # (壓力已低)
+  max_stress: 100
+skills: # (R1132 技能狀態 - R1127 大幅提升)
+  - skill_id: Crafting_Blacksmithing
+    name_cn: 鍛造
+    level: 8
+    proficiency: 8.8 # (提升)
+    mastery: 爐火純青
+  - skill_id: Crafting_Metalworking
+    name_cn: 金屬處理
+    level: 7
+    proficiency: 7.5 # (提升 - 回火經驗)
+    mastery: 技壓群雄
+  - skill_id: Crafting_Repair
+    name_cn: 鐵器修理
+    level: 7
+    proficiency: 7.1
+    mastery: 技壓群雄
+  - skill_id: Teaching_Basic
+    name_cn: 基礎指導
+    level: 4
+    proficiency: 4.5 # (提升 - 因學徒進步?)
+    mastery: 穩紮穩打
+  - skill_id: Crafting_Steelmaking_Concept
+    name_cn: 煉鋼(概念)
+    level: 1
+    proficiency: 1.4 # (提升)
+    mastery: 初窺門徑
+    is_potential: true
+  - skill_id: Crafting_MaterialScience_Concept
+    name_cn: 材料學(概念)
+    level: 0
+    proficiency: 0.2 # (提升)
+    mastery: 尚未掌握
+    is_potential: true
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_apron_leather_01
+    name: 皮圍裙
+    condition: 0.7
+  # 可能持有鐵匠錘
+status_effects: # (當前狀態效果)
+  - 疲勞(Fatigued)
+  - 敬畏(Awestruck)
+relationships: # (R1131 更新)
+  player_azhai: # 阿宅
+    affinity: 50.0 # (關切)
+    trust: 0.85 # (提升)
+    respect: 100.0 # (峰值)
+    fear: 30.0 # (敬畏)
+    loyalty: 90.0 # (提升)
+    notes: "對PC的鍛造技藝（雖然怪異）佩服得五體投地，尊敬和敬畏達到頂點。壓力已解除，忠誠度提升。"
+    flags:
+      - AwestruckBy("player_azhai_skills")
+      - ReceivedGuidance("Forging/Tempering")
+      - TaskedWith("GuardBoneSaber")
+      - TaskedWith("ResumePickaxe")
+  # 與學徒關係為師徒 (狗蛋, 鐵柱等)
+ai_profile:
+  id: NPC_Craftsman_Master_Awestruck
+  personality_traits: [經驗豐富, 務實, 固執(曾), 忠誠, 敬畏(PC), 勤勞]
+  primary_goal: Fulfill_PC_Orders # (完成PC命令 - 尤其是生產任務)
+  secondary_goal: Improve_Crafting_Skills # (提升鍛造技藝)
+  tertiary_goal: Mentor_Apprentices # (指導學徒)
+  motivation: [Loyalty(Fortress/PC), Craftsmanship_Pride, Awe(PC_Ability)]
+ai_state:
+  current_task: ResumePickaxeProduction
+  secondary_task: GuardBoneSaber
+  emotional_state: Awe_Focused_Relieved
+plot_importance: 8 # (生產核心，掌握煉鋼技術)
+dynamic_flags: # (近期動態標記)
+  - WitnessedBoneSteelForging
+  - ReceivedSkillBoost(PotentialResonance)
+  - TaskedWithGuardingNewWeapon
+  - PickaxeProductionResumed
+special_flags: # (整合特殊標記)
+  - 首席鐵匠
+  - 掌握煉鋼技術
+  - 骨鋼サーベル見證者/保管者
+  - 技能大幅提升

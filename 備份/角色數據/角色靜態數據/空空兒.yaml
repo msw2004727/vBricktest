@@ -1,0 +1,43 @@
+npc_id: npc_kongkonger_01
+npc_name: 空空兒
+alias: []
+is_key_character: false # (Maybe true?)
+npc_type: 精密物件製造人 # (Based on name & meeting attendance)
+basic_info:
+  occupation_identity: "造物負責人;防盜專家"
+  race: 中原人
+  faction_or_sect: black_wind_fortress
+  estimated_age: "二十多?"
+  core_personality_traits: ["機靈", "手藝精細", "忠誠"]
+  notes: "曾經是小偷。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "身材可能較為瘦小靈活，眼神機警。"
+estimated_base_attributes:
+  value: { str: 4, agi: 8, int_: 6, cha: 5, lck: 7 } # (Scout/Thief archetype)
+  summary: "手腳非常敏捷，可能有些小聰明。"
+core_trait_tags:
+  - 身手靈活
+  - 機警
+  - 曾經是小偷
+  - 防盜專家
+key_static_relationship_flags: []
+key_abilities_potential:
+  - 潛行大師?
+  - 妙手空空?
+  - 木匠職人
+alignment_bias:
+  - 效忠阿宅
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers: null
+origin_location_id: null
+starting_equipment:
+  - item_armor_cloth_light_01 # (輕便衣物)
+  - item_weapon_dagger_basic_01 # (匕首?)
+backstory_summary: |
+  曾經是小偷，加入pc團隊後成為防盜與改良與製造手工藝負責人。
+  生產獨輪車，改良工具，營寨重要製造者。
+  防盜與門鎖的專家。
+  劉二、馬六、孫計、吳用、朱屠戶、空空兒、周平都是從一次招募後自願奉獻自身專長加入pc團隊。

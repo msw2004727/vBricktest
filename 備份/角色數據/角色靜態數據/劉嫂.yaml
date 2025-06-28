@@ -1,0 +1,38 @@
+npc_id: npc_liu_sao_01 # (Assumed ID)
+npc_name: 劉嫂
+alias: []
+is_key_character: false
+npc_type: 醫護助手 / 學徒 # (基礎定義)
+basic_info:
+  occupation_identity: "醫護助手 / 學徒"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # (山寨家眷)
+  estimated_age: "四十左右"
+  core_personality_traits: ["勤勞", "細心", "尊敬權威", "好學"]
+  notes: "山寨中的普通婦人，因家眷區推薦會一些照護護理技能，被pc登門拜訪意願，安排協助秦嵐並學習護理。"
+  clan_id: null
+  kinship_links: null # (可能有丈夫/子女在寨中)
+base_appearance: "面容普通，身材略胖，看起來勤勞能幹的中年婦女。"
+estimated_base_attributes:
+  value: { str: 5, agi: 4, int_: 5, cha: 4, lck: 5 }
+  summary: "身體尚可，做事勤快。"
+core_trait_tags:
+  - 勤勞肯幹
+  - 醫護學徒
+key_static_relationship_flags: []
+key_abilities_potential: null
+alignment_bias:
+  - 忠於黑風寨
+  - 尊敬秦嵐
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers: null
+origin_location_id: black_wind_fortress?
+starting_equipment:
+  - item_cloth_common_female_02 # (樸素衣物)
+backstory_summary: |
+  山寨中的普通家眷，因其照顧過已往生的婆婆多年，細心、勤快被選中協助秦嵐管理傷兵營，並藉此機會學習醫護知識。
+  是秦嵐得力的助手之一。
+  低調學習做事負責
+  平時不多話，下工後回家相夫教子傳統女性。

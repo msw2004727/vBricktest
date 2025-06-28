@@ -1,0 +1,144 @@
+# === 通用 NPC 動態狀態模板 (基於完整模板萃取) ===
+# 格式: YAML
+# 說明：此模板專注於記錄 NPC 隨時間變化的狀態數據。
+#      與 NPC 的靜態背景資料配合使用。
+
+npc_id: npc_unique_id_000 # <<-- 必需填寫，用於關聯 NPC
+npc_name: "待填寫" # <<-- 必需填寫，用於關聯 NPC
+
+# --- 可能變化的角色分類 ---
+is_key_character: false # 是否為關鍵角色 (可能隨劇情變化)
+npc_type: "待填寫" # 角色類型/當前主要職能 (可能變化)
+faction_id: null # 當前所屬陣營 ID (可能變化)
+
+# --- 即時狀態 ---
+current_location: # 當前位置
+  location_id: Unknown
+  location_name: 未知
+  area_id: Unknown
+  coordinates: null
+  description: null
+
+current_action: 待機 # 當前行動
+current_posture: Standing # 當前姿勢
+mood: 平靜 # 當前情緒
+
+goals: # 當前目標 (會隨時間和事件改變)
+  short_term: 生存
+  long_term: null
+
+core_stats: # 核心數值 (隨時變動)
+  hp: 100.0
+  max_hp: 100.0
+  base_max_hp: 100.0 # Base Max HP 通常不變，但也可能因特殊事件/狀態改變
+  mp: 50.0
+  max_mp: 50.0
+  base_max_mp: 50.0
+  sta: 100.0
+  max_sta: 100.0
+  base_max_sta: 100.0
+  san: 100.0
+  max_san: 100.0
+  base_max_san: 100.0
+  fatigue: 0.0
+  max_fatigue: 100.0
+  hunger: 0.0
+  thirst: 0.0
+  morale: 50.0
+  max_morale: 100.0
+  stress: 0.0
+  max_stress: 100.0
+
+attributes: null # 詳細屬性 (可能因狀態效果/裝備臨時變化)
+#  strength: 5
+#  dexterity: 5
+#  constitution: 5
+#  intelligence: 5
+#  wisdom: 5
+#  charisma: 5
+
+skills: [] # 技能列表 (等級/熟練度會變化)
+  # - skill_id: "SkillID"
+  #   name_cn: "技能名稱"
+  #   category: "技能分類"
+  #   level: 1
+  #   proficiency: 1.0
+  #   mastery: "掌握程度"
+  #   is_potential: false
+  #   description: "技能描述"
+
+abilities: [] # 特殊能力列表 (可能習得或失去)
+  # - ability_id: "AbilityID"
+  #   name_cn: "能力名稱"
+  #   description: "能力描述"
+
+inventory: [] # 物品欄列表 (內容和數量會變化)
+  # - item_id: "ItemID"
+  #   name: "物品名稱"
+  #   quantity: 1
+  #   location: "Carrying/Hidden"
+
+currency: # 貨幣 (會變化)
+  gold: 0
+  silver: 0
+  copper: 100
+
+equipment: # 裝備欄位 (穿戴的物品和其狀態會變化)
+  head: null
+  face: null
+  neck: null
+  torso: null
+  legs: null
+  feet: null
+  hands: null
+  wrists: null
+  fingers: null
+  waist: null
+  back: null
+  main_hand: null
+  off_hand: null
+  ranged: null
+  ammo: null
+
+status_effects: [] # 當前狀態效果列表 (隨時變化)
+  # - 效果1
+  # - 效果2
+
+relationships: [] # 人際關係列表 (數值和標記都會變化)
+  # - target_id: "player_azhai"
+  #   target_name: "阿宅"
+  #   affinity: 0.0
+  #   enmity: 0.0
+  #   trust: 0.5
+  #   respect: 0.5
+  #   fear: 10.0
+  #   loyalty: 50.0
+  #   notes: "初始關係"
+  #   flags: []
+
+ai_profile: # AI 配置 (性格特質通常不變，但目標可能變化)
+#  id: "Default_Worker"
+#  personality_traits: ["務實", "聽話"]
+#  primary_goal: "完成任務" # 目標會變
+#  secondary_goal: null
+#  tertiary_goal: null
+#  motivation: ["生存", "獎勵"] # 動機可能微調
+  id: null
+  personality_traits: []
+  primary_goal: null
+  secondary_goal: null
+  tertiary_goal: null
+  motivation: []
+
+ai_state: null # AI 當前內部狀態 (高度動態)
+#  CurrentTask: Idle
+#  FocusTarget: null
+#  EmotionalState: Neutral
+
+plot_importance: 1 # 劇情重要性 (可能隨劇情提升或降低)
+
+dynamic_flags: [] # 動態獲得的標記 (列表，隨事件增減)
+
+special_flags: null # 整合的特殊標記 (會包含動態信息而變化)
+
+# --- End of Generic NPC Dynamic State Template (YAML) ---

@@ -1,0 +1,70 @@
+npc_id: npc_kongkonger_01
+npc_name: 空空兒
+alias: []
+current_location:
+  location_id: Unknown/Scouting? # (Assumed - 但原文描述更像在工作坊)
+  location_name: 鐵匠鋪旁改造工具與獨輪車 # (根據 action 推斷的地點)
+current_action: 不斷改良工具與設備
+current_posture: 坐著
+mood: 平靜
+goals:
+  short_term: 完成大當家交代的製造與改良工具任務。
+  long_term: 在山寨中找到自己的位置。
+core_stats: # (R1132 核心數值)
+  hp: 300; max_hp: 300; mp: 50; max_mp: 50; sta: 300; max_sta: 350; san: 310; max_san: 350;
+  fatigue: 25; hunger: 20; thirst: 20; morale: 70; stress: 20;
+skills: # (Based on archetype)
+  - skill_id: General_Movement_Stealth
+    name_cn: 潛行
+    level: 6 # (推測)
+    mastery: 登堂入室
+  - skill_id: General_Awareness_Scouting
+    name_cn: 偵查
+    level: 5 # (推測)
+    mastery: 初窺門徑
+  - skill_id: Combat_Weapon_Dagger
+    name_cn: 匕首格鬥
+    level: 4 # (推測)
+    mastery: 穩紮穩打
+  - skill_id: General_Movement_Lockpicking? # (妙手空空?) -> 原文技能名為 防盜
+    name_cn: 防盜
+    level: 5
+    mastery: 初窺門徑
+  - skill_id: Artisan_FineWoodcraft # 原文無此技能ID，根據描述添加
+    name_cn: 精密手工藝
+    level: 5 # (推測)
+    mastery: 初窺門徑
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_armor_cloth_light_01
+    name: 輕便布衣
+    condition: 0.9
+  main_hand:
+    item_id: item_weapon_dagger_basic_01
+    name: 普通匕首
+    condition: 0.8
+status_effects: []
+relationships:
+  player_azhai: # 阿宅
+    affinity: 80.0
+    trust: 0.60
+    respect: 0.70
+    fear: 20.0
+    loyalty: 70.0
+    notes: "手工藝委託人"
+    flags: [Scout?] # (原文標記，但職能更偏向製造)
+ai_profile:
+  id: NPC_Scout_Alert? # (原文ID，但性格與目標更像匠人)
+  personality_traits: [機靈, 手藝精緻]
+  primary_goal: 升級工具、製造獨輪車
+  secondary_goal: null # (模板中無此項)
+  tertiary_goal: null # (模板中無此項)
+  motivation: [改良工具]
+ai_state:
+  current_task: 升級工具、製造獨輪車
+plot_importance: 4 # (工具、載具升級改造主要人)
+dynamic_flags:
+  - AttendedRecentMeeting
+special_flags:
+  - 開鎖與防盜專家
+  - 技能專長未知 # (但根據描述應為手工藝)

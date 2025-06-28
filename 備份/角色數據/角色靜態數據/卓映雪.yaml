@@ -1,0 +1,113 @@
+# === NPC 靜態資料: 卓映雪 (Zhuo Yingxue) ===
+# Format: YAML (Static Fields Only)
+# Source: 主要基於 金庸模組/新增NPC資料.ini
+
+npc_id: npc_zhuo_yingxue_01 [cite: 1]
+npc_name: 卓映雪 [cite: 1]
+alias: null # 無已知別名
+
+# --- Static Background Info ---
+basic_info: # 基本背景與身分
+  occupation_identity: "無名小鎮鎮長千金（離家出走）" [cite: 1] # 身分職位
+  race: 中原人 [cite: 1] # 種族
+  faction_or_sect: "無名小鎮(疏離)" [cite: 1] # 原始或主要屬門派/陣營
+  estimated_age: "十八歲" [cite: 1] # 年齡描述
+  core_personality_traits: # 核心不變性格 [cite: 1]
+    - 無所畏懼
+    - 高傲
+    - 自以為是
+    - 看不起底層
+    - 好奇心極重(尤其八卦)
+    - 聰明
+    - 口才便給
+    - 崇拜英雄
+    - 情感壓抑(因父)
+    - 叛逆
+    - 行動力強
+    - 對王大槌懷有特殊舊情
+    - 觀察力敏銳
+    - 王大槌青梅竹馬
+  notes: "名字『映雪』據傳是由其出生時的縣令所取。" [cite: 1] # 關鍵背景註釋
+  clan_id: zhuo_family_magistrate [cite: 1] # 家族ID
+  kinship_links: # 已知的親緣關係列表 [cite: 1]
+    - target_id: "npc_zhuo_bufan_01"
+      relation: "父親"
+      intimacy: 1.0 # 親密度(此處數值意義不明，照錄)
+
+base_appearance: "年方十八，正值荳蔻年華。肌膚白皙，眉目如畫，顧盼間帶著一股靈動與傲氣。身著一襲裁剪精良、質地上乘的淡雅色衣裙（如水藍或淺紫），與周圍環境形成鮮明對比。雖是富家千金，但行動間並無嬌弱之態，反而透著幾分尋常女子少有的無畏。眼神清亮，充滿好奇，但看向地位低下者或她認為粗鄙之人時，會流露出不易察覺的輕蔑。" [cite: 1] # 基礎外貌描述
+
+estimated_base_attributes: # 概念屬性 [cite: 1]
+  value: { str: 7, agi: 12, int_: 15, cha: 14, lck: 12 }
+  summary: "智魅敏皆優，潛行特化，力量偏低"
+
+core_trait_tags: # 核心特質標籤 [cite: 1]
+  - 鎮長千金
+  - 離家出走
+  - 高傲
+  - 自以為是
+  - 聰明
+  - 口才便給
+  - 好奇心重(八卦)
+  - 崇拜英雄
+  - 無所畏懼
+  - 看不起底層
+  - 青梅竹馬(王大槌)
+  - 潛行高手(Lv5)
+  - 文職全能(Lv5)
+  - 情感壓抑
+  - 叛逆
+
+key_static_relationship_flags: # 靜態關係標記 [cite: 1]
+  - IsChildhoodSweetheart("WangDachui") # 與王大槌是青梅竹馬
+  - RunawayFromHome # 離家出走狀態
+  - RelationshipConflict("Father/Marriage") # 與父親在婚姻等問題上有衝突
+
+key_abilities_potential: # 天賦潛力技能標題 [cite: 1]
+  - 口才 (Lv8)
+  - 生意/算術 (Lv8)
+  - 辯論 (Lv8)
+  - 繪畫 (Lv5)
+  - 閱讀/寫字 (Lv5)
+  - 算術 (Lv5)
+  - 基礎潛行 (Lv5)
+
+alignment_bias: # 陣營立場傾向 [cite: 1]
+  - 中立 / 混亂傾向 # (檔案中記錄為道德值)
+
+taboo_or_weaknesses: # 心理或生理弱點 [cite: 1]
+  - 缺乏實戰武功和江湖生存經驗 # (綜合評估中提及)
+  - 對底層人士有明顯偏見 # (性格描述中提及)
+  - 因家庭原因對感情關係既有憧憬又充滿戒備 # (綜合評估中提及)
+
+static_story_flags: # 特殊背景標記 [cite: 1]
+  - 名字由縣令所取
+  - 過去幾次嘗試戀愛均被父親阻止
+
+cultural_traits: # 語言文化標籤 [cite: 1]
+  - 無名小鎮地方口音?
+  - 士紳家庭教養
+
+visual_identifiers: # 外觀識別特徵 [cite: 1]
+  - 衣著華麗 (相對於山寨環境)
+  - 氣質靈動帶傲氣
+
+origin_location_id: unnamed_town [cite: 1] # 來源地ID
+
+starting_equipment: # 初始(或暗示的基礎)裝備 [cite: 1]
+  - elegant_dress_01 # 高雅衣裙
+  - exquisite_jewelry # 精緻首飾
+  - embroidered_shoes # 繡花鞋
+  - silver_notes_or_fragments # 隨身銀票/碎銀
+  - basic_stealth_tools? # 基礎潛行工具? (基於技能推測)
+
+backstory_summary: | # GM 內部注記的背景概要
+  無名小鎮鎮長卓不凡的獨生女，聰明、高傲且極具叛逆精神。
+  與黑風寨前統領王大槌是青梅竹馬，但兩人關係可能因父親干涉或身份差距而中斷。
+  卓映雪對父親的控制（尤其是在情感和未來規劃上）深感不滿，最終選擇離家出走。
+  她擁有極高的文職技能和出人意料的潛行能力。
+  聽聞黑風寨易主以及可能與王大槌相關的消息後，被強烈的好奇心和尋找舊情的念頭驅使來到黑風寨。
+  其核心動機是尋找王大槌、擺脫家庭束縛以及滿足其旺盛的好奇心。
+  她的出現為黑風寨帶來了外部聯繫的可能，但也因其高傲性格和潛在的家族關係帶來了不確定性。
+  在與阿宅首次交易後，為了換取探視王大槌的權利，被迫接受了籌集生鐵和布匹的艱難任務，目前已離開山寨執行此任務。
+
+# === End of Backstory Summary ===

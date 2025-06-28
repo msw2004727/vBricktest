@@ -1,0 +1,51 @@
+npc_id: npc_zhu_tuhu_01
+npc_name: 朱屠戶
+alias: []
+current_location:
+  location_id: BWF_Kitchen_Butchery # (Assumed)
+  location_name: 黑風寨．廚房/屠宰區
+current_action: 處理馬六等人獵來的野物，分割儲存。
+current_posture: Working
+mood: 務實 (Pragmatic) / 忙碌 (Busy)
+goals:
+  short_term: 處理好送來的獵物。
+  long_term: 做好本職工作，安穩度日。
+core_stats: # (R1132 核心數值)
+  hp: 450; max_hp: 450; mp: 10; max_mp: 10; sta: 380; max_sta: 400; san: 280; max_san: 300;
+  fatigue: 20; hunger: 15; thirst: 15; morale: 70; stress: 10;
+skills:
+  - skill_id: Crafting_Butchery
+    name_cn: 屠宰
+    level: 7
+    mastery: 駕輕就熟
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_apron_butcher_01
+    name: 屠夫圍裙
+    condition: 0.6
+  main_hand:
+    item_id: item_tool_cleaver_01
+    name: 屠刀
+    condition: 0.8
+status_effects: []
+relationships:
+  player_azhai: # 阿宅
+    affinity: 30.0
+    trust: 0.50
+    respect: 0.60
+    fear: 10.0
+    loyalty: 60.0
+    notes: "山寨屠夫。"
+    flags: []
+ai_profile:
+  id: NPC_Craftsman_Butcher
+  personality_traits: [務實, 手藝熟練, 可能粗魯]
+  primary_goal: Process_Meat # (處理肉類)
+  secondary_goal: null
+  motivation: [Duty, SurvivalNeeds(Community)]
+ai_state:
+  current_task: ProcessHuntedGame
+plot_importance: 3 # (食物鏈一環)
+dynamic_flags: []
+special_flags:
+  - 屠夫

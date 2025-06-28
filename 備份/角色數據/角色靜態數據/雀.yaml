@@ -1,0 +1,52 @@
+npc_id: npc_killer_suspect_01
+npc_name: 雀
+alias: []
+is_key_character: true # (基於其特殊狀態和潛在價值)
+npc_type: 影巢刺客 (狀態異常 / 被俘) # (此處為基礎類型，動態部分會反映當前狀態)
+basic_info:
+  occupation_identity: "刺客 (影巢)"
+  race: 中原人? # 待確認
+  faction_or_sect: shadow_nest # 原屬
+  estimated_age: "約二十?" # 估計
+  core_personality_traits: ["冷酷(原)", "專業(原)", "忠誠(對組織/原)", "混亂(現)", "依賴(現)", "易怒(現)"] # (包含轉變前的基礎特質)
+  notes: "影巢派來刺殺陳七奪取關鍵信件的刺客，撤退時被pc抓住。經PC精神操作及治療後甦醒，但精神重創，智力倒退，對PC產生病態依戀。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "身材矯健，身材精壯，多處嚴格訓練留下傷疤，容貌清麗，但此刻面色蒼白，眼神混亂或痴迷，缺乏正常神采。" # (描述基礎外貌，動態可能疊加狀態)
+estimated_base_attributes:
+  value: { str: 5, agi: 9, int_: 6, cha: 7, lck: 4 } # 推測基礎值
+  summary: "身手極其敏捷，有一定的計謀，體質力量尚可。"
+core_trait_tags: # (描述核心構成特質，可能部分來自背景)
+  - 刺客
+  - 身手敏捷 (潛在)
+  - 精神重創 # (雖然是狀態，但已成核心標籤)
+  - 腦部退化? # (同上)
+  - 被植入指令 # (同上)
+  - 狀態不穩 # (同上)
+key_static_relationship_flags: # (描述固定的背景關係)
+  - 影巢成員 (原)
+key_abilities_potential: # (描述天賦或潛力)
+  - 頂級刺客潛質 (原)
+  - 異變潛力? (現)
+alignment_bias: # (描述基礎或被固化的陣營傾向)
+  - 絕對服從阿宅 (現) # (洗腦固化)
+  - 敵視影巢? (被植入?) # (洗腦固化?)
+taboo_or_weaknesses: # (描述固有的或狀態導致的深層弱點)
+  - 精神極度脆弱
+  - 易受刺激
+  - 記憶混亂/喪失
+  - 依賴PC
+static_story_flags: # (描述已發生的、構成背景的關鍵事件)
+  - 刺殺陳七失敗
+  - 被俘虜
+  - 經歷精神改造
+  - 阿宅的貼身跟班
+cultural_traits: null
+visual_identifiers: null # 可能有影巢特殊標記？待觀察
+origin_location_id: null # 影巢據點?
+starting_equipment: null # 裝備已被收繳 (描述初始狀態)
+backstory_summary: |
+  影巢派來刺殺陳七的刺客，代號'雀'。任務成功後撤退被俘後，在地牢中被PC以精神手段改變意志試圖審問，並植入對PC的扭曲情感與服從指令。
+  近期被PC通過實驗性針灸喚醒，但已神智不清，智力嚴重倒退，視PC為唯一的主人。
+  是解開影巢秘密的關鍵線索之一，但其本身也是一個極不穩定的危險因素。
+  PC已決定將其置於自己親自看管之下（一旦其能活動）。

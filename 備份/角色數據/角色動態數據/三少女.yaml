@@ -1,0 +1,94 @@
+# Note: 此為模板，適用於 李春花, 趙小蓮, 王若娥，個體可能略有差異
+npc_id: npc_li_chunhua_01 # (或 Zhao_Xiaolian_01, Wang_Ruoe_01)
+npc_name: 李春花 # (或 趙小蓮, 王若娥)
+alias: []
+# Note: 此為模板，適用於 李春花, 趙小蓮, 王若娥，個體狀態可能略有差異
+current_location:
+  location_id: BWF_LeaderCourtyard_WingRoom_Maidens
+  location_name: 黑風寨．頭領院落．廂房（七少女居所）
+current_action: 與其他少女一起生活、學習（護理/縫紉等），照顧小翠。準備接收秦嵐關於傳播'官方說法'的指示。
+current_posture: Sitting/Learning
+mood: 謹慎 (Cautious) / 互助 (Supportive) / 順從 (Obedient)
+goals:
+  short_term: 學習生存技能，照顧小翠，完成秦嵐和'大當家'的安排（包括傳播消息）。
+  long_term: 在山寨中平安地生活下去。
+core_stats:
+  hp: 160
+  max_hp: 160
+  mp: 20
+  max_mp: 20
+  sta: 140
+  max_sta: 160
+  san: 250
+  max_san: 300
+  fatigue: 15
+  hunger: 15
+  thirst: 15
+  morale: 60
+  max_morale: 100
+  stress: 30
+  max_stress: 100
+skills:
+  - skill_id: General_Life_Sewing
+    name_cn: 縫紉
+    level: 3
+    mastery: 初學乍練
+  - skill_id: Medical_Nursing_Basic_Trainee
+    name_cn: 基礎護理(學徒)
+    level: 1
+    proficiency: 1.2 # (學習中)
+    mastery: 初學乍練
+    is_potential: true
+current_equipment:
+  torso:
+    item_id: item_cloth_common_girl_simple_01
+    name: 樸素布裙
+    condition: 0.9
+status_effects:
+  - 依賴(秦嵐 High)
+  - 同伴意識(Strong)
+  - 敬畏(PC Moderate)
+relationships:
+  player_azhai: # 阿宅
+    affinity: 90.0
+    trust: 0.80
+    respect: 0.90
+    fear: 50.0 # (敬畏)
+    loyalty: 60.0
+    notes: "對PC感到敬畏，感激其庇護。視pc為偶像。" # (整合自模板內資訊)
+    flags: [RescuedBy("player_azhai")?, AweOf("player_azhai"), FearOf("player_azhai")] # (RescuedBy 不確定)
+  npc_qin_lan: # 秦嵐
+    affinity: 75.0
+    trust: 0.85
+    respect: 0.80
+    notes: "主要的照看者和指導者。"
+    flags: [DependentOn("npc_qin_lan"), LearningFrom("npc_qin_lan")]
+  npc_xiao_cui_01: # 小翠
+    affinity: 80.0
+    trust: 0.90
+    respect: 0.40
+    notes: "兒時玩伴，非常關心和保護她。"
+    flags: [ChildhoodFriends, ProtectiveOf("npc_xiao_cui_01")]
+ai_profile:
+  id: NPC_Maiden_SupportiveCautious
+  personality_traits: [善良, 互助, 謹慎, 順從]
+  primary_goal: Learn_Survive_FollowOrders # (學習生存，聽從安排)
+  secondary_goal: CareForXiaoCui # (照顧小翠)
+  motivation: [NeedForSecurity, GroupBonding]
+ai_state:
+  current_task: LearningNursing/Sewing
+  secondary_task: SupportXiaoCui
+  pending_task: ReceiveInstructions(Rumor)
+plot_importance: 2 # (群體成員，流言媒介)
+dynamic_flags:
+  - UnderQinLanCare
+  - PartOfSevenMaidensGroup
+  - TaskedWithSpreadingRumor(Pending)
+special_flags:
+  - 七少女之一
+  - 下河村人
+  - 小翠玩伴
+  - 流言傳播者(潛在)
+  - 李春花三少女團體為首
+  - 崇拜pc
+  - 視pc為偶像

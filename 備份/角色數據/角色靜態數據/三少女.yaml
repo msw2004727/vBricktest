@@ -1,0 +1,49 @@
+# Note: 此為模板，適用於 李春花, 趙小蓮, 王若娥，個體可能略有差異
+npc_id: npc_li_chunhua_01 # (或 Zhao_Xiaolian_01, Wang_Ruoe_01)
+npc_name: 李春花 # (或 趙小蓮, 王若娥)
+alias: []
+is_key_character: false # (作為七少女中的三少女群體一部分)
+npc_type: 侍女 / 獲救少女 / 醫護學徒 # (基礎定義)
+basic_info:
+  occupation_identity: "侍女 / 醫護學徒"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # (被擄至此)
+  estimated_age: "約十五六"
+  core_personality_traits: ["善良", "互助", "謹慎", "順從"] # (可能略有差異)
+  notes: "來自下河村(下溪村附近河流對岸)，小翠的兒時玩伴，幼時與小翠一同被擄到山寨。李春花因崇拜pc拉姊妹趙小蓮, 王若娥(非血緣關係)自願加入護理隊，目前在秦嵐手下學習護理。"
+  clan_id: null
+  kinship_links: null # (父母失散)
+base_appearance: "普通的鄉村少女樣貌，但因見過家鄉被擄掠自己被擄上營寨，內心素質高。"
+estimated_base_attributes:
+  value: { str: 3, agi: 5, int_: 6, cha: 5, lck: 5 }
+  summary: "普通少女，比較聽話。"
+core_trait_tags:
+  - 善良
+  - 學習中
+  - 關心同伴
+  - 八卦
+  - 崇拜英雄
+  - 少女心
+key_static_relationship_flags:
+  - 下河村遺孤?
+  - 小翠玩伴
+key_abilities_potential:
+  - 基礎護理能力
+alignment_bias:
+  - 聽從秦嵐安排
+  - 依賴集體
+taboo_or_weaknesses: null
+static_story_flags:
+  - 被擄掠者
+cultural_traits:
+  - 鄉村背景
+visual_identifiers: null
+origin_location_id: lower_stream_village # (文件中原文為此，可能指下溪村周邊)
+starting_equipment:
+  - item_cloth_common_girl_01
+backstory_summary: |
+  來自下溪村(應為下河村)的少女，與小翠、趙小蓮、王若娥是玩伴，一同被擄至黑風寨。
+  自願加入護理隊，熱情好學。
+  目前在秦嵐的照料和指導下學習基本技能，是小翠的主要情感支持者之一。
+  她們將被秦嵐指示，作為向山寨內部傳播關於'雀'的官方說法的媒介。
+  七少女當中分別由三少女+四少女組成。

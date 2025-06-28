@@ -1,0 +1,201 @@
+# === 通用 NPC 完整資料模板 (含靜態背景與動態狀態) ===
+# 格式: YAML
+# 說明：請根據實際角色情況填寫 "待填寫" 或修改 null/空列表/預設值。
+
+npc_id: npc_unique_id_000 # <<-- 全域唯一 ID，必需修改
+npc_name: "待填寫" # <<-- 角色完整姓名
+alias: # 其他稱呼 (列表)
+#  - 別名1
+#  - 別名2
+
+is_key_character: false # 是否為關鍵角色
+npc_type: "待填寫" # 角色類型/當前主要職能
+faction_id: null # 所屬陣營 ID (例如: black_wind_fortress)
+
+# --- Static Background Info ---
+basic_info: # 基本背景與身分
+  occupation_identity: "待填寫" # 身分職位
+  race: "中原人" # 種族
+  faction_or_sect: null # 原始或主要屬門派/陣營 ID
+  estimated_age: "待填寫" # 年齡描述
+  core_personality_traits: [] # 核心不變性格 (列表)
+    # - 特質1
+    # - 特質2
+  notes: null # 關鍵背景註釋 (字串)
+  clan_id: null # 家族/宗族 ID
+  kinship_links: null # 親屬關係列表: [ { target_id: "npc_id", relation: "父親", intimacy: 90 }, ... ]
+
+base_appearance: "待填寫" # 基礎外貌文字描述
+
+estimated_base_attributes: # 概念屬性 (可選)
+#  value: { str: 5, agi: 5, int_: 5, cha: 5, lck: 5 } # 估計基礎值 (int_ 避免關鍵字衝突)
+#  summary: "各項平均" # 總結語句
+  value: null
+  summary: null
+
+core_trait_tags: [] # 核心特質標籤 (列表)
+  # - 標籤1
+  # - 標籤2
+
+key_static_relationship_flags: [] # 靜態關係標記 (列表)
+  # - 標記1
+
+key_abilities_potential: null # 天賦潛力技能標題 (列表或 null)
+#  - 潛力1
+#  - 潛力2
+
+alignment_bias: null # 陣營立場傾向 (列表或 null)
+#  - 傾向1
+#  - 傾向2
+
+taboo_or_weaknesses: null # 心理或生理弱點 (列表或 null)
+#  - 弱點1
+
+static_story_flags: null # 特殊背景標記 (列表或 null)
+#  - 背景標記1
+
+cultural_traits: null # 語言文化標籤 (列表或 null)
+#  - 文化標籤1
+
+visual_identifiers: null # 外觀識別特徵 (列表或 null)
+#  - 特徵1
+
+origin_location_id: null # 來源地ID
+
+starting_equipment: null # 初始裝備ID列表 (列表或 null)
+#  - item_id_1
+#  - item_id_2
+
+# --- Dynamic State Info ---
+current_location: # 當前位置
+  location_id: Unknown
+  location_name: 未知
+  area_id: Unknown
+  coordinates: null
+  description: null
+
+current_action: 待機 # 當前行動
+current_posture: Standing # 當前姿勢
+mood: 平靜 # 當前情緒
+
+goals: # 當前目標
+  short_term: 生存
+  long_term: null
+
+core_stats: # 核心數值
+  hp: 100.0
+  max_hp: 100.0
+  base_max_hp: 100.0
+  mp: 50.0
+  max_mp: 50.0
+  base_max_mp: 50.0
+  sta: 100.0
+  max_sta: 100.0
+  base_max_sta: 100.0
+  san: 100.0
+  max_san: 100.0
+  base_max_san: 100.0
+  fatigue: 0.0
+  max_fatigue: 100.0
+  hunger: 0.0
+  thirst: 0.0
+  morale: 50.0
+  max_morale: 100.0
+  stress: 0.0
+  max_stress: 100.0
+
+attributes: null # 詳細屬性 (可選)
+#  strength: 5
+#  dexterity: 5
+#  constitution: 5
+#  intelligence: 5
+#  wisdom: 5
+#  charisma: 5
+
+skills: [] # 技能列表
+  # - skill_id: "SkillID"
+  #   name_cn: "技能名稱"
+  #   category: "技能分類"
+  #   level: 1
+  #   proficiency: 1.0
+  #   mastery: "掌握程度"
+  #   is_potential: false
+  #   description: "技能描述"
+
+abilities: [] # 特殊能力列表
+  # - ability_id: "AbilityID"
+  #   name_cn: "能力名稱"
+  #   description: "能力描述"
+
+inventory: [] # 物品欄列表
+  # - item_id: "ItemID"
+  #   name: "物品名稱"
+  #   quantity: 1
+  #   location: "Carrying/Hidden"
+
+currency: # 貨幣
+  gold: 0
+  silver: 0
+  copper: 100
+
+equipment: # 裝備欄位
+  head: null
+  face: null
+  neck: null
+  torso: null
+  legs: null
+  feet: null
+  hands: null
+  wrists: null
+  fingers: null
+  waist: null
+  back: null
+  main_hand: null
+  off_hand: null
+  ranged: null
+  ammo: null
+
+status_effects: [] # 當前狀態效果列表 (字串列表)
+  # - 效果1
+  # - 效果2
+
+relationships: [] # 人際關係列表
+  # - target_id: "player_azhai" # 目標ID (通常是PC)
+  #   target_name: "阿宅" # 目標名稱
+  #   affinity: 0.0 # 好感度
+  #   enmity: 0.0 # 敵意度
+  #   trust: 0.5 # 信任度
+  #   respect: 0.5 # 尊敬度
+  #   fear: 10.0 # 恐懼度
+  #   loyalty: 50.0 # 忠誠度
+  #   notes: "初始關係" # 關係註釋
+  #   flags: [] # 關係標記列表
+
+ai_profile: # AI 配置 (可選)
+#  id: "Default_Worker" # AI類型ID
+#  personality_traits: ["務實", "聽話"] # 性格特質
+#  primary_goal: "完成任務" # 主要目標驅動
+#  secondary_goal: null
+#  tertiary_goal: null
+#  motivation: ["生存", "獎勵"] # 動機
+  id: null
+  personality_traits: []
+  primary_goal: null
+  secondary_goal: null
+  tertiary_goal: null
+  motivation: []
+
+ai_state: null # AI 當前內部狀態 (鍵值對列表或 null)
+#  CurrentTask: Idle
+#  FocusTarget: null
+#  EmotionalState: Neutral
+
+plot_importance: 1 # 劇情重要性 (數值越高越重要)
+
+dynamic_flags: [] # 動態獲得的標記 (列表)
+
+special_flags: null # 整合的特殊標記 (列表或 null)
+
+backstory_summary: null # GM 內部注記的背景概要 (字串)
+
+# === End of Comprehensive Generic NPC Template (YAML) ===

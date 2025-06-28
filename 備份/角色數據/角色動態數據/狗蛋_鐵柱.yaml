@@ -1,0 +1,75 @@
+# Note: 此為模板，適用於 狗蛋, 鐵柱，個體可能略有差異
+npc_id: npc_apprentice_goudan_01 # (或 Tie_Zhu_01)
+npc_name: 狗蛋 # (或 鐵柱)
+alias: []
+# Note: 此為模板，適用於 狗蛋, 鐵柱，個體狀態可能略有差異
+current_location:
+  location_id: BWF_Crafting_Blacksmith_01
+  location_name: 黑風寨．後山鐵匠鋪
+current_action: 在老鐵匠的帶領下，恢復鋼鎬的生產工作，幹勁十足，時不時回想起之前和“神仙般”的大當家一起打鐵的場景。
+current_posture: Working
+mood: 興奮 (Excited) / 崇拜 (Worshipful) / 幹勁十足 (Motivated)
+goals:
+  short_term: 幫助師父完成鋼鎬任務，希望能再學到大當家的“神技”。
+  long_term: 成為像師父一樣（或者像大當家一樣厲害）的鐵匠。
+core_stats: # (R1132 核心數值)
+  hp: 300; max_hp: 300; mp: 10; max_mp: 10; sta: 280; max_sta: 350; san: 320; max_san: 350;
+  fatigue: 35; hunger: 25; thirst: 30; morale: 95; stress: 10;
+skills: # (R1127 大幅提升)
+  - skill_id: Crafting_Forging_Basic
+    name_cn: 鍛造(基礎)
+    level: 3 # (提升!)
+    proficiency: 3.0 # (提升!)
+    mastery: 初學乍練
+    is_potential: true
+  - skill_id: General_Errand
+    name_cn: 打雜
+    level: 4 # (提升!)
+    proficiency: 4.0 # (提升!)
+    mastery: 穩紮穩打
+  - skill_id: General_Awareness_Observation
+    name_cn: 觀察
+    level: 2 # (提升!)
+    proficiency: 2.0 # (提升!)
+    mastery: 初窺門徑
+    is_potential: true
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_cloth_coarse_01
+    name: 粗布衣
+    condition: 0.7
+status_effects:
+  - 崇拜(PC/狂熱 Worshipping)
+  - 幹勁高漲(Motivated)
+relationships:
+  player_azhai: # 阿宅
+    affinity: 60.0 # (崇拜帶來的正面情感)
+    trust: 0.70
+    respect: 100.0 # (崇拜峰值)
+    fear: 40.0 # (敬畏)
+    loyalty: 85.0 # (提升)
+    notes: "因親歷骨鋼刀鍛造'神蹟'而對PC產生狂熱崇拜，忠誠度和學習動力大幅提升。"
+    flags: [WitnessedBoneSteelForging, ReceivedSkillBoost(PotentialResonance), FanaticalWorship(PC_Ability)]
+  npc_old_blacksmith_01: # 老鐵匠
+    affinity: 80.0 # (師徒情誼)
+    trust: 0.90
+    respect: 95.0 # (尊敬師父)
+    notes: "尊敬自己的師父。"
+    flags: [ApprenticeOf("npc_old_blacksmith_01")]
+ai_profile:
+  id: NPC_Apprentice_DiligentWorshipper
+  personality_traits: [勤快, 聽話, 崇拜強者, 憨厚]
+  primary_goal: Learn_Forging_Assist_Master # (學習鍛造，協助師父)
+  secondary_goal: Serve_PC # (為PC效力 - 受崇拜驅動)
+  motivation: [DesireToLearn, Worship(PC), Loyalty(Master)]
+ai_state:
+  current_task: AssistPickaxeProduction
+  emotional_state: Excited_Worshipful_Motivated
+plot_importance: 2 # (輔助生產力，氛圍體現)
+dynamic_flags:
+  - ReceivedSkillBoost(PotentialResonance)
+  - FanaticalWorship(PC)
+special_flags:
+  - 鐵匠學徒
+  - 技能大幅提升
+  - PC狂熱崇拜者

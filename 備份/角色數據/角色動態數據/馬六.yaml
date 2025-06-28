@@ -1,0 +1,74 @@
+npc_id: npc_ma_liu_01
+npc_name: 馬六
+alias: []
+current_location:
+  location_id: BWF_Forest_HuntingGrounds # (Assumed)
+  location_name: 黑風寨周邊山林
+current_action: 帶領獵戶們外出狩獵，為山寨提供肉食。可能因季節變化或過度捕獵導致獵物減少而感到壓力。
+current_posture: Moving/Hunting
+mood: 專注 (Focused) / 警惕 (Alert) / 擔憂(Concerned_GameScarcity?)
+goals:
+  short_term: 獵取足夠的獵物滿足山寨需求。
+  long_term: 保障穩定的肉食供應，探索更遠的獵場?
+core_stats: # (R1132 核心數值)
+  hp: 400; max_hp: 400; mp: 20; max_mp: 20; sta: 350; max_sta: 400; san: 300; max_san: 300;
+  fatigue: 30; hunger: 25; thirst: 25; morale: 65; stress: 30;
+skills:
+  - skill_id: Wilderness_Hunting
+    name_cn: 狩獵
+    level: 7
+    mastery: 駕輕就熟
+  - skill_id: Wilderness_Tracking
+    name_cn: 追蹤
+    level: 6
+    mastery: 登堂入室
+  - skill_id: Wilderness_Trapping
+    name_cn: 陷阱
+    level: 5
+    mastery: 初窺門徑
+  - skill_id: Weapon_Bow_Basic
+    name_cn: 基礎弓法
+    level: 6
+    mastery: 登堂入室
+  - skill_id: Hunting_Taming_Concept
+    name_cn: 狩獵/馴養(概念)
+    level: 0
+    proficiency: 0.1 # (R1114啟發)
+    mastery: 尚未掌握
+    is_potential: true
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_armor_leather_hunter_01
+    name: 獵戶皮甲
+    condition: 0.8
+  ranged:
+    item_id: item_weapon_bow_hunting_01
+    name: 獵弓
+    condition: 0.7
+  ammo:
+    item_id: item_ammo_arrow_basic
+    quantity: 15 # (估計)
+status_effects:
+  - 擔心獵物減少(Concerned_GameScarcity?) # (可能)
+relationships:
+  player_azhai: # 阿宅
+    affinity: 40.0
+    trust: 0.60
+    respect: 0.70
+    fear: 15.0
+    loyalty: 70.0
+    notes: "負責食物來源的關鍵人物之一。"
+    flags: [TaskedWith("Hunting")]
+ai_profile:
+  id: NPC_Hunter_Lead
+  personality_traits: [經驗豐富, 沉默, 可靠, 熟悉山林]
+  primary_goal: Provide_Meat_For_Fortress # (為山寨提供肉食)
+  secondary_goal: Explore_Hunting_Grounds # (探索獵場)
+  motivation: [Responsibility, SurvivalNeeds(Community)]
+ai_state:
+  current_task: LeadHuntingParty
+  concern: GameAvailability
+plot_importance: 4 # (肉類、與草藥食物來源)
+dynamic_flags: []
+special_flags:
+  - 獵戶頭領

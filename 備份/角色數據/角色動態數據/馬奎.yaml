@@ -1,0 +1,69 @@
+npc_id: npc_ma_kui_01
+npc_name: 馬奎
+alias: []
+current_location:
+  location_id: BWF_Mine_East_Entrance # (Assumed)
+  location_name: 黑風寨．東區礦洞入口
+current_action: 帶領一隊衛兵守衛礦洞入口，監督囚犯勞工的進出，確保礦區安全。
+current_posture: StandingGuard
+mood: 警惕 (Vigilant) / 認真 (Serious)
+goals:
+  short_term: 確保礦洞入口萬無一失。
+  long_term: 在衛隊中獲得晉升，為大當家效力。
+core_stats: # (R1132 核心數值)
+  hp: 450; max_hp: 450; mp: 30; max_mp: 30; sta: 400; max_sta: 420; san: 300; max_san: 300;
+  fatigue: 20; hunger: 15; thirst: 15; morale: 75; stress: 15;
+skills:
+  - skill_id: Combat_Unarmed_Brawling
+    name_cn: 鬥毆
+    level: 5
+    mastery: 初窺門徑
+  - skill_id: Weapon_Saber_Military
+    name_cn: 軍用刀法
+    level: 4
+    mastery: 穩紮穩打
+  - skill_id: Management_GuardDuty
+    name_cn: 崗哨管理
+    level: 3 # (可能因職責提升)
+    proficiency: 3.2
+    mastery: 初學乍練
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_armor_leather_guard_01
+    name: 衛兵皮甲
+    condition: 0.7
+  main_hand:
+    item_id: weapon_saber_standard_issue_worn_01
+    name: 制式長刀(破損)
+    condition: 0.6 # (裝備可能也匱乏)
+status_effects: []
+relationships:
+  player_azhai: # 阿宅
+    affinity: 35.0
+    trust: 0.60
+    respect: 0.70
+    fear: 20.0
+    loyalty: 70.0
+    notes: "負責礦洞口守衛的小頭目，忠實執行命令。"
+    flags: [GuardLead_MineEntrance]
+  npc_huang_jinbao: # 黃金寶
+    affinity: 10.0 # (工作關係)
+    trust: 0.4
+    respect: 0.3 # (可能看不慣其作風?)
+    notes: "工作上有交集，需要配合。"
+    flags: []
+ai_profile:
+  id: NPC_GuardLead_Vigilant
+  personality_traits: [忠誠, 可靠, 執行命令, 謹慎]
+  primary_goal: Secure_Mine_Entrance # (守衛礦洞入口)
+  secondary_goal: null # (模板中無此項)
+  tertiary_goal: null # (模板中無此項)
+  motivation: [Duty, Loyalty]
+ai_state:
+  current_task: GuardMineEntrance
+plot_importance: 3 # (礦區安全保障)
+dynamic_flags:
+  - AttendedRecentMeeting
+special_flags:
+  - 衛兵頭目
+  - 礦洞守衛

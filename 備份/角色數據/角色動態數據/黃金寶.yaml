@@ -1,0 +1,100 @@
+npc_id: npc_huang_jinbao_01
+npc_name: 黃金寶
+alias: []
+current_location:
+  location_id: BWF_Mine_East_01 # (假設地點)
+  location_name: 黑風寨．東區礦洞
+current_action: 狂熱地監督礦工和囚犯開採鐵礦石和煤炭，嚴格執行大當家的激勵政策，期待新鋼鎬送達以提高產量向“聖主”獻禮。
+current_posture: Standing/Overseeing
+mood: 狂熱 (Fanatical) / 亢奮 (Excited) / 嚴厲 (Strict)
+goals:
+  short_term: 將鐵礦石和煤炭產量提到最高！執行聖主的一切命令！
+  long_term: 永遠追隨聖主，為其掃清一切障礙，成為其最忠誠的僕人！
+core_stats: # (R1132 核心數值)
+  hp: 400
+  max_hp: 400
+  mp: 20
+  max_mp: 20
+  sta: 300 # (監工消耗)
+  max_sta: 400
+  san: 150 # (心智不健全)
+  max_san: 200
+  fatigue: 50
+  max_fatigue: 100
+  hunger: 40
+  thirst: 40
+  morale: 100 # (狂熱)
+  max_morale: 100
+  stress: 30 # (生產壓力)
+  max_stress: 100
+skills: # (R1132 技能狀態)
+  - skill_id: Combat_Unarmed_Thug
+    name_cn: 街頭鬥毆
+    level: 5
+    proficiency: 5.0
+    mastery: 初窺門徑
+  - skill_id: Management_LaborSupervision
+    name_cn: 勞力監督
+    level: 3
+    proficiency: 3.15 # R1115提升
+    mastery: 初學乍練
+  - skill_id: Intimidation
+    name_cn: 威嚇
+    level: 4
+    proficiency: 4.2
+    mastery: 穩紮穩打
+  - skill_id: Mining_Basic
+    name_cn: 基礎採礦
+    level: 2
+    proficiency: 2.1
+    mastery: 初學乍練
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_armor_leather_basic_01
+    name: 粗製皮甲
+    condition: 0.7
+  main_hand:
+    item_id: item_tool_pickaxe_steel_proto_01
+    name: 鋼鎬(原型)
+    condition: 0.9 # (持有原型鋼鎬之一)
+status_effects: # (當前狀態效果)
+  - 忠誠(狂熱 Fanatical)
+  - 被洗腦(Brainwashed)
+  - 亢奮(Excited)
+relationships: # (R1115 更新)
+  player_azhai: # 阿宅
+    affinity: 100.0 # (狂熱崇拜)
+    trust: 100.0 # (絕對服從)
+    respect: 100.0 # (神化)
+    fear: 80.0 # (敬畏)
+    loyalty: 100.0 # (洗腦忠誠)
+    notes: "被PC深度洗腦，視其為聖主，狂熱崇拜且絕對服從。執行命令不打折扣。"
+    flags:
+      - BrainwashedBy("player_azhai")
+      - FanaticallyLoyalTo("player_azhai")
+      - SeesAsDeity("player_azhai")
+      - TaskedWith("MineIronCoal")
+      - TaskedWith("ImplementIncentive")
+  # 與礦工/囚犯關係為支配/威嚇
+ai_profile:
+  id: NPC_Foreman_BrainwashedFanatic
+  personality_traits: [狂熱, 服從, 嚴厲, 殘忍(潛在), 缺乏獨立思考]
+  primary_goal: Execute_PC_Orders_Perfectly # (完美執行PC命令)
+  secondary_goal: Maximize_Mine_Output # (最大化礦產)
+  tertiary_goal: null
+  motivation: [Brainwashing, Fanatical_Worship(PC)]
+ai_state:
+  current_task: SuperviseMining_IronCoal
+  secondary_task: ImplementIncentive
+  emotional_state: Fanatical_Excited
+plot_importance: 6 # (礦產核心負責人)
+dynamic_flags: # (近期動態標記)
+  - ReceivedMiningDirectives(IronAndCoal)
+  - ImplementingIncentivePolicy
+special_flags: # (整合特殊標記)
+  - 礦隊隊長
+  - 被洗腦
+  - 狂熱忠誠
+  - 執行雙礦開採
+  - 執行激勵政策
+  - 前土龍幫頭目

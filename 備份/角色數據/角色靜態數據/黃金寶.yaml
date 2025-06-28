@@ -1,0 +1,46 @@
+npc_id: npc_huang_jinbao_01
+npc_name: 黃金寶
+alias: []
+is_key_character: true
+npc_type: 礦隊隊長 / 監工 (洗腦) # (基礎定義，包含關鍵狀態)
+basic_info:
+  occupation_identity: "礦隊隊長 / 前土龍幫頭目"
+  race: 中原人
+  faction_or_sect: black_wind_fortress (Forced/Brainwashed) # 原屬土龍幫
+  estimated_age: "三十五左右"
+  core_personality_traits: ["兇狠(原)", "貪婪(原)", "狂熱(現)", "服從(現)", "嚴厲(對下屬)"] # (包含轉變前後)
+  notes: "原為土龍幫頭目，被PC俘虜後通過記憶灌輸/精神改造手段洗腦，變成對PC狂熱崇拜且絕對服從的礦隊監工。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "身材壯碩，面目帶疤（可能），眼神中透露出兇悍（對礦工）和狂熱（對PC）。"
+estimated_base_attributes:
+  value: { str: 7, agi: 5, int_: 4, cha: 4, lck: 3 }
+  summary: "體格強壯，有一定威嚇力，頭腦簡單。"
+core_trait_tags:
+  - 前幫派頭目
+  - 被洗腦
+  - 狂熱崇拜PC
+  - 勞力監督者
+key_static_relationship_flags:
+  - 原土龍幫成員
+key_abilities_potential: null
+alignment_bias:
+  - 絕對效忠阿宅 (洗腦結果)
+taboo_or_weaknesses:
+  - 質疑或違背PC的命令 (會引發其狂亂)
+  - （潛意識）可能對洗腦前的記憶有模糊反應？ (待觀察)
+static_story_flags:
+  - 被俘虜
+  - 經歷精神改造
+cultural_traits:
+  - 江湖口音?
+visual_identifiers:
+  - 面有疤痕? (推測)
+origin_location_id: null # 可能來自附近城鎮
+starting_equipment: # (被俘前可能更好)
+  - item_armor_leather_thug_01 # 幫派皮甲?
+  - item_weapon_cleaver_01 # 殺豬刀?
+backstory_summary: |
+  原為敵對勢力土龍幫的頭目，作惡多端。在與黑風寨的衝突中被PC俘虜。
+  PC為快速掌控礦區並獲取勞動力，對其使用了高風險的精神改造手段，成功將其洗腦，使其變為對自己狂熱崇拜和絕對服從的傀儡。
+  現被任命為礦隊隊長，負責監督包括原部下和其他囚犯在內的礦工進行高強度開採，是PC掌控生產的重要棋子。

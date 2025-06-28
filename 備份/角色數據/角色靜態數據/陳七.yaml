@@ -1,0 +1,80 @@
+# === NPC 靜態資料: 陳七 (Chen Qi) ===
+# Format: YAML (Static Fields Only, Includes Backstory Summary)
+# Status: Deceased (Assassinated by Que around Day 49/50)
+
+npc_id: chen_qi # 假設 ID
+npc_name: 陳七
+alias: null # 無已知別名
+
+# --- Static Background Info ---
+basic_info: # 基本背景與身分
+  occupation_identity: "黑風寨行政總管 (前任)" # 身分職位 (生前)
+  race: 中原人 # 種族
+  faction_or_sect: "黑風寨(舊部/管理層)" # 所屬門派/陣營 (生前)
+  estimated_age: "四十多歲" # 年齡描述
+  core_personality_traits: # 核心不變性格 (基於生前表現推測)
+    - 務實
+    - 謹慎
+    - 有一定管理經驗
+    - 忠誠 (對山寨/舊主?)
+    - 趨利避害?
+    - 服從權威
+  notes: "原黑風寨的行政總管，負責內務、家眷管理、倉庫盤點等。在阿宅奪權後選擇留下輔佐，處理了大量初期穩定工作。後不幸被潛入的影巢刺客'雀'暗殺身亡。" # 關鍵背景註釋
+  clan_id: null
+  kinship_links: null
+
+base_appearance: "四十多歲的中年男子，樣貌普通，可能因長期處理雜務而顯得有些勞碌。穿著管事的服飾，態度通常比較恭謹。" # 基礎外貌描述 (推測)
+
+estimated_base_attributes: # 概念屬性 (推測)
+  value: { str: 5, agi: 6, int_: 7, cha: 6, lck: 5 }
+  summary: "心思尚可，身手一般，偏向文職管理。"
+
+core_trait_tags: # 核心特質標籤
+  - 行政總管(前)
+  - 務實謹慎
+  - 忠誠(舊主?)
+  - 管理經驗
+  - **被暗殺**
+
+key_static_relationship_flags: # 靜態關係標記
+  - 黑風寨舊部
+  - 留任官員 (阿宅時期)
+  - 經歷易主事件
+
+key_abilities_potential: # 天賦潛力技能標題
+  - 基礎管理能力
+  - 基礎記賬能力
+
+alignment_bias: # 陣營立場傾向 (生前)
+  - 效忠黑風寨
+  - 效忠時任大當家
+
+taboo_or_weaknesses: # 心理或生理弱點 (推測)
+  - 可能對新主的絕對信任不足？
+  - 懼怕混亂？
+
+static_story_flags: # 特殊背景標記
+  - 經歷山寨易主事件
+  - 負責初期內政穩定工作
+  - 成為影巢刺客的目標
+  - **確認死亡 (被暗殺)**
+
+cultural_traits: # 語言文化標籤
+  - 山寨文化
+
+visual_identifiers: # 外觀識別特徵
+  - 管事服飾 (生前)
+
+origin_location_id: black_wind_fortress? # 或早期加入?
+
+starting_equipment: # 初始裝備 (推測生前)
+  - item_cloth_manager_01 # 管事服飾?
+  - item_writing_brush_simple? # 簡單筆墨?
+  - item_ledger_basic? # 基礎賬簿?
+
+backstory_summary: | # 背景故事概要
+  陳七是黑風寨的老人，長期擔任行政總管，負責山寨的內務、人事和後勤管理。他見證了阿宅奪取山寨控制權的全過程，並在之後選擇留下來繼續輔佐新主。
+  他為人務實謹慎，有相當的管理經驗，在山寨初期混亂的局面下，協助阿宅處理了大量穩定人心的工作，如管理家眷、盤點庫存、傳達命令等。
+  然而，在影巢刺客'雀'潛入山寨執行任務時，陳七不幸成為其目標，被暗殺於自己的住所（約在遊戲時間 Day 49 夜晚）。他的死亡對山寨造成了震動，也是促使阿宅下定決心追查內應和影巢的重要導火索之一。
+
+# === End of Static NPC Profile: 陳七 ===

@@ -1,0 +1,45 @@
+npc_id: npc_xiao_cui_01
+npc_name: 小翠
+alias: []
+is_key_character: true # (因其特殊狀態和與PC的關係)
+npc_type: 侍女 / 受驚少女 # (基礎定義)
+basic_info:
+  occupation_identity: "侍女 (名義上) / 醫護學徒 (嘗試中)"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # (被擄至此)
+  estimated_age: "約十四五"
+  core_personality_traits: ["膽小", "脆弱", "依賴", "善良(本性)"]
+  notes: "來自下溪村，經歷未知創傷事件後對PC產生極度恐懼，恢復緩慢。"
+  clan_id: null
+  kinship_links: null # (父母失散)
+base_appearance: "面容本應清秀，但因長期恐懼顯得蒼白、怯懦，眼神躲閃，尤其不敢直視PC。"
+estimated_base_attributes:
+  value: { str: 2, agi: 4, int_: 5, cha: 6, lck: 3 }
+  summary: "極度缺乏安全感，身體瘦弱。"
+core_trait_tags:
+  - 精神創傷
+  - 深度恐懼 (對PC)
+  - 需要保護
+key_static_relationship_flags:
+  - 下溪村遺孤?
+  - 李春花等人玩伴
+  - 自幼被擄上營寨
+key_abilities_potential: null
+alignment_bias:
+  - 依賴秦嵐及少女同伴
+taboo_or_weaknesses:
+  - PC的存在或相關事物
+  - 巨大的聲響或突然的動作
+static_story_flags:
+  - 被擄掠者
+  - 創傷倖存者
+cultural_traits:
+  - 鄉村背景
+visual_identifiers:
+  - 眼神怯懦
+origin_location_id: lower_stream_village # 下溪村
+starting_equipment:
+  - item_cloth_common_girl_01 # 普通少女衣物
+backstory_summary: |
+  來自下溪村的少女，與李春花等人是兒時玩伴。在家鄉被擄掠過程中遭遇了嚴重的精神創傷（具體事件未知，但與PC直接相關），導致對PC產生了難以消除的極度恐懼。
+  目前與其他七位少女一同居住在頭領院落廂房，由秦嵐主要照看。狀態穩定但極度脆弱，是PC過去行為的直接體現，也是影響山寨內部氛圍的一個因素。

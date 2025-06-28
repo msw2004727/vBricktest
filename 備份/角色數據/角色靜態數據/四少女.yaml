@@ -1,0 +1,44 @@
+# Note: 此為模板，適用於 春妮, 二丫, 石頭, 孫巧，個體可能略有差異
+npc_id: npc_chun_ni_01 # (或 Er_Ya_01, Shi_Tou_01, Sun_Qiao_01)
+npc_name: 春妮 # (或 二丫, 石頭, 孫巧)
+alias: []
+is_key_character: false # (作為七少女中的四少女群體一部分)
+npc_type: 侍女 / 山寨少女 / 醫護學徒 # (基礎定義)
+basic_info:
+  occupation_identity: "侍女 / 醫護學徒"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # (本地居民)
+  estimated_age: "約十五六"
+  core_personality_traits: ["老實", "聽話", "好奇", "可能更適應山寨環境"]
+  notes: "黑風寨土生土長的少女，父母是寨中普通成員。被選入七少女組，跟隨秦嵐學習。"
+  clan_id: null
+  kinship_links: null # (父母仍在寨中，關係普通)
+base_appearance: "普通的山寨少女樣貌，可能比三少女更害羞一些。"
+estimated_base_attributes:
+  value: { str: 4, agi: 5, int_: 5, cha: 5, lck: 5 }
+  summary: "身體尚可，比較老實。"
+core_trait_tags:
+  - 山寨原住民
+  - 學習中
+  - 較為馴服
+key_static_relationship_flags:
+  - 父母在寨中
+key_abilities_potential:
+  - 基礎護理能力
+alignment_bias:
+  - 聽從秦嵐安排
+  - 效忠大當家 (更直接)
+taboo_or_weaknesses: null
+static_story_flags:
+  - 在山寨長大
+cultural_traits:
+  - 山寨口音?
+visual_identifiers: null
+origin_location_id: black_wind_fortress
+starting_equipment:
+  - item_cloth_common_girl_01
+backstory_summary: |
+  黑風寨土生土長的四位少女，父母是寨中底層成員。被選中與其他少女一同生活學習，由秦嵐照管。
+  相比從下河村來的少女，她們可能對山寨更有歸屬感，對PC的敬畏也更直接。
+  同樣將被指示作為傳播官方流言的媒介。
+  七少女當中分別由三少女+四少女組成。

@@ -1,0 +1,44 @@
+npc_id: npc_old_blacksmith_01
+npc_name: 老鐵匠
+alias: []
+is_key_character: true
+npc_type: 首席鐵匠 / 生產核心 # (基礎定義)
+basic_info:
+  occupation_identity: "鐵匠"
+  race: 中原人
+  faction_or_sect: black_wind_fortress # 山寨老人
+  estimated_age: "六十開外"
+  core_personality_traits: ["經驗豐富", "務實", "固執(對傳統技藝)", "忠誠(對山寨)", "敬畏(對PC神技)"] # (包含轉變前的基礎特質)
+  notes: "山寨資歷最老的鐵匠，掌握傳統鍛造技術，近期在PC指導下學會煉鋼，並見證了骨鋼刀的誕生。"
+  clan_id: null
+  kinship_links: null # 可能有學徒關係 (見動態部分)
+base_appearance: "身材不高但很敦實，肌肉結實，飽經風霜，臉上和手臂上可能有燒傷疤痕。赤膊工作時充滿力量感。"
+estimated_base_attributes:
+  value: { str: 7, agi: 4, int_: 5, cha: 5, lck: 6 }
+  summary: "經驗體力俱佳，腦子夠用，不善言辭。"
+core_trait_tags:
+  - 經驗老道
+  - 技藝精湛 (傳統鍛造)
+  - 掌握煉鋼 (新) # (後天習得，已成核心標籤)
+  - 見證奇蹟 # (同上)
+key_static_relationship_flags: []
+key_abilities_potential:
+  - 鍛造宗師潛質 (傳統)
+alignment_bias:
+  - 忠於黑風寨
+  - 尊敬技術
+taboo_or_weaknesses:
+  - 可能對不尊重傳統工藝的行為反感 (已被PC神技折服)
+static_story_flags:
+  - 山寨老人
+cultural_traits: null
+visual_identifiers:
+  - 鐵匠特徵 (肌肉/疤痕)
+origin_location_id: black_wind_fortress? # 或被擄上山?
+starting_equipment:
+  - item_tool_hammer_forge_01 # 鐵匠錘
+  - item_apron_leather_01 # 皮圍裙
+backstory_summary: |
+  山寨資歷最老的鐵匠，技藝精湛但思想相對傳統。在PC到來後，被迫接受並學習了新的煉鋼技術。
+  親身參與並見證了PC主導的、異想天開的骨鋼サーベル鍛造全過程，受到巨大震撼，自身技能也得到提升。
+  目前對PC的技術和能力充滿敬畏，忠誠度提高，正帶領學徒恢復被中斷的鋼鎬生產。同時被PC託付保管新煉成的神兵。

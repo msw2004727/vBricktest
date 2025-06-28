@@ -1,0 +1,94 @@
+npc_id: npc_killer_suspect_01
+npc_name: 雀
+alias: []
+current_location:
+  location_id: BWF_Infirmary_Temp_01
+  location_name: 黑風寨．臨時傷兵安置點內部
+current_action: 遵照'主人'命令躺在床上休息，眼神痴痴地望著門口方向或PC離開的方向，等待身體恢復後去找'主人'。
+current_posture: LyingDown
+mood: 依賴 (Dependent) / 狂熱 (Fanatical) / 期待 (Anticipating) / 混亂 (Confused)
+goals:
+  short_term: 聽秦嵐的話，養好身體，去找主人報到！
+  long_term: 待在主人身邊，保護主人！（扭曲的認知）
+core_stats: # (當前數值)
+  hp: 100.0
+  max_hp: 250.0 # (當前最大值，可能受傷影響)
+  mp: 30.0
+  max_mp: 180.0 # (當前最大值)
+  sta: 80.0
+  max_sta: 200.0 # (當前最大值)
+  san: 50.0
+  max_san: 300.0 # (當前最大值)
+  fatigue: 70.0 # (當前疲勞)
+  max_fatigue: 100.0
+  hunger: 40.0 # (當前飢餓)
+  thirst: 45.0 # (當前口渴)
+  morale: 60.0 # (當前士氣)
+  max_morale: 100.0
+  stress: 80.0 # (當前壓力)
+  max_stress: 100.0
+skills: [] # (當前可用的技能及其等級/熟練度，此處因狀態異常而未知)
+abilities: [] # (當前可用的特殊能力，此處未知)
+inventory: [] # (當前持有的物品)
+currency: null # (當前持有的貨幣)
+equipment: # (當前穿戴的裝備及其狀況)
+  torso:
+    item_id: item_cloth_patient_robe_01
+    name: 病號服
+    condition: 0.8
+  # 其他欄位為 null
+status_effects: # (當前承受的狀態效果)
+  - Awake
+  - SevereMentalTrauma
+  - BrainMutation(Ongoing?)
+  - ImplantedPersonality(Childlike_Obsessed_PC)
+  - MentallyImpaired(Severe)
+  - EmotionallyVolatile
+  - PhysicallyWeak
+  - FollowCommand(ListenToQinLan_Recover_ReportToPC)
+  - Calm(Superficial)
+  - Anticipation(High - Reporting to PC)
+relationships: # (當前的人際關係數值和狀態標記)
+  player_azhai: # 阿宅
+    affinity: 100.0 # (當前好感度)
+    enmity: 0.0 # (當前敵意度)
+    trust: 100.0 # (當前信任度)
+    respect: 100.0 # (當前尊敬度)
+    fear: 50.0 # (當前恐懼度)
+    loyalty: 100.0 # (當前忠誠度)
+    notes: "精神崩潰後被 PC 強行植入扭曲的愛戀與守護指令，視 PC 為唯一的主人與歸宿，智力大幅倒退。對 PC 的命令絕對服從，但情緒極不穩定。" # (當前關係註解)
+    flags: # (當前關係標記)
+      - ObsessedWith("player_azhai")
+      - MentallyDominatedBy("player_azhai")
+      - SeesAsMaster("player_azhai")
+  npc_qin_lan: # 秦嵐
+    affinity: 10.0
+    trust: 20.0
+    respect: 0.0
+    fear: 10.0?
+    loyalty: 0.0
+    notes: "因 PC 指令而聽從其照護，但本身對其無特殊情感。"
+    flags: [FollowingOrdersAbout("npc_qin_lan")]
+ai_profile: # (AI 當前的行為模式設定)
+  id: NPC_Assassin_MentallyBroken_Obsessed
+  personality_traits: [混亂, 依賴, 狂熱(對PC), 偏執, 暴力傾向(潛在), 幼稚, 迷戀(對PC), 喜怒無常, 衣衫不整, 沒禮貌] # (當前表現出的性格特質)
+  primary_goal: Serve_Protect_PC # (當前首要目標)
+  secondary_goal: Report_To_PC # (當前次要目標)
+  tertiary_goal: null # (當前其他目標)
+  motivation: [Implanted_Love_Loyalty, Fear?] # (當前行為動機)
+ai_state: # (AI 當前的具體狀態)
+  current_task: Recovering_Waiting_To_Report # (正在執行的任務)
+  focus_target: player_azhai (Mentally) # (關注目標)
+  emotional_state: Obsessed_Anticipating_Confused # (情緒狀態)
+plot_importance: 8 # (當前的劇情重要性評級)
+dynamic_flags: # (近期獲得的、非持久性的狀態標記)
+  - RecentlyAwakened
+  - UnderObservation(QinLan)
+  - GivenConditionalOrder(ReportToPC)
+special_flags: # (整合了當前狀態的特殊標記)
+  - 影巢刺客(原)
+  - 腦部異變?
+  - 精神重創
+  - 被植入指令
+  - 狀態極不穩定
+  - 關鍵情報載體

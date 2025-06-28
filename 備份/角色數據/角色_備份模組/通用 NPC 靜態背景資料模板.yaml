@@ -1,0 +1,68 @@
+# === 通用 NPC 靜態背景資料模板 ===
+# 格式: YAML
+# 說明：此模板專注於記錄 NPC 相對固定的背景信息。
+#      請根據實際角色情況填寫 "待填寫" 或修改 null/空列表/預設值。
+
+npc_id: npc_unique_id_000 # <<-- 全域唯一 ID，必需修改
+npc_name: "待填寫" # <<-- 角色完整姓名
+alias: # 其他稱呼 (列表)
+#  - 別名1
+#  - 別名2
+
+# --- Static Background Info ---
+basic_info: # 基本背景與身分
+  occupation_identity: "待填寫" # 身分職位
+  race: "中原人" # 種族
+  faction_or_sect: null # 原始或主要屬門派/陣營 ID
+  estimated_age: "待填寫" # 年齡描述
+  core_personality_traits: [] # 核心不變性格 (列表)
+    # - 特質1
+    # - 特質2
+  notes: null # 關鍵背景註釋 (字串)
+  clan_id: null # 家族/宗族 ID
+  kinship_links: null # 親屬關係列表: [ { target_id: "npc_id", relation: "父親", intimacy: 90 }, ... ]
+
+base_appearance: "待填寫" # 基礎外貌文字描述
+
+estimated_base_attributes: # 概念屬性 (可選)
+#  value: { str: 5, agi: 5, int_: 5, cha: 5, lck: 5 } # 估計基礎值 (int_ 避免關鍵字衝突)
+#  summary: "各項平均" # 總結語句
+  value: null
+  summary: null
+
+core_trait_tags: [] # 核心特質標籤 (列表)
+  # - 標籤1
+  # - 標籤2
+
+key_static_relationship_flags: [] # 靜態關係標記 (列表)
+  # - 標記1
+
+key_abilities_potential: null # 天賦潛力技能標題 (列表或 null)
+#  - 潛力1
+#  - 潛力2
+
+alignment_bias: null # 陣營立場傾向 (列表或 null)
+#  - 傾向1
+#  - 傾向2
+
+taboo_or_weaknesses: null # 心理或生理弱點 (列表或 null)
+#  - 弱點1
+
+static_story_flags: null # 特殊背景標記 (列表或 null)
+#  - 背景標記1
+
+cultural_traits: null # 語言文化標籤 (列表或 null)
+#  - 文化標籤1
+
+visual_identifiers: null # 外觀識別特徵 (列表或 null)
+#  - 特徵1
+
+origin_location_id: null # 來源地ID
+
+starting_equipment: null # 初始裝備ID列表 (列表或 null)
+#  - item_id_1
+#  - item_id_2
+
+backstory_summary: null # GM 內部注記的背景概要 (字串)
+
+# === End of Static NPC Background Template (YAML) ===

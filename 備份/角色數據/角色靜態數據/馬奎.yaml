@@ -1,0 +1,38 @@
+npc_id: npc_ma_kui_01
+npc_name: 馬奎
+alias: []
+is_key_character: false # (Guard lead)
+npc_type: 衛兵小頭目 (礦洞口守衛) # (基礎定義)
+basic_info:
+  occupation_identity: "衛兵小頭目"
+  race: 中原人
+  faction_or_sect: black_wind_fortress
+  estimated_age: "二十尾，三十初"
+  core_personality_traits: ["忠誠", "可靠", "執行命令", "略顯刻板?"]
+  notes: "負責帶隊守衛礦洞入口的衛兵頭目。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "標準的衛兵樣貌，可能比普通衛兵更魁梧或眼神更銳利。"
+estimated_base_attributes:
+  value: { str: 7, agi: 5, int_: 5, cha: 5, lck: 5 }
+  summary: "合格的基層頭目。"
+core_trait_tags:
+  - 忠誠
+  - 可靠
+  - 基層軍官
+key_static_relationship_flags: []
+key_abilities_potential: null
+alignment_bias:
+  - 忠於黑風寨和阿宅
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers: null
+origin_location_id: black_wind_fortress?
+starting_equipment:
+  - item_armor_leather_guard_01
+  - item_weapon_saber_standard_issue_01
+backstory_summary: |
+  原本是東區礦坑內的殘存黑風寨前朝殘黨，被pc震攝後臣服投靠。
+  工作認真負責，是維持礦區秩序和安全的重要一環。
+  不屑黃金寶的誇張態度。

@@ -1,0 +1,104 @@
+npc_id: npc_zhou_ping_01
+npc_name: 周平
+alias: [] # (其他稱呼)
+current_location:
+  location_id: BWF_Crafting_CharcoalKiln_01 # (Assumed)
+  location_name: 黑風寨．後山炭窯區
+current_action: 監督新一輪精煉木炭的燒製過程，控制炭化時間和窯溫，同時留意送來的木材品質和數量，對木材消耗速度略感擔憂。
+current_posture: Standing/Overseeing
+mood: 專注 (Focused) / 務實 (Pragmatic) / 略有擔憂 (Slightly Worried - WoodSupply)
+goals: # (當前目標)
+  short_term: 持續穩定地產出高質量精炭，滿足鐵匠鋪和其他需求。
+  long_term: 成為山寨不可或缺的精碳與木炭匠人，保障關鍵燃料供應。
+core_stats: # (R1132 核心數值)
+  hp: 380
+  max_hp: 380
+  mp: 10
+  max_mp: 10
+  sta: 300 # (燒炭/管理消耗)
+  max_sta: 400
+  san: 320
+  max_san: 350
+  fatigue: 45 # (工作疲勞)
+  max_fatigue: 100
+  hunger: 30
+  thirst: 35
+  morale: 75 # (生產走上正軌)
+  max_morale: 100
+  stress: 25 # (擔心木材供應)
+  max_stress: 100
+skills: # (R1132 技能狀態 - 掌握新技術後應有提升)
+  - skill_id: Crafting_CharcoalMaking
+    name_cn: 燒炭
+    category: Crafting
+    level: 7 # (已掌握精煉法，等級提升)
+    proficiency: 7.5 # (持續實踐提升)
+    mastery: 駕輕就熟
+    description: "精通傳統燒炭技術，並熟練掌握了PC傳授的精煉法。"
+  - skill_id: Management_Production_Basic
+    name_cn: 基礎生產管理
+    category: Strategy_Leadership
+    level: 4 # (經驗提升?)
+    proficiency: 4.1
+    mastery: 穩紮穩打
+    description: "管理炭窯和燒炭工人。"
+  - skill_id: Resource_WoodIdentification
+    name_cn: 木材辨識
+    category: Knowledge_Nature
+    level: 5
+    proficiency: 5.0
+    mastery: 初窺門徑
+    description: "了解不同木材的燒炭特性。"
+  - skill_id: Craft_Woodworking
+    name_cn: 木工手藝
+    category: Knowledge_Nature
+    level: 5
+    proficiency: 5.0
+    mastery: 初窺門徑
+    description: "製造木頭器具的能力。"
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_cloth_coarse_work_01 # (假設)
+    name: 粗布工作服
+    condition: 0.7
+status_effects: # (當前狀態效果)
+  - 擔憂(木材供應 Worried_WoodSupply)
+relationships: # (關鍵人際關係)
+  player_azhai: # 阿宅
+    affinity: 50.0 # (感激)
+    enmity: 0.0
+    trust: 0.70
+    respect: 0.85 # (尊敬技術)
+    fear: 15.0
+    loyalty: 80.0
+    notes: "因PC傳授精煉木炭技術而心存感激，對PC非常尊敬，工作認真負責。"
+    flags:
+      - ValuedCraftsman
+      - ReceivedGuidance("CharcoalMaking")
+      - TaskedWith("RefinedCharcoalProd")
+  npc_shi_gan: # 石敢 (伐木 - 假設存在此NPC)
+    affinity: 40.0 # (工作夥伴)
+    trust: 0.6
+    respect: 0.5
+    notes: "需要他提供木材，關係直接。"
+    flags: [WorkRelation("WoodSupplier")]
+ai_profile:
+  id: NPC_Craftsman_CharcoalMaster
+  personality_traits: [務實, 認真, 感恩, 經驗豐富]
+  primary_goal: Produce_HighQuality_Charcoal # (生產高質量木炭)
+  secondary_goal: Ensure_Stable_Supply # (保障穩定供應)
+  motivation: [Responsibility, Gratitude(PC), Craftsmanship_Pride]
+ai_state:
+  current_task: OverseeCharcoalBurning
+  concern: WoodSupply
+  emotional_state: Focused_Pragmatic_SlightlyWorried
+plot_importance: 6 # (精炭生產核心)
+dynamic_flags: # (近期動態標記)
+  - MasteredRefinedCharcoalTech
+  - FacingPotentialWoodShortage
+special_flags: # (整合特殊標記)
+  - 木炭生產負責人
+  - 掌握精煉木炭技術
+  - 生產骨幹
+  - 房屋修繕主導人
+  - 木製傢俱或工具製造人

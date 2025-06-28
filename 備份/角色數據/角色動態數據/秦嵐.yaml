@@ -1,0 +1,162 @@
+npc_id: npc_qin_lan_01
+npc_name: 秦嵐
+alias: # (其他稱呼)
+  - 秦嵐姐姐 (七少女常用)
+  - 秦總管 (部分下屬可能稱呼)
+  current_location:
+  location_id: BWF_Infirmary_Temp_01
+  location_name: 黑風寨．臨時傷兵安置點內部
+current_action: 照護王大槌，準備開始評估'雀'的飲食和肢體功能，並思考如何向七少女傳達大當家的指示關於澄清流言。
+current_posture: Standing/Working
+mood: 專業 (Professional) / 擔憂 (Worried) / 忠誠 (Loyal) / 釋然 (Relieved - Re:PC relationship)
+goals: # (當前目標)
+  short_term: 完成大當家交代的任務(評估'雀', 照護傷患, 引導流言)。
+  long_term:
+    - 輔佐大當家，維護山寨安定。
+    - 建立完善的醫護體系。
+    - （可能潛藏）個人情感的安放？
+core_stats: # (R1132 核心數值)
+  hp: 350
+  max_hp: 350
+  mp: 150 # (假設有少量用於特殊治療或精神集中的值)
+  max_mp: 150
+  sta: 280 # (持續照護消耗)
+  max_sta: 300
+  san: 380 # (略有恢復但仍有擔憂)
+  max_san: 400
+  fatigue: 30
+  max_fatigue: 100
+  hunger: 20
+  thirst: 20
+  morale: 85 # (忠誠且得到信任)
+  max_morale: 100
+  stress: 40 # (對'雀'和山寨未來感到擔憂)
+  max_stress: 100
+skills: # (R1132 技能狀態 - 基於R1084快照+後續成長)
+  - skill_id: Medical_Herbalism
+    name_cn: 草藥學
+    category: Medical
+    level: 6
+    proficiency: 6.5 # (穩定)
+    mastery: 登堂入室
+  - skill_id: Medical_FirstAid
+    name_cn: 急救
+    category: Medical
+    level: 7
+    proficiency: 7.2 # (穩定)
+    mastery: 駕輕就熟
+  - skill_id: Medical_Nursing
+    name_cn: 護理
+    category: Medical
+    level: 8 # (等級提升?)
+    proficiency: 8.3 # (持續提升)
+    mastery: 爐火純青
+  - skill_id: GI_OBSERVATION
+    name_cn: 觀察
+    category: General_Interaction
+    level: 7 # (等級提升?)
+    proficiency: 7.5 # (持續提升)
+    mastery: 駕輕就熟
+  - skill_id: Management_Basic
+    name_cn: 基礎管理
+    category: Strategy_Leadership
+    level: 5 # (等級提升?)
+    proficiency: 5.1 # (經驗提升)
+    mastery: 初窺門徑
+  - skill_id: Teaching_Basic
+    name_cn: 基礎指導
+    category: Social
+    level: 4
+    proficiency: 4.3 # (經驗提升)
+    mastery: 穩紮穩打
+  - skill_id: General_Life_Caregiving
+    name_cn: 照料
+    category: General_Life
+    level: 5 # (推測基礎能力)
+    proficiency: null
+    mastery: 初窺門徑
+abilities: [] # (無已知特殊能力)
+inventory: [] # (假設無特殊隨身物品)
+currency: null
+equipment: # (當前穿戴)
+  head: null
+  face: null
+  neck: null
+  torso:
+    item_id: item_cloth_doctor_robe_01
+    name: 素雅醫袍
+    condition: 0.9
+  legs: null # (可能是裙裝或褲裝)
+  feet:
+    item_id: item_shoes_cloth_basic_01 # (假設)
+    name: 布鞋
+    condition: 0.8
+  main_hand: null
+status_effects: # (當前狀態效果)
+  - 忠誠(Loyal)
+  - 擔憂(Worried - About Que/Future)
+relationships: # (關鍵人際關係 @ R1132 時點)
+  player_azhai: # 阿宅
+    affinity: 80.0 # (好感度 - 高，但複雜)
+    enmity: 0.0
+    trust: 0.90    # (信任度 - 高)
+    respect: 0.90  # (尊敬度 - 高)
+    fear: 15.0     # (恐懼度 - 對其手段的敬畏)
+    loyalty: 95.0  # (忠誠度 - 高)
+    notes: "對PC極度忠誠和信任，略帶敬畏和複雜的個人情感。因PC澄清與雀的關係而感到釋然，但仍對PC的手段和'雀'的狀況感到擔憂。"
+    flags:
+      - LoyalSubordinate
+      - TrustedAssistant
+      - ReceivedDirectOrders
+      - ReceivedClarification(PC_Que_Relationship) # R1121
+      - TaskedWith("AssessQue") # R1119
+      - TaskedWith("SpreadOfficialStory") # R1121
+      - FeelingRelieved # R1121
+      - FeelingWorried # 持續
+  npc_killer_suspect_01: # 雀
+    affinity: 10.0 # (同情/擔憂多於好感)
+    trust: 0.1
+    respect: 0.0
+    notes: "負責其醫護，對其狀態感到擔憂和警惕。"
+    flags: [IsCaretaker, Wary, Concerned]
+  npc_wang_dachui: # 王大槌
+    affinity: 50.0 # (醫者對病患的關懷)
+    trust: 0.7
+    respect: 0.4
+    notes: "負責其醫護，關係良好。"
+    flags: [IsCaretaker]
+  Group_Maidens: # 七少女
+    affinity: 75.0 # (師長/保護者的關愛)
+    trust: 0.85
+    respect: 0.70
+    notes: "負責照料和教導她們，關係親近。"
+    flags: [IsGuardian, IsMentor]
+  npc_shangguan_yu_01: # 上官玉
+    affinity: -18.0 # (視為潛在情敵?)
+    trust: 0.05
+    respect: 0.60
+    notes: "可能因其突然出現且深得PC信任而抱有戒心或視為潛在威脅。"
+    flags: [IsRival("Confirmed")] # (來自上官玉視角，秦嵐可能只是警惕)
+ai_profile:
+  id: NPC_Healer_LoyalTrusted_Worried
+  personality_traits: [沉穩, 聰慧, 堅韌, 專業, 忠誠, 有責任心, 略帶憂慮] # (結合 core_personality_traits)
+  primary_goal: Assist_PC_Ensure_Stability # (輔助PC，確保山寨穩定)
+  secondary_goal: Improve_Medical_Care # (提升醫護水平)
+  tertiary_goal: Care_For_Patients # (照顧好傷病員)
+  motivation: [Loyalty(PC), Responsibility, Compassion?]
+ai_state:
+  current_task: AssessQue_DietLimbs
+  secondary_task: CareForWangDachui
+  pending_task: InstructMaidens(Rumor)
+  emotional_state: Professional_Worried_Loyal_Relieved
+plot_importance: 7
+dynamic_flags: # (R1115 及之後獲得的動態標記)
+  - ReceivedClarification(PC_Que_Relationship)
+  - TaskedWith("AssessQue")
+  - TaskedWith("SpreadOfficialStory")
+special_flags: # (整合的特殊標記)
+  - 醫護總管 # Dynamic Role
+  - 周統領遺孀 # Static Background
+  - PC核心助手 # Dynamic Role
+  - 了解PC部分秘密(治療雀) # Dynamic Knowledge
+  - 負責引導關於雀的輿論 # Dynamic Task

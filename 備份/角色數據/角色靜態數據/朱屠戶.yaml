@@ -1,0 +1,37 @@
+npc_id: npc_zhu_tuhu_01
+npc_name: 朱屠戶
+alias: []
+is_key_character: false
+npc_type: 屠夫 # (基礎定義)
+basic_info:
+  occupation_identity: "屠夫"
+  race: 中原人
+  faction_or_sect: black_wind_fortress
+  estimated_age: "四十多"
+  core_personality_traits: ["務實", "手藝熟練", "可能有點粗魯"]
+  notes: "負責處理獵戶們帶回來的獵物。"
+  clan_id: null
+  kinship_links: null
+base_appearance: "身材可能較為壯實，常年與牲畜打交道，身上可能帶有血漬或圍著油膩的圍裙。"
+estimated_base_attributes:
+  value: { str: 7, agi: 4, int_: 4, cha: 3, lck: 5 }
+  summary: "力氣大，不拘小節。"
+core_trait_tags:
+  - 屠宰專家
+  - 手藝人
+key_static_relationship_flags: []
+key_abilities_potential: null
+alignment_bias:
+  - 忠於黑風寨 (基本)
+taboo_or_weaknesses: null
+static_story_flags: []
+cultural_traits: null
+visual_identifiers:
+  - 屠夫圍裙?
+origin_location_id: black_wind_fortress?
+starting_equipment:
+  - item_tool_cleaver_01 # (屠刀)
+  - item_apron_butcher_01 # (屠夫圍裙)
+backstory_summary: |
+  山寨中負責屠宰獵物的匠人，手藝熟練。是保障肉食能充分利用的重要一環。
+  劉二、馬六、孫計、吳用、朱屠戶、空空兒、周平都是從一次招募後自願奉獻自身專長加入pc團隊。

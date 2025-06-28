@@ -1,0 +1,69 @@
+# Note: 此為模板，適用於 孫計, 吳用，個體可能略有差異 (例如性格)
+npc_id: npc_sun_ji_01 # (或 Wu_Yong_01)
+npc_name: 孫計 # (或 吳用)
+alias: []
+# Note: 此為模板，適用於 孫計, 吳用，個體狀態可能略有差異
+current_location:
+  location_id: BWF_DocumentRoom_01 # (Assumed)
+  location_name: 黑風寨．文書房
+current_action: 在上官玉的監督下，協助進行舊檔案的清點和初步整理工作。
+current_posture: Sitting/Working
+mood: 認真 (Diligent) / 謹慎 (Cautious)
+goals:
+  short_term: 完成檔案清點任務。
+  long_term: 在山寨中憑藉技能安穩立足。
+core_stats: # (R1132 核心數值)
+  hp: 200; max_hp: 200; mp: 100; max_mp: 100; sta: 150; max_sta: 180; san: 320; max_san: 350;
+  fatigue: 20; hunger: 20; thirst: 20; morale: 70; stress: 25;
+skills:
+  - skill_id: Knowledge_Literacy
+    name_cn: 讀寫
+    level: 5
+    mastery: 運用自如
+  - skill_id: Knowledge_Accounting_Basic
+    name_cn: 基礎算術/記賬
+    level: 5
+    proficiency: 5.3 # (提升)
+    mastery: 運用自如
+  - skill_id: Management_DocSorting
+    name_cn: 文書整理
+    level: 4
+    proficiency: 4.5 # (提升)
+    mastery: 穩紮穩打
+    is_potential: true
+current_equipment: # (當前穿戴)
+  torso:
+    item_id: item_cloth_scribe_robe_01 # (假設)
+    name: 文士袍
+    condition: 0.9
+status_effects:
+  - 工作中(Working)
+relationships:
+  npc_shangguan_yu_01: # 上官玉
+    affinity: 90.0
+    trust: 0.70
+    respect: 0.80
+    notes: "認可其能力，聽從其安排。迷戀上官玉，能與其共事感到愉悅，崇拜其才華。" # (整合自模板)
+    flags: [SupervisedBy("npc_shangguan_yu_01"), RecognizesAbility("npc_shangguan_yu_01")]
+  player_azhai: # 阿宅
+    affinity: 30.0
+    trust: 0.40
+    respect: 0.60
+    fear: 30.0
+    loyalty: 50.0
+    notes: "敬畏大當家。"
+    flags: []
+ai_profile:
+  id: NPC_Scribe_Diligent
+  personality_traits: [細心, 謹慎, 務實, 聽話] # (孫計可加 'Ambitious?')
+  primary_goal: Complete_Assigned_Tasks # (完成指派任務)
+  secondary_goal: Secure_Position # (穩固地位)
+  motivation: [NeedForStability, RespectForSupervisor]
+ai_state:
+  current_task: AssistArchiveSorting
+  supervisor: npc_shangguan_yu_01
+plot_importance: 3 # (文書工作執行者)
+dynamic_flags:
+  - ParticipatingInArchiveProject
+special_flags:
+  - 文書人員
