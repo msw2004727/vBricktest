@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket 台灣法律風險分析與在地化合規路徑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f2e8;
+    --paper-warm: #f0e8d6;
+    --paper-dark: #e8dfc9;
+    --ink: #1f1a14;
+    --ink-soft: #3d342a;
+    --muted: #8a7d6b;
+    --accent-red: #8b2635;
+    --accent-red-light: #a63648;
+    --accent-navy: #1e3a5f;
+    --accent-blue: #2b5278;
+    --accent-orange: #a8571f;
+    --accent-green: #2d5016;
+    --rule: #c9b88a;
+    --rule-soft: #ddd0aa;
+    --warning: #b71c1c;
+    --danger-bg: #fef1f1;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Noto Serif TC", serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    min-height: 100vh;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent 0, transparent 40px, rgba(139,38,53,0.015) 40px, rgba(139,38,53,0.015) 41px),
+      radial-gradient(ellipse at top, rgba(139,38,53,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ============ 封面 ============ */
+  .cover {
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    position: relative;
+    text-align: center;
+  }
+
+  .cover-decor-top,
+  .cover-decor-bottom {
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cover-decor-top {
+    border-top: 2px solid var(--accent-red);
+    border-bottom: 1px solid var(--accent-red);
+    padding: 1rem 0 0.3rem;
+    margin-bottom: 3rem;
+  }
+
+  .cover-decor-bottom {
+    border-top: 1px solid var(--accent-red);
+    border-bottom: 2px solid var(--accent-red);
+    padding: 0.3rem 0 1rem;
+    margin-top: 3rem;
+  }
+
+  .cover-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--accent-red);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .cover h1 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    color: var(--ink);
+    margin: 1rem 0 0.5rem;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+  }
+
+  .cover-subtitle-en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--accent-red);
+    letter-spacing: 0.08em;
+    margin-top: 0.8rem;
+  }
+
+  .cover-subject {
+    margin-top: 3rem;
+    padding: 2rem;
+    border-left: 2px solid var(--accent-red);
+    border-right: 2px solid var(--accent-red);
+    max-width: 620px;
+    width: 100%;
+  }
+
+  .cover-subject h2 {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .cover-subject p {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+
+  .cover-meta {
+    margin-top: 3rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+
+  .cover-meta span {
+    margin: 0 0.8rem;
+  }
+
+  /* ============ 文件定位說明框 ============ */
+  .danger-banner {
+    max-width: 920px;
+    margin: 3rem auto;
+    padding: 2rem 2.2rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    border: 1px solid var(--accent-navy);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .danger-banner::before {
+    content: "DOCUMENT NATURE · FOR REVIEW";
+    position: absolute;
+    top: -0.75rem;
+    left: 1.8rem;
+    background: var(--accent-navy);
+    color: white;
+    padding: 0.2rem 0.9rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+
+  .danger-banner h2 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--accent-navy);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.03em;
+  }
+
+  .danger-banner p {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.9;
+    margin-bottom: 0.7rem;
+  }
+
+  .danger-banner p:last-child {
+    margin-bottom: 0;
+  }
+
+  .danger-banner strong {
+    color: var(--accent-navy);
+    font-weight: 600;
+  }
+
+  /* ============ 文件資訊 ============ */
+  .doc-info {
+    max-width: 920px;
+    margin: 2rem auto 0;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .info-card {
+    padding: 1.1rem 1.3rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent-navy);
+  }
+
+  .info-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--accent-navy);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+
+  .info-value {
+    font-size: 0.92rem;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* ============ 主要內容區 ============ */
+  main {
+    max-width: 920px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ 章節 ============ */
+  .section {
+    margin-bottom: 4rem;
+    padding-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 1.2rem;
+  }
+
+  .section-number {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: var(--accent-red);
+    line-height: 1;
+  }
+
+  .section-title-zone h2 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: var(--ink);
+    letter-spacing: 0.03em;
+  }
+
+  .section-title-zone .en {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+    display: block;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ 關鍵事實 ============ */
+  .key-facts {
+    background: var(--paper-warm);
+    padding: 2.2rem 2.5rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--accent-navy);
+  }
+
+  .key-facts h3 {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .key-facts .intro {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .facts-list {
+    list-style: none;
+    counter-reset: fact-counter;
+  }
+
+  .facts-list li {
+    counter-increment: fact-counter;
+    padding: 1rem 0 1rem 2.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    border-bottom: 1px dashed var(--rule-soft);
+  }
+
+  .facts-list li:last-child {
+    border-bottom: none;
+  }
+
+  .facts-list li::before {
+    content: counter(fact-counter, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--accent-navy);
+    font-weight: 500;
+  }
+
+  /* ============ 引用來源 ============ */
+  .cite {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.8rem 0.5rem 1rem;
+    background: var(--paper);
+    border-left: 2px solid var(--accent-navy);
+    font-size: 0.82rem;
+    line-height: 1.65;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 300;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .cite-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-navy);
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+
+  .cite a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-blue);
+    transition: all 0.2s;
+    word-break: break-all;
+  }
+
+  .cite a:hover {
+    color: var(--accent-red);
+    border-bottom-color: var(--accent-red);
+    background: rgba(139,38,53,0.05);
+  }
+
+  .cite-note {
+    color: var(--muted);
+    font-size: 0.78rem;
+    width: 100%;
+    line-height: 1.55;
+  }
+
+  /* ============ 違法項目卡片 ============ */
+  .violation {
+    margin-bottom: 1.8rem;
+    padding: 1.8rem 2rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .violation-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .violation-num {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: var(--accent-red);
+    color: white;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .violation-title {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .violation-law {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--accent-red);
+    margin-top: 0.2rem;
+    letter-spacing: 0.03em;
+  }
+
+  .violation-body {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+
+  .violation-body p {
+    margin-bottom: 0.8rem;
+  }
+
+  .violation-body strong {
+    color: var(--accent-red);
+    font-weight: 600;
+  }
+
+  .penalty-box {
+    margin: 1rem 0;
+    padding: 0.8rem 1.2rem;
+    background: var(--danger-bg);
+    border-left: 3px solid var(--warning);
+    font-size: 0.88rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .penalty-box .penalty-label {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--warning);
+    letter-spacing: 0.08em;
+    font-size: 0.82rem;
+    margin-right: 0.5rem;
+  }
+
+  /* ============ 風險等級表 ============ */
+  .risk-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .risk-card {
+    padding: 1.3rem 1.5rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+  }
+
+  .risk-card.critical {
+    background: var(--danger-bg);
+    border-color: var(--warning);
+  }
+
+  .risk-card.high {
+    background: #fff5e9;
+    border-color: var(--accent-orange);
+  }
+
+  .risk-level {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .risk-card.critical .risk-level { color: var(--warning); }
+  .risk-card.high .risk-level { color: var(--accent-orange); }
+
+  .risk-desc {
+    font-family: "Noto Serif TC", serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* ============ 合規路徑探討區塊 ============ */
+  .compliance-section {
+    background: linear-gradient(135deg, #f0f5ea 0%, #e6ede0 100%);
+    padding: 2.5rem;
+    margin: 2rem 0;
+    border: 1px solid #a5b88d;
+    position: relative;
+  }
+
+  .compliance-section::before {
+    content: "HYPOTHETICAL PATH · FOR DISCUSSION";
+    position: absolute;
+    top: -0.75rem;
+    left: 2rem;
+    background: var(--accent-green);
+    color: white;
+    padding: 0.2rem 0.9rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+  }
+
+  .compliance-intro {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #a5b88d;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+  }
+
+  .change-item {
+    margin-bottom: 1.5rem;
+    padding: 1.3rem 1.5rem;
+    background: rgba(255,255,255,0.6);
+    border-left: 3px solid var(--accent-green);
+  }
+
+  .change-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .change-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .change-num {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent-green);
+    font-size: 1rem;
+  }
+
+  .change-title {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .change-body {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+  }
+
+  .change-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .before-block,
+  .after-block {
+    padding: 0.7rem 0.9rem;
+    border-radius: 2px;
+    line-height: 1.7;
+  }
+
+  .before-block {
+    background: rgba(183,28,28,0.08);
+    border-left: 2px solid var(--warning);
+  }
+
+  .after-block {
+    background: rgba(45,80,22,0.08);
+    border-left: 2px solid var(--accent-green);
+  }
+
+  .compare-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+
+  .before-block .compare-label { color: var(--warning); }
+  .after-block .compare-label { color: var(--accent-green); }
+
+  /* ============ 結論區 ============ */
+  .conclusion {
+    margin-top: 3rem;
+    padding: 2rem 2.5rem;
+    background: var(--paper-dark);
+    border-top: 3px double var(--ink);
+    border-bottom: 3px double var(--ink);
+  }
+
+  .conclusion h3 {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .conclusion p {
+    font-size: 0.95rem;
+    line-height: 1.95;
+    color: var(--ink-soft);
+    margin-bottom: 0.8rem;
+  }
+
+  .conclusion p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ============ 頁尾 ============ */
+  footer {
+    max-width: 920px;
+    margin: 6rem auto 0;
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .disclaimer {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-family: "Noto Sans TC", sans-serif;
+    font-weight: 300;
+    max-width: 640px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  .footer-mark {
+    margin-top: 2rem;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    letter-spacing: 0.2em;
+    font-size: 0.85rem;
+    color: var(--accent-red);
+  }
+
+  /* ============ 響應式 ============ */
+  @media (max-width: 768px) {
+    .risk-grid {
+      grid-template-columns: 1fr;
+    }
+    .change-compare {
+      grid-template-columns: 1fr;
+    }
+    .section-header {
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    main {
+      padding: 0 1.2rem;
+    }
+    .violation,
+    .compliance-section,
+    .key-facts,
+    .danger-banner,
+    .conclusion {
+      padding: 1.5rem;
+    }
+  }
+
+  @media print {
+    body { background: white; }
+    body::before { display: none; }
+    .danger-banner { break-inside: avoid; }
+    .violation, .change-item { break-inside: avoid; }
+    .section { break-before: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<section class="cover">
+  <div class="cover-decor-top">
+    <div class="cover-label">Legal Consultation · Taiwan Jurisdiction</div>
+  </div>
+
+  <h1>Polymarket 台灣法律諮詢請教<br>與在地化合規路徑探討</h1>
+  <div class="cover-subtitle-en">A Regulatory Inquiry Document for Legal Advisory</div>
+
+  <div class="cover-subject">
+    <h2>諮詢主題</h2>
+    <p>
+      諮詢方於公開資料蒐集後，整理去中心化預測市場平台 <strong>Polymarket</strong>（<em>polymarket.com</em>）於台灣現行法規下可能涉及之法律議題，並彙整已公開之司法案例供參考。此外，亦假設性探討若欲於台灣合法提供類似服務，可能需於商業與技術架構上進行之調整方向。本文件所有觀察與初步理解皆供法律顧問研析參考，<strong>實際法律定性仍以法律顧問專業意見為準</strong>。
+    </p>
+  </div>
+
+  <div class="cover-decor-bottom">
+    <div class="cover-label">For Legal Advisory Reference</div>
+  </div>
+
+  <div class="cover-meta">
+    <span>CASE · POLYMARKET-TW</span>
+    <span>VERSION · v1.0</span>
+    <span>FOR INTERNAL DISCUSSION</span>
+  </div>
+</section>
+
+<!-- 文件定位說明 -->
+<div class="danger-banner">
+  <h2>文件定位說明</h2>
+  <p><strong>本文件定位：</strong>本文件係諮詢方於公開資料蒐集、官方網站檢視、媒體報導研讀及司法案例查詢後所整理之請教資料，目的在於協助法律顧問於有限時間內掌握 Polymarket 在台灣的法律處境脈絡。<strong>諮詢方不具法律專業背景，所附觀察與初步理解僅供參考</strong>。</p>
+  <p>本文件希望協助釐清三個面向：（1）台灣民眾使用 Polymarket 可能涉及之法律議題；（2）Polymarket 此類商業模式於台灣現行法規下之合規邊界；（3）若欲合法提供類似服務，可能需進行哪些商業設計調整。</p>
+  <p>關於本文第 III 章所提「在地化合規路徑」一節，諮詢方謹此說明：該章所述各項調整，係指<strong>透過商業設計變動使服務內容落入合法範圍</strong>，而非以技術手段迴避法規（例如 VPN 繞過地理限制、隱蔽金流等）。兩者在法律意義上差異甚大，此一理解是否正確，敬請法律顧問指正。</p>
+</div>
+
+<!-- 文件資訊 -->
+<div class="doc-info">
+  <div class="info-card">
+    <div class="info-label">文件性質</div>
+    <div class="info-value">資料整理請教文件<br>（非法律意見書）</div>
+  </div>
+  <div class="info-card">
+    <div class="info-label">研析標的</div>
+    <div class="info-value">Polymarket（polymarket.com）<br>去中心化預測市場平台</div>
+  </div>
+  <div class="info-card">
+    <div class="info-label">已蒐集資料</div>
+    <div class="info-value">5 件以上地方法院判決、<br>雲林與士林地檢數件緩起訴案例</div>
+  </div>
+</div>
+
+<main>
+
+<!-- ========== I. 網站資料摘要 ========== -->
+<section class="section" id="sec-1">
+  <div class="section-header">
+    <div class="section-number">I</div>
+    <div class="section-title-zone">
+      <h2>網站資料摘要</h2>
+      <span class="en">Factual Summary · Established &amp; Verifiable Information</span>
+    </div>
+  </div>
+
+  <div class="key-facts">
+    <h3>諮詢前提資料</h3>
+    <p class="intro">以下資料為諮詢方摘自 Polymarket 官方文件、國內媒體報導及檢警公開資訊，每項附引用出處與網址，便於法律顧問查證。</p>
+
+    <ul class="facts-list">
+      <li>
+        Polymarket 是一個<strong>去中心化預測市場</strong>（Decentralized Prediction Market）平台，於 2020 年成立，目前自稱全球最大預測市場。使用者以美元穩定幣 <strong>USDC</strong> 下注，運作於 Polygon 區塊鏈網路，透過 UMA 去中心化預言機確認事件結果。
+        <div class="cite">
+          <span class="cite-label">來源</span>
+          <a href="https://polymarket.com/zh-hant" target="_blank">Polymarket 官網繁體中文首頁</a>
+          <span class="cite-note">頁面標題「Polymarket | 全球最大預測市場」。</span>
+        </div>
+      </li>
+
+      <li>
+        賭博標的涵蓋<strong>政治（選舉、戰爭、地緣政治）、運動賽事（NBA／NCAA／EPL／CS2 等）、加密貨幣漲跌（BTC Up or Down）、商品價格（原油、外匯）、流行文化</strong>等。網站有提供繁體中文介面，但無針對台灣的合規聲明。
+        <div class="cite">
+          <span class="cite-label">來源</span>
+          <a href="https://polymarket.com/zh-hant" target="_blank">polymarket.com/zh-hant</a>
+          <span class="cite-note">可直接檢視首頁實際在線盤口，包含「2028 年總統選舉贏家」、「中國會在 2026 年底前入侵台灣嗎？」、「美軍進入伊朗的時間」、「原油 CL 是否會在 3 月底前達到 $100」、「Bitcoin Up or Down」等。</span>
+        </div>
+      </li>
+
+      <li>
+        <strong>Polymarket 官方已於 2024 年將台灣列為限制地區（close-only status）</strong>，禁止台灣使用者新開部位與新存款，僅允許既有部位持有至市場結算。此限制與新加坡、波蘭、泰國並列。
+        <div class="cite">
+          <span class="cite-label">官方依據</span>
+          <a href="https://help.polymarket.com/en/articles/13364163-geographic-restrictions" target="_blank">Polymarket Help Center: Geographic Restrictions</a>
+          <span class="cite-note">Polymarket 官方服務條款第 2.1.4 條明確禁止使用 VPN 繞過地理限制。</span>
+        </div>
+        <div class="cite">
+          <span class="cite-label">新聞報導</span>
+          <a href="https://www.theblock.co/post/334175/singapore-bans-polymarket-amid-national-crackdown-on-online-gambling-sites" target="_blank">The Block：Singapore bans Polymarket（2025.01）</a>
+          <span class="cite-note">原文確認：「Taiwan restricted access to Polymarket in 2024, and even prosecuted a man who used the site to place around $530 worth of bets on political elections」。</span>
+        </div>
+      </li>
+
+      <li>
+        <strong>2023 年 12 月 14 日</strong>：雲林地檢署動員超過 <strong>70 名警力</strong>於全國 8 縣市突擊，逮捕 17 名在 Polymarket 下注 2024 年台灣總統大選結果的賭客，查扣 <strong>USDC 5501.98 顆</strong>（約新台幣 17.1 萬元）。後續以緩起訴處分結案。
+        <div class="cite">
+          <span class="cite-label">新聞報導</span>
+          <a href="https://udn.com/news/story/7321/7699659" target="_blank">聯合新聞網：用虛擬幣也要賭！總統選舉賭盤熱（2024.01）</a>
+          <span class="cite-note">「彰化檢調查獲陳、林 2 名賭客，查扣 USDC 389.87 顆」，後續雲林地檢擴大偵辦至 17 人、5501.98 USDC。</span>
+        </div>
+        <div class="cite">
+          <span class="cite-label">鏈上媒體</span>
+          <a href="https://abmedia.io/polymarket-taiwan-election-prediction-user" target="_blank">鏈新聞 ABMedia：Polymarket 大選賭博風波，我是怎麼被抓到的？（2023.12）</a>
+          <span class="cite-note">詳述檢警透過鏈上互動追溯中心化交易所 KYC 資料、拘提涉案者的完整偵查過程。</span>
+        </div>
+      </li>
+
+      <li>
+        <strong>2026 年 4 月</strong>：雲林地檢署再查獲盧姓、童姓男子於 Polymarket 以 USDC 下注「2026 年台灣地方選舉：獲勝政黨」賭盤，金額分別為 5 顆、20 顆 USDC。賠率最高達 1:20，依《公職人員選舉罷免法》及《刑法》賭博罪移送，檢方給予緩起訴處分。
+        <div class="cite">
+          <span class="cite-label">新聞報導</span>
+          <a href="https://udn.com/news/story/7321/9417696" target="_blank">聯合新聞網：虛幣下注 首宗九合一選舉賭盤 美國平台收注（2026.04）</a>
+          <span class="cite-note">「首宗年底九合一選舉賭盤⋯⋯檢警持續擴大追查共犯」。</span>
+        </div>
+        <div class="cite">
+          <span class="cite-label">新聞報導</span>
+          <a href="https://www.epochtimes.com/b5/26/4/1/n14732420.htm" target="_blank">大紀元：美市場預測平台開年底地方選舉賭盤（2026.04）</a>
+        </div>
+      </li>
+
+      <li>
+        目前已可查的地方法院判決書至少包含：<strong>苗栗地院 113 年度苗簡字第 340 號、新竹地院 113 年度竹簡字第 139 號、桃園地院 113 年度桃簡字第 3070 號、台中地院 113 年度中簡字第 417 號、雲林地院 114 年度單聲沒字第 100 號</strong>，判決刑度從拘役 30 日至 55 日不等，並宣告沒收扣得之 USDC。
+        <div class="cite">
+          <span class="cite-label">綜合整理</span>
+          <a href="https://abmedia.io/taiwan-election-polymarket-popo" target="_blank">鏈新聞 ABMedia：看完所有預測市場的判決書（2026.03）</a>
+          <span class="cite-note">原文載明「全台灣現有的判決書都反覆出現同樣的核心認定：只要是以選舉結果作為輸贏標的，透過網際網路下注，不論平台名義上是預測市場、境外網站還是以加密貨幣結算，都會被認定構成《總統副總統選舉罷免法》第 88 條之 1 所規範的『以網際網路以選舉結果為標的之賭博財物罪』」。</span>
+        </div>
+      </li>
+
+      <li>
+        <strong>陳姓被告（士林地檢署緩起訴處分）</strong>：2023 年 12 月 12-17 日間在 Polymarket 投注 472.17 顆 USDC（約新台幣 1.5 萬元）賭柯文哲當選總統、60.19 顆 USDC 賭民進黨贏得較多立委席次。經士林地檢偵查終結，認違反《總統副總統選舉罷免法》及《公職人員選舉罷免法》，緩起訴 1 年、繳公庫新台幣 3 萬元。
+        <div class="cite">
+          <span class="cite-label">新聞報導</span>
+          <a href="https://www.blocktempo.com/prosecutors-conditionally-suspend-case-against-polymarket-taiwan-election-bettors/" target="_blank">動區動趨：Polymarket 遭捕賭客起訴結果出爐（2024.06）</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== II. 違法項目逐條分析 ========== -->
+<section class="section" id="sec-2">
+  <div class="section-header">
+    <div class="section-number">II</div>
+    <div class="section-title-zone">
+      <h2>可能涉及之法律議題整理</h2>
+      <span class="en">Overview of Potentially Applicable Statutes</span>
+    </div>
+  </div>
+
+  <!-- 議題類別總覽 -->
+  <div class="risk-grid">
+    <div class="risk-card critical">
+      <div class="risk-level">議題類別 · 已有判決先例</div>
+      <div class="risk-desc">選舉相關之賭博議題</div>
+    </div>
+    <div class="risk-card critical">
+      <div class="risk-level">議題類別 · 已有判決先例</div>
+      <div class="risk-desc">網路賭博議題（刑法 266 條第 2 項）</div>
+    </div>
+    <div class="risk-card critical">
+      <div class="risk-level">議題類別 · 平台責任</div>
+      <div class="risk-desc">供給賭博場所議題（刑法 268 條）</div>
+    </div>
+    <div class="risk-card high">
+      <div class="risk-level">議題類別 · 授權規範</div>
+      <div class="risk-desc">運動彩券發行條例相關</div>
+    </div>
+    <div class="risk-card high">
+      <div class="risk-level">議題類別 · 金融管制</div>
+      <div class="risk-desc">期貨交易法（加密貨幣類盤口）</div>
+    </div>
+    <div class="risk-card high">
+      <div class="risk-level">議題類別 · 金流合規</div>
+      <div class="risk-desc">洗錢防制法、電子支付條例</div>
+    </div>
+  </div>
+
+  <!-- 議題 1 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">1</div>
+      <div>
+        <div class="violation-title">選舉相關之賭博議題（已有判決先例）</div>
+        <div class="violation-law">Electoral Gambling · Presidential &amp; Public Officials Election Acts</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        <strong>《總統副總統選舉罷免法》第 88-1 條、《公職人員選舉罷免法》第 104-2 條</strong>明定：以選舉結果為標的之賭博，不論在公共場所或透過網際網路，均屬刑事犯罪。依諮詢方觀察，Polymarket 上所見之「2028 年總統選舉贏家」「2026 年台灣地方選舉」等盤口，可能涉及此二條文之討論範圍。
+      </p>
+      <div class="penalty-box">
+        <span class="penalty-label">Statutory Reference</span>
+        下注賭客：6 個月以下有期徒刑、拘役或科／併科新台幣 10 萬元以下罰金。<strong>經營（供給）選舉賭盤者：5 年以下有期徒刑，得併科新台幣 50 萬元罰金。</strong>
+      </div>
+      <p>
+        <strong>判決先例整理：</strong>諮詢方於閱讀資料時，見台灣法院在多份判決書中均傾向認為——以選舉結果為輸贏標的之行為，不論平台名稱為「預測市場」、境外網站或以加密貨幣結算，皆有適用本條文之可能性。此一見解是否穩定，實際適用範圍如何，敬請法律顧問惠予指教。
+      </p>
+      <div class="cite">
+        <span class="cite-label">法條</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020053" target="_blank">《總統副總統選舉罷免法》全國法規資料庫</a>
+      </div>
+      <div class="cite">
+        <span class="cite-label">法條</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0020010" target="_blank">《公職人員選舉罷免法》全國法規資料庫</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Violation 2 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">2</div>
+      <div>
+        <div class="violation-title">網路賭博罪（刑法 266 條第 2 項）</div>
+        <div class="violation-law">Internet Gambling · Criminal Code § 266(2)</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        <strong>2021 年 12 月 28 日修法後，刑法第 266 條新增第 2 項</strong>：「以電信設備、電子通訊、網際網路或其他相類之方法賭博財物者，亦同。」明文將網路賭博入罪化。
+      </p>
+      <p>
+        諮詢方觀察到 Polymarket 使用者以 <strong>USDC（美元穩定幣）</strong>於站上下注，而 <strong>USDC 於公開市場可兌換為新台幣</strong>。此一特性在「財物」定義上之評價如何，以及是否因此與其他虛擬幣（例如不得兌現之平台內虛擬幣）於法律上有所區別，實非諮詢方所能判斷，敬請法律顧問惠予指教。
+      </p>
+      <div class="penalty-box">
+        <span class="penalty-label">Statutory Reference</span>
+        賭客：新台幣 5 萬元以下罰金。當場賭博器具與財物沒收。
+      </div>
+      <div class="cite">
+        <span class="cite-label">法條</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=C0000001" target="_blank">《中華民國刑法》全國法規資料庫</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Violation 3 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">3</div>
+      <div>
+        <div class="violation-title">供給賭博場所相關議題（刑法 268 條）</div>
+        <div class="violation-law">Provision of Gambling Venue · Criminal Code § 268</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        意圖營利而供給賭博場所或聚眾賭博者，處 <strong>3 年以下有期徒刑</strong>，得併科新台幣 9 萬元以下罰金。
+      </p>
+      <p>
+        諮詢方於閱讀資料時見，台灣司法實務傾向認為「賭博場所」不限於實體空間，網站、App 等可能被納入討論範圍。Polymarket 雖為去中心化架構，惟平台團隊提供市場建立機制、訂單簿撮合、收取 1.8% 手續費，此一營運結構於「意圖營利供給賭博場所」之認定上如何評價，敬請法律顧問指教。
+      </p>
+      <p>
+        諮詢方注意到目前檢方公開案件均集中於下注使用者，<strong>對 Polymarket 平台本身尚未見立案紀錄</strong>。此實務現象之法律意涵為何（是否因跨境司法管轄困難、或其他因素），若平台方、其在台代表人、推廣者進入台灣司法管轄範圍時之處理方式，敬請法律顧問就實務經驗賜教。
+      </p>
+      <div class="penalty-box">
+        <span class="penalty-label">Statutory Reference</span>
+        平台經營者：3 年以下有期徒刑，得併科新台幣 9 萬元以下罰金（若涉選舉賭盤則加重至 5 年）。
+      </div>
+    </div>
+  </div>
+
+  <!-- Violation 4 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">4</div>
+      <div>
+        <div class="violation-title">未經授權發行彩票之議題（刑法 269 條）</div>
+        <div class="violation-law">Unauthorized Lottery Issuance · Criminal Code § 269</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        意圖營利，未經政府允准而發行彩票者，處 1 年以下有期徒刑，得併科新台幣 9 萬元以下罰金；為其媒介者，處 6 月以下徒刑。
+      </p>
+      <p>
+        Polymarket 之「是／否」二元押注機制，於經濟實質上是否與「發行彩票」構成類似情形，諮詢方難以自行判斷。諮詢方理解目前台灣僅有<strong>「中華民國對外貿易發展協會」（受理彩券）、「台灣運彩」（受理運彩）</strong>為政府授權之發行機構，Polymarket 未見有相關授權紀錄。此議題之實際適用範圍，敬請法律顧問指教。
+      </p>
+    </div>
+  </div>
+
+  <!-- Violation 5 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">5</div>
+      <div>
+        <div class="violation-title">運動彩券發行條例</div>
+        <div class="violation-law">Sports Lottery Issuance Act · Exclusive License Violation</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        《運動彩券發行條例》第 3 條規定運動彩券<strong>由主管機關（教育部）指定發行單位獨占發行</strong>。目前唯一合法發行者為「台灣運彩科技股份有限公司」（2024 年起委託）。
+      </p>
+      <p>
+        諮詢方觀察到 Polymarket 上有大量 NBA、EPL、NCAA、CS2 等運動賽事盤口。此類盤口是否落入條例第 3 條獨占條款之討論範圍、第 19、20 條之適用情形如何，諮詢方難以自行判斷。就此條例在本案中之適用可能性，敬請法律顧問惠予指教。
+      </p>
+      <div class="penalty-box">
+        <span class="penalty-label">Statutory Reference</span>
+        未經授權經營運動彩券：7 年以下有期徒刑，得併科新台幣 3000 萬元以下罰金。
+      </div>
+      <div class="cite">
+        <span class="cite-label">法條</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0110039" target="_blank">《運動彩券發行條例》全國法規資料庫</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Violation 6 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">6</div>
+      <div>
+        <div class="violation-title">期貨交易法相關議題（加密貨幣／商品漲跌盤）</div>
+        <div class="violation-law">Futures Trading Act · Unauthorized Derivatives</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        Polymarket 站上之「Bitcoin Up or Down」、「原油 CL 是否會在 3 月底前達到 $100」等盤口，於交易結構上似與「以未來特定商品價格為標的之對賭」有相似處。此一相似性是否具法律上之意義（例如是否落入期貨或二元選擇權之定義），敬請法律顧問惠予指教。
+      </p>
+      <p>
+        諮詢方閱讀《期貨交易法》時，見第 82、112 條對於未經金管會許可經營期貨交易業務設有規範。此類去中心化預測市場平台是否落入該條例之適用範圍，敬請法律顧問指教。
+      </p>
+      <p>
+        諮詢方亦注意到中國大陸司法實務有相關見解（「以二元期權之名，行賭博交易之實」者構成開設賭場罪），惟台灣司法目前尚未見處理此類案件之公開紀錄。此等外國實務見解對台灣之參考意義為何，敬請法律顧問指教。
+      </p>
+      <div class="cite">
+        <span class="cite-label">法條</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400015" target="_blank">《期貨交易法》全國法規資料庫</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Violation 7 -->
+  <div class="violation">
+    <div class="violation-header">
+      <div class="violation-num">7</div>
+      <div>
+        <div class="violation-title">洗錢防制與電子支付相關議題</div>
+        <div class="violation-law">Money Laundering &amp; E-Payment Regulation</div>
+      </div>
+    </div>
+    <div class="violation-body">
+      <p>
+        使用 USDC 跨境下注涉及：
+      </p>
+      <p>
+        <strong>（1）洗錢防制法相關：</strong>若下注資金涉及犯罪所得或使用 USDC 掩飾資金性質等情形，是否可能涉及《洗錢防制法》第 14 條之討論，敬請法律顧問指教。諮詢方注意到檢方於既有 Polymarket 案件中，已透過鏈上分析追溯至中心化交易所 KYC 資料，此一司法調查能力已及於鏈上金流之事實，謹供參酌。
+      </p>
+      <p>
+        <strong>（2）電子支付機構管理條例相關：</strong>若 Polymarket 有於台灣推廣、代收代付等行為，是否可能涉及《電子支付機構管理條例》第 25 條之討論範圍，敬請法律顧問指教。
+      </p>
+      <div class="cite">
+        <span class="cite-label">法條</span>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=I0030001" target="_blank">《洗錢防制法》全國法規資料庫</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== III. 在地化合規路徑 ========== -->
+<section class="section" id="sec-3">
+  <div class="section-header">
+    <div class="section-number">III</div>
+    <div class="section-title-zone">
+      <h2>在地化合規路徑探討（假設性）</h2>
+      <span class="en">Hypothetical Path for Discussion Only</span>
+    </div>
+  </div>
+
+  <div class="compliance-section">
+    <p class="compliance-intro">
+      本節係諮詢方就「類似 Polymarket 之預測市場若欲於台灣以合法業態經營」之假設性討論。此處所列各項調整為諮詢方於閱讀相關法規後之初步思考，並非可執行之合規建議。以下整理八個可能需要考慮的調整面向，供法律顧問研析時參酌。各項內容是否完整、是否正確、是否有補充或修正之處，敬請法律顧問指教。
+    </p>
+
+    <!-- Change 1 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 1</span>
+        <span class="change-title">下架台灣選舉相關標的</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方於閱讀《總統副總統選舉罷免法》第 88-1 條與《公職人員選舉罷免法》第 104-2 條時，理解兩條文對於以選舉結果為賭博標的之行為有明確規範。另諮詢方亦注意到目前檢警於相關案件中已有多起實際執法紀錄。此議題建議列為優先討論事項，敬請法律顧問指教。</p>
+        <div class="change-compare">
+          <div class="before-block">
+            <span class="compare-label">Before</span>
+            開設「2028 總統選舉贏家」「2026 地方選舉獲勝政黨」等盤口。
+          </div>
+          <div class="after-block">
+            <span class="compare-label">After</span>
+            下架所有台灣選舉相關盤口；並可考慮對台灣 IP 進行 geoblock，避免境外選舉盤口引發延伸討論。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 2 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 2</span>
+        <span class="change-title">就運動賽事盤口之處理進行評估</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方於閱讀《運動彩券發行條例》第 3 條時，理解該條將運動彩券發行權授予台灣運彩。惟此一獨占規範的適用範圍、對類似平台是否有擴張解釋空間等問題，諮詢方無法自行判斷，敬請法律顧問惠予指教。</p>
+        <p>就經營運動相關服務之可能路徑，諮詢方初步理解一種選項為<strong>申請成為台灣運彩之受委託經銷商</strong>，惟此為彩券業務之授權，與預測市場性質有所不同。其他可能之合法路徑有哪些，敬請法律顧問惠予分享。</p>
+        <div class="change-compare">
+          <div class="before-block">
+            <span class="compare-label">Before</span>
+            NBA、NCAA、EPL、CS2 等大量運動賽事盤口。
+          </div>
+          <div class="after-block">
+            <span class="compare-label">After</span>
+            下架運動相關盤口，或調整商業模式以轉型為運彩資訊分析服務。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 3 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 3</span>
+        <span class="change-title">就加密貨幣／商品／外匯漲跌類標的進行評估</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方觀察到「BTC Up or Down」「原油 $100」類標的，在結構上似具期貨或二元選擇權之特徵。此類標的是否需《期貨交易法》授權、金管會目前對去中心化衍生品之政策立場為何，敬請法律顧問指教。</p>
+        <div class="change-compare">
+          <div class="before-block">
+            <span class="compare-label">Before</span>
+            BTC 5 分鐘漲跌、原油價格區間、外匯匯率。
+          </div>
+          <div class="after-block">
+            <span class="compare-label">After</span>
+            下架金融類標的，或評估申請成為合法期貨商之可能性（惟門檻較高，實務上需慎重評估）。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 4 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 4</span>
+        <span class="change-title">獎金結算機制之調整思考</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方於閱讀資料時理解到，賭博罪之構成要件中「以財物博彩、輸贏得喪」為重要元素。若平台能於設計上調整「對價性」這一要素，是否即可能不落入賭博定義之討論範圍？敬請法律顧問指教此理解是否正確。</p>
+        <p>諮詢方初步思考以下幾種可能模式，供討論參考：（1）<strong>預測積分制</strong>——使用者免費獲得預測點數，預測正確累積排名；（2）<strong>贊助商獎品制</strong>——由企業贊助獎品給正確預測者（類似民調活動）；（3）<strong>純資訊展示</strong>——僅展示預測趨勢，不提供下注機制。以上三種模式是否皆能有效避開相關法律爭議，敬請法律顧問指教。</p>
+        <div class="change-compare">
+          <div class="before-block">
+            <span class="compare-label">Before</span>
+            使用者投入 USDC，贏者分走輸者賭金，平台抽 1.8% 手續費。
+          </div>
+          <div class="after-block">
+            <span class="compare-label">After</span>
+            使用者免費預測，贏者獲得贊助商獎品、點數或排行榜榮譽，無資金輸贏關係。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 5 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 5</span>
+        <span class="change-title">金流機制之合規規劃</span>
+      </div>
+      <div class="change-body">
+        <p>若仍需設計資金流動機制（例如付費訂閱、付費解鎖進階功能等），諮詢方初步理解可能需採用<strong>台灣合法金流管道（信用卡、LINE Pay、超商代收等）</strong>，並視需要取得電子支付相關許可。是否使用 USDC 或其他加密貨幣作為交易媒介，亦可能需進一步評估其合規性。相關門檻與具體要求，敬請法律顧問惠予指教。</p>
+        <div class="change-compare">
+          <div class="before-block">
+            <span class="compare-label">Before</span>
+            USDC 穩定幣下注與結算，鏈上錢包直連。
+          </div>
+          <div class="after-block">
+            <span class="compare-label">After</span>
+            改採新台幣訂閱費、超商繳款、信用卡等合法金流方式。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Change 6 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 6</span>
+        <span class="change-title">就標的範圍進行檢視與篩選</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方初步思考可能較無爭議之標的類型：<strong>科技趨勢預測、娛樂事件（電影票房、綜藝冠軍）、經濟指標、氣候現象、社會現象（某 App 用戶數等）</strong>。此類標的若設計對價性機制，諮詢方理解仍需避開「選舉」「運動」「金融衍生品」等面向。此初步分類是否周全，敬請法律顧問指教。</p>
+        <p>另諮詢方注意到，「中國大陸與台灣 2027 年之前是否發生軍事衝突」等政治敏感議題，雖非選舉賭博之範疇，惟可能涉及國家安全與兩岸關係面向。此類議題是否宜於平台上呈現、有無其他法律面向之考量，敬請法律顧問指教。</p>
+      </div>
+    </div>
+
+    <!-- Change 7 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 7</span>
+        <span class="change-title">建立台灣實體公司與合規主體</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方觀察到 Polymarket 目前為境外平台，於台灣無登記之代表人。若考慮於台灣在地化經營，諮詢方初步理解可能需考慮以下事項：</p>
+        <p>（1）設立台灣公司作為服務提供主體；（2）聘任合規長與法律顧問；（3）建立台灣使用者之 KYC 機制；（4）建立未成年使用者排除機制；（5）確保符合《個人資料保護法》相關要求。以上事項是否周全，敬請法律顧問指教。</p>
+      </div>
+    </div>
+
+    <!-- Change 8 -->
+    <div class="change-item">
+      <div class="change-header">
+        <span class="change-num">§ 8</span>
+        <span class="change-title">介面與行銷語言之用字斟酌</span>
+      </div>
+      <div class="change-body">
+        <p>諮詢方觀察到國內部分業者於介面設計上採取迴避「下注」「賠率」「賭」等用語，改採用「預測」「機率」「市場」「積分」等中性詞彙之做法。另於支付通路選擇上，刻意不採用 MyCard、GASH 等遊戲業支付工具，似有避免被歸類為遊戲之考量。此類介面與金流之設計選擇，於法律上是否有其意義，敬請法律顧問惠予指教。</p>
+        <p>諮詢方理解，此類看似細節的設計，實務上可能作為「平台自我定性」之間接參考資料。其於法律爭議中之實際影響程度，敬請法律顧問就實務經驗賜教。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== IV. 小結與討論建議 ========== -->
+<section class="section" id="sec-4">
+  <div class="section-header">
+    <div class="section-number">IV</div>
+    <div class="section-title-zone">
+      <h2>小結與討論建議</h2>
+      <span class="en">Summary &amp; Points for Discussion</span>
+    </div>
+  </div>
+
+  <div class="conclusion">
+    <h3>—— 諮詢方整理 ——</h3>
+
+    <p>
+      <strong>關於 Polymarket 現況：</strong>諮詢方於資料蒐集過程中觀察到，此平台目前已被官方列為台灣地區「close-only」之限制地區。另就台灣民眾使用此平台之司法紀錄而言，諮詢方已整理到 5 件以上地方法院判決書、以及雲林與士林地檢署多件緩起訴案例。此等公開資料之具體法律意涵，以及對於相關商業決策之影響評估，敬請法律顧問惠予指教。
+    </p>
+
+    <p>
+      <strong>關於在地化合規討論：</strong>就前述八項假設性調整之整理，諮詢方意識到——若依此等方向進行調整，所呈現出的服務型態，可能已與 Polymarket 原始之商業模式有顯著差異，本質上較接近「預測社群」或「資訊服務」性質。此一觀察是否成立、是否有其他可能之合法路徑，敬請法律顧問指教。
+    </p>
+
+    <p>
+      <strong>提供會議討論參考之問題：</strong>諮詢方彙整以下幾項可供會議討論之問題，供各位參酌——（1）是否需就員工或使用者於此類平台之接觸行為，建立內部提醒機制？（2）類似服務於台灣之商業可行性，是否值得後續進一步研究？（3）若公司有意推動此類創新服務，可能需向哪些主管機關（例如金管會、NCC、教育部運彩相關單位）進行事前諮詢？以上問題之提出僅為參考用途，實際議題之設定請依會議主持與法律顧問之判斷為準。
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- 頁尾 -->
+<footer>
+  <div class="disclaimer">
+    本文件係諮詢方於公開資料蒐集、官方網站檢視與司法案例查詢後所整理之請教資料，僅供法律顧問研析參考，並非諮詢方出具之法律意見書。文中所引判決書、法規條文、新聞報導均已標示出處以便查證；實際個案之法律適用與風險評估，仍以法律顧問之專業意見為準。<br><br>
+    本文件第 III 章所述之「在地化合規路徑」為諮詢方閱讀資料後之假設性討論，係探討商業模式與法規之介面，並非具體合規建議；諮詢方無意鼓勵任何規避法律或提供違法服務之行為。<br><br>
+    諮詢方並無法律專業背景，文中若有資料引用失當、法律理解錯誤或推論未盡周延之處，敬請法律顧問不吝指正。另法規與判決見解具時效性，若有更新或新見解，亦懇請法律顧問惠予告知。
+  </div>
+  <div class="footer-mark">— End of Inquiry Document —</div>
+</footer>
+
+</body>
+</html>
