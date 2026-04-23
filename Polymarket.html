@@ -167,7 +167,7 @@
   }
 
   .danger-banner::before {
-    content: "DOCUMENT NATURE · FOR REVIEW";
+    content: "文件性質 · 供研析參考";
     position: absolute;
     top: -0.75rem;
     left: 1.8rem;
@@ -534,7 +534,7 @@
   }
 
   .compliance-section::before {
-    content: "HYPOTHETICAL PATH · FOR DISCUSSION";
+    content: "假設性探討 · 供討論參考";
     position: absolute;
     top: -0.75rem;
     left: 2rem;
@@ -727,6 +727,194 @@
     .danger-banner { break-inside: avoid; }
     .violation, .change-item { break-inside: avoid; }
     .section { break-before: auto; }
+    .doc-toc { break-after: page; }
+    .toc-float { display: none !important; }
+  }
+
+  /* ============ 開頭目錄區塊 ============ */
+  .doc-toc {
+    max-width: 920px;
+    margin: 3rem auto;
+    padding: 2.2rem 2.5rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    position: relative;
+    z-index: 1;
+  }
+
+  .doc-toc::before {
+    content: "目錄";
+    position: absolute;
+    top: -0.6rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.9rem;
+    font-family: "Noto Serif TC", serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-navy);
+    letter-spacing: 0.3em;
+  }
+
+  .doc-toc-title {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    text-align: center;
+  }
+
+  .doc-toc-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--rule);
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+
+  .toc-list > li {
+    counter-increment: toc;
+    padding: 0.7rem 0 0.7rem 3.2rem;
+    position: relative;
+    border-bottom: 1px dotted var(--rule);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .toc-list > li:last-child {
+    border-bottom: none;
+  }
+
+  .toc-list > li::before {
+    content: counter(toc, upper-roman);
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--accent-red);
+    background: var(--paper-warm);
+    padding: 0.15rem 0.6rem;
+    border: 1px solid var(--rule);
+    letter-spacing: 0.03em;
+  }
+
+  .toc-list a.toc-item-title {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+
+  .toc-list a.toc-item-title:hover {
+    color: var(--accent-red);
+  }
+
+  .toc-list .toc-item-tags {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  .toc-list .toc-tag {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .toc-tag.tag-critical {
+    background: var(--danger-bg);
+    color: var(--warning);
+    border: 1px solid rgba(183,28,28,0.3);
+  }
+
+  .toc-tag.tag-high {
+    background: #fff5e9;
+    color: var(--accent-orange);
+    border: 1px solid rgba(168,87,31,0.3);
+  }
+
+  .toc-tag.tag-green {
+    background: #f0f5ea;
+    color: var(--accent-green);
+    border: 1px solid rgba(45,80,22,0.3);
+  }
+
+  .toc-tag.tag-navy {
+    background: rgba(30,58,95,0.08);
+    color: var(--accent-navy);
+    border: 1px solid rgba(30,58,95,0.25);
+  }
+
+  /* ============ 右側浮動目錄 ============ */
+  .toc-float {
+    position: fixed;
+    top: 50%;
+    right: 1.5rem;
+    transform: translateY(-50%);
+    z-index: 100;
+    background: var(--paper);
+    padding: 1.1rem 0.9rem;
+    border: 1px solid var(--rule);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-family: "Noto Sans TC", sans-serif;
+    font-size: 0.78rem;
+    max-width: 160px;
+  }
+
+  .toc-float-title {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--accent-navy);
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    letter-spacing: 0.2em;
+    text-align: center;
+  }
+
+  .toc-float a {
+    display: block;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 0.35rem 0 0.35rem 0.5rem;
+    transition: color 0.2s, border-left-color 0.2s, padding-left 0.2s;
+    border-left: 2px solid transparent;
+  }
+
+  .toc-float a:hover {
+    color: var(--accent-red);
+    border-left-color: var(--accent-red);
+    padding-left: 0.8rem;
+  }
+
+  @media (max-width: 1240px) {
+    .toc-float { display: none; }
   }
 </style>
 </head>
@@ -735,47 +923,98 @@
 <!-- 封面 -->
 <section class="cover">
   <div class="cover-decor-top">
-    <div class="cover-label">Legal Consultation · Taiwan Jurisdiction</div>
+    <div class="cover-label">法律諮詢請教 · 台灣法域</div>
   </div>
 
   <h1>Polymarket 台灣法律諮詢請教<br>與在地化合規路徑探討</h1>
-  <div class="cover-subtitle-en">A Regulatory Inquiry Document for Legal Advisory</div>
+  <div class="cover-subtitle-en">提供法律顧問研析之請教文件</div>
 
   <div class="cover-subject">
     <h2>諮詢主題</h2>
     <p>
-      諮詢方於公開資料蒐集後，整理去中心化預測市場平台 <strong>Polymarket</strong>（<em>polymarket.com</em>）於台灣現行法規下可能涉及之法律議題，並彙整已公開之司法案例供參考。此外，亦假設性探討若欲於台灣合法提供類似服務，可能需於商業與技術架構上進行之調整方向。本文件所有觀察與初步理解皆供法律顧問研析參考，<strong>實際法律定性仍以法律顧問專業意見為準</strong>。
+      經公開資料蒐集後，整理預測市場平台 <strong>Polymarket</strong>（非託管式加密貨幣預測市場，結算於區塊鏈上、撮合採中心化 off-chain 訂單簿）（<em>polymarket.com</em>）於台灣現行法規下可能涉及之法律議題，並彙整已公開之司法案例供參考。此外，亦假設性探討若欲於台灣合法提供類似服務，可能需於商業與技術架構上進行之調整方向。本文件所有觀察與初步理解皆供法律顧問研析參考，<strong>實際法律定性仍以法律顧問專業意見為準</strong>。
     </p>
   </div>
 
   <div class="cover-decor-bottom">
-    <div class="cover-label">For Legal Advisory Reference</div>
+    <div class="cover-label">供法律顧問研析參考</div>
   </div>
 
   <div class="cover-meta">
-    <span>CASE · POLYMARKET-TW</span>
-    <span>VERSION · v1.0</span>
-    <span>FOR INTERNAL DISCUSSION</span>
+    <span>案件編號 · POLYMARKET-TW</span>
+    <span>版本 · v1.0</span>
+    <span>供內部討論</span>
   </div>
 </section>
 
+<!-- 開頭完整目錄區塊 -->
+<section class="doc-toc">
+  <div class="doc-toc-title">本文件導覽</div>
+  <div class="doc-toc-sub">點擊章節名稱可直接跳轉至該段落</div>
+
+  <ol class="toc-list">
+    <li>
+      <a class="toc-item-title" href="#doc-nature">文件定位說明</a>
+      <div class="toc-item-tags">
+        <span class="toc-tag tag-navy">定位聲明</span>
+      </div>
+    </li>
+    <li>
+      <a class="toc-item-title" href="#sec-1">網站資料摘要</a>
+      <div class="toc-item-tags">
+        <span class="toc-tag tag-navy">事實基礎</span>
+      </div>
+    </li>
+    <li>
+      <a class="toc-item-title" href="#sec-2">可能涉及之法律議題整理</a>
+      <div class="toc-item-tags">
+        <span class="toc-tag tag-critical">判決先例</span>
+        <span class="toc-tag tag-high">授權規範</span>
+        <span class="toc-tag tag-high">金融管制</span>
+      </div>
+    </li>
+    <li>
+      <a class="toc-item-title" href="#sec-3">在地化合規路徑探討</a>
+      <div class="toc-item-tags">
+        <span class="toc-tag tag-green">假設性討論</span>
+      </div>
+    </li>
+    <li>
+      <a class="toc-item-title" href="#sec-4">小結與討論建議</a>
+      <div class="toc-item-tags">
+        <span class="toc-tag tag-navy">會議用</span>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- 右側浮動目錄 -->
+<nav class="toc-float">
+  <div class="toc-float-title">目錄</div>
+  <a href="#doc-nature">文件定位</a>
+  <a href="#sec-1">一 · 網站資料</a>
+  <a href="#sec-2">二 · 法律議題</a>
+  <a href="#sec-3">三 · 合規路徑</a>
+  <a href="#sec-4">四 · 小結建議</a>
+</nav>
+
 <!-- 文件定位說明 -->
-<div class="danger-banner">
+<div class="danger-banner" id="doc-nature">
   <h2>文件定位說明</h2>
-  <p><strong>本文件定位：</strong>本文件係諮詢方於公開資料蒐集、官方網站檢視、媒體報導研讀及司法案例查詢後所整理之請教資料，目的在於協助法律顧問於有限時間內掌握 Polymarket 在台灣的法律處境脈絡。<strong>諮詢方不具法律專業背景，所附觀察與初步理解僅供參考</strong>。</p>
+  <p><strong>本文件定位：</strong>本文件係由公開資料蒐集、官方網站檢視、媒體報導研讀及司法案例查詢後所整理的請教資料，目的在於協助法律顧問於有限時間內掌握 Polymarket 在台灣的法律處境脈絡。<strong>我方並非法律專業人士，所附觀察與初步理解僅供參考</strong>。</p>
   <p>本文件希望協助釐清三個面向：（1）台灣民眾使用 Polymarket 可能涉及之法律議題；（2）Polymarket 此類商業模式於台灣現行法規下之合規邊界；（3）若欲合法提供類似服務，可能需進行哪些商業設計調整。</p>
-  <p>關於本文第 III 章所提「在地化合規路徑」一節，諮詢方謹此說明：該章所述各項調整，係指<strong>透過商業設計變動使服務內容落入合法範圍</strong>，而非以技術手段迴避法規（例如 VPN 繞過地理限制、隱蔽金流等）。兩者在法律意義上差異甚大，此一理解是否正確，敬請法律顧問指正。</p>
+  <p>關於本文第 III 章所提「在地化合規路徑」一節，謹此說明：該章所述各項調整，係指<strong>透過商業設計變動使服務內容落入合法範圍</strong>，而非以技術手段迴避法規（例如 VPN 繞過地理限制、隱蔽金流等）。兩者在法律意義上差異甚大，此一理解是否正確，敬請法律顧問指正。</p>
 </div>
 
 <!-- 文件資訊 -->
-<div class="doc-info">
+<div class="doc-info" id="doc-info">
   <div class="info-card">
     <div class="info-label">文件性質</div>
     <div class="info-value">資料整理請教文件<br>（非法律意見書）</div>
   </div>
   <div class="info-card">
     <div class="info-label">研析標的</div>
-    <div class="info-value">Polymarket（polymarket.com）<br>去中心化預測市場平台</div>
+    <div class="info-value">Polymarket（polymarket.com）<br>非託管式預測市場平台（結算於 Polygon 鏈上、撮合採中心化 CLOB 訂單簿）</div>
   </div>
   <div class="info-card">
     <div class="info-label">已蒐集資料</div>
@@ -791,17 +1030,17 @@
     <div class="section-number">I</div>
     <div class="section-title-zone">
       <h2>網站資料摘要</h2>
-      <span class="en">Factual Summary · Established &amp; Verifiable Information</span>
+      <span class="en">資料摘要 · 可查證之公開資訊</span>
     </div>
   </div>
 
   <div class="key-facts">
     <h3>諮詢前提資料</h3>
-    <p class="intro">以下資料為諮詢方摘自 Polymarket 官方文件、國內媒體報導及檢警公開資訊，每項附引用出處與網址，便於法律顧問查證。</p>
+    <p class="intro">以下資料摘自 Polymarket 官方文件、國內媒體報導及檢警公開資訊，每項附引用出處與網址，便於法律顧問查證。</p>
 
     <ul class="facts-list">
       <li>
-        Polymarket 是一個<strong>去中心化預測市場</strong>（Decentralized Prediction Market）平台，於 2020 年成立，目前自稱全球最大預測市場。使用者以美元穩定幣 <strong>USDC</strong> 下注，運作於 Polygon 區塊鏈網路，透過 UMA 去中心化預言機確認事件結果。
+        Polymarket 是一個<strong>非託管式加密貨幣預測市場</strong>（non-custodial prediction market）平台，於 2020 年成立（結算於 Polygon 鏈上，撮合則採中心化 off-chain 訂單簿 CLOB，非 AMM），目前自稱全球最大預測市場。使用者以美元穩定幣 <strong>USDC</strong> 下注，運作於 Polygon 區塊鏈網路，透過 UMA 去中心化預言機確認事件結果。
         <div class="cite">
           <span class="cite-label">來源</span>
           <a href="https://polymarket.com/zh-hant" target="_blank">Polymarket 官網繁體中文首頁</a>
@@ -822,12 +1061,12 @@
         <strong>Polymarket 官方已於 2024 年將台灣列為限制地區（close-only status）</strong>，禁止台灣使用者新開部位與新存款，僅允許既有部位持有至市場結算。此限制與新加坡、波蘭、泰國並列。
         <div class="cite">
           <span class="cite-label">官方依據</span>
-          <a href="https://help.polymarket.com/en/articles/13364163-geographic-restrictions" target="_blank">Polymarket Help Center: Geographic Restrictions</a>
+          <a href="https://help.polymarket.com/en/articles/13364163-geographic-restrictions" target="_blank">Polymarket 官方說明中心：地理限制（原文為英文）</a>
           <span class="cite-note">Polymarket 官方服務條款第 2.1.4 條明確禁止使用 VPN 繞過地理限制。</span>
         </div>
         <div class="cite">
           <span class="cite-label">新聞報導</span>
-          <a href="https://www.theblock.co/post/334175/singapore-bans-polymarket-amid-national-crackdown-on-online-gambling-sites" target="_blank">The Block：Singapore bans Polymarket（2025.01）</a>
+          <a href="https://www.theblock.co/post/334175/singapore-bans-polymarket-amid-national-crackdown-on-online-gambling-sites" target="_blank">The Block 報導：新加坡禁用 Polymarket（2025.01，原文為英文）</a>
           <span class="cite-note">原文確認：「Taiwan restricted access to Polymarket in 2024, and even prosecuted a man who used the site to place around $530 worth of bets on political elections」。</span>
         </div>
       </li>
@@ -847,7 +1086,7 @@
       </li>
 
       <li>
-        <strong>2026 年 4 月</strong>：雲林地檢署再查獲盧姓、童姓男子於 Polymarket 以 USDC 下注「2026 年台灣地方選舉：獲勝政黨」賭盤，金額分別為 5 顆、20 顆 USDC。賠率最高達 1:20，依《公職人員選舉罷免法》及《刑法》賭博罪移送，檢方給予緩起訴處分。
+        <strong>2026 年 4 月</strong>：雲林地檢署再查獲盧姓、童姓男子於 Polymarket 以 USDC 下注「2026 年台灣地方選舉：獲勝政黨」賭盤（注：部分媒體如 UDN 報導將幣種誤記為泰達幣 USDT，惟 Polymarket 平台僅支援美元穩定幣 USDC 不支援 USDT；五份地院判決書所沒收標的亦皆為 USDC），金額分別為 5 顆、20 顆 USDC。賠率最高達 1:20，依《公職人員選舉罷免法》及《刑法》賭博罪移送，檢方給予緩起訴處分。
         <div class="cite">
           <span class="cite-label">新聞報導</span>
           <a href="https://udn.com/news/story/7321/9417696" target="_blank">聯合新聞網：虛幣下注 首宗九合一選舉賭盤 美國平台收注（2026.04）</a>
@@ -885,7 +1124,7 @@
     <div class="section-number">II</div>
     <div class="section-title-zone">
       <h2>可能涉及之法律議題整理</h2>
-      <span class="en">Overview of Potentially Applicable Statutes</span>
+      <span class="en">可能涉及之法條整理</span>
     </div>
   </div>
 
@@ -923,19 +1162,19 @@
       <div class="violation-num">1</div>
       <div>
         <div class="violation-title">選舉相關之賭博議題（已有判決先例）</div>
-        <div class="violation-law">Electoral Gambling · Presidential &amp; Public Officials Election Acts</div>
+        <div class="violation-law">選舉相關賭博 · 總統副總統及公職選罷法</div>
       </div>
     </div>
     <div class="violation-body">
       <p>
-        <strong>《總統副總統選舉罷免法》第 88-1 條、《公職人員選舉罷免法》第 104-2 條</strong>明定：以選舉結果為標的之賭博，不論在公共場所或透過網際網路，均屬刑事犯罪。依諮詢方觀察，Polymarket 上所見之「2028 年總統選舉贏家」「2026 年台灣地方選舉」等盤口，可能涉及此二條文之討論範圍。
+        <strong>《總統副總統選舉罷免法》第 88-1 條、《公職人員選舉罷免法》第 103-1 條</strong>明定：以選舉結果為標的之賭博，不論在公共場所或透過網際網路，均屬刑事犯罪。依觀察，Polymarket 上所見之「2028 年總統選舉贏家」「2026 年台灣地方選舉」等盤口，可能涉及此二條文之討論範圍。
       </p>
       <div class="penalty-box">
-        <span class="penalty-label">Statutory Reference</span>
+        <span class="penalty-label">相關法規刑度</span>
         下注賭客：6 個月以下有期徒刑、拘役或科／併科新台幣 10 萬元以下罰金。<strong>經營（供給）選舉賭盤者：5 年以下有期徒刑，得併科新台幣 50 萬元罰金。</strong>
       </div>
       <p>
-        <strong>判決先例整理：</strong>諮詢方於閱讀資料時，見台灣法院在多份判決書中均傾向認為——以選舉結果為輸贏標的之行為，不論平台名稱為「預測市場」、境外網站或以加密貨幣結算，皆有適用本條文之可能性。此一見解是否穩定，實際適用範圍如何，敬請法律顧問惠予指教。
+        <strong>判決先例整理：</strong>在閱讀資料時，見台灣法院在多份判決書中均傾向認為——以選舉結果為輸贏標的之行為，不論平台名稱為「預測市場」、境外網站或以加密貨幣結算，皆有適用本條文之可能性。此一見解是否穩定，實際適用範圍如何，敬請法律顧問惠予指教。
       </p>
       <div class="cite">
         <span class="cite-label">法條</span>
@@ -954,18 +1193,18 @@
       <div class="violation-num">2</div>
       <div>
         <div class="violation-title">網路賭博罪（刑法 266 條第 2 項）</div>
-        <div class="violation-law">Internet Gambling · Criminal Code § 266(2)</div>
+        <div class="violation-law">網路賭博 · 刑法第 266 條第 2 項</div>
       </div>
     </div>
     <div class="violation-body">
       <p>
-        <strong>2021 年 12 月 28 日修法後，刑法第 266 條新增第 2 項</strong>：「以電信設備、電子通訊、網際網路或其他相類之方法賭博財物者，亦同。」明文將網路賭博入罪化。
+        <strong>立法院 2021 年 12 月 28 日三讀通過、總統 2022 年 1 月 12 日公布、2022 年 1 月 14 日施行之刑法修正，第 266 條新增第 2 項</strong>：「以電信設備、電子通訊、網際網路或其他相類之方法賭博財物者，亦同。」明文將網路賭博入罪化。
       </p>
       <p>
-        諮詢方觀察到 Polymarket 使用者以 <strong>USDC（美元穩定幣）</strong>於站上下注，而 <strong>USDC 於公開市場可兌換為新台幣</strong>。此一特性在「財物」定義上之評價如何，以及是否因此與其他虛擬幣（例如不得兌現之平台內虛擬幣）於法律上有所區別，實非諮詢方所能判斷，敬請法律顧問惠予指教。
+        觀察到 Polymarket 使用者以 <strong>USDC（美元穩定幣）</strong>於站上下注，而 <strong>USDC 於公開市場可兌換為新台幣</strong>。此一特性在「財物」定義上之評價如何，以及是否因此與其他虛擬幣（例如不得兌現之平台內虛擬幣）於法律上有所區別，實非能自行判斷，敬請法律顧問惠予指教。
       </p>
       <div class="penalty-box">
-        <span class="penalty-label">Statutory Reference</span>
+        <span class="penalty-label">相關法規刑度</span>
         賭客：新台幣 5 萬元以下罰金。當場賭博器具與財物沒收。
       </div>
       <div class="cite">
@@ -981,7 +1220,7 @@
       <div class="violation-num">3</div>
       <div>
         <div class="violation-title">供給賭博場所相關議題（刑法 268 條）</div>
-        <div class="violation-law">Provision of Gambling Venue · Criminal Code § 268</div>
+        <div class="violation-law">供給賭博場所 · 刑法第 268 條</div>
       </div>
     </div>
     <div class="violation-body">
@@ -989,13 +1228,13 @@
         意圖營利而供給賭博場所或聚眾賭博者，處 <strong>3 年以下有期徒刑</strong>，得併科新台幣 9 萬元以下罰金。
       </p>
       <p>
-        諮詢方於閱讀資料時見，台灣司法實務傾向認為「賭博場所」不限於實體空間，網站、App 等可能被納入討論範圍。Polymarket 雖為去中心化架構，惟平台團隊提供市場建立機制、訂單簿撮合、收取 1.8% 手續費，此一營運結構於「意圖營利供給賭博場所」之認定上如何評價，敬請法律顧問指教。
+        在閱讀資料時見，台灣司法實務傾向認為「賭博場所」不限於實體空間，網站、App 等可能被納入討論範圍。Polymarket 雖為去中心化架構，惟平台團隊提供市場建立機制、訂單簿撮合，並依 Polymarket 官方文件收取費用：<strong>Maker（造市者）零費用</strong>，<strong>Taker（主動成交者）依類別與機率曲線計算費率，範圍 0%–1.8%</strong>（在 50% 機率時費用最高，接近 0%/100% 時遞減；Geopolitics 類別為 0%）。此一營運結構於「意圖營利供給賭博場所」之認定上如何評價，敬請法律顧問指教。
       </p>
       <p>
-        諮詢方注意到目前檢方公開案件均集中於下注使用者，<strong>對 Polymarket 平台本身尚未見立案紀錄</strong>。此實務現象之法律意涵為何（是否因跨境司法管轄困難、或其他因素），若平台方、其在台代表人、推廣者進入台灣司法管轄範圍時之處理方式，敬請法律顧問就實務經驗賜教。
+        注意到目前檢方公開案件均集中於下注使用者，<strong>對 Polymarket 平台本身尚未見立案紀錄</strong>。此實務現象之法律意涵為何（是否因跨境司法管轄困難、或其他因素），若平台方、其在台代表人、推廣者進入台灣司法管轄範圍時之處理方式，敬請法律顧問就實務經驗賜教。
       </p>
       <div class="penalty-box">
-        <span class="penalty-label">Statutory Reference</span>
+        <span class="penalty-label">相關法規刑度</span>
         平台經營者：3 年以下有期徒刑，得併科新台幣 9 萬元以下罰金（若涉選舉賭盤則加重至 5 年）。
       </div>
     </div>
@@ -1007,7 +1246,7 @@
       <div class="violation-num">4</div>
       <div>
         <div class="violation-title">未經授權發行彩票之議題（刑法 269 條）</div>
-        <div class="violation-law">Unauthorized Lottery Issuance · Criminal Code § 269</div>
+        <div class="violation-law">未經授權發行彩票 · 刑法第 269 條</div>
       </div>
     </div>
     <div class="violation-body">
@@ -1015,7 +1254,7 @@
         意圖營利，未經政府允准而發行彩票者，處 1 年以下有期徒刑，得併科新台幣 9 萬元以下罰金；為其媒介者，處 6 月以下徒刑。
       </p>
       <p>
-        Polymarket 之「是／否」二元押注機制，於經濟實質上是否與「發行彩票」構成類似情形，諮詢方難以自行判斷。諮詢方理解目前台灣僅有<strong>「中華民國對外貿易發展協會」（受理彩券）、「台灣運彩」（受理運彩）</strong>為政府授權之發行機構，Polymarket 未見有相關授權紀錄。此議題之實際適用範圍，敬請法律顧問指教。
+        Polymarket 之「是／否」二元押注機制，於經濟實質上是否與「發行彩票」構成類似情形，難以自行判斷。理解目前台灣之彩券事業體系為：<strong>公益彩券</strong>之主管機關為財政部，由中國信託商業銀行擔任發行機構，並委託台灣彩券股份有限公司辦理；<strong>運動彩券</strong>之主管機關為教育部（實際執行單位為教育部體育署），由台灣運彩科技股份有限公司擔任第三屆發行機構。上述兩類合法發行機構，Polymarket 未見有相關授權紀錄。此議題之實際適用範圍，敬請法律顧問指教。
       </p>
     </div>
   </div>
@@ -1026,23 +1265,23 @@
       <div class="violation-num">5</div>
       <div>
         <div class="violation-title">運動彩券發行條例</div>
-        <div class="violation-law">Sports Lottery Issuance Act · Exclusive License Violation</div>
+        <div class="violation-law">運動彩券發行條例 · 專屬發行機構議題</div>
       </div>
     </div>
     <div class="violation-body">
       <p>
-        《運動彩券發行條例》第 3 條規定運動彩券<strong>由主管機關（教育部）指定發行單位獨占發行</strong>。目前唯一合法發行者為「台灣運彩科技股份有限公司」（2024 年起委託）。
+        《運動彩券發行條例》第 4 條規定「運動彩券之發行應由彩券專業發行機構辦理，由主管機關設置，或以公開遴選方式擇定並公告之」（條文並無「獨占」或「專屬」字樣，但實質效果為指定單一發行機構）。目前合法發行機構為「台灣運彩科技股份有限公司」（第三屆發行機構）。
       </p>
       <p>
-        諮詢方觀察到 Polymarket 上有大量 NBA、EPL、NCAA、CS2 等運動賽事盤口。此類盤口是否落入條例第 3 條獨占條款之討論範圍、第 19、20 條之適用情形如何，諮詢方難以自行判斷。就此條例在本案中之適用可能性，敬請法律顧問惠予指教。
+        觀察到 Polymarket 上有大量 NBA、EPL、NCAA、CS2 等運動賽事盤口。此類盤口是否落入條例第 4 條專屬發行機構之規範範圍、非法經營運彩之刑事責任（實務上回歸刑法第 268 條「供給賭博場所」處理，條例第 21 條為打假球罪，非經營者之罰則）適用情形如何，難以自行判斷。就此條例在本案中之適用可能性，仍以法律顧問專業意見為準。
       </p>
       <div class="penalty-box">
-        <span class="penalty-label">Statutory Reference</span>
-        未經授權經營運動彩券：7 年以下有期徒刑，得併科新台幣 3000 萬元以下罰金。
+        <span class="penalty-label">相關法規刑度</span>
+        條例第 21 條（妨害比賽公平／打假球罪）：處 1 年以上 7 年以下有期徒刑，得併科新臺幣 1,000 萬元以上 3,000 萬元以下罰金。意圖營利或三人以上共同犯之者，處 3 年以上 10 年以下有期徒刑、併科 2,000 萬元以上 5,000 萬元以下罰金；致人於死者處無期徒刑或 7 年以上有期徒刑，致重傷者處 3 年以上 10 年以下有期徒刑，各得併科 2,000 萬元以上 5,000 萬元以下罰金（2025 年 6 月 17 日三讀修正版本）。本條規範對象為球員、隊職員等，非一般經營者；非法經營運彩實務上回歸刑法第 268 條處理。
       </div>
       <div class="cite">
         <span class="cite-label">法條</span>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0110039" target="_blank">《運動彩券發行條例》全國法規資料庫</a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0120050" target="_blank">《運動彩券發行條例》全國法規資料庫</a>
       </div>
     </div>
   </div>
@@ -1053,7 +1292,7 @@
       <div class="violation-num">6</div>
       <div>
         <div class="violation-title">期貨交易法相關議題（加密貨幣／商品漲跌盤）</div>
-        <div class="violation-law">Futures Trading Act · Unauthorized Derivatives</div>
+        <div class="violation-law">期貨交易法 · 未授權衍生品議題</div>
       </div>
     </div>
     <div class="violation-body">
@@ -1061,14 +1300,14 @@
         Polymarket 站上之「Bitcoin Up or Down」、「原油 CL 是否會在 3 月底前達到 $100」等盤口，於交易結構上似與「以未來特定商品價格為標的之對賭」有相似處。此一相似性是否具法律上之意義（例如是否落入期貨或二元選擇權之定義），敬請法律顧問惠予指教。
       </p>
       <p>
-        諮詢方閱讀《期貨交易法》時，見第 82、112 條對於未經金管會許可經營期貨交易業務設有規範。此類去中心化預測市場平台是否落入該條例之適用範圍，敬請法律顧問指教。
+        在閱讀《期貨交易法》時，見第 82、112 條對於未經金管會許可經營期貨交易業務設有規範。此類去中心化預測市場平台是否落入該條例之適用範圍，敬請法律顧問指教。
       </p>
       <p>
-        諮詢方亦注意到中國大陸司法實務有相關見解（「以二元期權之名，行賭博交易之實」者構成開設賭場罪），惟台灣司法目前尚未見處理此類案件之公開紀錄。此等外國實務見解對台灣之參考意義為何，敬請法律顧問指教。
+        也注意到中國大陸司法實務有相關見解（「以二元期權之名，行賭博交易之實」者構成開設賭場罪），惟台灣司法目前尚未見處理此類案件之公開紀錄。此等外國實務見解對台灣之參考意義為何，敬請法律顧問指教。
       </p>
       <div class="cite">
         <span class="cite-label">法條</span>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400015" target="_blank">《期貨交易法》全國法規資料庫</a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400100" target="_blank">《期貨交易法》全國法規資料庫</a>
       </div>
     </div>
   </div>
@@ -1079,7 +1318,7 @@
       <div class="violation-num">7</div>
       <div>
         <div class="violation-title">洗錢防制與電子支付相關議題</div>
-        <div class="violation-law">Money Laundering &amp; E-Payment Regulation</div>
+        <div class="violation-law">洗錢防制與電子支付規範</div>
       </div>
     </div>
     <div class="violation-body">
@@ -1087,7 +1326,7 @@
         使用 USDC 跨境下注涉及：
       </p>
       <p>
-        <strong>（1）洗錢防制法相關：</strong>若下注資金涉及犯罪所得或使用 USDC 掩飾資金性質等情形，是否可能涉及《洗錢防制法》第 14 條之討論，敬請法律顧問指教。諮詢方注意到檢方於既有 Polymarket 案件中，已透過鏈上分析追溯至中心化交易所 KYC 資料，此一司法調查能力已及於鏈上金流之事實，謹供參酌。
+        <strong>（1）洗錢防制法相關：</strong>若下注資金涉及犯罪所得或使用 USDC 掩飾資金性質等情形，是否可能涉及《洗錢防制法》第 19 條之討論（2024 年 7 月 31 日總統令公布、依中央法規標準法第 13 條自同年 8 月 2 日起生效之新法，一般洗錢罪條號由舊法第 14 條移至第 19 條；金額未達 1 億元處 6 月以上 5 年以下有期徒刑、併科 5,000 萬元以下罰金，達 1 億元以上則處 3 年以上 10 年以下、併科 1 億元以下罰金），敬請法律顧問指教。注意到檢方於既有 Polymarket 案件中，已透過鏈上分析追溯至中心化交易所 KYC 資料，此一司法調查能力已及於鏈上金流之事實，謹供參酌。
       </p>
       <p>
         <strong>（2）電子支付機構管理條例相關：</strong>若 Polymarket 有於台灣推廣、代收代付等行為，是否可能涉及《電子支付機構管理條例》第 25 條之討論範圍，敬請法律顧問指教。
@@ -1106,13 +1345,13 @@
     <div class="section-number">III</div>
     <div class="section-title-zone">
       <h2>在地化合規路徑探討（假設性）</h2>
-      <span class="en">Hypothetical Path for Discussion Only</span>
+      <span class="en">假設性探討 · 僅供討論</span>
     </div>
   </div>
 
   <div class="compliance-section">
     <p class="compliance-intro">
-      本節係諮詢方就「類似 Polymarket 之預測市場若欲於台灣以合法業態經營」之假設性討論。此處所列各項調整為諮詢方於閱讀相關法規後之初步思考，並非可執行之合規建議。以下整理八個可能需要考慮的調整面向，供法律顧問研析時參酌。各項內容是否完整、是否正確、是否有補充或修正之處，敬請法律顧問指教。
+      本節為就「類似 Polymarket 之預測市場若欲於台灣以合法業態經營」之假設性討論。此處所列各項調整為閱讀相關法規後的初步思考，並非可執行之合規建議。以下整理八個可能需要考慮的調整面向，供法律顧問研析時參酌。各項內容是否完整、是否正確、是否有補充或修正之處，敬請法律顧問指教。
     </p>
 
     <!-- Change 1 -->
@@ -1122,14 +1361,14 @@
         <span class="change-title">下架台灣選舉相關標的</span>
       </div>
       <div class="change-body">
-        <p>諮詢方於閱讀《總統副總統選舉罷免法》第 88-1 條與《公職人員選舉罷免法》第 104-2 條時，理解兩條文對於以選舉結果為賭博標的之行為有明確規範。另諮詢方亦注意到目前檢警於相關案件中已有多起實際執法紀錄。此議題建議列為優先討論事項，敬請法律顧問指教。</p>
+        <p>在閱讀《總統副總統選舉罷免法》第 88-1 條與《公職人員選舉罷免法》第 103-1 條時，理解兩條文對於以選舉結果為賭博標的之行為有明確規範。另外也注意到目前檢警於相關案件中已有多起實際執法紀錄。此議題建議列為優先討論事項，敬請法律顧問指教。</p>
         <div class="change-compare">
           <div class="before-block">
-            <span class="compare-label">Before</span>
+            <span class="compare-label">調整前</span>
             開設「2028 總統選舉贏家」「2026 地方選舉獲勝政黨」等盤口。
           </div>
           <div class="after-block">
-            <span class="compare-label">After</span>
+            <span class="compare-label">調整後</span>
             下架所有台灣選舉相關盤口；並可考慮對台灣 IP 進行 geoblock，避免境外選舉盤口引發延伸討論。
           </div>
         </div>
@@ -1143,15 +1382,15 @@
         <span class="change-title">就運動賽事盤口之處理進行評估</span>
       </div>
       <div class="change-body">
-        <p>諮詢方於閱讀《運動彩券發行條例》第 3 條時，理解該條將運動彩券發行權授予台灣運彩。惟此一獨占規範的適用範圍、對類似平台是否有擴張解釋空間等問題，諮詢方無法自行判斷，敬請法律顧問惠予指教。</p>
-        <p>就經營運動相關服務之可能路徑，諮詢方初步理解一種選項為<strong>申請成為台灣運彩之受委託經銷商</strong>，惟此為彩券業務之授權，與預測市場性質有所不同。其他可能之合法路徑有哪些，敬請法律顧問惠予分享。</p>
+        <p>在閱讀《運動彩券發行條例》第 4 條時，理解該條規定「運動彩券之發行應由彩券專業發行機構辦理，由主管機關設置，或以公開遴選方式擇定並公告之」，將運動彩券發行權指定授予台灣運彩。惟此一專屬發行機構規範的適用範圍、對類似平台是否有擴張解釋空間等問題，無法自行判斷，仍以法律顧問專業意見為準。</p>
+        <p>就經營運動相關服務之可能路徑，初步理解的一種選項為<strong>申請成為台灣運彩之受委託經銷商</strong>，惟此為彩券業務之授權，與預測市場性質有所不同。其他可能之合法路徑有哪些，敬請法律顧問惠予分享。</p>
         <div class="change-compare">
           <div class="before-block">
-            <span class="compare-label">Before</span>
+            <span class="compare-label">調整前</span>
             NBA、NCAA、EPL、CS2 等大量運動賽事盤口。
           </div>
           <div class="after-block">
-            <span class="compare-label">After</span>
+            <span class="compare-label">調整後</span>
             下架運動相關盤口，或調整商業模式以轉型為運彩資訊分析服務。
           </div>
         </div>
@@ -1165,14 +1404,14 @@
         <span class="change-title">就加密貨幣／商品／外匯漲跌類標的進行評估</span>
       </div>
       <div class="change-body">
-        <p>諮詢方觀察到「BTC Up or Down」「原油 $100」類標的，在結構上似具期貨或二元選擇權之特徵。此類標的是否需《期貨交易法》授權、金管會目前對去中心化衍生品之政策立場為何，敬請法律顧問指教。</p>
+        <p>觀察到「BTC Up or Down」「原油 $100」類標的，在結構上似具期貨或二元選擇權之特徵。此類標的是否需《期貨交易法》授權、金管會目前對去中心化衍生品之政策立場為何，敬請法律顧問指教。</p>
         <div class="change-compare">
           <div class="before-block">
-            <span class="compare-label">Before</span>
+            <span class="compare-label">調整前</span>
             BTC 5 分鐘漲跌、原油價格區間、外匯匯率。
           </div>
           <div class="after-block">
-            <span class="compare-label">After</span>
+            <span class="compare-label">調整後</span>
             下架金融類標的，或評估申請成為合法期貨商之可能性（惟門檻較高，實務上需慎重評估）。
           </div>
         </div>
@@ -1186,15 +1425,15 @@
         <span class="change-title">獎金結算機制之調整思考</span>
       </div>
       <div class="change-body">
-        <p>諮詢方於閱讀資料時理解到，賭博罪之構成要件中「以財物博彩、輸贏得喪」為重要元素。若平台能於設計上調整「對價性」這一要素，是否即可能不落入賭博定義之討論範圍？敬請法律顧問指教此理解是否正確。</p>
-        <p>諮詢方初步思考以下幾種可能模式，供討論參考：（1）<strong>預測積分制</strong>——使用者免費獲得預測點數，預測正確累積排名；（2）<strong>贊助商獎品制</strong>——由企業贊助獎品給正確預測者（類似民調活動）；（3）<strong>純資訊展示</strong>——僅展示預測趨勢，不提供下注機制。以上三種模式是否皆能有效避開相關法律爭議，敬請法律顧問指教。</p>
+        <p>在閱讀資料時理解到，賭博罪之構成要件中「以財物博彩、輸贏得喪」為重要元素。若平台能於設計上調整「對價性」這一要素，是否即可能不落入賭博定義之討論範圍？敬請法律顧問指教此理解是否正確。</p>
+        <p>初步思考以下幾種可能模式，供討論參考：（1）<strong>預測積分制</strong>——使用者免費獲得預測點數，預測正確累積排名；（2）<strong>贊助商獎品制</strong>——由企業贊助獎品給正確預測者（類似民調活動）；（3）<strong>純資訊展示</strong>——僅展示預測趨勢，不提供下注機制。以上三種模式是否皆能有效避開相關法律爭議，敬請法律顧問指教。</p>
         <div class="change-compare">
           <div class="before-block">
-            <span class="compare-label">Before</span>
-            使用者投入 USDC，贏者分走輸者賭金，平台抽 1.8% 手續費。
+            <span class="compare-label">調整前</span>
+            使用者投入 USDC，贏者分走輸者賭金，平台依類別收取 Taker 手續費（Maker 0%、Taker 0%–1.8%，依機率曲線計算）。
           </div>
           <div class="after-block">
-            <span class="compare-label">After</span>
+            <span class="compare-label">調整後</span>
             使用者免費預測，贏者獲得贊助商獎品、點數或排行榜榮譽，無資金輸贏關係。
           </div>
         </div>
@@ -1208,14 +1447,14 @@
         <span class="change-title">金流機制之合規規劃</span>
       </div>
       <div class="change-body">
-        <p>若仍需設計資金流動機制（例如付費訂閱、付費解鎖進階功能等），諮詢方初步理解可能需採用<strong>台灣合法金流管道（信用卡、LINE Pay、超商代收等）</strong>，並視需要取得電子支付相關許可。是否使用 USDC 或其他加密貨幣作為交易媒介，亦可能需進一步評估其合規性。相關門檻與具體要求，敬請法律顧問惠予指教。</p>
+        <p>若仍需設計資金流動機制（例如付費訂閱、付費解鎖進階功能等），初步理解可能需採用<strong>台灣合法金流管道（信用卡、LINE Pay、超商代收等）</strong>，並視需要取得電子支付相關許可。是否使用 USDC 或其他加密貨幣作為交易媒介，亦可能需進一步評估其合規性。相關門檻與具體要求，敬請法律顧問惠予指教。</p>
         <div class="change-compare">
           <div class="before-block">
-            <span class="compare-label">Before</span>
+            <span class="compare-label">調整前</span>
             USDC 穩定幣下注與結算，鏈上錢包直連。
           </div>
           <div class="after-block">
-            <span class="compare-label">After</span>
+            <span class="compare-label">調整後</span>
             改採新台幣訂閱費、超商繳款、信用卡等合法金流方式。
           </div>
         </div>
@@ -1229,8 +1468,8 @@
         <span class="change-title">就標的範圍進行檢視與篩選</span>
       </div>
       <div class="change-body">
-        <p>諮詢方初步思考可能較無爭議之標的類型：<strong>科技趨勢預測、娛樂事件（電影票房、綜藝冠軍）、經濟指標、氣候現象、社會現象（某 App 用戶數等）</strong>。此類標的若設計對價性機制，諮詢方理解仍需避開「選舉」「運動」「金融衍生品」等面向。此初步分類是否周全，敬請法律顧問指教。</p>
-        <p>另諮詢方注意到，「中國大陸與台灣 2027 年之前是否發生軍事衝突」等政治敏感議題，雖非選舉賭博之範疇，惟可能涉及國家安全與兩岸關係面向。此類議題是否宜於平台上呈現、有無其他法律面向之考量，敬請法律顧問指教。</p>
+        <p>初步思考可能較無爭議的標的類型：<strong>科技趨勢預測、娛樂事件（電影票房、綜藝冠軍）、經濟指標、氣候現象、社會現象（某 App 用戶數等）</strong>。此類標的若設計對價性機制，仍需避開「選舉」「運動」「金融衍生品」等面向。此初步分類是否周全，敬請法律顧問指教。</p>
+        <p>另外也注意到，「中國大陸與台灣 2027 年之前是否發生軍事衝突」等政治敏感議題，雖非選舉賭博之範疇，惟可能涉及國家安全與兩岸關係面向。此類議題是否宜於平台上呈現、有無其他法律面向之考量，敬請法律顧問指教。</p>
       </div>
     </div>
 
@@ -1241,7 +1480,7 @@
         <span class="change-title">建立台灣實體公司與合規主體</span>
       </div>
       <div class="change-body">
-        <p>諮詢方觀察到 Polymarket 目前為境外平台，於台灣無登記之代表人。若考慮於台灣在地化經營，諮詢方初步理解可能需考慮以下事項：</p>
+        <p>觀察到 Polymarket 目前為境外平台，於台灣無登記之代表人。若考慮於台灣在地化經營，初步理解可能需考慮以下事項：</p>
         <p>（1）設立台灣公司作為服務提供主體；（2）聘任合規長與法律顧問；（3）建立台灣使用者之 KYC 機制；（4）建立未成年使用者排除機制；（5）確保符合《個人資料保護法》相關要求。以上事項是否周全，敬請法律顧問指教。</p>
       </div>
     </div>
@@ -1253,8 +1492,8 @@
         <span class="change-title">介面與行銷語言之用字斟酌</span>
       </div>
       <div class="change-body">
-        <p>諮詢方觀察到國內部分業者於介面設計上採取迴避「下注」「賠率」「賭」等用語，改採用「預測」「機率」「市場」「積分」等中性詞彙之做法。另於支付通路選擇上，刻意不採用 MyCard、GASH 等遊戲業支付工具，似有避免被歸類為遊戲之考量。此類介面與金流之設計選擇，於法律上是否有其意義，敬請法律顧問惠予指教。</p>
-        <p>諮詢方理解，此類看似細節的設計，實務上可能作為「平台自我定性」之間接參考資料。其於法律爭議中之實際影響程度，敬請法律顧問就實務經驗賜教。</p>
+        <p>觀察到國內部分業者於介面設計上採取迴避「下注」「賠率」「賭」等用語，改採用「預測」「機率」「市場」「積分」等中性詞彙之做法。另於支付通路選擇上，刻意不採用 MyCard、GASH 等遊戲業支付工具，似有避免被歸類為遊戲之考量。此類介面與金流之設計選擇，於法律上是否有其意義，敬請法律顧問惠予指教。</p>
+        <p>此類看似細節的設計，實務上可能作為「平台自我定性」之間接參考資料。其於法律爭議中之實際影響程度，敬請法律顧問就實務經驗賜教。</p>
       </div>
     </div>
   </div>
@@ -1266,23 +1505,23 @@
     <div class="section-number">IV</div>
     <div class="section-title-zone">
       <h2>小結與討論建議</h2>
-      <span class="en">Summary &amp; Points for Discussion</span>
+      <span class="en">小結與討論要點</span>
     </div>
   </div>
 
   <div class="conclusion">
-    <h3>—— 諮詢方整理 ——</h3>
+    <h3>—— 資料整理 ——</h3>
 
     <p>
-      <strong>關於 Polymarket 現況：</strong>諮詢方於資料蒐集過程中觀察到，此平台目前已被官方列為台灣地區「close-only」之限制地區。另就台灣民眾使用此平台之司法紀錄而言，諮詢方已整理到 5 件以上地方法院判決書、以及雲林與士林地檢署多件緩起訴案例。此等公開資料之具體法律意涵，以及對於相關商業決策之影響評估，敬請法律顧問惠予指教。
+      <strong>關於 Polymarket 現況：</strong>在資料蒐集過程中觀察到，此平台目前已被官方列為台灣地區「close-only」之限制地區。另就台灣民眾使用此平台之司法紀錄而言，已整理到 5 件以上地方法院判決書、以及雲林與士林地檢署多件緩起訴案例。此等公開資料之具體法律意涵，以及對於相關商業決策之影響評估，敬請法律顧問惠予指教。
     </p>
 
     <p>
-      <strong>關於在地化合規討論：</strong>就前述八項假設性調整之整理，諮詢方意識到——若依此等方向進行調整，所呈現出的服務型態，可能已與 Polymarket 原始之商業模式有顯著差異，本質上較接近「預測社群」或「資訊服務」性質。此一觀察是否成立、是否有其他可能之合法路徑，敬請法律顧問指教。
+      <strong>關於在地化合規討論：</strong>就前述八項假設性調整之整理，可以看出——若依此等方向進行調整，所呈現出的服務型態，可能已與 Polymarket 原始之商業模式有顯著差異，本質上較接近「預測社群」或「資訊服務」性質。此一觀察是否成立、是否有其他可能之合法路徑，敬請法律顧問指教。
     </p>
 
     <p>
-      <strong>提供會議討論參考之問題：</strong>諮詢方彙整以下幾項可供會議討論之問題，供各位參酌——（1）是否需就員工或使用者於此類平台之接觸行為，建立內部提醒機制？（2）類似服務於台灣之商業可行性，是否值得後續進一步研究？（3）若公司有意推動此類創新服務，可能需向哪些主管機關（例如金管會、NCC、教育部運彩相關單位）進行事前諮詢？以上問題之提出僅為參考用途，實際議題之設定請依會議主持與法律顧問之判斷為準。
+      <strong>提供會議討論參考之問題：</strong>以下彙整幾項可供會議討論的問題，供各位參酌——（1）是否需就員工或使用者於此類平台之接觸行為，建立內部提醒機制？（2）類似服務於台灣之商業可行性，是否值得後續進一步研究？（3）若公司有意推動此類創新服務，可能需向哪些主管機關（例如金管會、NCC、教育部體育署）進行事前諮詢？以上問題之提出僅為參考用途，實際議題之設定請依會議主持與法律顧問之判斷為準。
     </p>
   </div>
 </section>
@@ -1292,11 +1531,11 @@
 <!-- 頁尾 -->
 <footer>
   <div class="disclaimer">
-    本文件係諮詢方於公開資料蒐集、官方網站檢視與司法案例查詢後所整理之請教資料，僅供法律顧問研析參考，並非諮詢方出具之法律意見書。文中所引判決書、法規條文、新聞報導均已標示出處以便查證；實際個案之法律適用與風險評估，仍以法律顧問之專業意見為準。<br><br>
-    本文件第 III 章所述之「在地化合規路徑」為諮詢方閱讀資料後之假設性討論，係探討商業模式與法規之介面，並非具體合規建議；諮詢方無意鼓勵任何規避法律或提供違法服務之行為。<br><br>
-    諮詢方並無法律專業背景，文中若有資料引用失當、法律理解錯誤或推論未盡周延之處，敬請法律顧問不吝指正。另法規與判決見解具時效性，若有更新或新見解，亦懇請法律顧問惠予告知。
+    本文件係本文件由公開資料蒐集、官方網站檢視與司法案例查詢後所整理的請教資料，僅供法律顧問研析參考，並非法律意見書。文中所引判決書、法規條文、新聞報導均已標示出處以便查證；實際個案之法律適用與風險評估，仍以法律顧問之專業意見為準。<br><br>
+    本文件第 III 章所述之「在地化合規路徑」為閱讀資料後的假設性討論，係探討商業模式與法規之介面，並非具體合規建議；本文件亦無意鼓勵任何規避法律或提供違法服務之行為。<br><br>
+    我方並非法律專業人士，文中若有資料引用失當、法律理解錯誤或推論未盡周延之處，敬請法律顧問不吝指正。另法規與判決見解具時效性，若有更新或新見解，亦懇請法律顧問惠予告知。
   </div>
-  <div class="footer-mark">— End of Inquiry Document —</div>
+  <div class="footer-mark">— 本請教文件結束 —</div>
 </footer>
 
 </body>
