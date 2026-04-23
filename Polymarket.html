@@ -636,6 +636,282 @@
   .before-block .compare-label { color: var(--warning); }
   .after-block .compare-label { color: var(--accent-green); }
 
+  
+  /* ============ 第五章：衍生功能評估 ============ */
+  .scenario-intro {
+    background: var(--paper-warm);
+    border-left: 4px solid var(--accent-navy);
+    padding: 1.5rem 1.8rem;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+
+  .scenario-intro strong {
+    color: var(--accent-navy);
+  }
+
+  /* Polymarket vs 新功能對照表 */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    font-size: 0.9rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border: 1px solid var(--rule);
+    line-height: 1.7;
+  }
+
+  .compare-table thead th {
+    background: var(--paper-dark);
+    font-family: "Noto Serif TC", serif;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .compare-table .col-label {
+    background: var(--paper-warm);
+    font-weight: 600;
+    color: var(--ink);
+    width: 22%;
+  }
+
+  .compare-table .col-poly {
+    width: 36%;
+    color: var(--ink-soft);
+  }
+
+  .compare-table .col-new {
+    width: 42%;
+    color: var(--ink);
+  }
+
+  .compare-table .col-new strong {
+    color: var(--accent-red);
+  }
+
+  /* 模擬情境卡片 */
+  .scenario {
+    margin: 2rem 0;
+    padding: 0;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .scenario.risk-high { border-top-color: var(--accent-red); }
+  .scenario.risk-mid { border-top-color: #a8861f; }
+  .scenario.risk-test { border-top-color: var(--accent-green); }
+
+  .scenario-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .scenario-badge {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .scenario.risk-high .scenario-badge {
+    background: var(--accent-red);
+    color: #fff;
+  }
+
+  .scenario.risk-mid .scenario-badge {
+    background: #a8861f;
+    color: #fff;
+  }
+
+  .scenario.risk-test .scenario-badge {
+    background: var(--accent-green);
+    color: #fff;
+  }
+
+  .scenario-title {
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .scenario-title .en {
+    display: block;
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin-top: 0.15rem;
+  }
+
+  .scenario-body {
+    padding: 1.4rem 1.8rem;
+  }
+
+  .scenario-section {
+    margin-bottom: 1.2rem;
+  }
+
+  .scenario-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .scenario-label {
+    display: inline-block;
+    font-family: "Noto Serif TC", serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-navy);
+    padding: 0.15rem 0.6rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--accent-navy);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.04em;
+  }
+
+  .scenario-section p {
+    font-size: 0.92rem;
+    line-height: 1.88;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .scenario-section p + p {
+    margin-top: 0.6rem;
+  }
+
+  .scenario-section ul {
+    margin: 0.4rem 0 0 1.4rem;
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+  }
+
+  .scenario-section li {
+    margin-bottom: 0.3rem;
+  }
+
+  .scenario-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.7rem;
+  }
+
+  .scenario-split-box {
+    padding: 0.9rem 1.1rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    font-size: 0.87rem;
+    line-height: 1.75;
+  }
+
+  .scenario-split-box strong {
+    display: block;
+    color: var(--accent-navy);
+    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    .scenario-split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* 關鍵議題列表 */
+  .key-issues {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    counter-reset: issue;
+  }
+
+  .key-issues li {
+    padding: 1.2rem 1.4rem 1.2rem 3.8rem;
+    margin-bottom: 0.8rem;
+    background: var(--paper);
+    border-left: 3px solid var(--accent-red);
+    position: relative;
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    counter-increment: issue;
+  }
+
+  .key-issues li::before {
+    content: counter(issue, decimal-leading-zero);
+    position: absolute;
+    left: 1.1rem;
+    top: 1.05rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-red);
+    letter-spacing: 0.03em;
+  }
+
+  .key-issues strong {
+    display: block;
+    color: var(--ink);
+    font-size: 0.98rem;
+    margin-bottom: 0.3rem;
+    font-family: "Noto Serif TC", serif;
+  }
+
+  /* 諮詢請教點 */
+  .consult-points {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-navy);
+    padding: 1.6rem 1.9rem;
+    margin: 1.5rem 0;
+  }
+
+  .consult-points h4 {
+    font-family: "Noto Serif TC", serif;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .consult-points ol {
+    margin: 0;
+    padding-left: 1.5rem;
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--ink-soft);
+  }
+
+  .consult-points li {
+    margin-bottom: 0.6rem;
+  }
+
+  .consult-points li:last-child {
+    margin-bottom: 0;
+  }
+
   /* ============ 結論區 ============ */
   .conclusion {
     margin-top: 3rem;
@@ -916,6 +1192,57 @@
   @media (max-width: 1240px) {
     .toc-float { display: none; }
   }
+
+  /* ============ 目錄子項（第五章子標題）============ */
+  /* 有 sublist 的主項目：保持 flex 容器，讓 tags 仍可靠右、sublist 換行獨佔 */
+  .toc-list > li.has-sublist {
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+  }
+
+  .toc-list > li.has-sublist .toc-item-tags {
+    gap: 0.3rem;
+  }
+
+  .toc-sublist {
+    list-style: none;
+    margin: 0.7rem 0 0.2rem 0;
+    padding: 0.4rem 0 0.2rem 1.1rem;
+    border-left: 2px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 1.5rem;
+    flex-basis: 100%;
+  }
+
+  .toc-sublist li {
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .toc-sublist a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-family: "Noto Serif TC", serif;
+    display: block;
+    padding: 0.2rem 0.6rem;
+    border-left: 2px solid transparent;
+    margin-left: -0.6rem;
+    transition: all 0.2s;
+  }
+
+  .toc-sublist a:hover {
+    color: var(--accent-red);
+    border-left-color: var(--accent-red);
+    background: var(--paper-warm);
+  }
+
+  @media (max-width: 640px) {
+    .toc-sublist {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 </head>
 <body>
@@ -984,6 +1311,19 @@
       <div class="toc-item-tags">
         <span class="toc-tag tag-navy">會議用</span>
       </div>
+    </li>
+    <li class="has-sublist">
+      <a class="toc-item-title" href="#sec-5">衍生新功能之法律風險評估</a>
+      <div class="toc-item-tags">
+        <span class="toc-tag tag-critical">擬議新功能</span>
+        <span class="toc-tag tag-high">6 個情境分析</span>
+      </div>
+      <ol class="toc-sublist">
+        <li><a href="#sec-5-overview">5.1 功能概述與結構性差異</a></li>
+        <li><a href="#sec-5-scenarios">5.2 模擬情境分析（A–F）</a></li>
+        <li><a href="#sec-5-issues">5.3 共通關鍵法律議題</a></li>
+        <li><a href="#sec-5-consult">5.4 擬議階段請教重點</a></li>
+      </ol>
     </li>
   </ol>
 </section>
@@ -1525,6 +1865,393 @@
     </p>
   </div>
 </section>
+
+<!-- ==================== 第五章：衍生新功能之法律風險評估 ==================== -->
+<section class="section" id="sec-5">
+  <div class="section-header">
+    <div class="section-number">V</div>
+    <div class="section-title-zone">
+      <h2>衍生新功能之法律風險評估（本專案擬議）</h2>
+      <span class="en">Derivative Features · Legal Risk Assessment for Proposed New Features</span>
+    </div>
+  </div>
+
+  <!-- 5.0 章節說明 -->
+  <div class="scenario-intro">
+    <p>
+      <strong>本章定位：</strong>前四章之整理係就 Polymarket 既有模式進行研析；本章則為本專案規劃階段之自我風險評估，擬議若於台灣開發類似預測市場平台時，在原始 Polymarket 模式之基礎上，另行加入若干新功能，以下就此擬議方案之法律風險進行初步盤點，供法律顧問於研析時參酌。
+    </p>
+    <p>
+      <strong>擬議之核心變更：</strong>（1）由使用者／創作者自主開盤（而非僅由平台團隊建立市場）；（2）連結直播平台，於直播中進行即時互動式投注；（3）開放臨時事件盤口（如天氣、直播即時行為等）。
+    </p>
+    <p>
+      <strong>擬議之金流結構假設：</strong>採平台幣單向設計（新臺幣→平台幣，站內不提供提現），此與玩運彩彩幣模式較為接近；是否另有地下幣商形成第三方兌現管道，為尚待觀察之事實，本文件不預設平台對此之責任。
+    </p>
+    <p>
+      <strong>擬議之創作者分潤設計：</strong>尚未定案。以下情境分析就「若有分潤」「若無分潤」兩種情況並陳其法律意涵，以協助法律顧問回頭指導商業模式選擇。
+    </p>
+  </div>
+
+  <!-- 5.1 功能概述與結構性差異 -->
+  <div id="sec-5-overview" style="margin-top: 2rem;">
+    <h3 style="font-family: 'Noto Serif TC', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--rule);">
+      5.1 功能概述與 Polymarket 之結構性差異
+    </h3>
+    <p style="font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); margin-bottom: 1rem;">
+      擬議功能與 Polymarket 原始模式之主要差異如下表。此等差異對法律風險輪廓有顯著影響，故須於事前釐清。
+    </p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width: 22%;">比較項目</th>
+          <th class="col-poly">Polymarket 原始模式</th>
+          <th class="col-new">PredictMarket（本專案擬議）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-label">市場建立者</td>
+          <td class="col-poly">主要為平台團隊（有內部審核流程）</td>
+          <td class="col-new"><strong>使用者／創作者自主開盤</strong>（UGC 市場）</td>
+        </tr>
+        <tr>
+          <td class="col-label">事件類型</td>
+          <td class="col-poly">相對重大且具公開資料之事件（選舉、經濟、地緣政治）</td>
+          <td class="col-new"><strong>擴及臨時／即時事件</strong>（天氣、直播即時行為等）</td>
+        </tr>
+        <tr>
+          <td class="col-label">直播整合</td>
+          <td class="col-poly">無直播功能</td>
+          <td class="col-new"><strong>連結直播平台</strong>，直播中即時互動投注</td>
+        </tr>
+        <tr>
+          <td class="col-label">創作者角色</td>
+          <td class="col-poly">無此概念</td>
+          <td class="col-new"><strong>創作者可開盤並與觀眾互動</strong>（類似實況主經營盤口）</td>
+        </tr>
+        <tr>
+          <td class="col-label">下注幣種</td>
+          <td class="col-poly">USDC（非託管式，結算於區塊鏈）</td>
+          <td class="col-new"><strong>平台幣單向設計</strong>（新臺幣→平台幣，站內不可提現）</td>
+        </tr>
+        <tr>
+          <td class="col-label">結算方式</td>
+          <td class="col-poly">UMA Optimistic Oracle（去中心化預言機）</td>
+          <td class="col-new"><strong>平台中心化裁定</strong>（臨時事件尤須依賴平台判斷）</td>
+        </tr>
+        <tr>
+          <td class="col-label">使用情境</td>
+          <td class="col-poly">相對「冷靜」之預測式交易</td>
+          <td class="col-new"><strong>直播互動、氣氛帶動式投注</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5.2 模擬情境分析 -->
+  <div id="sec-5-scenarios" style="margin-top: 2.5rem;">
+    <h3 style="font-family: 'Noto Serif TC', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--rule);">
+      5.2 模擬情境分析（A–F）
+    </h3>
+    <p style="font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); margin-bottom: 1rem;">
+      以下為擬議功能可能產生之六個代表性情境：情境 A–C 為較具法律風險之情境，情境 D–F 則為刻意設計、初看似屬合法之情境，意在測試法律邊界。請法律顧問就各情境之合法性、風險等級與建議調整方向惠予指教。
+    </p>
+
+    <!-- 情境 A：電競直播引導投注 -->
+    <div class="scenario risk-high">
+      <div class="scenario-header">
+        <span class="scenario-badge">情境 A · 高風險</span>
+        <div class="scenario-title">
+          電競直播引導投注
+          <span class="en">E-sports Live Stream · Active Inducement to Bet</span>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <span class="scenario-label">情境敘述</span>
+          <p>創作者 A 為某電競隊伍之直播主，於直播當日晚間之國際電競賽事開賽前 30 分鐘，於本平台開盤「今晚 A 戰隊 vs B 戰隊，勝者為何？」，並於直播中向觀眾即時喊話：「大家快上去壓 A 戰隊」「下注就能跟戰隊一起拚！」觀眾於直播頁面內以平台幣下注，勝者瓜分平台幣。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">初步法律評估觀察</span>
+          <p>此情境與傳統賭博最為相近。「賽事勝負為標的」「平台幣具經濟價值」「創作者主動引導下注」等要素同時成立，形式上已具備刑法第 266 條第 2 項網路賭博罪之構成要件（就下注者言），且創作者之引導行為與平台提供開盤工具之行為，於刑法第 268 條「供給賭博場所或聚眾賭博」之認定上，恐有正面討論之空間。</p>
+          <div class="scenario-split">
+            <div class="scenario-split-box">
+              <strong>若創作者有分潤</strong>
+              創作者從下注總額中分潤 → 創作者具「意圖營利」之可能性顯著提高，恐直接構成刑法第 268 條之正犯；平台則可能構成幫助犯或共同正犯。
+            </div>
+            <div class="scenario-split-box">
+              <strong>若創作者無分潤</strong>
+              創作者雖無營利意圖，惟其引導行為仍可能構成「招攬賭博」或「煽惑他人犯罪」（刑法第 153 條）之討論；平台作為工具提供者之責任仍須檢討。
+            </div>
+          </div>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">主要涉及條文</span>
+          <ul>
+            <li>刑法第 266 條第 2 項（網路賭博罪）— 對下注者</li>
+            <li>刑法第 268 條（供給賭博場所或聚眾賭博罪）— 對創作者／平台</li>
+            <li>刑法第 153 條（煽惑他人犯罪）— 對引導行為</li>
+            <li>運動彩券發行條例第 4 條（專屬發行機構）— 若賽事為運彩投注標的</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">請教重點</span>
+          <p>（1）此情境下平台是否可能被認定為刑法第 268 條之正犯、共同正犯或幫助犯？（2）若平台於服務條款中明文禁止「引導性言論」並建立監控機制，此等措施可否阻卻責任？（3）就業主角度，可否透過「限縮標的類型」或「禁止即時引導」等產品設計規避風險？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情境 B：颱風登陸預測 -->
+    <div class="scenario risk-high">
+      <div class="scenario-header">
+        <span class="scenario-badge">情境 B · 高風險</span>
+        <div class="scenario-title">
+          使用者自主開盤：颱風登陸預測
+          <span class="en">User-Generated Market · Typhoon Landfall Prediction</span>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <span class="scenario-label">情境敘述</span>
+          <p>使用者 B（非知名創作者）於颱風警報發布後，在平台上開盤「今晚 23:59 前颱風是否登陸？」，其他使用者以平台幣下注「是／否」。開盤者未於直播中引導，僅於平台發布盤口供他人下注。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">初步法律評估觀察</span>
+          <p>本情境看似不涉「賽事」或「選舉」等傳統賭博標的，惟「以將來事件結果決定平台幣得失」之結構，於賭博罪之構成要件上（偶然事件、財物得失）仍未必免責。公職人員選舉罷免法第 103-1 條將「選舉結果之賭博」特別入罪化之立法理由，即顯示「以事件結果為賭博標的」本屬刑法賭博罪可能涵攝之範圍，僅是因該條目保護法益不同而另設特別條款。</p>
+          <p>此情境另有一獨特風險：<strong>「颱風是否登陸」之裁定權掌握於平台</strong>。若交通部中央氣象署之發布時間與開盤時段有時間差，或發布用語與開盤用語不一致（例如「颱風外圍環流影響」能否算作登陸），平台作為裁判者之公信力與法律定位即受挑戰。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">主要涉及條文</span>
+          <ul>
+            <li>刑法第 266 條第 2 項（網路賭博罪）— 對下注者</li>
+            <li>刑法第 268 條（供給賭博場所或聚眾賭博罪）— 對開盤者／平台</li>
+            <li>民法第 148 條（誠信原則）、消費者保護法（就裁定爭議）</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">請教重點</span>
+          <p>（1）非賽事、非選舉類之臨時事件盤口，於刑法賭博罪構成要件下之定性為何？（2）若平台設計「僅採官方權威機構（如氣象署）之單一數據源」作為結算依據，此設計能否降低「賭博場所」之定性風險，並同時解決裁定爭議？（3）平台作為爭議最終裁判者，其法律地位及義務範圍為何？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情境 C：公眾人物相關盤 -->
+    <div class="scenario risk-high">
+      <div class="scenario-header">
+        <span class="scenario-badge">情境 C · 高風險</span>
+        <div class="scenario-title">
+          公眾人物相關盤口
+          <span class="en">Public Figure · Personality-Based Market</span>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <span class="scenario-label">情境敘述</span>
+          <p>直播主 C 於其直播中開盤「某藝人（指名特定公眾人物）今晚 24 時前是否會就某爭議事件公開道歉？」，觀眾以平台幣下注「會／不會」。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">初步法律評估觀察</span>
+          <p>此情境除具備一般賭博罪之風險外，另引發數項獨立法律風險：</p>
+          <ul>
+            <li><strong>名譽權與人格權侵害：</strong>將特定個人之私人行為（是否道歉）作為投注標的，未經其同意，恐構成民法第 18 條人格權侵害、第 195 條非財產損害賠償請求權之基礎。</li>
+            <li><strong>個人資料保護法：</strong>若盤口內容涉及該藝人之私生活、身心健康等個資描述，可能違反個資法第 20 條。</li>
+            <li><strong>社會秩序維護法第 89 條第 2 款：</strong>無正當理由跟追他人、經勸阻不聽者；另得參照《跟蹤騷擾防制法》第 3 條（就群眾被鼓動監看／跟拍之間接效果而言）。</li>
+            <li><strong>刑法第 310 條（誹謗罪）：</strong>若開盤文字隱含對該公眾人物之貶抑，可能涉及誹謗之討論。</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">主要涉及條文</span>
+          <ul>
+            <li>民法第 18 條、第 184 條、第 195 條（人格權保護）</li>
+            <li>個人資料保護法第 20 條（目的外利用）</li>
+            <li>刑法第 310 條（誹謗罪）</li>
+            <li>社會秩序維護法第 89 條第 2 款（跟追騷擾行為）；跟蹤騷擾防制法第 3 條</li>
+            <li>刑法第 266、268 條（賭博罪、供給賭博場所罪）</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">請教重點</span>
+          <p>（1）以特定在世公眾人物之個人行為作為盤口標的，就該個人之人格權保護而言，平台是否須建立事前同意機制？（2）若平台禁止指名特定個人、僅允許「匿名化」或「群體統計性」盤口（例如「本月主流媒體對此事件之主要情緒傾向為何」），是否可降低此類風險？（3）類似機制之責任界分如何處理（開盤者 vs 平台）？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情境 D：純娛樂性虛擬道具盤 -->
+    <div class="scenario risk-test">
+      <div class="scenario-header">
+        <span class="scenario-badge">情境 D · 測試合法邊界</span>
+        <div class="scenario-title">
+          純娛樂性虛擬道具盤
+          <span class="en">Entertainment Tokens · Testing the "Temporary Amusement" Exception</span>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <span class="scenario-label">情境敘述</span>
+          <p>使用者以「純娛樂平台點數」（需另以免費方式取得，如每日登入獲贈、觀看廣告獲取，<strong>無法以新臺幣購買、亦不可提現、亦不可用於購買站上任何商品或服務</strong>）押注「直播主今晚遊戲會不會破關」。此點數設計上僅為「站內標誌性數字」，使用者贏得更多點數後，僅可用於「繼續押注其他盤口」或「兌換站內虛擬徽章」。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">初步法律評估觀察</span>
+          <p>此情境之設計意在援引刑法第 266 條第 3 項「<strong>前二項以供人暫時娛樂之物為賭者，不在此限</strong>」之排除條款（按：舊法原於第 1 項設但書，2022 年修法後移列獨立第 3 項並擴及第 2 項網路賭博）。由於點數無法以金錢取得、亦無金錢兌現價值，理論上可能落入「暫時娛樂之物」之範圍。</p>
+          <p>惟實務上須注意：</p>
+          <ul>
+            <li><strong>學理通說與實務見解：</strong>「供人暫時娛樂之物」傳統上指花生、糖果、飛鏢射氣球、夜市套圈圈等低價且即時消耗之物（屬學者通說與下級審舉例，非最高法院明文判決）；點數若具「累積性」與「可持續使用性」，能否比附援引尚有疑義。</li>
+            <li><strong>虛擬道具之現實價值：</strong>若點數所能兌換之徽章具市場價值，或點數本身於站外形成交易市場（如類似遊戲帳號買賣），排除條款之適用即受挑戰。</li>
+            <li><strong>累積效應：</strong>使用者花時間獲取點數，可視為一種「時間成本投入」；雖非金錢，於部分學說下仍具財產性。</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">主要涉及條文</span>
+          <ul>
+            <li>刑法第 266 條但書（暫時娛樂之物之排除）</li>
+            <li>遊戲軟體分級管理辦法（若認定為遊戲）</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">請教重點</span>
+          <p>（1）要設計一個確實可落入刑法第 266 條第 3 項保護範圍之點數機制，應符合哪些要件？（2）若平台點數完全免費取得且不可兌現，是否存在其他（非刑法賭博罪）之監管風險？（3）若此模式成立，是否可作為平台「非賭博服務」之核心定位基礎？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情境 E：知識競賽型預測 -->
+    <div class="scenario risk-test">
+      <div class="scenario-header">
+        <span class="scenario-badge">情境 E · 測試合法邊界</span>
+        <div class="scenario-title">
+          知識競賽型公共議題預測
+          <span class="en">Knowledge Competition · Testing the "Prediction Market vs Gambling" Line</span>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <span class="scenario-label">情境敘述</span>
+          <p>平台僅開放特定類型之「知識性公共議題預測」，例如：「年底台北 101 跨年煙火秒數」「下屆奧運中華隊金牌數」「明年春節連假全國電影票房」等。參與者以平台幣下注，最接近實際結果者獲獎。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">初步法律評估觀察</span>
+          <p>此情境之設計意在主張「預測市場（prediction market）而非賭博」之定位。論述主軸為：</p>
+          <ul>
+            <li><strong>知識性 vs 偶然性：</strong>結果取決於參與者對資訊之掌握與研判能力，而非純粹偶然。</li>
+            <li><strong>社會價值：</strong>提供公共議題之集體智慧預測，具資訊價值（類似學術預測市場之概念）。</li>
+            <li><strong>比較法參考：</strong>美國 CFTC 長期以來就「事件合約（event contracts）」之監管定位存有爭議，部分知識性預測可能落入商品期貨交易法；惟依 Kalshi v. CFTC（2024）等判決發展，即使落入聯邦期貨法管轄，美國各州博弈法仍可能併行適用，管轄界線尚未完全釐清。</li>
+          </ul>
+          <p>惟就台灣現行法而言，刑法賭博罪之構成要件並不區分「偶然性」與「技術性」，實務見解多數仍認定「技術性成分高之競技」（如麻將）可能構成賭博；惟近年亦有部分下級審判決，就純技術性活動、或具明確知識研判成分之預測活動，展現較為寬鬆之見解。此主張於現行法下之成立性仍待釐清，需視個案具體情況而定。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">主要涉及條文</span>
+          <ul>
+            <li>刑法第 266、268 條（賭博罪、供給賭博場所罪）</li>
+            <li>期貨交易法（若可認定為事件合約）</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">請教重點</span>
+          <p>（1）就台灣現行法而言，「知識性預測市場」是否有與刑法賭博罪切割之論述空間？（2）若有此空間，應符合哪些結構要件（例如：強制揭露資訊、禁止短期盤口、強制公益分成）？（3）此模式如欲推展，是否宜先取得金管會或體育署之事前函釋？</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情境 F：公益型預測 -->
+    <div class="scenario risk-test">
+      <div class="scenario-header">
+        <span class="scenario-badge">情境 F · 測試合法邊界</span>
+        <div class="scenario-title">
+          公益包裝型預測
+          <span class="en">Charity-Wrapped Prediction · Testing Public Benefit Framing</span>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="scenario-section">
+          <span class="scenario-label">情境敘述</span>
+          <p>平台就每一個盤口，明定「平台費用之 50%（或更高比例）強制撥捐指定公益團體」，並於每期公告撥捐金額與受益單位。參與者下注同時達成「娛樂」與「公益」雙重目的。</p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">初步法律評估觀察</span>
+          <p>「公益包裝」在法律上通常<strong>不構成賭博罪之阻卻事由</strong>。刑法第 266 條並未設「公益目的」之排除規定；公益彩券之所以合法，係因有特別法《公益彩券發行條例》明文授權，非因其公益性質本身。</p>
+          <p>又須特別注意：若擬採「使用者額外捐贈給公益團體」之勸募型設計，依《公益勸募條例》第 5 條，勸募主體限於公立學校、行政法人、公益性社團法人或財團法人——<strong>營利平台本身不具勸募資格</strong>；若平台設計為「強制抽取手續費後撥捐」之捐贈型（平台自願捐出自有盈餘），則較可能定性為「捐贈」而非「勸募」，不受該條例規範。此設計之具體樣態定性，需區分兩種模式分別評估。</p>
+
+          <p>惟公益設計可能於以下面向產生有利效果：</p>
+          <ul>
+            <li><strong>檢察官起訴裁量：</strong>若平台確實具可驗證之公益貢獻，於個案偵查中，檢察官可能較傾向於緩起訴或其他替代措施。</li>
+            <li><strong>未來修法方向：</strong>若社會接受度高，可能成為未來立法放寬之政策基礎（類似公益彩券之立法歷程）。</li>
+            <li><strong>品牌形象與抗辯：</strong>於民事或行政訴訟之比例原則審酌時，可能具加分效果。</li>
+          </ul>
+          <p>然須特別警醒：<strong>公益包裝不應被解讀為「已自動合法化」之策略，其僅為風險緩釋之一種可能方向。</strong></p>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">主要涉及條文</span>
+          <ul>
+            <li>刑法第 266、268 條（賭博罪、供給賭博場所罪）</li>
+            <li>公益彩券發行條例（對照參考）</li>
+            <li>公益勸募條例（若涉及公開勸募；該條例第 5 條限定勸募主體為公立學校、行政法人、公益性社團法人、財團法人，營利平台不具勸募資格）</li>
+          </ul>
+        </div>
+        <div class="scenario-section">
+          <span class="scenario-label">請教重點</span>
+          <p>（1）公益分成設計於刑法賭博罪之判斷上，是否有任何實質意義？（2）若平台就其自身行為提起公開意見徵詢或申請函釋，可能獲得什麼回應？（3）朝「申請特別法授權」之方向（類似愛心彩券、社福彩券之立法模式）發展，需具備哪些政策基礎？</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5.3 共通關鍵法律議題 -->
+  <div id="sec-5-issues" style="margin-top: 2.5rem;">
+    <h3 style="font-family: 'Noto Serif TC', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--rule);">
+      5.3 共通關鍵法律議題
+    </h3>
+    <p style="font-size: 0.92rem; line-height: 1.85; color: var(--ink-soft); margin-bottom: 1rem;">
+      除個別情境分析外，擬議功能另產生以下數項共通性關鍵議題，建議作為法律顧問諮詢之優先討論事項：
+    </p>
+
+    <ul class="key-issues">
+      <li>
+        <strong>平台作為「開局工具提供者」之刑事責任定性</strong>
+        使用者自主開盤之模式，使平台從「服務提供者」轉變為「工具提供者」。於刑法第 268 條「供給賭博場所」之認定上，平台究屬正犯（直接提供場所）、共同正犯（與開盤者共謀）、幫助犯（提供工具），或得以「通路中立」為由阻卻責任，為最核心之爭議。
+      </li>
+      <li>
+        <strong>創作者於直播中引導下注之法律評價</strong>
+        直播主於直播中鼓動、引導觀眾下注之行為，是否構成「煽惑他人犯罪」（刑法第 153 條）、社會秩序維護法第 84 條職業賭博之對照參考，或於有分潤時直接成立刑法第 268 條之正犯。此議題直接影響創作者簽約設計。
+      </li>
+      <li>
+        <strong>臨時事件盤口之裁判權與結算爭議</strong>
+        平台對於「颱風是否登陸」「直播主是否翻車」等事件之結算認定，若處理不當，可能同時面臨「違反消保法誠信原則」「違反公平交易法廣告真實性」與「民事契約履行之爭議」。必須於設計階段建立明確、客觀、可驗證之結算機制。
+      </li>
+      <li>
+        <strong>使用者開盤內容（UGC）之審核義務</strong>
+        開放使用者開盤，意味平台將接收大量使用者生成內容（user-generated content）。部分盤口可能涉及人格權侵害、誹謗、煽惑、妨害風化等議題。平台審核義務之程度（事前審核 vs 通知下架 vs 僅事後追究），須於服務條款及實務機制中明確規範。
+      </li>
+      <li>
+        <strong>未成年保護機制之強化需求</strong>
+        相較於 Polymarket 之使用者多為主動接觸預測市場之成年人，PredictMarket 模式透過直播平台擴散，接觸未成年之機率顯著提高。需特別強化年齡驗證、內容分級、父母同意等機制，以符合《兒童及少年福利與權益保障法》第 43 條之要求。
+      </li>
+    </ul>
+  </div>
+
+  <!-- 5.4 擬議階段請教重點 -->
+  <div id="sec-5-consult" style="margin-top: 2.5rem;">
+    <h3 style="font-family: 'Noto Serif TC', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--rule);">
+      5.4 擬議階段請教重點
+    </h3>
+
+    <div class="consult-points">
+      <h4>就本專案擬議階段，懇請法律顧問就下列方向惠予指教</h4>
+      <ol>
+        <li>就整體擬議方案而言，哪一項設計決定（市場建立權、直播連結、臨時事件、創作者分潤）對平台法律風險之影響最為關鍵？其相對嚴重性之排序為何？</li>
+        <li>若擬將擬議功能拆分為「第一階段（保守開展）」與「第二階段（進階擴展）」，依法律風險控制之觀點，建議先行推出哪些功能？哪些應暫緩或取消？</li>
+        <li>就情境 D、E、F 所呈現之「看似合法」邊界設計，法律顧問認為是否有可操作之空間？若有，建議之具體結構要件為何？</li>
+        <li>就平台於刑法第 268 條下之地位，是否有可透過「服務條款明文」「內容審核機制」「地理隔離」等方式，建立完整之免責結構？若有先例可循，懇請法律顧問提供參考判決或函釋。</li>
+        <li>若本專案仍決意推進，建議於正式營運前應完成哪些法律準備工作（例如：申請函釋、建立合規手冊、簽訂創作者合約、設計使用者同意條款）？優先順序為何？</li>
+        <li>類似商業模式於台灣或鄰近法域（日、韓、新加坡）是否有先行業者，其經營模式與法律處境如何？本專案可自何等案例汲取經驗教訓？</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- ==================== 第五章結束 ==================== -->
+
+
+
 
 </main>
 
