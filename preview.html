@@ -53,7 +53,7 @@ button,input,select{font:inherit}button{border:1px solid var(--line);background:
     <div class="pageNav"><button class="navtab active" id="tabQuiz">測驗題庫</button><button class="navtab" id="tabOfficial">官方資訊</button></div>
   </div>
   <div class="controlCard actionCard">
-    <button id="toggleTools">篩選 / 模擬</button><button class="primary" id="startQuizTop">重抽</button>
+    <button id="toggleTools">▲ 篩選</button><button class="primary" id="startQuizTop">重抽</button>
   </div>
 </div>
 <div class="quizOnly"><div class="scoreline"><div class="progress"><i id="progressBar"></i></div><div class="scoreSmall"><span id="rateCount">0%</span></div></div>
@@ -132,7 +132,7 @@ function updateStats(){ const idset=new Set(activeIds); const list=DATA.filter(x
 document.addEventListener('click', e=>{ const opt=e.target.closest('.opt'); if(opt){ answers[Number(opt.dataset.q)]=Number(opt.dataset.i); render(); return; } const rb=e.target.closest('.revealBtn'); if(rb){ const id=Number(rb.dataset.q); revealed.has(id)?revealed.delete(id):revealed.add(id); render(); return; } });
 ['groupFilter','topicFilter'].forEach(id=>el(id).addEventListener('input',()=>setActive(currentFiltered())));el('sourceFilter').addEventListener('change',()=>setActive(currentFiltered()));el('srcAll').onclick=()=>{el('sourceOptions').querySelectorAll('input').forEach(i=>{i.checked=true;i.closest('.checkItem').classList.add('checked');});setActive(currentFiltered());};el('srcNone').onclick=()=>{el('sourceOptions').querySelectorAll('input').forEach(i=>{i.checked=false;i.closest('.checkItem').classList.remove('checked');});setActive(currentFiltered());};
 function startQuiz(){ const filtered=currentFiltered(); const size=el('quizSize').value; let list=shuffle(filtered); if(size!=='all') list=list.slice(0, Number(size)); answers={}; revealed=new Set(); optionOrders={}; setActive(list); window.scrollTo({top:0,behavior:'smooth'}); }
-el('toggleTools').onclick=()=>el('toolsPanel').classList.toggle('open');el('startQuiz').onclick=startQuiz;el('startQuizTop').onclick=startQuiz;el('showAll').onclick=()=>{ answers={}; revealed=new Set(); optionOrders={}; setActive(currentFiltered()); };el('resetAnswers').onclick=()=>{ answers={}; revealed=new Set(); render(); };el('toggleScore').onclick=()=>{ scoreVisible=!scoreVisible; el('toggleScore').textContent=scoreVisible?'🙈 隱藏':'👁 顯示'; updateStats(); };
+el('toggleTools').onclick=()=>{const open=el('toolsPanel').classList.toggle('open');el('toggleTools').textContent=(open?'▼':'▲')+' 篩選';};el('startQuiz').onclick=startQuiz;el('startQuizTop').onclick=startQuiz;el('showAll').onclick=()=>{ answers={}; revealed=new Set(); optionOrders={}; setActive(currentFiltered()); };el('resetAnswers').onclick=()=>{ answers={}; revealed=new Set(); render(); };el('toggleScore').onclick=()=>{ scoreVisible=!scoreVisible; el('toggleScore').textContent=scoreVisible?'🙈 隱藏':'👁 顯示'; updateStats(); };
 function switchPage(page){
   const isQuiz = page === 'quiz';
   el('quizPage').classList.toggle('active', isQuiz);
