@@ -2301,12 +2301,11 @@
     openParentDetails(target);
     setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   });
-  // 直接以 URL hash 開啟頁面時亦展開
+  // 以 URL hash 開啟頁面時：僅平滑滾動，不自動展開收折區塊（收折區塊一律預設收起）
   window.addEventListener('load', () => {
     if (location.hash) {
       const target = document.getElementById(location.hash.slice(1));
       if (target) {
-        openParentDetails(target);
         setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
       }
     }
