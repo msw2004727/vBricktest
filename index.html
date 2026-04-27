@@ -1886,6 +1886,11 @@
   .part-divider.part-1 .part-meta { color: var(--accent-red); }
   .part-divider.part-2 .part-meta { color: var(--accent-blue); }
 
+  /* 品牌名稱色彩標記 */
+  .brand-poly { color: var(--accent-red); font-weight: 600; }
+  .brand-pm { color: var(--accent-blue); font-weight: 600; }
+  a.brand-poly, a.brand-pm { text-decoration: underline; }
+
   /* TOC 內的分區小標 */
   .toc-part-heading {
     list-style: none;
@@ -1913,7 +1918,7 @@
   <a href="#key-facts">網站資料</a>
   <a href="#dual-currency-section">雙幣體系</a>
   <a href="#cat-1">法律疑問</a>
-  <div class="toc-section-label" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--accent-blue); margin-top: 0.6rem; padding-top: 0.4rem; border-top: 1px solid var(--rule);">PART 二·PredictMarket</div>
+  <div class="toc-section-label" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; color: var(--accent-blue); margin-top: 0.6rem; padding-top: 0.4rem; border-top: 1px solid var(--rule);">PART 二·<span class="brand-pm">PredictMarket</span></div>
   <a href="#predict-key-facts">網站資料</a>
   <a href="#cat-2">預測市場議題</a>
 </nav>
@@ -1953,8 +1958,8 @@
     <li><a class="toc-item-title" href="#dual-currency-section">雙幣體系觀察</a></li>
     <li><a class="toc-item-title" href="#cat-1">法律相關疑問（Q1–Q6）</a></li>
 
-    <li class="toc-part-heading part-2">PART 二　PredictMarket 預測市場</li>
-    <li><a class="toc-item-title" href="#predict-key-facts">「PredictMarket」網站資料摘要</a></li>
+    <li class="toc-part-heading part-2">PART 二　<span class="brand-pm">PredictMarket</span> 預測市場</li>
+    <li><a class="toc-item-title" href="#predict-key-facts">「<span class="brand-pm">PredictMarket</span>」網站資料摘要</a></li>
     <li><a class="toc-item-title" href="#cat-2">預測市場議題（Q7–Q10）</a></li>
   </ol>
 </section>
@@ -2386,8 +2391,8 @@
   <details class="key-facts-collapse facts-inner">
     <summary>
       <span class="summary-label">
-        <span class="summary-title">「PredictMarket」網站資料摘要（諮詢前提）</span>
-        <span class="summary-meta">Polymarket 機制與台灣司法現況　·　含引用來源</span>
+        <span class="summary-title">「<span class="brand-pm">PredictMarket</span>」網站資料摘要（諮詢前提）</span>
+        <span class="summary-meta"><span class="brand-poly">Polymarket</span> 機制與台灣司法現況　·　含引用來源</span>
       </span>
       <span class="summary-controls">
         <span class="summary-badge">點擊收合/展開</span>
@@ -2396,7 +2401,7 @@
       </span>
     </summary>
     <div class="collapse-body">
-      <p style="font-size: 0.85rem; color: var(--muted); margin: 1.5rem 0 1.2rem; font-family: 'Cormorant Garamond', serif; font-style: italic;">以下為 Polymarket 預測市場與台灣司法現況之公開資料整理，便於法律顧問查證。</p>
+      <p style="font-size: 0.85rem; color: var(--muted); margin: 1.5rem 0 1.2rem; font-family: 'Cormorant Garamond', serif; font-style: italic;">以下為 <span class="brand-poly">Polymarket</span> 預測市場與台灣司法現況之公開資料整理，便於法律顧問查證。</p>
 
       <!-- 功能概述：本專案 PredictMarket 與 Polymarket 之結構性差異 -->
       <div style="margin: 1rem 0 2rem; padding: 1.5rem 1.6rem; background: var(--paper-warm); border-left: 4px solid var(--accent-blue);">
@@ -2411,45 +2416,45 @@
           <thead>
             <tr>
               <th style="padding: 0.7rem 0.9rem; text-align: left; border: 1px solid var(--rule); background: var(--paper-dark); font-family: 'Noto Serif TC', serif; font-weight: 600; color: var(--ink); width: 22%;">比較項目</th>
-              <th style="padding: 0.7rem 0.9rem; text-align: left; border: 1px solid var(--rule); background: var(--paper-dark); font-family: 'Noto Serif TC', serif; font-weight: 700; width: 36%;"><a href="https://polymarket.com/zh-hant" target="_blank" style="color: var(--accent-red); text-decoration: underline;">Polymarket</a></th>
               <th style="padding: 0.7rem 0.9rem; text-align: left; border: 1px solid var(--rule); background: var(--paper-dark); font-family: 'Noto Serif TC', serif; font-weight: 700; width: 42%;"><a href="https://protype.kf-test.com/markets" target="_blank" style="color: var(--accent-blue); text-decoration: underline;">PredictMarket</a></th>
+              <th style="padding: 0.7rem 0.9rem; text-align: left; border: 1px solid var(--rule); background: var(--paper-dark); font-family: 'Noto Serif TC', serif; font-weight: 700; width: 36%;"><a href="https://polymarket.com/zh-hant" target="_blank" style="color: var(--accent-red); text-decoration: underline;">Polymarket</a></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">市場建立者</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);">平台團隊（有內部審核流程）＋ <strong style="color: var(--accent-blue);">使用者／創作者自主開盤</strong>（UGC 市場）</td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">主要為平台團隊（有內部審核流程）</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">使用者／創作者自主開盤</strong>（UGC 市場）</td>
             </tr>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">事件類型</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);">重大公開資料事件（選舉、經濟、地緣政治）＋ <strong style="color: var(--accent-blue);">擴及臨時／即時事件</strong>（天氣、直播即時行為等）</td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">相對重大且具公開資料之事件（選舉、經濟、地緣政治）</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">擴及臨時／即時事件</strong>（天氣、直播即時行為等）</td>
             </tr>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">直播整合</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">無直播功能</td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">連結直播平台</strong>，直播中即時互動投注</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">無直播功能</td>
             </tr>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">創作者角色</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">無此概念</td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">創作者可開盤並與觀眾互動</strong>（類似實況主經營盤口）</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">無此概念</td>
             </tr>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">下注幣種</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">USDC（非託管式，結算於區塊鏈）</td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">平台幣單向設計</strong>（新臺幣→平台幣，站內不可提現）</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">USDC（非託管式，結算於區塊鏈）</td>
             </tr>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">結算方式</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">UMA Optimistic Oracle（去中心化預言機）</td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">平台中心化裁定</strong>（臨時事件尤須依賴平台判斷）</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">UMA Optimistic Oracle（去中心化預言機）</td>
             </tr>
             <tr>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); background: var(--paper-warm); font-weight: 600; line-height: 1.7;">使用情境</td>
+              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);">「冷靜」之預測式交易 ＋ <strong style="color: var(--accent-blue);">直播互動、氣氛帶動式投注</strong></td>
               <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink-soft);">相對「冷靜」之預測式交易</td>
-              <td style="padding: 0.7rem 0.9rem; border: 1px solid var(--rule); line-height: 1.7; color: var(--ink);"><strong style="color: var(--accent-blue);">直播互動、氣氛帶動式投注</strong></td>
             </tr>
           </tbody>
         </table>
@@ -2457,43 +2462,43 @@
 
       <ul class="facts-list">
         <li>
-          <strong>平台基本介紹</strong>：Polymarket 為<strong>非託管式加密貨幣預測市場</strong>（non-custodial prediction market），2020 年成立，自稱全球最大預測市場。使用者以美元穩定幣 <strong>USDC</strong> 下注，結算於 Polygon 區塊鏈，事件結果由 UMA 去中心化預言機（oracle）確認。
+          <strong>平台基本介紹</strong>：<span class="brand-poly">Polymarket</span> 為<strong>非託管式加密貨幣預測市場</strong>（non-custodial prediction market），2020 年成立，自稱全球最大預測市場。使用者以美元穩定幣 <strong>USDC</strong> 下注，結算於 Polygon 區塊鏈，事件結果由 UMA 去中心化預言機（oracle）確認。
           <div class="cite">
             <span class="cite-label">來源</span>
-            <a href="https://polymarket.com/zh-hant" target="_blank">Polymarket 官網繁體中文首頁</a>
-            <span class="cite-note">（頁面標題「Polymarket | 全球最大預測市場」）</span>
+            <a href="https://polymarket.com/zh-hant" target="_blank"><span class="brand-poly">Polymarket</span> 官網繁體中文首頁</a>
+            <span class="cite-note">（頁面標題「<span class="brand-poly">Polymarket</span> | 全球最大預測市場」）</span>
           </div>
         </li>
 
         <li>
-          <strong>撮合機制（CLOB／AMM）</strong>：Polymarket 早期採用<strong>AMM 自動造市</strong>（LMSR 對數市場計分規則）提供流動性與即時定價；於 2022 年底起逐步轉為<strong>中心化 off-chain 訂單簿 CLOB</strong>（Central Limit Order Book），訂單於鏈下撮合、結算回到鏈上智能合約執行。賠率（價格）由市場流動性決定，平台本身不開盤、不持反向部位。
+          <strong>撮合機制（CLOB／AMM）</strong>：<span class="brand-poly">Polymarket</span> 早期採用<strong>AMM 自動造市</strong>（LMSR 對數市場計分規則）提供流動性與即時定價；於 2022 年底起逐步轉為<strong>中心化 off-chain 訂單簿 CLOB</strong>（Central Limit Order Book），訂單於鏈下撮合、結算回到鏈上智能合約執行。賠率（價格）由市場流動性決定，平台本身不開盤、不持反向部位。
           <div class="cite">
             <span class="cite-label">官方文件</span>
-            <a href="https://docs.polymarket.com/" target="_blank">Polymarket Documentation</a>
+            <a href="https://docs.polymarket.com/" target="_blank"><span class="brand-poly">Polymarket</span> Documentation</a>
           </div>
           <div class="cite">
             <span class="cite-label">機制分析</span>
-            <a href="https://www.panewslab.com/en/articles/fz20kk02b04n" target="_blank">From AMM to Order Book: Polymarket Pricing Mechanism Transformation（PANews）</a>
+            <a href="https://www.panewslab.com/en/articles/fz20kk02b04n" target="_blank">From AMM to Order Book: <span class="brand-poly">Polymarket</span> Pricing Mechanism Transformation（PANews）</a>
           </div>
         </li>
 
         <li>
-          <strong>台灣地理限制</strong>：Polymarket 官方已於 <strong>2024 年</strong>將台灣列為限制地區（<strong>close-only status</strong>），禁止台灣使用者新開部位與新存款，僅允許既有部位持有至市場結算。同列限制者尚有新加坡、波蘭、泰國。官方服務條款第 2.1.4 條明文禁止使用 VPN 繞過地理限制。
+          <strong>台灣地理限制</strong>：<span class="brand-poly">Polymarket</span> 官方已於 <strong>2024 年</strong>將台灣列為限制地區（<strong>close-only status</strong>），禁止台灣使用者新開部位與新存款，僅允許既有部位持有至市場結算。同列限制者尚有新加坡、波蘭、泰國。官方服務條款第 2.1.4 條明文禁止使用 VPN 繞過地理限制。
           <div class="cite">
             <span class="cite-label">官方說明</span>
-            <a href="https://help.polymarket.com/en/articles/13364163-geographic-restrictions" target="_blank">Polymarket 官方說明中心：地理限制（英文）</a>
+            <a href="https://help.polymarket.com/en/articles/13364163-geographic-restrictions" target="_blank"><span class="brand-poly">Polymarket</span> 官方說明中心：地理限制（英文）</a>
           </div>
         </li>
 
         <li>
-          <strong>台灣司法案例（2023 年 12 月）</strong>：雲林地檢署動員超過 <strong>70 名警力</strong>於全國 8 縣市突擊，逮捕 <strong>17 名</strong>在 Polymarket 下注 2024 年總統大選結果之賭客，查扣 <strong>USDC 5,501.98 顆</strong>（約新台幣 17.1 萬元）。後續以緩起訴處分結案。另有士林地檢署陳姓被告緩起訴 1 年、繳公庫新台幣 3 萬元之先例。
+          <strong>台灣司法案例（2023 年 12 月）</strong>：雲林地檢署動員超過 <strong>70 名警力</strong>於全國 8 縣市突擊，逮捕 <strong>17 名</strong>在 <span class="brand-poly">Polymarket</span> 下注 2024 年總統大選結果之賭客，查扣 <strong>USDC 5,501.98 顆</strong>（約新台幣 17.1 萬元）。後續以緩起訴處分結案。另有士林地檢署陳姓被告緩起訴 1 年、繳公庫新台幣 3 萬元之先例。
           <div class="cite">
             <span class="cite-label">媒體報導</span>
-            <a href="https://abmedia.io/polymarket-taiwan-election-prediction-user" target="_blank">鏈新聞：Polymarket 大選賭博風波，我是怎麼被抓到的？（2023.12）</a>
+            <a href="https://abmedia.io/polymarket-taiwan-election-prediction-user" target="_blank">鏈新聞：<span class="brand-poly">Polymarket</span> 大選賭博風波，我是怎麼被抓到的？（2023.12）</a>
           </div>
           <div class="cite">
             <span class="cite-label">緩起訴結果</span>
-            <a href="https://www.blocktempo.com/prosecutors-conditionally-suspend-case-against-polymarket-taiwan-election-bettors/" target="_blank">動區動趨：Polymarket 遭捕賭客起訴結果出爐（2024.06）</a>
+            <a href="https://www.blocktempo.com/prosecutors-conditionally-suspend-case-against-polymarket-taiwan-election-bettors/" target="_blank">動區動趨：<span class="brand-poly">Polymarket</span> 遭捕賭客起訴結果出爐（2024.06）</a>
           </div>
         </li>
 
@@ -2506,10 +2511,10 @@
         </li>
 
         <li>
-          <strong>USDC 之財物性</strong>：Polymarket 使用者於站上以 USDC 下注，而 USDC 於公開市場可兌換為新台幣。此一可兌換性對「賭博財物」定義之影響，與其他不得兌現之站內虛擬幣於法律評價上是否有區別，屬研析參考事項。
+          <strong>USDC 之財物性</strong>：<span class="brand-poly">Polymarket</span> 使用者於站上以 USDC 下注，而 USDC 於公開市場可兌換為新台幣。此一可兌換性對「賭博財物」定義之影響，與其他不得兌現之站內虛擬幣於法律評價上是否有區別，屬研析參考事項。
           <div class="cite">
             <span class="cite-label">參考</span>
-            <a href="https://www.theblock.co/post/334175/singapore-bans-polymarket-amid-national-crackdown-on-online-gambling-sites" target="_blank">The Block：Singapore bans Polymarket amid national crackdown（2025.01，英文）</a>
+            <a href="https://www.theblock.co/post/334175/singapore-bans-polymarket-amid-national-crackdown-on-online-gambling-sites" target="_blank">The Block：Singapore bans <span class="brand-poly">Polymarket</span> amid national crackdown（2025.01，英文）</a>
           </div>
         </li>
       </ul>
@@ -2523,7 +2528,7 @@
   <div class="cat-header">
     <div class="cat-number">II</div>
     <div class="cat-title-zone">
-      <h2>PredictMarket 預測市場議題</h2>
+      <h2><span class="brand-pm">PredictMarket</span> 預測市場議題</h2>
       <div class="cat-sub">Prediction Market Inquiries · Q7 – Q10</div>
     </div>
     <div class="cat-ribbon"></div>
@@ -2536,7 +2541,7 @@
     </div>
     <div class="q-reason">
       <span class="reason-badge">請教項目</span>
-      <p class="reason-text">若一預測平台於開盤時以 1:1 之賠率開始，並依據參與預測之人數多寡動態調整賠率（類似 <a href="https://docs.polymarket.com/" target="_blank" style="color: var(--accent-navy); text-decoration: underline;">Polymarket 之 CLOB 訂單簿機制</a>或早期採用之 <a href="https://www.panewslab.com/en/articles/fz20kk02b04n" target="_blank" style="color: var(--accent-navy); text-decoration: underline;">AMM 自動造市（LMSR）機制</a>——賠率由市場流動性決定，而非平台主動開立固定賠率）。請教：此類「賠率隨預測參與人數波動」之結構，是否足以與傳統「平台開盤／莊家定賠率」之型態作法律上之區別，進而可能規避刑法賭博罪之認定？</p>
+      <p class="reason-text">若一預測平台於開盤時以 1:1 之賠率開始，並依據參與預測之人數多寡動態調整賠率（類似 <a href="https://docs.polymarket.com/" target="_blank" style="color: var(--accent-navy); text-decoration: underline;"><span class="brand-poly">Polymarket</span> 之 CLOB 訂單簿機制</a>或早期採用之 <a href="https://www.panewslab.com/en/articles/fz20kk02b04n" target="_blank" style="color: var(--accent-navy); text-decoration: underline;">AMM 自動造市（LMSR）機制</a>——賠率由市場流動性決定，而非平台主動開立固定賠率）。請教：此類「賠率隨預測參與人數波動」之結構，是否足以與傳統「平台開盤／莊家定賠率」之型態作法律上之區別，進而可能規避刑法賭博罪之認定？</p>
     </div>
   </article>
 
