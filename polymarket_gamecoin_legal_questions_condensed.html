@@ -228,6 +228,59 @@
       color: #26313a;
     }
 
+    .topic-details {
+      margin: 16px 0 0;
+      border: 1px solid var(--line);
+      background: #fbfaf7;
+    }
+
+    .topic-details summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      color: var(--navy);
+      font-weight: 800;
+      user-select: none;
+    }
+
+    .topic-table-wrap {
+      padding: 0 14px 14px;
+      overflow-x: auto;
+    }
+
+    .topic-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--soft-line);
+      font-size: 0.94rem;
+    }
+
+    .topic-table th,
+    .topic-table td {
+      border-bottom: 1px solid var(--soft-line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .topic-table th {
+      background: #f3f7fb;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .topic-table td[rowspan] {
+      background: #fbfcfd;
+      color: var(--navy);
+      font-weight: 800;
+      border-right: 1px solid var(--soft-line);
+      vertical-align: middle;
+    }
+
+    .topic-table tr:last-child td {
+      border-bottom: 0;
+    }
+
     .number.answered-number {
       width: auto;
       min-width: 86px;
@@ -291,7 +344,8 @@
 
       .terms,
       .reply,
-      .qa-box {
+      .qa-box,
+      .topic-details {
         margin-left: 0;
       }
     }
@@ -375,6 +429,36 @@
         </article>
 
       </div>
+      <details class="topic-details">
+        <summary>實際後台目前已存在市場題材大方向</summary>
+        <div class="topic-table-wrap">
+          <p class="meta" style="margin: 0 0 10px;">依市場管理逐頁翻閱與分類篩選整理，後台目前顯示共 137 個市場；此表只列大方向，不逐一列出每一個市場標題。</p>
+          <table class="topic-table">
+            <thead>
+              <tr>
+                <th>編號</th>
+                <th>項目</th>
+                <th>內容</th>
+                <th>玩法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1-1</td><td rowspan="2">體育</td><td>職棒／棒球，例如 CPBL、中職、MLB</td><td>勝負、冠軍、是否打入季後賽、是否達成指定戰績</td></tr>
+              <tr><td>1-2</td><td>其他體育，例如 NBA、足球、網球、田徑</td><td>勝負、冠軍、晉級、是否刷新紀錄或達成指定排名</td></tr>
+              <tr><td>2-1</td><td rowspan="2">生活</td><td>遊戲、直播挑戰、電競直播題材</td><td>是否死亡、是否升級、是否通關、隊伍或選手是否獲勝</td></tr>
+              <tr><td>2-2</td><td>影視娛樂、人口與一般生活事件</td><td>票房、人次、獎項、出生數或指定事件是否達標</td></tr>
+              <tr><td>3-1</td><td rowspan="2">政治</td><td>選舉、公投、政黨席次</td><td>是否當選、是否成案、席位是否保留、得票或席次是否達標</td></tr>
+              <tr><td>3-2</td><td>政策、法案、政府決策</td><td>是否通過、是否上路、是否宣布或達成指定條件</td></tr>
+              <tr><td>4-1</td><td rowspan="2">經濟</td><td>股價、台股加權指數、匯率、GDP、利率</td><td>是否突破指定點位、價格、百分比或門檻</td></tr>
+              <tr><td>4-2</td><td>公司營收、出口、半導體與產業數據</td><td>是否突破指定金額、年增率或季度表現</td></tr>
+              <tr><td>5-1</td><td rowspan="2">科技</td><td>AI 模型、API、科技產品發布</td><td>是否在指定時間前發布、是否公開 API、是否開放使用</td></tr>
+              <tr><td>5-2</td><td>太空、自駕、量子運算與硬體技術</td><td>是否完成飛行、是否達到技術里程碑、是否推出新硬體</td></tr>
+              <tr><td>6-1</td><td rowspan="2">氣象</td><td>溫度、降雨、全球氣候</td><td>是否超過指定溫度、雨量或年度氣候門檻</td></tr>
+              <tr><td>6-2</td><td>地震相關題材</td><td>是否發生指定規模以上地震、是否在指定地區發生</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </section>
 
     <section class="section answered-section" aria-label="已完成資料">
