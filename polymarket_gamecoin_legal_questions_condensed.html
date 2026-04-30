@@ -281,6 +281,38 @@
       border-bottom: 0;
     }
 
+    .replacement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .replacement-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--soft-line);
+      font-size: 0.92rem;
+    }
+
+    .replacement-table th,
+    .replacement-table td {
+      border-bottom: 1px solid var(--soft-line);
+      padding: 8px 9px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .replacement-table th {
+      background: #f3f7fb;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .replacement-table tr:last-child td {
+      border-bottom: 0;
+    }
+
     .number.answered-number {
       width: auto;
       min-width: 86px;
@@ -321,6 +353,10 @@
 
     @media (max-width: 760px) {
       .premise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .replacement-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -457,6 +493,79 @@
               <tr><td>6-2</td><td>地震相關題材</td><td>是否發生指定規模以上地震、是否在指定地區發生</td></tr>
             </tbody>
           </table>
+        </div>
+      </details>
+      <details class="topic-details">
+        <summary>常見敏感詞替代用語</summary>
+        <div class="topic-table-wrap">
+          <div class="replacement-grid">
+            <table class="replacement-table">
+              <thead>
+                <tr><th>敏感詞</th><th>建議替代用語</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>下注</td><td>參與、選擇、預測</td></tr>
+                <tr><td>投注</td><td>參與預測、選擇結果</td></tr>
+                <tr><td>押注</td><td>支持某個結果、選擇某個結果</td></tr>
+                <tr><td>賭金</td><td>參與點數、遊戲點數</td></tr>
+                <tr><td>賭注</td><td>參與點數、使用點數</td></tr>
+                <tr><td>賭盤</td><td>預測題目、互動題目</td></tr>
+                <tr><td>開盤</td><td>建立題目、開放預測</td></tr>
+                <tr><td>封盤</td><td>停止參與、關閉預測</td></tr>
+                <tr><td>莊家</td><td>平台、系統</td></tr>
+                <tr><td>賠率</td><td>支持比例、參考比例</td></tr>
+                <tr><td>派彩</td><td>結果結算、點數調整</td></tr>
+                <tr><td>中獎</td><td>猜中、預測成功</td></tr>
+                <tr><td>獎金</td><td>點數回饋、站內回饋</td></tr>
+                <tr><td>彩券</td><td>預測題目、互動活動</td></tr>
+                <tr><td>運彩</td><td>體育預測、賽事互動</td></tr>
+              </tbody>
+            </table>
+            <table class="replacement-table">
+              <thead>
+                <tr><th>敏感詞</th><th>建議替代用語</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>博彩</td><td>互動娛樂、預測互動</td></tr>
+                <tr><td>博弈</td><td>互動娛樂、預測活動</td></tr>
+                <tr><td>賭博</td><td>預測互動、娛樂互動</td></tr>
+                <tr><td>買入</td><td>支持、選擇 YES</td></tr>
+                <tr><td>賣出</td><td>取消支持、調整選擇</td></tr>
+                <tr><td>股數</td><td>參與份額、份數</td></tr>
+                <tr><td>每股價格</td><td>參考價格、參與比例</td></tr>
+                <tr><td>交易</td><td>參與紀錄、互動紀錄</td></tr>
+                <tr><td>訂單</td><td>參與紀錄、選擇紀錄</td></tr>
+                <tr><td>成交</td><td>參與完成、選擇完成</td></tr>
+                <tr><td>手續費</td><td>平台服務費</td></tr>
+                <tr><td>抽頭</td><td>平台服務費、平台費用</td></tr>
+                <tr><td>返點</td><td>回饋、合作回饋</td></tr>
+                <tr><td>佣金</td><td>合作服務費、推廣服務費</td></tr>
+                <tr><td>提款</td><td>報酬撥款、申請撥款</td></tr>
+              </tbody>
+            </table>
+            <table class="replacement-table">
+              <thead>
+                <tr><th>敏感詞</th><th>建議替代用語</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>提領</td><td>報酬撥款、申請撥款</td></tr>
+                <tr><td>出金</td><td>報酬撥款</td></tr>
+                <tr><td>兌現</td><td>轉為報酬、撥付報酬</td></tr>
+                <tr><td>儲值</td><td>購買點數、加值點數</td></tr>
+                <tr><td>入金</td><td>加值、購買點數</td></tr>
+                <tr><td>錢包</td><td>點數帳戶</td></tr>
+                <tr><td>餘額</td><td>點數餘額</td></tr>
+                <tr><td>帳變</td><td>點數紀錄、點數異動</td></tr>
+                <tr><td>虛擬幣</td><td>站內點數、遊戲點數</td></tr>
+                <tr><td>代幣</td><td>站內點數</td></tr>
+                <tr><td>殺手</td><td>創作者、分析創作者</td></tr>
+                <tr><td>明牌</td><td>分析內容、預測觀點</td></tr>
+                <tr><td>跟單</td><td>參考創作者觀點</td></tr>
+                <tr><td>帶牌</td><td>提供分析、分享觀點</td></tr>
+                <tr><td>分潤</td><td>創作者報酬、合作報酬</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </details>
     </section>
