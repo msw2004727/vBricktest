@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>法律諮詢問題</title>
+  <style>
+    :root {
+      --paper: #f8f6f1;
+      --surface: #ffffff;
+      --ink: #1d252c;
+      --muted: #65707a;
+      --line: #d7d0c2;
+      --soft-line: #ebe5d9;
+      --navy: #203a5f;
+      --red: #8b2d3b;
+      --green: #2f7d4a;
+      --amber: #b26a00;
+      --gray: #7b8791;
+      --green-soft: #edf7ef;
+      --amber-soft: #fff5df;
+      --gray-soft: #f2f4f7;
+      --note-soft: #f7f0e3;
+      --shadow: 0 8px 22px rgba(31, 42, 54, 0.07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+      line-height: 1.75;
+    }
+
+    .page {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 32px 20px 56px;
+    }
+
+    header {
+      border-bottom: 3px double var(--line);
+      padding: 22px 0 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .premise {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      margin: 26px 0 30px;
+      padding: 22px;
+    }
+
+    .premise h2 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 1.25rem;
+      line-height: 1.35;
+    }
+
+    .premise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .premise-item {
+      border: 1px solid var(--soft-line);
+      background: #fbfaf7;
+      padding: 13px 14px;
+    }
+
+    .premise-item strong {
+      display: block;
+      color: var(--red);
+      margin-bottom: 4px;
+    }
+
+    .premise-item p {
+      margin: 0;
+      color: #34414b;
+    }
+
+    .section {
+      margin-top: 38px;
+      padding-top: 0;
+      border-top: 3px double var(--line);
+    }
+
+    .answered-section {
+      border-top-color: var(--green);
+    }
+
+    .answered-parent {
+      margin-bottom: 16px;
+      padding: 16px 18px;
+      background: var(--green-soft);
+      border: 1px solid #b9dfc3;
+      border-left: 6px solid var(--green);
+    }
+
+    .answered-parent strong {
+      display: block;
+      color: var(--green);
+      font-size: 1.08rem;
+      margin-bottom: 2px;
+    }
+
+    .answered-parent p {
+      margin: 0;
+      color: #34414b;
+      font-size: 0.95rem;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .question {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 3px 14px rgba(31, 42, 54, 0.04);
+      padding: 18px 20px;
+    }
+
+    .question-header {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: var(--navy);
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .question h3 {
+      margin: 1px 0 0;
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+
+    .focus-inline {
+      display: inline;
+      padding: 0 3px 2px;
+      color: var(--red);
+      font-weight: 800;
+      background: linear-gradient(to top, rgba(139, 45, 59, 0.13) 42%, transparent 42%);
+      border-bottom: 2px solid rgba(139, 45, 59, 0.55);
+    }
+
+    .terms,
+    .reply,
+    .qa-box {
+      margin: 10px 0 0 50px;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+    }
+
+    .terms strong,
+    .qa-box strong {
+      color: #6f4514;
+    }
+
+    .terms ul {
+      margin: 6px 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .terms li {
+      margin: 4px 0;
+    }
+
+    .terms {
+      background: #f3f7fb;
+      border-left: 4px solid var(--navy);
+      color: #2c3b49;
+    }
+
+    .reply strong {
+      display: inline-block;
+      margin-bottom: 2px;
+    }
+
+    .reply-none {
+      background: var(--gray-soft);
+      border-left: 4px solid var(--gray);
+      color: #4b5660;
+    }
+
+    .reply-partial {
+      background: var(--amber-soft);
+      border-left: 4px solid var(--amber);
+      color: #26313a;
+    }
+
+    .question:not(.show-reply) .reply-none,
+    .question:not(.show-reply) .reply-partial {
+      display: none;
+    }
+
+    .question:has(.reply-none) .number,
+    .question:has(.reply-partial) .number {
+      cursor: pointer;
+    }
+
+    .reply-yes {
+      background: var(--green-soft);
+      border-left: 4px solid var(--green);
+      color: #26313a;
+    }
+
+    .number.answered-number {
+      width: auto;
+      min-width: 86px;
+      padding: 0 10px;
+      white-space: nowrap;
+    }
+
+    .qa-box {
+      background: #f6f8fb;
+      border-left: 4px solid var(--navy);
+      color: #26313a;
+    }
+
+    .qa-answer {
+      background: var(--green-soft);
+      border-left-color: var(--green);
+    }
+
+    .qa-comment {
+      background: var(--amber-soft);
+      border-left-color: var(--amber);
+    }
+
+    .qa-text {
+      margin: 6px 0 0;
+      white-space: pre-wrap;
+      font-family: inherit;
+      line-height: 1.75;
+    }
+
+    footer {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      .premise-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 18px 14px 40px;
+      }
+
+      .question {
+        padding: 15px;
+      }
+
+      .question-header {
+        display: block;
+      }
+
+      .number {
+        margin-bottom: 8px;
+      }
+
+      .terms,
+      .reply,
+      .qa-box {
+        margin-left: 0;
+      }
+    }
+
+    @media print {
+      body { background: white; }
+      .page { max-width: none; padding: 0; }
+      .premise,
+      .question { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>法律諮詢問題</h1>
+    </header>
+
+    <section class="premise" aria-label="共同前提">
+      <h2>共同前提</h2>
+      <div class="premise-grid">
+        <div class="premise-item">
+          <strong>使用者端</strong>
+          <p>使用者可用現金、刷卡、轉帳、第三方支付或虛擬幣購買站內遊戲幣，並使用遊戲幣參與站內預測、市場互動或其他平台功能。使用者端遊戲幣預設不可退現、不可兌換獎品、不可轉讓給他人，也不可換回虛擬幣。</p>
+        </div>
+        <div class="premise-item">
+          <strong>創作者端</strong>
+          <p>平台可能提供直播、內容分析、打賞、斗內、訂閱或內容分潤機制。創作者可依平台規則領取現金報酬，因此需要釐清創作者收入與使用者遊戲幣、打賞專屬幣、推薦分潤之間是否必須分流。</p>
+        </div>
+        <div class="premise-item">
+          <strong>平台營運端</strong>
+          <p>平台會負責市場題材審核、交易或預測規則、結算方式、金流與儲值、身分驗證、地區限制、創作者管理、廣告話術、使用者自建內容與異常交易風控。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="question-list">
+        <article class="question">
+          <div class="question-header">
+            <div class="number">1</div>
+            <h3>如果預測題材本身容易被人為操控、受到未公開消息影響，或結算資料可能延遲、更正、出錯，平台在法律上應如何避免被認定為 <span class="focus-inline">操縱、詐欺、不公平或引發消費爭議</span>？</h3>
+          </div>
+          <div class="reply reply-none"><strong>新諮詢</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="question-list">
+        <article class="question">
+          <div class="question-header">
+            <div class="number">2</div>
+            <h3>如果平台未來要開放海外用戶使用，法律上要看 <span class="focus-inline">台灣法律、海外用戶所在地法律，還是兩邊都要看</span>？</h3>
+          </div>
+          <div class="reply reply-none"><strong>新諮詢</strong></div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number">3</div>
+            <h3>站內用於預測的遊戲幣，與用於斗內、打賞創作者且創作者可提領現金的打賞幣，在法律上 <span class="focus-inline">是否必須拆成兩套幣</span>？如果共用同一種幣，是否可能被認定為 <span class="focus-inline">使用者端遊戲幣可以間接兌現</span>？</h3>
+          </div>
+          <div class="reply reply-partial"><strong>大致了解（來源：玩運彩-意見.docx Q5）：</strong>法務對預測販售者現金提款機制初步回覆「合法、沒問題」；但尚未直接回答使用者遊戲幣打賞後由創作者領現是否構成間接兌現，也尚未回答是否必須分成兩套幣。</div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number">4</div>
+            <h3>類似 Polymarket 的預測市場平台，如果改以不可兌現的站內遊戲幣運作，台灣法律上會被認定為 <span class="focus-inline">遊戲平台、博弈平台、賭博網站、資訊服務、金融商品或其他類型平台</span>？不同定性會對合法營運門檻造成什麼影響？</h3>
+          </div>
+          <div class="reply reply-partial"><strong>大致了解（來源：玩運彩-意見.docx Q1、Q4、Q6）：</strong>法務表示現行法沒有專法明文禁止對現實事件預測／競猜，也指出平台應不屬於一般遊戲而較像博弈平台；但尚未完整回答金融商品、衍生性商品、虛擬資產服務或主管機關許可問題。</div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number">5</div>
+            <h3>選舉、罷免、公投等政治題材已知應禁止；除此之外，若題材涉及死亡受傷、刑案、戰爭災害、股價匯率、疾病疫情、公眾人物私生活、公司品牌爭議或體育賽事，<span class="focus-inline">哪些應完全禁止，哪些可在限制條件下開放</span>？</h3>
+          </div>
+          <div class="reply reply-partial"><strong>大致了解（來源：玩運彩-意見.docx Q1 A1-A7）：</strong>法務已回覆多種事件類型，並明確建議不要出現選舉、罷免相關標的；公眾人物私人行為則應避免刺探隱私、詆毀名譽、危害公共安全或傳述不正確訊息。</div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="section answered-section" aria-label="已完成資料">
+      <div class="answered-parent">
+        <strong>已完成資料</strong>
+        <p>以下為已與法務初步確認的問題與回覆整理，保留網站原問題與法務回覆原文。</p>
+      </div>
+      <div class="question-list">
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆1</div>
+            <h3>對現實事件進行預測／競猜活動之整體法律框架</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q1）：</strong>
+            <pre class="qa-text">Q1
+彩幣＋噱幣對現實事件進行預測／競猜活動之整體法律框架
+
+中華民國現行法下，是否有專法明文禁止「對現實事件進行預測／競猜」？
+
+附：就不同類型之現實事件，以下為諮詢前之初步盤點表；此分類與風險評估是否正確，懇請指教：
+
+※ 前提說明：本表所列各類型，於本諮詢之情境下均係以「站內不可兌現之虛擬籌碼」為下注媒介，並非實際金錢。所列法規為「可能涉及之討論範圍」之初步整理，實際是否落入各條文之構成要件（特別是「賭博財物」之要件於不可兌現籌碼之情形下是否滿足），懇請法律顧問就各列分別惠予指教。
+
+現實事件類型
+初步風險評估
+相關法規／要點（附全國法規資料庫連結）
+
+選舉、罷免結果
+明文特別入罪
+查到選罷法有專門條文（公職選罷法 103-1 條、總統副總統選罷法 88-1 條）。這種選舉預測會被歸到這兩條嗎？
+
+運動賽事勝負
+合法僅限台灣運彩
+運動彩券發行條例第 4 條明定運動彩券專屬於台灣運彩發行。若我方平台提供預測運動賽事結果之功能，會不會被認為違反此專屬發行規定？或可能回歸到刑法 268 條處理？
+
+天氣、颱風登陸
+依結算機制而定
+天氣有偶然性，預測登陸時間或地點，會不會涉及刑法 266 條？
+
+股價、匯率、經濟指標
+依籌碼性質而定
+預測股價漲跌，刑法 266 條的「賭博財物」算不算？
+
+公眾人物私人行為
+（如是否道歉、是否結婚）
+需個案判斷
+這種預測有點難判斷。想請教：（1）猜公眾人物會不會道歉、結不結婚這種，刑法 266 條的「偶然性」算嗎？（2）如果預測內容講到對方私事或名譽，會不會踩到人格權（民法 18 條、195 條）？
+
+公共議題
+（如 101 煙火秒數、奧運金牌數）
+需個案判斷
+這類公共事件（非選舉、非運動賽事勝負，沒有專法規範）作為預測標的時，會不會直接落入刑法 266 條之「偶然性」要件？
+
+虛擬遊戲內結果
+（如遊戲勝負、角色血量）
+視兌現機制而定
+如果籌碼或遊戲幣無法兌現，本案情境是不是可以歸到刑法 266 條第 3 項「暫時娛樂之物」的排除範圍？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q1）：</strong>
+            <pre class="qa-text">A:沒有
+現金帳戶（殺手分潤池）
+除兩種虛擬幣外，玩運彩尚有一個實際的現金帳戶機制——殺手販售預測所得之噱幣，經平台以 45%/55% 比例換算後，存入殺手的「現金帳戶」，累積滿新台幣 1000 元即可申請匯出至銀行帳戶。此為平台唯一涉及法定貨幣提領之帳戶機制。
+A:可
+A1.選舉、罷免結果
+理論上係針對以選舉、罷免為標的賭博行為，而加重刑責之特別法。
+A:若以非有價物為賭注且無法換成有價物，不構成賭博行為。但建議還是不要出現以選舉、罷免為相關之標的。
+A2. 運動賽事勝負
+運動賽事雖具射倖性性質，網站運動賽事預測係以虛擬且不具現金流通性之貨幣為標的物，故應不屬於彩券性質。
+傳統彩券有中獎，則這張彩券則屬於有價證券，可兌領有價財物；反之未中獎則不屬，可拋棄。
+A3. 天氣、颱風登陸
+A4. 股價、匯率、經濟指標
+A5. 公眾人物私人行為(應以不刺探他人隱私、詆毀名譽、不危害公共安全、傳述不正確訊息為準則)
+A6.公共議題（如 101 煙火秒數、奧運金牌數）
+A7.虛擬遊戲內結果（如遊戲勝負、角色血量）
+除了A5.有討論空間，其餘皆具有射倖性性質，但不以有價財物為賭資，且不可提供換成有價財物。即無法以賭博罪相繩。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆2</div>
+            <h3>平台預測販售抽成營運結構之法律評價</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q2）：</strong>
+            <pre class="qa-text">Q2
+彩幣平台預測販售抽成營運結構之法律評價
+
+平台對殺手販售的內容抽成 55%，這是平台實際的主要收入。這種抽成結構會不會被認定為「意圖營利供給賭博場所」（刑法第 268 條）？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q2）：</strong>
+            <pre class="qa-text">A:虛擬點數無法轉成金錢(包括虛擬資產)或其他有經濟上價值之有體物或抽象權利，不屬於刑法上所稱之賭博。
+抽頭行為，係指向贏錢的賭徒抽取一部分的利益給提供賭博場所的人。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆3</div>
+            <h3>虛擬幣於市場實況下之財產屬性評價</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q3）：</strong>
+            <pre class="qa-text">Q3
+彩幣虛擬幣於市場實況下之財產屬性評價
+
+彩幣官方明文禁止兌現、也禁止地下幣商收購，但站外幣商市場仍存（固定牌告 1:113–1:120）。「平台禁止、市場仍在」之結構下：（1）彩幣是否仍被認定為賭博罪之「財物」？（2）平台已盡禁止義務後，對站外兌換行為還需負何種責任？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q3）：</strong>
+            <pre class="qa-text">A:統一說明， 只要虛擬幣(不包括加密貨幣)無法轉換為有價財物、上開已提過不一一贅述，即不屬於賭博之財物。但若是經營網站之人與所謂的「幣商」有達成明示或默示的合意，從交易中抽成。即有基於共同犯意聯絡，而可能成立意圖營利而供給賭博場所。
+若與幣商之間無任何聯絡與接觸事實，幣商其行為僅為玩家間相互合意之財產移轉行為。又該買賣代幣行為若非店內經營之常態方式，則賭客在把玩機台時尚不知能否將代幣轉換成金錢，則賭客把玩機台即屬供己娛樂之行為，而非以偶然事實之成就與否，決定財物之得喪變更，且非以與他方對賭之方式決定財產之得失，此即與賭博之行為有別。(參見臺灣高等法院101 年度上易字第2470號判決)
+綜上所述，可保持彩幣交易抽取手續費，但維持不鼓勵玩家間從事交易行為之主張，非意圖藉此使公司營收成長。且持續不提供兌領有價物的規定，不連絡、接觸幣商。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆4</div>
+            <h3>虛擬幣娛樂功能之分級標示適用</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q4）：</strong>
+            <pre class="qa-text">Q4
+彩幣＋噱幣虛擬幣娛樂功能之分級標示適用
+
+《遊戲軟體分級管理辦法》規定「虛擬幣隨遊戲結果增減」的棋奕類、牌類及益智娛樂類遊戲軟體要標示輔 15 級（限定適用範圍）。玩運彩網站同時提供「玩競猜」（以虛擬幣就運動賽事結果下注）與「體育賽事販售推薦」（付費購買殺手販售之賽事預測內容）兩種功能，算不算這類遊戲？若站上沒有標示分級，這樣的網站如果不算遊戲類，應歸屬為何種類型？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q4）：</strong>
+            <pre class="qa-text">A:應不屬於遊戲，而屬於博弈網站(平台)。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆5</div>
+            <h3>預測販售者現金提款機制之商業安排</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q5）：</strong>
+            <pre class="qa-text">Q5
+噱幣預測販售者現金提款機制之商業安排
+
+玩運彩性質為「付費資訊販售」（非博彩、非遊戲）——殺手賣預測、拿 45% 分潤、累積 1,000 元可提領到銀行。類似之「創作者分潤＋現金提領」機制於國內外付費內容平台均普遍存在，例如：Pressplay（創作者分潤約 80%，次月撥款）、方格子 vocus（創作者分潤 80%）、Hahow（老師自然分潤約 90%、累積 1,000 元撥款）、YouTube 合作夥伴計畫（廣告 55%、Shorts 45%）。請教：殺手將銷售所得提領至銀行帳戶之動作本身合不合法？有無因「販售運彩預測」而生之額外風險？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q5）：</strong>
+            <pre class="qa-text">A:(1)合法，(2)沒問題。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆6</div>
+            <h3>站內彩幣贈點手續費與博弈色彩認定之關係</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q6）：</strong>
+            <pre class="qa-text">Q6
+彩幣站內彩幣贈點手續費與博弈色彩認定之關係
+
+假設情境：倘若玩運彩站內之使用者間彩幣贈點（轉移）功能係由官方收取轉移手續費，請教：此一手續費機制作為平台主動抑制彩幣流動之安排，是否可作為「官方不鼓勵彩幣在使用者之間自由轉移」之佐證，並於法律評價上有助於降低彩幣之博弈色彩認定？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q6）：</strong>
+            <pre class="qa-text">A:無法降低「博奕」色彩，因為就是博奕。而是無法構成「賭博」(同Q3.)。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆7</div>
+            <h3>動態賠率預測機制之法律性質</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q7）：</strong>
+            <pre class="qa-text">Q7
+動態賠率預測機制之法律性質
+
+若一預測平台於開盤時以 1:1 之賠率開始，並依據參與預測之人數多寡動態調整賠率（類似 Polymarket 之 CLOB 訂單簿機制或早期採用之 AMM 自動造市（LMSR）機制——賠率由市場流動性決定，而非平台主動開立固定賠率）。請教：此類「賠率隨預測參與人數波動」之結構，是否足以與傳統「平台開盤／莊家定賠率」之型態作法律上之區別，進而可能規避刑法賭博罪之認定？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q7）：</strong>
+            <pre class="qa-text">A:大原則，不以實際有價物作為賭金，且無法將虛擬財產轉為金錢或實體物，即無法成立刑法266。</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆8</div>
+            <h3>遊戲幣預測機制能否脫離「賭財物」要件</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q8）：</strong>
+            <pre class="qa-text">Q8
+遊戲幣預測機制能否脫離「賭財物」要件
+
+前提：使用者以新台幣購入純站內遊戲幣（購後不可提領、禁止場外交易），預測命中後僅獲站內排名或徽章（無實際經濟價值）。請教：此類「付費取得遊戲幣、預測僅換榮譽」之設計，是否可脫離刑法賭博罪之「賭財物」要件？又，此類預測活動附帶輸贏結果，於《遊戲軟體分級管理辦法》與刑法賭博罪之界線為何？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q8）：</strong>
+            <pre class="qa-text">A:(1)可以(2)不是遊戲也不是賭博</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆9</div>
+            <h3>預測市場「集體智慧」性質與賭博罪之區隔</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q9）：</strong>
+            <pre class="qa-text">Q9
+預測市場「集體智慧」性質與賭博罪之區隔
+
+預測市場的核心是「很多人共同預測一件事的結果，由參與者比例形成機率估計」，類似股市的價格發現機制，而非個人對賭。此外，新聞節目之民調預測、綜藝節目之觀眾競猜（例如猜總獎金、猜冠軍、call-in 猜答案等）於結構上亦屬「眾人共同預測」之型態。請教：此類「集體預測」之性質（含預測市場、新聞民調、綜藝競猜），能否與傳統個人型賭博（如麻將、21 點）於法律上作出區隔？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q9）：</strong>
+            <pre class="qa-text">若係以投注人依其自由意志決定投注項目，而非與相對人對賭，自不成立賭博。機率、賠率高低自不在考量範圍。
+新聞節目之民調預測、綜藝節目之觀眾競猜</pre>
+          </div>
+        </article>
+
+        <article class="question">
+          <div class="question-header">
+            <div class="number answered-number">已回覆10</div>
+            <h3>直播主引導觀眾開立預測題目之法律責任</h3>
+          </div>
+          <div class="qa-box">
+            <strong>問題原文（來源：網站 Q10）：</strong>
+            <pre class="qa-text">Q10
+直播主引導觀眾開立預測題目之法律責任
+
+前提：預測平台之虛擬幣為純站內遊戲幣，不可提領、僅換榮譽。若直播主於直播中炒氣氛，引導觀眾就當下事件（賽事結果、事件走向等）即興開立新預測題目並邀請觀眾以遊戲幣參與，請教：（1）直播主作為「開題人／引導人」，是否負有相關法律責任？（2）平台作為提供開題工具之通路方，責任範圍為何？</pre>
+          </div>
+          <div class="qa-box qa-answer">
+            <strong>法務回覆原文（來源：玩運彩-意見.docx Q10）：</strong>
+            <pre class="qa-text">A:(1)換榮譽是什麼意思?若該實況主以持有分析證照自稱(但無)、保證獲利等語或開標題而非合理、專業分析，客觀標題，使觀眾陷於詐術而交付(投注)財產，並可自投注人交付之物中取得利益。即可能成立刑法339詐欺。(2)禁止直播主有上開行為並積極取締。</pre>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <p>本文件為法務諮詢問題整理，底色僅代表第一次回覆與本題的對應程度，不代表最終法律結論。</p>
+    </footer>
+  </main>
+
+  <script>
+    document.querySelectorAll(".question .number").forEach((number) => {
+      number.addEventListener("dblclick", () => {
+        const question = number.closest(".question");
+        if (question && question.querySelector(".reply-none, .reply-partial")) {
+          question.classList.toggle("show-reply");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
