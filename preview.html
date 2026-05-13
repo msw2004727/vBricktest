@@ -21,6 +21,36 @@ button,input,select{font:inherit}button{border:1px solid var(--line);background:
 .dock{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:30;width:max-content;max-width:calc(100% - 20px);display:grid;grid-template-columns:auto auto auto;gap:8px;align-items:center;background:rgba(25,25,25,.94);color:#fff;border-radius:18px;padding:10px 11px;box-shadow:0 18px 40px rgba(0,0,0,.25);backdrop-filter:blur(14px);transition:background .25s}.dock .label{font-size:12px;color:#d4d4d4;white-space:nowrap}.dock .value{font-size:22px;font-weight:800;line-height:1.1;white-space:nowrap;letter-spacing:0}.dock button{background:#fff;color:#111;border:0;white-space:nowrap}.note{font-size:12px;color:#d4d4d4}.dock .verdict{font-size:11px;font-weight:750;padding:3px 8px;border-radius:999px;margin-left:6px;display:inline-block;vertical-align:middle}.dock.pass{background:rgba(20,83,45,.96)}.dock.pass .value{color:#86efac}.dock.pass .label,.dock.pass .note{color:#bbf7d0}.dock.pass .verdict{background:#22c55e;color:#052e16}.dock.fail{background:rgba(127,29,29,.96)}.dock.fail .value{color:#fca5a5}.dock.fail .label,.dock.fail .note{color:#fecaca}.dock.fail .verdict{background:#ef4444;color:#450a0a}
 @media (max-width:760px){.app{width:min(100% - 14px,900px);padding-top:6px}.topbar{margin:0 -7px 8px;padding:8px 7px}h1{font-size:17px}.topControls{gap:7px;align-items:stretch}.controlCard{padding:5px;border-radius:14px;gap:4px}.controlCard.actionCard{margin-left:0}.controlCard button{padding:7px 8px;font-size:12px}.filterRow{grid-template-columns:1fr}.qcard{padding:12px;border-radius:15px}.qtext{font-size:16px}.tag{max-width:170px}.dock{grid-template-columns:auto auto;bottom:8px;border-radius:16px}.dock .note{display:none}}
 @media (min-width:980px){.feed{gap:12px}.qcard{padding:16px 18px}}@media print{.topbar,.dock,.answerTools{display:none}.app{width:100%;padding:0}.qcard{box-shadow:none;break-inside:avoid}.answerBox{display:block}}
+.tabnav{display:flex;gap:6px;margin:6px 0 12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px;box-shadow:var(--shadow);overflow-x:auto}
+.tabnav button{flex:1;min-width:max-content;border:0;background:transparent;color:var(--muted);border-radius:10px;padding:9px 12px;font-size:13.5px;font-weight:600;white-space:nowrap;cursor:pointer}
+.tabnav button.active{background:var(--ink);color:#fff}
+.tabPanel{display:none}.tabPanel.active{display:block}
+.memCue{margin-top:10px;padding:11px 12px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;font-size:14px;line-height:1.75}
+.memCue b{color:#9a3412}
+.glossWrap{display:grid;gap:10px}
+.glossSearchRow{position:sticky;top:64px;z-index:5;background:rgba(247,247,244,.95);backdrop-filter:blur(10px);padding:4px 0 8px;margin-bottom:0}
+.glossSearchRow input{font-size:14px}
+.glossSection{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px}
+.glossSection h2{font-size:15.5px;margin:0 0 10px;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:7px;font-weight:650;display:flex;align-items:center;justify-content:space-between}
+.glossSection h2 .count{font-size:12px;color:var(--muted);font-weight:550}
+.glossList{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px}
+@media (max-width:760px){.glossList{grid-template-columns:1fr}}
+.glossItem{padding:9px 0;border-bottom:1px dashed var(--line)}
+.glossItem:last-child{border-bottom:0}
+.glossTerm{font-size:14.5px;font-weight:650;color:#1d4ed8;margin-bottom:3px}
+.glossTerm .zh{color:var(--muted);font-size:12.5px;font-weight:500;margin-left:6px}
+.glossDesc{font-size:13.5px;line-height:1.68;color:var(--ink);font-family:var(--font-reading)}
+.tipsList{display:grid;gap:10px}
+.tipsIntro{background:var(--soft);border:1px solid #dbeafe;border-radius:var(--radius);padding:14px 16px;color:#1e3a8a;font-size:14px;line-height:1.7}
+.tipCard{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 16px}
+.tipCard h3{margin:0 0 8px;font-size:15.5px;font-weight:650;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tipBadge{font-size:11px;background:var(--soft);color:#1d4ed8;border:1px solid #dbeafe;border-radius:999px;padding:3px 8px;font-weight:600}
+.tipBadge.warn{background:#fffbeb;color:#92400e;border-color:#fde68a}
+.tipBadge.good{background:#f0fdf4;color:#166534;border-color:#bbf7d0}
+.tipCard .when{font-size:13px;color:var(--muted);margin-bottom:6px;line-height:1.6}
+.tipCard .how{font-size:14px;line-height:1.72;margin:0 0 8px;font-family:var(--font-reading)}
+.tipCard .example{background:#fbfdff;border:1px solid #dbeafe;border-radius:12px;padding:9px 11px;font-size:13.5px;line-height:1.68;color:#1e3a8a;font-family:var(--font-reading)}
+.tipCard .example b{color:#1d4ed8}
 </style>
 </head>
 <body>
@@ -61,7 +91,16 @@ button,input,select{font:inherit}button{border:1px solid var(--line);background:
   </div>
 </section>
 
-<main><div class="feed" id="questions"></div></main>
+<nav class="tabnav" role="tablist" aria-label="主功能切換">
+  <button type="button" class="tabBtn active" data-tab="quiz">題庫測驗</button>
+  <button type="button" class="tabBtn" data-tab="gloss">英文用詞</button>
+  <button type="button" class="tabBtn" data-tab="tips">答題技巧</button>
+</nav>
+<main>
+  <div class="tabPanel active" id="tab-quiz"><div class="feed" id="questions"></div></div>
+  <div class="tabPanel" id="tab-gloss"><div class="glossWrap" id="glossaryBox"></div></div>
+  <div class="tabPanel" id="tab-tips"><div class="tipsList" id="tipsBox"></div></div>
+</main>
 
 <section class="dock" aria-label="測驗分數">
   <div>
@@ -146,29 +185,141 @@ function buildReason(x){
   return `${start}${detail}所以正確答案是「${x.answer}」。`;
 }
 
-function buildAnalogy(x){
-  const text = `${x.question} ${x.answer}`;
-  if(/GAN|生成器|判別器|鑑別器/.test(text)) return '把 GAN 想成一個人練習做仿冒鈔，旁邊放一台驗鈔機一直挑毛病；做的人越修越像，驗鈔機也越來越挑剔。';
-  if(/Transformer|Attention|注意力|BERT|GPT|LLM|語言模型/.test(text)) return '像開會時拿螢光筆標重點，不是每句話都同等重要；注意力機制就是幫模型決定哪些字該多看兩眼。';
-  if(/Prompt|提示|思路鏈|CoT|Persona|角色/.test(text)) return 'Prompt 像點手搖飲，甜度、冰塊、大小杯講清楚，店員才不會端出一杯自由發揮的神秘飲料。';
-  if(/RAG|檢索|上下文|Token/.test(text)) return 'RAG 像開卷考，先把可靠資料攤在桌上再回答；不是臨場硬背，而是邊查邊寫比較穩。';
-  if(/資料|數據|訓練|品質|多樣性|清洗|匿名化/.test(text)) return '資料像火鍋食材，只放同一種菜會很無聊；來源多、品質好，模型才不會吃出偏食習慣。';
-  if(/隱私|個資|GDPR|授權|版權|肖像|倫理|公平|透明|問責|安全/.test(text)) return '這類題像借朋友的車，先問可不可以、鑰匙怎麼用、出事誰負責；有同意和規則才開得安心。';
-  if(/圖片|影像|圖像|Midjourney|DALL-E|Stable Diffusion|擴散|Photoshop|Blender/.test(text)) return '影像工具像廚房器具，打果汁找果汁機、切菜找菜刀；題目問生成圖片，就別跑去拿純文字工具硬切。';
-  if(/語音|音訊|音樂|字幕|TTS|Suno/.test(text)) return '音訊影音題像選家電，想烤麵包就找烤箱，想做聲音就找語音或音樂工具，別讓工具跨棚演出。';
-  if(/市場|銷售|庫存|產品|行銷|客服|廣告|文案|商業|企業/.test(text)) return '商務應用像整理辦公桌，AI 最有用的是幫你分類、加速、提醒重點，不是把整間辦公室交給它自己決定。';
-  return '做選擇題像找鑰匙開門，題幹會藏一把關鍵鑰匙；拿最直接能開門的選項，不要被閃亮但不合鎖孔的選項帶走。';
-}
-
 function buildMemoryCue(x){
-  const key = keywordFrom(x);
-  return `記 ${key} 時，先背「題目問什麼功能，就選最直接完成那件事的答案」；反向題則先找最不像好做法的那個。`;
+  const text = `${x.question} ${x.answer} ${(x.options||[]).join(' ')}`;
+  const isNegative = /何者為非|何者非|下列何者不|不是|不屬於|不適合|錯誤|無法|不應|非「/.test(x.question);
+  const cues = [];
+
+  // 反向題的優先口訣
+  if(isNegative){
+    cues.push('【反向題口訣】「非、不、錯、無法」=找最爛選項；先排除三個明顯合理的，剩下那個就是答案。');
+  }
+
+  // 主題式關鍵記憶（依題目命中關鍵字）
+  if(/GAN|生成對抗|生成器|判別器|鑑別器/.test(text)){
+    cues.push('【GAN 雙人對打】記「生成器造假、判別器抓假」兩個角色，兩者越打越強。看到「對抗」「真假」「兩個網路」就鎖 GAN。');
+  }
+  if(/Transformer|Self-Attention|自注意|注意力機制/.test(text)){
+    cues.push('【Transformer = 注意力】口訣「自我注意看全句」；看到「平行處理」「長距依賴」「上下文關係」就是它。');
+  }
+  if(/BERT/.test(text)){
+    cues.push('【BERT = 雙向理解】記「B = Bidirectional」，擅長「填空、理解、分類」，不是生成。');
+  }
+  if(/\bGPT\b|生成式預訓練|ChatGPT/.test(text)){
+    cues.push('【GPT = 生成預訓練】記「G 是 Generative（生成）」，從左到右接龍寫字，所以擅長「寫、續、答」。');
+  }
+  if(/CNN|卷積/.test(text)){
+    cues.push('【CNN = 看圖】口訣「卷積掃格子」，做影像辨識、圖像分類最在行。');
+  }
+  if(/RNN|LSTM|GRU|遞迴|循環神經/.test(text)){
+    cues.push('【RNN/LSTM = 看順序】口訣「一個字接一個字」，處理序列資料（語音、時間序列）。');
+  }
+  if(/擴散|Diffusion|Stable Diffusion/.test(text)){
+    cues.push('【Diffusion = 從雜訊磨出圖】口訣「先加噪、再去噪」，現代圖像生成（Stable Diffusion、DALL-E）的核心。');
+  }
+  if(/VAE|變分自編碼/.test(text)){
+    cues.push('【VAE = 壓縮再還原】口訣「Encoder→潛空間→Decoder」，老牌生成模型。');
+  }
+  if(/Prompt|提示工程|提示詞/.test(text)){
+    cues.push('【Prompt 四要件】口訣「角色 + 任務 + 格式 + 限制」。越具體越穩；模糊問題=模糊答案。');
+  }
+  if(/CoT|思路鏈|思維鏈|Chain.?of.?Thought|逐步|Step.?by.?Step/.test(text)){
+    cues.push('【CoT = 逐步推理】口訣「Let\'s think step by step」，讓模型把推理過程說出來，準確率拉高。');
+  }
+  if(/Few.?shot|Zero.?shot|One.?shot|範例/.test(text)){
+    cues.push('【N-shot 口訣】Zero=沒範例、One=一個、Few=少量。給範例越多，模型越懂你要的格式。');
+  }
+  if(/Persona|角色設定|扮演/.test(text)){
+    cues.push('【Persona = 戴面具】先告訴 AI「你是誰、面對誰、什麼語氣」，回答風格立刻對齊。');
+  }
+  if(/RAG|檢索增強|外掛知識|向量資料庫/.test(text)){
+    cues.push('【RAG 三步驟】口訣「先檢索 → 再生成 → 引來源」。看到「外部知識、即時資料、引用出處」就鎖它。');
+  }
+  if(/Fine.?tune|微調|LoRA|Adapter/.test(text)){
+    cues.push('【Fine-tuning = 量身改衣】有「大量領域資料」才用；少量資料用 Prompt 就好，別動模型權重。');
+  }
+  if(/RLHF|人類回饋/.test(text)){
+    cues.push('【RLHF = 人類教師】口訣「人類打分→模型改進」，ChatGPT 為何聽話的關鍵。');
+  }
+  if(/Token|斷詞|分詞/.test(text)){
+    cues.push('【Token = 詞元】記「英文≈4字母、中文≈1.5字」；上下文長度=Token 上限。');
+  }
+  if(/Embedding|向量|嵌入/.test(text)){
+    cues.push('【Embedding = 把字變座標】口訣「語意接近、座標接近」，是語意搜尋、RAG 的基石。');
+  }
+  if(/Hallucination|幻覺|捏造|編造/.test(text)){
+    cues.push('【AI 幻覺】口訣「一本正經胡說八道」。對策=RAG 接真實資料 + 人工查證；別全信。');
+  }
+  if(/Overfitting|過擬合|過度擬合/.test(text)){
+    cues.push('【過擬合 = 死背考古題】訓練超準、實戰崩壞。對策=資料增量、Dropout、正則化。');
+  }
+  if(/多模態|Multimodal|跨模態/.test(text)){
+    cues.push('【多模態 = 多種感官】口訣「文+圖+音+影」同時吃；GPT-4o、Gemini 是代表。');
+  }
+  if(/隱私|個資|GDPR|個人資料保護法/.test(text)){
+    cues.push('【隱私三道防線】口訣「同意 → 去識別化 → 加密儲存」；遇到個資題，永遠選「最謹慎」的選項。');
+  }
+  if(/版權|著作權|授權|肖像|智慧財產/.test(text)){
+    cues.push('【版權三件事】口訣「來源合法、明確授權、清楚標示」。AI 生成物用商用前要查授權條款。');
+  }
+  if(/倫理|公平|透明|問責|偏見|歧視/.test(text)){
+    cues.push('【AI 倫理四原則】口訣「公平、透明、問責、隱私」。倫理題=選最「不偷懶、留人工把關」的選項。');
+  }
+  if(/安全|資安|防護|攻擊|越獄|Jailbreak|Prompt.?Injection/.test(text)){
+    cues.push('【AI 安全】記「輸入要過濾、輸出要審核、權限要分層」。看到「直接給管理員權限」=錯。');
+  }
+  if(/DALL.?E|Midjourney|Stable Diffusion|Firefly|Leonardo/.test(text)){
+    cues.push('【圖像生成工具】文字→圖：DALL-E、Midjourney、Stable Diffusion、Firefly。記「文生圖三大天王」。');
+  }
+  if(/Suno|Udio|AIVA|MusicLM/.test(text)){
+    cues.push('【音樂生成】口訣「Suno 唱歌、AIVA 配樂」。看到「生成有歌詞的歌曲」就是 Suno。');
+  }
+  if(/Whisper|TTS|STT|ASR|語音辨識|語音合成/.test(text)){
+    cues.push('【語音雙向】口訣「STT 聽→打字（Whisper）、TTS 看→念出（ElevenLabs）」。');
+  }
+  if(/Sora|Runway|Pika|HeyGen|Synthesia|影片生成/.test(text)){
+    cues.push('【影片生成】口訣「Sora/Runway 做場景、HeyGen/Synthesia 做數位人」。');
+  }
+  if(/Photoshop|Firefly|Generative Fill|生成填充/.test(text)){
+    cues.push('【Photoshop AI】記「生成填充 = Generative Fill」，框起來、輸入描述就補圖。');
+  }
+  if(/Blender|3D/.test(text)){
+    cues.push('【Blender = 3D 軟體】開源 3D 建模/動畫工具，看到「3D 模型、動畫」優先想它。');
+  }
+  if(/Copilot|Cursor|程式碼|程式助理/.test(text)){
+    cues.push('【程式碼助理】口訣「Copilot 補一段、Cursor 改整檔」。AI 寫 Code 的代表。');
+  }
+  if(/Notion|Otter|Fireflies|會議記錄|逐字稿/.test(text)){
+    cues.push('【會議/筆記 AI】口訣「Otter/Fireflies 抓逐字稿、Notion AI 整理摘要」。');
+  }
+  if(/Canva|Gamma|簡報|Slides/.test(text)){
+    cues.push('【簡報生成】口訣「Gamma 一鍵生成、Canva 模板套用」。');
+  }
+  if(/資料|數據|訓練集|清洗|品質|多樣性/.test(text) && !/隱私|版權/.test(text)){
+    cues.push('【訓練資料三要件】口訣「量足、質純、源多」。看到「只用一種來源」=錯。');
+  }
+  if(/客服|對話|聊天機器人|Chatbot/.test(text)){
+    cues.push('【AI 客服重點】口訣「常見題自動答、罕見題轉真人」。AI 不應 100% 取代人工。');
+  }
+  if(/行銷|文案|廣告|SEO/.test(text)){
+    cues.push('【AI 行銷三用途】口訣「生內容、做個人化、A/B 測試」。AI 是「加速」不是「取代」企劃。');
+  }
+  if(/取代人類|完全自動|100%|絕對|永遠|全面/.test(text)){
+    cues.push('【絕對化警示】看到「完全取代、100%、絕對」十之八九是錯；AI 是輔助，永遠保留人工把關。');
+  }
+
+  // 若都沒命中關鍵字，給通用記法
+  if(!cues.length){
+    const key = keywordFrom(x);
+    cues.push(`【通用口訣】關鍵字「${key}」→ 找最「直接解決題幹動詞」的選項；華麗、絕對化、跳脫主題的選項是干擾。`);
+  }
+
+  return cues.join(' ');
 }
 
 function answerGuide(x){
   return {
     reason: buildReason(x),
-    analogy: buildAnalogy(x),
     cue: buildMemoryCue(x)
   };
 }
@@ -207,7 +358,7 @@ function render(){
       <div class="options">${options}</div>
       <div class="answerTools">
         <button class="answerBtn revealBtn" type="button" data-q="${x.id}">${isRevealed ? '隱藏解答' : '顯示解答'}</button>
-        <span class="hint">正解方向預設遮蔽，點開後會看到答案、AI解析與生活譬喻。</span>
+        <span class="hint">正解方向預設遮蔽，點開後會看到答案、AI解析與加強記憶口訣。</span>
       </div>
       <div class="answerBox ${isRevealed ? 'show' : ''}">
         <div class="answerTitle">正解方向</div>
@@ -215,8 +366,7 @@ function render(){
           <p><b>正確答案：</b>${escapeHtml(x.answer)}</p>
           <p><b>AI解析：</b>${escapeHtml(guide.reason)}</p>
         </div>
-        <div class="tip"><b>生活譬喻：</b>${escapeHtml(guide.analogy)}</div>
-        <div class="hint" style="margin-top:8px"><b>加強記憶：</b>${escapeHtml(guide.cue)}</div>
+        <div class="memCue"><b>加強記憶：</b>${escapeHtml(guide.cue)}</div>
       </div>`;
     frag.appendChild(card);
   });
@@ -264,6 +414,287 @@ function startQuiz(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+/* ========== 英文用詞字典（含 AI 模型／工具／概念） ========== */
+const GLOSSARY = [
+  { section: 'AI 模型架構', items: [
+    { term: 'GAN', zh: '生成對抗網路', desc: 'Generative Adversarial Network。兩個 AI 對打：「生成器」造假圖、「判別器」抓假圖，兩個越打越強，最後造出超擬真的圖。' },
+    { term: 'Transformer', zh: '轉換器架構', desc: '2017 年 Google 提出的神經網路架構，靠「注意力機制」一次看完整句話，是 GPT、BERT、Claude、Gemini 的共同骨架。' },
+    { term: 'Attention / Self-Attention', zh: '注意力／自注意力機制', desc: '讓模型在讀一句話時知道「哪些字最重要、要多看兩眼」，不是平均分配注意力。Transformer 的靈魂。' },
+    { term: 'BERT', zh: 'Google 雙向語言模型', desc: 'Bidirectional Encoder Representations from Transformers。雙向閱讀，擅長「填空、理解、分類」，不是生成。' },
+    { term: 'GPT', zh: '生成式預訓練模型', desc: 'Generative Pre-trained Transformer。從左到右一個字接一個字生成，擅長寫作、對話、續寫。ChatGPT 用的就是這家族。' },
+    { term: 'LLM', zh: '大型語言模型', desc: 'Large Language Model。用海量文字訓練的超大型 AI（如 GPT-4、Claude、Gemini），通用對話與寫作能力強。' },
+    { term: 'SLM', zh: '小型語言模型', desc: 'Small Language Model。輕量、可跑在手機/筆電上的語言模型，速度快但能力較弱。' },
+    { term: 'CNN', zh: '卷積神經網路', desc: 'Convolutional Neural Network。專門看圖的網路，用「卷積」一格一格掃過圖片找特徵，做影像辨識最在行。' },
+    { term: 'RNN', zh: '循環神經網路', desc: 'Recurrent Neural Network。處理「有先後順序」的資料（句子、語音、時間序列），一個字接一個字往下傳。' },
+    { term: 'LSTM', zh: '長短期記憶網路', desc: 'Long Short-Term Memory。改良版 RNN，能記較久的內容，解決 RNN 「健忘」問題。' },
+    { term: 'GRU', zh: '門控循環單元', desc: 'Gated Recurrent Unit。LSTM 的精簡版，計算更快、效果接近。' },
+    { term: 'Diffusion Model', zh: '擴散模型', desc: '先把圖片加上一堆雜訊變成「雪花畫面」，再學會反向把雪花還原成圖。Stable Diffusion、DALL-E 3 都用這個原理。' },
+    { term: 'VAE', zh: '變分自編碼器', desc: 'Variational AutoEncoder。把圖片壓縮成「潛在向量」，再還原；老牌生成模型。' },
+    { term: 'Encoder / Decoder', zh: '編碼器／解碼器', desc: 'Encoder 把輸入「讀懂壓縮」、Decoder 把壓縮的東西「展開輸出」。翻譯、摘要都是這套。' },
+  ]},
+  { section: '訓練與調整方法', items: [
+    { term: 'Pre-training', zh: '預訓練', desc: '在大量通用資料上先訓練一個基礎模型，學會語言/世界基本知識。' },
+    { term: 'Fine-tuning', zh: '微調', desc: '拿已訓練好的模型，用「特定領域資料」再訓練一輪，讓它變成專家（醫療、法律、客服等）。' },
+    { term: 'LoRA', zh: '低秩適應微調', desc: 'Low-Rank Adaptation。只調少量參數的微調技巧，省 GPU 又省時間，常用於開源模型客製化。' },
+    { term: 'RLHF', zh: '人類回饋強化學習', desc: 'Reinforcement Learning from Human Feedback。讓人類幫 AI 答案打分，再用分數教 AI「什麼是好答案」。ChatGPT 變聽話的關鍵。' },
+    { term: 'Zero-shot', zh: '零樣本', desc: '完全不給範例，直接問 AI 問題。' },
+    { term: 'One-shot', zh: '單樣本', desc: '給一個範例後再問問題，AI 模仿格式回答。' },
+    { term: 'Few-shot', zh: '少樣本', desc: '給少量（通常 2-5 個）範例，AI 學會格式後再作答；穩定度比零樣本高很多。' },
+    { term: 'CoT', zh: '思路鏈／思維鏈', desc: 'Chain of Thought。讓 AI「想一步、寫一步」把推理過程列出來，數學/邏輯題正確率大幅提升。' },
+    { term: 'ReAct', zh: '推理＋行動', desc: 'Reasoning + Acting。讓 AI 邊推理、邊呼叫工具（搜尋、計算機），交錯進行直到完成任務。' },
+    { term: 'Token', zh: '詞元', desc: '模型處理文字的最小單位。英文約 4 個字母=1 Token、中文約 1.5 字=1 Token。「上下文長度」就是 Token 上限。' },
+    { term: 'Tokenizer', zh: '斷詞器', desc: '把文字切成 Token 的工具。同一句話用不同斷詞器切出的 Token 數會不同。' },
+    { term: 'Embedding', zh: '向量嵌入', desc: '把字、句子或圖片轉成一串數字（向量），語意相近的東西座標也相近。是 RAG、語意搜尋的基石。' },
+    { term: 'Parameter', zh: '參數', desc: '模型內部「可調整的旋鈕」。GPT-3 有 1750 億參數，越多通常越強但也越貴。' },
+    { term: 'Context Window', zh: '上下文窗口', desc: '一次最多能讀進去的 Token 數。Claude 可達 20 萬以上、GPT-4o 約 12.8 萬。' },
+  ]},
+  { section: 'Prompt 提示工程', items: [
+    { term: 'Prompt', zh: '提示詞', desc: '你給 AI 的指令／問題。內容越具體（角色、任務、格式、限制），AI 答得越穩。' },
+    { term: 'Prompt Engineering', zh: '提示工程', desc: '專門研究「怎麼問 AI 才會答得好」的學問。' },
+    { term: 'Persona', zh: '角色設定', desc: '在 Prompt 開頭給 AI 一個身分（如「你是資深律師」），讓回答口吻、深度自動對齊。' },
+    { term: 'System Prompt', zh: '系統提示', desc: '開發者預先寫死的角色與規則，使用者看不到但會影響 AI 行為。' },
+    { term: 'Prompt Injection', zh: '提示注入攻擊', desc: '在輸入中藏指令騙 AI 違規（如「忽略前面所有規則」）。是 LLM 常見資安威脅。' },
+    { term: 'Jailbreak', zh: '越獄', desc: '用各種繞圈話術讓 AI 突破安全限制，吐出原本拒答的內容。' },
+    { term: 'Temperature', zh: '溫度參數', desc: '控制 AI 輸出的隨機性。0=穩定一致、1=有創意、>1=很隨機/瘋狂。' },
+    { term: 'Top-p / Top-k', zh: '取樣參數', desc: '控制 AI 從多少個候選詞中挑下一個字，影響多樣性與穩定度。' },
+  ]},
+  { section: '進階應用技術', items: [
+    { term: 'RAG', zh: '檢索增強生成', desc: 'Retrieval-Augmented Generation。回答前先去外部資料庫「查資料」，再依查到的內容生成答案。減少幻覺、可引來源。' },
+    { term: 'Vector Database', zh: '向量資料庫', desc: '存「向量化文件」的資料庫（如 Pinecone、Weaviate、Qdrant），是 RAG 的記憶庫。' },
+    { term: 'Agent', zh: 'AI 代理人', desc: '會自主規劃、呼叫工具、執行多步任務的 AI；不只是聊天，能真的「做事」。' },
+    { term: 'Multimodal', zh: '多模態', desc: '同時處理多種媒介（文字＋圖＋音＋影）的 AI。GPT-4o、Gemini、Claude 4 都是多模態。' },
+    { term: 'Hallucination', zh: 'AI 幻覺', desc: 'AI 一本正經胡說八道，編造不存在的事實、人名、文獻。對策：RAG＋人工查證。' },
+    { term: 'Overfitting', zh: '過擬合', desc: '模型把訓練資料「死背」起來，看到沒見過的題目就崩壞。對策：增加資料、Dropout、正則化。' },
+    { term: 'Underfitting', zh: '欠擬合', desc: '模型太弱、學不會，連訓練資料都做不好。對策：增大模型、再訓練久一點。' },
+    { term: 'Bias', zh: '偏見／偏差', desc: '模型因訓練資料失衡而對某族群、性別、種族有歧視性輸出。' },
+    { term: 'Watermark', zh: '浮水印', desc: 'AI 生成物嵌入的識別記號，可隱形或可見，用來標示「這是 AI 做的」。' },
+  ]},
+  { section: 'AI 對話／文字工具', items: [
+    { term: 'ChatGPT', zh: 'OpenAI 對話 AI', desc: 'OpenAI 推出，使用 GPT 系列模型。最知名的通用對話 AI。' },
+    { term: 'GPT-4 / GPT-4o', zh: 'OpenAI 旗艦模型', desc: '4o 是「omni」，原生多模態，看圖、聽聲、生成都行。' },
+    { term: 'Claude', zh: 'Anthropic 對話 AI', desc: 'Anthropic 出品（即本對話），擅長長文、編程與分析，安全性訴求強。' },
+    { term: 'Gemini', zh: 'Google 多模態模型', desc: '原 Bard，Google 旗艦 AI，整合在 Google Workspace 中。' },
+    { term: 'Copilot', zh: 'Microsoft AI 助理', desc: '整合在 Word、Excel、Windows、VS Code 的微軟 AI；底層常用 GPT。' },
+    { term: 'GitHub Copilot', zh: '程式碼自動補完', desc: 'GitHub × OpenAI 的程式碼助理，邊打邊建議下一行。' },
+    { term: 'Cursor', zh: 'AI 程式碼編輯器', desc: '以 AI 為核心的程式編輯器，可整檔重構、聊天改 Code。' },
+    { term: 'Perplexity', zh: 'AI 搜尋引擎', desc: '對話式搜尋，回答附引用來源，是 RAG 的代表應用。' },
+    { term: 'Llama', zh: 'Meta 開源大模型', desc: 'Meta 推出可免費下載的 LLM 系列（Llama 2/3/4），開源社群最常用。' },
+    { term: 'Mistral', zh: '法國開源模型', desc: '法國公司推出的開源 LLM，輕量但實力強。' },
+  ]},
+  { section: 'AI 圖像生成工具', items: [
+    { term: 'DALL-E', zh: 'OpenAI 文生圖', desc: 'OpenAI 出品，整合在 ChatGPT 內，輸入文字直接出圖。' },
+    { term: 'Midjourney', zh: 'AI 藝術繪圖', desc: '美感極強的文生圖工具，原本在 Discord 操作，現有獨立網站。' },
+    { term: 'Stable Diffusion', zh: '開源擴散模型', desc: 'Stability AI 開源，可本機部署、自由微調，是 AI 圖開源生態的核心。' },
+    { term: 'Adobe Firefly', zh: 'Adobe 生成模型', desc: 'Adobe 自家訓練（用授權圖庫），整合在 Photoshop、Illustrator，商用授權清楚。' },
+    { term: 'Generative Fill', zh: '生成填充', desc: 'Photoshop 的 AI 功能：框一塊區域、輸入描述，AI 自動補圖或換內容。' },
+    { term: 'Leonardo.AI', zh: 'AI 美術工具', desc: '針對遊戲美術、概念圖優化的文生圖平台。' },
+    { term: 'Ideogram', zh: '擅長文字的圖像 AI', desc: '生圖時能準確寫出指定文字，做海報/Logo 強。' },
+  ]},
+  { section: 'AI 音樂／語音工具', items: [
+    { term: 'Suno', zh: 'AI 音樂生成', desc: '輸入歌詞或描述，直接產出含人聲的完整歌曲。' },
+    { term: 'Udio', zh: 'AI 音樂生成', desc: '與 Suno 類似，擅長多風格音樂創作。' },
+    { term: 'AIVA', zh: 'AI 作曲', desc: '專做純配樂（古典、電影配樂），可商用授權。' },
+    { term: 'ElevenLabs', zh: 'AI 語音合成', desc: '頂級 TTS（Text-to-Speech），可複製人聲、做多語言配音。' },
+    { term: 'Whisper', zh: 'OpenAI 語音辨識', desc: '開源 STT 模型，多語言聽寫、做字幕首選。' },
+    { term: 'TTS', zh: '文字轉語音', desc: 'Text-to-Speech。把文字念出來。' },
+    { term: 'STT / ASR', zh: '語音轉文字', desc: 'Speech-to-Text／Automatic Speech Recognition。把錄音轉成文字稿。' },
+  ]},
+  { section: 'AI 影片／3D 工具', items: [
+    { term: 'Sora', zh: 'OpenAI 文生影片', desc: 'OpenAI 推出的高品質影片生成模型，能做出長達一分鐘的擬真畫面。' },
+    { term: 'Runway', zh: 'AI 影片工具', desc: '老牌 AI 影片平台（Gen-3），影片生成、去背、特效一條龍。' },
+    { term: 'Pika', zh: '文生影片', desc: '輕量好上手的 AI 影片生成。' },
+    { term: 'HeyGen', zh: '數位人影片', desc: '上傳一張照片、一段文字，自動產生「真人念稿」影片，多語配音。' },
+    { term: 'Synthesia', zh: '數位人簡報', desc: '企業教育訓練常用，模板化的虛擬主播影片。' },
+    { term: 'Luma AI', zh: 'AI 3D／影片', desc: '手機掃一圈就建出 3D 模型，也有影片生成。' },
+  ]},
+  { section: '辦公／生產力工具', items: [
+    { term: 'Gamma', zh: 'AI 簡報生成', desc: '輸入主題一鍵生成完整簡報、文件、網頁。' },
+    { term: 'Canva AI', zh: '設計平台 AI', desc: 'Canva 內建的 Magic Design、Magic Write、Magic Eraser 一系列 AI 功能。' },
+    { term: 'Notion AI', zh: '筆記 AI 助理', desc: 'Notion 內建：自動摘要、改寫、生成大綱、抓重點。' },
+    { term: 'Otter.ai', zh: '會議逐字稿', desc: '即時生成英文會議逐字稿與摘要。' },
+    { term: 'Fireflies', zh: '會議記錄 AI', desc: '加入會議自動錄音、生成逐字稿與行動項。' },
+    { term: 'Mem', zh: 'AI 筆記', desc: '會自己整理、串連你筆記的知識管理工具。' },
+  ]},
+  { section: '法規／倫理／資安', items: [
+    { term: 'GDPR', zh: '歐盟個資保護法', desc: 'General Data Protection Regulation。2018 上路，全球最嚴個資法，違反最高罰營收 4%。' },
+    { term: 'PII', zh: '個人可識別資訊', desc: 'Personally Identifiable Information。可指認到個人的資料（姓名、身分證、電話、Email）。' },
+    { term: 'Copyright', zh: '著作權', desc: 'AI 訓練/生成涉及的版權；商用前要確認資料來源與授權條款。' },
+    { term: 'Fair Use', zh: '合理使用', desc: '美國著作權法的例外條款；AI 訓練是否屬合理使用仍在訴訟中。' },
+    { term: 'Deepfake', zh: '深度偽造', desc: '用 AI 偽造他人臉/聲音的影片或音檔；多數國家有專法管制。' },
+    { term: 'XAI', zh: '可解釋 AI', desc: 'Explainable AI。讓 AI 的決策過程可被人理解，避免「黑盒子」。' },
+    { term: 'AI Act', zh: '歐盟 AI 法案', desc: '2024 通過，全球首部全面性 AI 法律，依風險分級管制。' },
+  ]},
+  { section: '一般技術縮寫', items: [
+    { term: 'AI', zh: '人工智慧', desc: 'Artificial Intelligence。讓電腦模擬人類思考的技術總稱。' },
+    { term: 'ML', zh: '機器學習', desc: 'Machine Learning。AI 的子集，讓電腦從資料中學規則。' },
+    { term: 'DL', zh: '深度學習', desc: 'Deep Learning。ML 的子集，用多層神經網路，現代 AI 主流。' },
+    { term: 'NN', zh: '神經網路', desc: 'Neural Network。模仿人腦神經元結構的計算模型。' },
+    { term: 'AGI', zh: '通用人工智慧', desc: 'Artificial General Intelligence。能像人類一樣處理各種任務的 AI，目前還沒做到。' },
+    { term: 'NLP', zh: '自然語言處理', desc: 'Natural Language Processing。讓電腦理解/產生人類語言的技術。' },
+    { term: 'NLU / NLG', zh: '語言理解／語言生成', desc: 'Understanding 是讀懂、Generation 是寫出來。' },
+    { term: 'CV', zh: '電腦視覺', desc: 'Computer Vision。讓電腦看懂圖片影像。' },
+    { term: 'OCR', zh: '光學字元辨識', desc: 'Optical Character Recognition。把圖片中的文字轉成可編輯文字。' },
+    { term: 'API', zh: '應用程式介面', desc: 'Application Programming Interface。讓你的程式呼叫 AI 服務的「插座」。' },
+    { term: 'SDK', zh: '軟體開發套件', desc: 'Software Development Kit。一整包讓開發者用的工具與函式庫。' },
+    { term: 'GPU', zh: '繪圖處理器', desc: 'Graphics Processing Unit。AI 訓練最常用的硬體，平行運算極強。' },
+    { term: 'TPU', zh: '張量處理器', desc: 'Tensor Processing Unit。Google 為 AI 設計的專用晶片。' },
+    { term: 'IDE', zh: '整合開發環境', desc: 'Integrated Development Environment。寫程式的軟體（VS Code、Cursor 等）。' },
+    { term: 'AR / VR / XR', zh: '擴增／虛擬／延伸實境', desc: 'AR=現實疊虛擬、VR=完全虛擬、XR=兩者通稱。' },
+    { term: 'IoT', zh: '物聯網', desc: 'Internet of Things。家電、感測器、車輛互聯網路。' },
+    { term: 'Cloud', zh: '雲端運算', desc: 'AWS、Azure、GCP 是三大雲端服務商；多數 AI 模型跑在雲端。' },
+    { term: 'Open Source', zh: '開源', desc: '原始碼公開可下載修改（如 Llama、Stable Diffusion）；對比 Closed Source（如 GPT-4）。' },
+  ]},
+];
+
+let glossInited = false;
+function renderGlossList(q){
+  const listBox = el('glossResults');
+  if(!listBox) return;
+  q = (q||'').trim().toLowerCase();
+  const sections = GLOSSARY.map(sec=>{
+    const items = sec.items.filter(it=>{
+      if(!q) return true;
+      return `${it.term} ${it.zh} ${it.desc}`.toLowerCase().includes(q);
+    });
+    if(!items.length) return '';
+    const list = items.map(it=>`
+      <div class="glossItem">
+        <div class="glossTerm">${escapeHtml(it.term)}<span class="zh">${escapeHtml(it.zh)}</span></div>
+        <div class="glossDesc">${escapeHtml(it.desc)}</div>
+      </div>`).join('');
+    return `<section class="glossSection"><h2>${escapeHtml(sec.section)} <span class="count">${items.length} 個</span></h2><div class="glossList">${list}</div></section>`;
+  }).filter(Boolean).join('');
+  listBox.innerHTML = sections || '<div class="empty">查無相關用詞，換個關鍵字試試。</div>';
+}
+function renderGlossary(){
+  const box = el('glossaryBox');
+  if(!box) return;
+  if(!glossInited){
+    box.innerHTML = `
+      <div class="glossSearchRow"><input id="glossSearch" type="search" placeholder="搜尋英文用詞、中文翻譯或關鍵字…"></div>
+      <div id="glossResults"></div>`;
+    el('glossSearch').addEventListener('input', e => renderGlossList(e.target.value));
+    glossInited = true;
+  }
+  renderGlossList(el('glossSearch').value);
+}
+
+/* ========== 答題技巧（題庫規律與應試訣竅） ========== */
+const TIPS = [
+  { badge: '反向題', badgeType: 'warn', title: '看到「非、不、錯、無法、不應」立刻踩煞車',
+    when: '題幹出現「下列何者為非／何者不正確／何者不適合／無法／不應該」這類字眼。',
+    how: '反向題要找「最不合理／最不正確／最不該做」的選項。先把三個明顯合理的劃掉，剩下那個就是答案。',
+    ex: '例：「下列關於 AI 的敘述，何者錯誤？」→ 選那個違反常識或太絕對的選項（如「AI 能完全取代人類所有工作」）。' },
+  { badge: '絕對化警示', badgeType: 'warn', title: '看到「100%／完全／絕對／永遠／全面取代」幾乎都是錯',
+    when: '選項出現「完全取代人類」「100% 準確」「絕對安全」「永遠正確」「全面自動化」。',
+    how: 'AI 是「輔助」不是「萬能」。絕對化、極端化的選項十有八九是干擾項；正解通常會留人工把關空間。',
+    ex: '例：選項「AI 客服可 100% 取代真人客服」→ 錯；正解通常是「AI 處理常見問題、複雜問題轉真人」。' },
+  { badge: '隱私／個資', badgeType: 'warn', title: '個資題永遠選「最謹慎」的選項',
+    when: '題幹出現「個資、隱私、GDPR、個人資料、客戶資料、健保資料、身分證」。',
+    how: '看到個資題，直接挑「最保守、最有保護動作」的選項：徵得同意、去識別化、加密儲存、最小必要使用。「為了方便直接上傳」「全公司共用」永遠是錯。',
+    ex: '例：「處理客戶資料訓練 AI，下列做法最佳？」→ 選「先去識別化、徵得當事人同意」，不選「直接餵給雲端模型」。' },
+  { badge: '版權／授權', badgeType: 'warn', title: '版權題的三件事：來源、授權、標示',
+    when: '題幹出現「版權、著作權、肖像權、商用、AI 生成圖／音／文」。',
+    how: '正解通常包含這三件事：① 確認資料來源合法 ② 確認授權範圍（個人/商用）③ 標示 AI 生成或來源。「直接拿來商用就好」是錯。',
+    ex: '例：「用 Midjourney 圖做廣告，下列何者正確？」→ 選「確認 Midjourney 商用授權條款」。' },
+  { badge: 'Prompt 工程', badgeType: 'good', title: 'Prompt 題：越「具體」越好',
+    when: '題幹出現「Prompt、提示、提示工程、如何讓 AI 回答得更好」。',
+    how: '正解通常包含「明確的角色、任務、格式、限制、範例」其中幾項。「讓 AI 自由發揮」「越短越好」幾乎都是錯。記口訣：角色＋任務＋格式＋限制＋範例。',
+    ex: '例：「如何改善 AI 回答品質？」→ 選「指定角色、給範例、限制輸出格式」，不選「問越簡短越好」。' },
+  { badge: 'RAG', badgeType: 'good', title: 'RAG 題抓三特徵：外部知識、即時資料、引用來源',
+    when: '題幹出現「檢索增強、RAG、引用來源、避免幻覺、即時資訊、外掛知識庫」。',
+    how: 'RAG = 先檢索 → 再生成 → 引出處。看到「外部資料」「最新資訊」「降低幻覺」「引用來源」就鎖 RAG，不要選「重新訓練模型」「微調」。',
+    ex: '例：「想讓 AI 引用公司最新文件回答，最佳做法？」→ 選 RAG，不選「重新訓練 GPT」。' },
+  { badge: 'GAN', badgeType: 'good', title: 'GAN 題口訣：兩個網路、對抗訓練',
+    when: '題幹出現「生成對抗、生成器、判別器、鑑別器、真假對抗」。',
+    how: '看到「兩個網路互相對抗」「一個造一個抓」就是 GAN。GAN 不是用來理解語言、不是用來分類，是用來「生成」。',
+    ex: '例：「下列何者最能生成擬真人臉？」→ GAN 或 Diffusion 都對；題目強調「兩個網路對抗」就選 GAN。' },
+  { badge: 'Attention', badgeType: 'good', title: 'Transformer / Attention 題抓「上下文、長距離、平行」',
+    when: '題幹出現「Transformer、Attention、自注意力、上下文關係、長距依賴」。',
+    how: 'Attention 機制 = 「不平均分配注意力，重點字多看兩眼」。處理長句、抓上下文關係的最佳選擇；對比 RNN（一字一字、易遺忘）。',
+    ex: '例：「處理長篇文本最有效的架構？」→ 選 Transformer，不選 RNN/LSTM。' },
+  { badge: '微調 vs Prompt', badgeType: 'good', title: '資料多用微調、資料少用 Prompt',
+    when: '題幹出現「如何讓模型適應特定領域／公司／任務」。',
+    how: '判斷依據是「資料量」：有大量領域資料 → Fine-tuning（微調）；資料少、只想改風格 → Prompt 工程；想用最新資料 → RAG。',
+    ex: '例：「公司只有 20 篇 SOP 文件，想讓 AI 依此回答」→ 選 RAG，不選微調（資料太少不夠訓練）。' },
+  { badge: '幻覺', badgeType: 'warn', title: '幻覺題：對策一定是「外部驗證＋人工審核」',
+    when: '題幹出現「AI 一本正經胡說、捏造、編造、Hallucination、降低錯誤」。',
+    how: '幻覺對策三招：① 接 RAG 真實資料 ② 人工查證 ③ 提示「不知道就說不知道」。「相信 AI 輸出」「直接發布」永遠是錯。',
+    ex: '例：「如何降低 AI 編造論文的問題？」→ 選「接 RAG 並人工核對」，不選「重新訓練」。' },
+  { badge: '資料品質', badgeType: 'good', title: '訓練資料三要件：量足、質純、源多',
+    when: '題幹出現「訓練資料、資料品質、資料偏差、模型偏見」。',
+    how: '好資料 = 量足夠 + 品質乾淨 + 來源多元。「只用單一來源」「不清洗直接餵」「越多越好不管品質」幾乎都是錯。資料偏的對策：補不同族群／多樣化資料。',
+    ex: '例：「AI 對某族群辨識率較低，最佳改善方式？」→ 選「補該族群多樣化資料」。' },
+  { badge: '倫理', badgeType: 'warn', title: 'AI 倫理四原則：公平、透明、問責、隱私',
+    when: '題幹出現「倫理、公平、透明、問責、可解釋、歧視、偏見」。',
+    how: '倫理題挑「不偷懶、不黑盒、可解釋、留人工」的選項。「為效率犧牲透明度」「全自動決策」「不告知使用者用了 AI」幾乎都是錯。',
+    ex: '例：「AI 招募系統最該避免？」→ 選「不揭露使用 AI、無人工複核」。' },
+  { badge: '安全', badgeType: 'warn', title: 'AI 安全：輸入過濾、輸出審核、權限分層',
+    when: '題幹出現「Prompt Injection、Jailbreak、AI 安全、攻擊、越獄」。',
+    how: '對策：① 輸入過濾敏感詞 ② 輸出做安全分類 ③ 權限分層（一般使用者不能下管理員指令）。「直接給管理員權限」「相信使用者輸入」是錯。',
+    ex: '例：「防止 Prompt Injection 最佳作法？」→ 選「輸入清洗 + 輸出審核」。' },
+  { badge: '工具對應', badgeType: 'good', title: '工具選擇題：看「輸出媒介」對應工具',
+    when: '題幹問「想做 X，該用哪個工具」。',
+    how: '記輸出媒介對應：文字→ChatGPT/Claude／圖→Midjourney/DALL-E/Stable Diffusion／影片→Sora/Runway/HeyGen／音樂→Suno/Udio／語音→ElevenLabs/Whisper／簡報→Gamma／3D→Blender/Luma。',
+    ex: '例：「想生成有歌詞的歌曲」→ 選 Suno；「想做數位人念稿」→ 選 HeyGen。' },
+  { badge: '多模態', badgeType: 'good', title: '多模態題：能同時處理多種媒介的模型',
+    when: '題幹出現「多模態、Multimodal、同時看圖看字、跨媒介」。',
+    how: '代表：GPT-4o、Claude 4、Gemini。能「看圖回答」「聽聲回答」「文＋圖混合輸入」。傳統 BERT、單純 CNN 都不是多模態。',
+    ex: '例：「能上傳圖片問問題的 AI？」→ 選 GPT-4o／Gemini／Claude。' },
+  { badge: '過擬合', badgeType: 'warn', title: '過擬合題：訓練好、測試爛',
+    when: '題幹出現「訓練準確率高、測試準確率低、過擬合、Overfitting」。',
+    how: '對策：① 增加訓練資料 ② Dropout（隨機關閉部分神經元）③ 正則化 ④ Early Stopping ⑤ 資料擴增。「再多訓練幾輪」是錯。',
+    ex: '例：「模型訓練 99% 測試 60%，下列何者最有效？」→ 選「增加資料／加 Dropout」。' },
+  { badge: '架構辨識', badgeType: 'good', title: 'BERT 做理解、GPT 做生成',
+    when: '題幹問「填空、分類、情感分析、命名實體辨識 → 用哪個」「續寫、對話、翻譯 → 用哪個」。',
+    how: 'BERT 雙向、擅長理解類任務（填空、分類、QA）；GPT 單向、擅長生成類任務（寫作、對話、續寫）。',
+    ex: '例：「想做情感分類」→ 選 BERT；「想做對話生成」→ 選 GPT。' },
+  { badge: '商業應用', badgeType: 'good', title: '商務題：AI 是加速器，不是取代鍵',
+    when: '題幹涉及「行銷、客服、HR、決策、銷售、營運導入 AI」。',
+    how: 'AI 的價值在「分類、加速、個人化、決策輔助」。正解通常是「協助人類做得更快更好」，錯誤選項常是「完全交給 AI 自主決定」「裁掉所有員工」。',
+    ex: '例：「AI 在行銷的最佳應用？」→ 選「個人化推薦、A/B 測試、產生初稿」，不選「完全取代企劃」。' },
+  { badge: '法規', badgeType: 'warn', title: '法規題：GDPR / AI Act / 個資法',
+    when: '題幹涉及「歐盟、GDPR、個資法、AI 法、罰則」。',
+    how: 'GDPR=個資法、AI Act=歐盟 AI 法（依風險分級）。法規題挑「主動告知使用者、保留刪除權、最小蒐集」的選項。',
+    ex: '例：「依 GDPR，使用者有何權利？」→ 選「被遺忘權、資料可攜權、知情權」。' },
+  { badge: '通用策略', badgeType: 'good', title: '所有題目共通的解題流程（4 步）',
+    when: '任何題目卡關時。',
+    how: '① 圈出題幹「動詞 + 關鍵字」 ② 判斷是否為反向題 ③ 排除絕對化／過度承諾的選項 ④ 找最直接回應題幹動詞的選項。',
+    ex: '不確定就用刪去法：先砍「絕對、永遠、100%、全面」三類字眼的選項，正解通常浮出來。' },
+];
+
+function renderTips(){
+  const box = el('tipsBox');
+  if(!box) return;
+  const intro = `<div class="tipsIntro"><b>本頁整理 438 題題庫的答題規律與訣竅。</b>遇到題目時，先對照「觸發詞」找到對應的技巧卡，再依「怎麼答」的口訣選答案。建議先讀【通用策略】卡（最後一張），它適用所有題目。</div>`;
+  const cards = TIPS.map((t,i)=>`
+    <article class="tipCard">
+      <h3><span class="tipBadge ${t.badgeType||''}">${escapeHtml(t.badge)}</span>${escapeHtml(t.title)}</h3>
+      <div class="when"><b>觸發詞：</b>${escapeHtml(t.when)}</div>
+      <div class="how"><b>怎麼答：</b>${escapeHtml(t.how)}</div>
+      <div class="example"><b>實戰範例：</b>${escapeHtml(t.ex)}</div>
+    </article>`).join('');
+  box.innerHTML = intro + cards;
+}
+
+/* ========== 頁籤切換 ========== */
+function switchTab(name){
+  document.querySelectorAll('.tabBtn').forEach(b=>b.classList.toggle('active', b.dataset.tab===name));
+  document.querySelectorAll('.tabPanel').forEach(p=>p.classList.toggle('active', p.id===`tab-${name}`));
+  // 非測驗頁時隱藏底部分數浮窗與頂部測驗控制
+  const dock = document.querySelector('.dock');
+  const topCtrl = document.querySelector('.controlCard.actionCard');
+  const scoreLine = document.querySelector('.scoreline');
+  const isQuiz = name === 'quiz';
+  if(dock) dock.style.display = isQuiz ? '' : 'none';
+  if(topCtrl) topCtrl.style.display = isQuiz ? '' : 'none';
+  if(scoreLine) scoreLine.style.display = isQuiz ? '' : 'none';
+  // 切到對應頁時渲染
+  if(name === 'gloss') renderGlossary();
+  if(name === 'tips') renderTips();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
 function bindEvents(){
   document.addEventListener('click', e=>{
     const opt = e.target.closest('.opt');
@@ -277,6 +708,12 @@ function bindEvents(){
       const id = Number(rb.dataset.q);
       revealed.has(id) ? revealed.delete(id) : revealed.add(id);
       render();
+      return;
+    }
+    const tabBtn = e.target.closest('.tabBtn');
+    if(tabBtn){
+      switchTab(tabBtn.dataset.tab);
+      return;
     }
   });
   ['groupFilter','topicFilter'].forEach(id => el(id).addEventListener('input', () => setActive(currentFiltered())));
